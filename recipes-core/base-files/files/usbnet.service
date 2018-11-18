@@ -1,0 +1,10 @@
+[Unit]
+Description=Start USB Gadget network interface
+
+[Service]
+Type=forking
+ExecStart=/etc/init.d/usbgadget-net.sh
+
+[Install]
+WantedBy=multi-user.target
+
