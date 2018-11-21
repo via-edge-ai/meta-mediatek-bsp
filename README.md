@@ -6,6 +6,7 @@ This layer provides a minimal BSP and rootfs for booting the Pumpkin board.
 
     $ mkdir pumpkin; cd pumpkin
     $ repo init -u git@gitlab.com:baylibre/pumpkin/manifest.git
+    $ repo sync
     $ export TEMPLATECONF=${PWD}/meta-pumpkin/conf/
     $ source poky/oe-init-build-env
     $ bitbake pumpkin-image
