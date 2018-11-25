@@ -16,7 +16,7 @@ KERNEL_EXTRA_ARGS = "dtbs"
 BOOTIMAGE = "boot.img"
 
 SRC_URI = "git://git@gitlab.com/baylibre/pumpkin/linux.git;protocol=ssh;branch=pumpkin-v4.19"
-SRCREV = "59735411d8b7f62bd8e638753ff17211ef131ce8"
+SRCREV = "2a723b9033e8190387ab7a5252bdae8b81b2ad84"
 
 SRC_URI_append = " \
 	file://defconfig \
