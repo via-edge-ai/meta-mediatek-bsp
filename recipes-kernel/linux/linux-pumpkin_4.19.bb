@@ -71,7 +71,7 @@ uboot_prep_kimage() {
                                 done;
                         }
         elif test "${linux_comp}" = "gzip"; then
-                gzip -9 linux.bin
+                gzip -9 linux.bin.raw -c > linux.bin${linux_suffix}
         else
                 echo "For none case or another compressing"
         fi
