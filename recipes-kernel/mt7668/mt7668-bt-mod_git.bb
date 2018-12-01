@@ -1,7 +1,7 @@
 # Copyright (C) 2018 Fabien Parent <fparent@baylibre.com>
 # Released under the MIT license (see COPYING.MIT for the terms)
 
-SUMMARY = "Mediatek bluetooth driver"
+SUMMARY = "MediaTek bluetooth driver"
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e1696b147d49d491bcb4da1a57173fff"
 
@@ -18,4 +18,4 @@ EXTRA_OEMAKE = " \
 "
 
 RDEPENDS_${PN} += "mt7668-bt-fw"
-RPROVIDES_${PN} += "kernel-module-mtk-bt"
+RPROVIDES_${PN} += "kernel-module-mt7668-bt"

@@ -1,7 +1,7 @@
 # Copyright (C) 2018 Fabien Parent <fparent@baylibre.com>
 # Released under the MIT license (see COPYING.MIT for the terms)
 
-SUMMARY = "Mediatek wlan driver"
+SUMMARY = "MediaTek Wi-Fi driver"
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=90675d4b2a0ffc46ef9ff36dfe4063fe"
 
@@ -22,4 +22,4 @@ EXTRA_OEMAKE+=" \
 "
 
 RDEPENDS_${PN} += "mt7668-wifi-fw"
-RPROVIDES_${PN} += "kernel-module-mtk-wlan"
+RPROVIDES_${PN} += "kernel-module-mt7668-wifi"
