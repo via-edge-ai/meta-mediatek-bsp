@@ -17,4 +17,5 @@ EXTRA_OEMAKE = " \
 	KERNEL_SRC=${STAGING_KERNEL_DIR} \
 "
 
+RDEPENDS_${PN} += "mt7668-bt-fw"
 RPROVIDES_${PN} += "kernel-module-mtk-bt"
