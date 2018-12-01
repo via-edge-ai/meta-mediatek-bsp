@@ -1,28 +1,21 @@
+# Copyright (C) 2018 Fabien Parent <fparent@baylibre.com>
+# Released under the MIT license (see COPYING.MIT for the terms)
+
 DESCRIPTION = "Pumpkin image with some development tools"
 
 IMAGE_FEATURES += "ssh-server-dropbear"
 
 IMAGE_INSTALL = "\
-    packagegroup-core-boot \
-    packagegroup-core-full-cmdline \
-	${@bb.utils.contains("MACHINE_FEATURES", "alsa", "alsa-utils alsa-state", "", d)} \
-	${@bb.utils.contains("MACHINE_FEATURES", "bluez5", "bluez5", "", d)} \
-	${@bb.utils.contains("MACHINE_FEATURES", "bluetooth", "kernel-module-mt7668-bt", "", d)} \
-	${@bb.utils.contains("DISTRO_FEATURES", "zeroconf", "avahi-autoipd avahi-daemon avahi-utils avahi-dnsconfd", "", d)} \
-	${@bb.utils.contains("MACHINE_FEATURES", "wifi", "wpa-supplicant kernel-module-mt7668-wifi", "", d)} \
+	packagegroup-core-boot \
+	packagegroup-core-full-cmdline \
+	packagegroup-pumpkin-wireless \
+	packagegroup-pumpkin-zeroconf \
+	packagegroup-pumpkin-audio \
 	busybox \
 	dropbear \
 "
 
 PACKAGE_EXCLUDE = "openssh"
-
-#	pulseaudio
-#	pulseaudio-server
-#	pulseaudio-module-alsa-card
-#	pulseaudio-misc
-#	pulseaudio-module-bluetooth-policy
-#	pulseaudio-module-bluez5-device
-#	pulseaudio-module-bluez5-discover
 
 EXTRA_IMAGEDEPENDS = " \
 	lk \
