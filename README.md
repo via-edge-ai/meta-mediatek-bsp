@@ -1,21 +1,24 @@
-# Pumpkin Board
+# MediaTek BSP layer
 
-This layer provides a minimal BSP and rootfs for booting the Pumpkin board.
+This layer provides a minimal BSP and rootfs for booting the MediaTek boards.
+
+The following machines are supported:
+	* pumpkin-mt8516: Pumpkin board with MediaTek MT8516.
 
 ## Building
 
-    $ mkdir pumpkin; cd pumpkin
-    $ repo init -u git@gitlab.com:baylibre/pumpkin/manifest.git
+    $ mkdir rich-iot; cd rich-iot
+    $ repo init -u git@gitlab.com:baylibre/rich-iot/manifest.git
     $ repo sync
-    $ export TEMPLATECONF=${PWD}/meta-pumpkin/conf/
-    $ source poky/oe-init-build-env
+    $ export TEMPLATECONF=${PWD}/src/meta-mediatek-bsp/conf/
+    $ source src/poky/oe-init-build-env
     $ bitbake pumpkin-image
 
 ## Flashing
 
 ### Flashing everything
 
-    $ cd pumpkin/build/tmp/deploy/images/pumpkin
+    $ cd rich-iot/build/tmp/deploy/images/pumpkin-mt8516
     $ ./flashimage.py
                                      Checking image
     --------------------------------------------------------------------------------
@@ -23,7 +26,7 @@ This layer provides a minimal BSP and rootfs for booting the Pumpkin board.
                                     lk.img : PASS
                                     tz.img : PASS
                                   fitImage : PASS
-            pumpkin-image-pumpkin.ext4     : PASS
+         pumpkin-image-pumpkin-mt8516.ext4 : PASS
 
                                      Start flashing
     --------------------------------------------------------------------------------
@@ -39,24 +42,24 @@ Once you see *Waiting for DA mode*:
 
 To flash just one partition, you can run the following command:
 
-    $·cd·pumpkin/build/tmp/deploy/images/pumpkin
+    $·cd·rich-iot/build/tmp/deploy/images/pumpkin-mt8516
     $ fastboot flash [PARTITION] [FILE]
     $ fastboot reboot
 
 [PARTITION] should be replaced with one of the following:
     - *BOOTIMG1*: for flashing the Linux Kernel (fitImage).
-    - *ROOTFS1*: for flashing the root filesystem (pumpkin-image-pumpkin.ext4).
+    - *ROOTFS1*: for flashing the root filesystem (pumpkin-image-pumpkin-mt8516.ext4).
 
 For example, the commands to flash the kernel are:
 
-    $·cd·pumpkin/build/tmp/deploy/images/pumpkin
+    $·cd·rich-iot/build/tmp/deploy/images/pumpkin-mt8516
     $ fastboot flash BOOTIMG1 fitImage
     $ fastboot reboot
 
 The commands to flash the root filesystem are:
 
-    $·cd·pumpkin/build/tmp/deploy/images/pumpkin
-    $ fastboot flash ROOTFS1 pumpkin-image-pumpkin.ext4
+    $·cd·rich-iot/build/tmp/deploy/images/pumpkin-mt8516
+    $ fastboot flash ROOTFS1 pumpkin-image-pumpkin-mt8516.ext4
     $ fastboot reboot
 
 ## Connecting to the board
@@ -64,13 +67,13 @@ The commands to flash the root filesystem are:
 You can connect to the board via the serial console exported on the Micro-B USB connector:
 
     $ picocom -b 921600 /dev/ttyUSB0
-    root@pumpkin:~#
+    root@pumpkin-mt8516:~#
 
 ---
 The image is running ssh (dropbear) and avahi in order to make it easily accessible through a Network Interface:
 
-    $ ssh root@pumpkin.local
-    root@pumpkin:~#
+    $ ssh root@pumpkin-mt8516.local
+    root@pumpkin-mt8516:~#
 
 The image is also configuring a USB Gadget on the USB Type-C connector that can be used as a Network Interface to connect to the board.
 
