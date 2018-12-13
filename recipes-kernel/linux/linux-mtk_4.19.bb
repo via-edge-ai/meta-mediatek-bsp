@@ -7,7 +7,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 
 LINUX_VERSION ?= "4.19.0"
-LINUX_VERSION_EXTENSION_append = "-pumpkin"
+LINUX_VERSION_EXTENSION_append = "-mtk"
 #STAGING_KERNEL_DIR = "${WORKDIR}/git"
 
 S = "${WORKDIR}/git"
@@ -15,7 +15,7 @@ S = "${WORKDIR}/git"
 KERNEL_EXTRA_ARGS = "dtbs"
 BOOTIMAGE = "boot.img"
 
-SRC_URI = "git://git@gitlab.com/baylibre/pumpkin/linux.git;protocol=ssh;branch=pumpkin-v4.19"
+SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/linux.git;protocol=ssh;branch=pumpkin-v4.19"
 SRCREV = "78096ba0e39c55e128714d9ffa0bb913386624be"
 
 SRC_URI_append = " \
@@ -87,4 +87,4 @@ uboot_prep_kimage() {
 
 
 
-COMPATIBLE_MACHINE_pumpkin = "pumpkin"
+COMPATIBLE_MACHINE_mediatek-bsp = "mediatek-bsp"
