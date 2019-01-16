@@ -17,11 +17,4 @@ IMAGE_INSTALL = "\
 
 PACKAGE_EXCLUDE = "openssh"
 
-EXTRA_IMAGEDEPENDS = " \
-	lk \
-	mbr \
-	mtk-flash-tools \
-	trustzone \
-"
-
 inherit core-image
