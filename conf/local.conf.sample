@@ -247,3 +247,5 @@ PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
 CONF_VERSION = "1"
 
 DISTRO_FEATURES_append = " alsa bluetooth bluez5 usbgadget wifi zeroconf"
+
+USE_VT = "0"
