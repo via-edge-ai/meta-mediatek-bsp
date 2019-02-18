@@ -8,7 +8,6 @@ IMAGE_FEATURES += "ssh-server-dropbear"
 IMAGE_INSTALL = "\
 	packagegroup-core-boot \
 	packagegroup-core-full-cmdline \
-	packagegroup-pumpkin-wireless \
 	packagegroup-pumpkin-zeroconf \
 	packagegroup-pumpkin-audio \
 	busybox \

@@ -23,6 +23,10 @@ IMAGE_ROOTFS_ALIGNMENT = "4"
 
 SERIAL_CONSOLES = "921600;ttyS0"
 
+MACHINE_ESSENTIAL_EXTRA_RDEPENDS = " \
+	packagegroup-mtk-wireless \
+"
+
 EXTRA_IMAGEDEPENDS = " \
 	lk \
 	mbr \
