@@ -249,3 +249,8 @@ CONF_VERSION = "1"
 DISTRO_FEATURES_append = " alsa bluetooth bluez5 usbgadget wifi zeroconf"
 
 USE_VT = "0"
+
+# USB Gadget function to use to export an ethernet device over USB.
+# Options: ecm, rndis.
+# Note: ecm does not work well with all version of Windows
+#USB_GADGET_FUNCTION = "ecm"

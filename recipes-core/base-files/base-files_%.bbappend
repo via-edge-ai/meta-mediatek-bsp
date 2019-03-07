@@ -2,6 +2,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 inherit systemd
 
+USB_GADGET_FUNCTION ?= "ecm"
+
 SRC_URI_append = " \
 	file://udhcpd.conf \
 	file://usbgadget-net.sh \
@@ -24,6 +26,11 @@ do_install_append() {
 	install -m 0644 ${WORKDIR}/usbnet.service ${D}${systemd_unitdir}/system/
 	install -m 0755 ${WORKDIR}/usbgadget-net.sh ${D}${sysconfdir}/init.d/
 	install -m 0755 ${WORKDIR}/usbgadget-net.sh ${D}${systemd_unitdir}
+
+	sed -i -e "s,@USB_GADGET_FUNCTION@,${USB_GADGET_FUNCTION},g" \
+		${D}${sysconfdir}/init.d/usbgadget-net.sh
+	sed -i -e "s,@USB_GADGET_FUNCTION@,${USB_GADGET_FUNCTION},g" \
+		${D}${systemd_unitdir}/usbgadget-net.sh
 }
 
 SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '${PN}', '', d)}"

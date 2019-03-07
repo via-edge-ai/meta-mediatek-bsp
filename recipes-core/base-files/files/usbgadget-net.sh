@@ -1,6 +1,7 @@
 #! /bin/sh
 
 USB_GADGET_NET=/sys/kernel/config/usb_gadget/net1
+USB_GADGET_FUNCTION=@USB_GADGET_FUNCTION@
 
 start()
 {
@@ -19,8 +20,8 @@ start()
     mkdir configs/c.1/strings/0x409
     echo "USB network" > configs/c.1/strings/0x409/configuration
 
-    mkdir functions/ecm.usb0
-    ln -s functions/ecm.usb0 configs/c.1
+    mkdir functions/$USB_GADGET_FUNCTION.usb0
+    ln -s functions/$USB_GADGET_FUNCTION.usb0 configs/c.1
 
     echo $(ls /sys/class/udc) > UDC
     cd -
@@ -31,8 +32,8 @@ stop()
     cd $USB_GADGET_NET
     echo > UDC
 
-    rm configs/c.1/ecm.usb0
-    rmdir functions/ecm.usb0
+    rm configs/c.1/$USB_GADGET_FUNCTION.usb0
+    rmdir functions/$USB_GADGET_FUNCTION.usb0
 
     echo $(ls /sys/class/udc) > UDC
     cd -

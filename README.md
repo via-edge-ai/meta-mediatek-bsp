@@ -87,3 +87,17 @@ This command needs to be typed only once, the Wi-Fi network will be saved in
 the *wpa_supplicant.conf* file. [SSID] needs to be replaced with your
 Wi-Fi SSID, and [PASSPHRASE] needs to be replaced with the passphrase
 associated to that SSID.
+
+## local.conf options
+
+Options available in `local.conf` to modify the BSP:
+
+* `USB_GADGET_FUNCTION`: This option allows to choose the USB gadget used
+	to expose an Ethernet interface over USB. Available choices are: `ecm` (default),
+	`rndis`.
+
+## Known issues
+
+* On Windows 10, and possibly other version of windows, the ECM gadget is
+	not well supported, to fix it you can set the USB_GADGET_FUNCTION to `rndis`,
+	see `local.conf options` for more details.
