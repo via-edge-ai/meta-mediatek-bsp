@@ -6,7 +6,7 @@ DEPENDS += "lz4-native"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 
-LINUX_VERSION ?= "4.19.0"
+LINUX_VERSION ?= "4.19.27"
 LINUX_VERSION_EXTENSION_append = "-mtk"
 #STAGING_KERNEL_DIR = "${WORKDIR}/git"
 
@@ -16,7 +16,7 @@ KERNEL_EXTRA_ARGS = "dtbs"
 BOOTIMAGE = "boot.img"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/linux.git;protocol=ssh;branch=pumpkin-v4.19"
-SRCREV = "ac3d558421964f3fc415824b19a4c19e9c77ed7c"
+SRCREV = "0b7bca2b8b9e84cdd85b951e71e8b894d4edacb9"
 SRC_URI_append = " \
 	file://defconfig \
 "
