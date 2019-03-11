@@ -16,6 +16,8 @@ IMAGE_BOOT_FILES = " \
 PREFERRED_PROVIDER_virtual/kernel ??= "linux-mtk"
 PREFERRED_PROVIDER_virtual/bootloader ??= "lk"
 
+PREFERRED_VERSION_linux-mtk ?= "4.19%"
+
 MACHINE_FEATURES_append = " alsa bluetooth usbgadget wifi"
 
 IMAGE_FSTYPES ?= "ext4"
