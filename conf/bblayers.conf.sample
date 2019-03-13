@@ -9,5 +9,6 @@ BBLAYERS ?= " \
   ##OEROOT##/meta \
   ##OEROOT##/meta-poky \
   ##OEROOT##/meta-yocto-bsp \
+  ##OEROOT##/../meta-linaro/meta-optee \
   ##OEROOT##/../meta-mediatek-bsp \
   "
