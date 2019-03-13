@@ -16,7 +16,7 @@ KERNEL_EXTRA_ARGS = "dtbs"
 BOOTIMAGE = "boot.img"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/linux.git;protocol=ssh;branch=pumpkin-v4.19"
-SRCREV = "0b7bca2b8b9e84cdd85b951e71e8b894d4edacb9"
+SRCREV = "2e22464b5df624db27d4d973e529e08d25feb71a"
 SRC_URI_append = " \
 	file://defconfig \
 "
