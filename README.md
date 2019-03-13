@@ -23,8 +23,8 @@ The following machines are supported:
                                      Checking image
     --------------------------------------------------------------------------------
                                   MBR_EMMC : PASS
-                                    lk.img : PASS
-                                    tz.img : PASS
+                                   bl2.img : PASS
+                                   fip.bin : PASS
                                   fitImage : PASS
          pumpkin-image-pumpkin-mt8516.ext4 : PASS
 
@@ -42,25 +42,32 @@ Once you see *Waiting for DA mode*:
 
 To flash just one partition, you can run the following command:
 
-    $·cd·rich-iot/build/tmp/deploy/images/pumpkin-mt8516
+    $ cd rich-iot/build/tmp/deploy/images/pumpkin-mt8516
     $ fastboot flash [PARTITION] [FILE]
-    $ fastboot reboot
+    $ fastboot continue
 
 [PARTITION] should be replaced with one of the following:
-    - *BOOTIMG1*: for flashing the Linux Kernel (fitImage).
-    - *ROOTFS1*: for flashing the root filesystem (pumpkin-image-pumpkin-mt8516.ext4).
+    - *bootloaders*: for flashing the bootloaders (bl31, OP-TEE, and u-boot)
+    - *kernel*: for flashing the Linux Kernel (fitImage).
+    - *rootfs*: for flashing the root filesystem (pumpkin-image-pumpkin-mt8516.ext4).
 
 For example, the commands to flash the kernel are:
 
-    $·cd·rich-iot/build/tmp/deploy/images/pumpkin-mt8516
-    $ fastboot flash BOOTIMG1 fitImage
-    $ fastboot reboot
+    $ cd rich-iot/build/tmp/deploy/images/pumpkin-mt8516
+    $ fastboot flash kernel fitImage
+    $ fastboot continue
+
+The commands to flash the bootloaders are:
+
+    $ cd rich-iot/build/tmp/deploy/images/pumpkin-mt8516
+    $ fastboot flash bootloaders fip.bin
+    $ fastboot continue
 
 The commands to flash the root filesystem are:
 
-    $·cd·rich-iot/build/tmp/deploy/images/pumpkin-mt8516
-    $ fastboot flash ROOTFS1 pumpkin-image-pumpkin-mt8516.ext4
-    $ fastboot reboot
+    $ cd rich-iot/build/tmp/deploy/images/pumpkin-mt8516
+    $ fastboot flash rootfs pumpkin-image-pumpkin-mt8516.ext4
+    $ fastboot continue
 
 ## Connecting to the board
 
