@@ -4,6 +4,7 @@ require conf/machine/include/arm/arch-arm64.inc
 KERNEL_IMAGETYPE = "fitImage"
 KERNEL_CLASSES += "kernel-fitimage"
 DTB_LOADADDRESS = "0x44000000"
+KERNEL_COMPRESSION = "lz4"
 
 # Bootloader
 UBOOT_ENTRYPOINT = "0x40080000"

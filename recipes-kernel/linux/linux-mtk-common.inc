@@ -34,7 +34,7 @@ EOF
 }
 
 uboot_prep_kimage() {
-	linux_comp="lz4"
+	linux_comp="${KERNEL_COMPRESSION}"
 
 	if test "${linux_comp}" = "lz4"; then
 		linux_suffix=".lz4"
