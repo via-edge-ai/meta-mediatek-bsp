@@ -11,6 +11,7 @@ SRC_URI_append = " \
 	file://usb.network \
 	file://eth.network \
 	file://wireless.network \
+	file://mt7668.conf \
 "
 
 do_install_append() {
@@ -31,6 +32,13 @@ do_install_append() {
 		${D}${sysconfdir}/init.d/usbgadget-net.sh
 	sed -i -e "s,@USB_GADGET_FUNCTION@,${USB_GADGET_FUNCTION},g" \
 		${D}${systemd_unitdir}/usbgadget-net.sh
+
+	if [ "${MACHINE}" = "pumpkin-mt8516" ] || [ "${MACHINE}" = "pumpkin-mt8167s" ]; then
+		if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', 'sysvinit', d)}" = "sysvinit" ]; then
+			install -d ${D}${sysconfdir}/modprobe.d
+			install -m 0644 ${WORKDIR}/mt7668.conf ${D}${sysconfdir}/modprobe.d/
+		fi
+	fi
 }
 
 SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '${PN}', '', d)}"
@@ -43,4 +51,5 @@ FILES_${PN} += " \
 	${sysconfdir}/systemd/network/eth.network \
 	${sysconfdir}/systemd/network/wireless.network \
 	${sysconfdir}/udhcpd.conf \
+	${sysconfdir}/modprobe.d/mt7668.conf \
 "
