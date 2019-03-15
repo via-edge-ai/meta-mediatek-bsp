@@ -12,12 +12,9 @@ iface wlan0 inet dhcp
 	wpa-driver nl80211
 	wpa-conf /etc/wpa_supplicant.conf
 
-iface atml0 inet dhcp
-
 # Wired or wireless interfaces
 auto eth0
 iface eth0 inet dhcp
-iface eth1 inet dhcp
 
 # Ethernet/RNDIS gadget (g_ether)
 # ... or on host side, usbnet and random hwaddr
