@@ -5,7 +5,7 @@ include tf-a-common.inc
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware.git;branch=mt8516-bl31;protocol=ssh"
 
-SRCREV = "4a9ad79fdc3bab82b0751618b7e89b540fa3c9af"
+SRCREV = "3b6d923fc7ba6c1149de18bef5b2965a219cc509"
 PV="2.0+git${SRCPV}"
 
 do_compile() {

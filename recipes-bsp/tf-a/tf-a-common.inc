@@ -36,6 +36,7 @@ EXTRA_OEMAKE = ' \
 	NEED_BL32=yes \
 	NEED_BL33=yes \
 	HOSTCC="${BUILD_CC} ${BUILD_CFLAGS} ${BUILD_LDFLAGS}" \
+	SPD=opteed \
 '
 
 do_install() {

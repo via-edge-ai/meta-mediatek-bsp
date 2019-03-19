@@ -8,7 +8,7 @@ SRC_URI = " \
 	git://github.com/ARMmbed/mbedtls.git;name=mbedtls;destsuffix=mbedtls;protocol=git \
 "
 
-SRCREV_tf-a = "b45f91a8f7702b0dc0dd27d350a75356f973243b"
+SRCREV_tf-a = "3388e72dc530d23895398024f938b4c6347f561a"
 SRCREV_mbedtls = "mbedtls-2.12.0"
 
 PV_tf-a="2.0+git${SRCPV}"
