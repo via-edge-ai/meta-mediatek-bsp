@@ -6,7 +6,7 @@ require linux-mtk-common.inc
 LINUX_VERSION ?= "4.19.28"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/linux.git;protocol=ssh;branch=pumpkin-v4.19"
-SRCREV = "66018a064595ccc4e7257fd108aab12a4782f363"
+SRCREV = "b42139341a8eb447441db955e95a339c619fd358"
 
 SRC_URI_append = " \
 	file://defconfig \
