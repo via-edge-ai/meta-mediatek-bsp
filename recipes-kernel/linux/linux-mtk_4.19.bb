@@ -3,7 +3,7 @@
 
 require linux-mtk-common.inc
 
-LINUX_VERSION ?= "4.19.28"
+LINUX_VERSION ?= "4.19.32"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/linux.git;protocol=ssh;branch=pumpkin-v4.19"
 SRCREV = "b42139341a8eb447441db955e95a339c619fd358"
