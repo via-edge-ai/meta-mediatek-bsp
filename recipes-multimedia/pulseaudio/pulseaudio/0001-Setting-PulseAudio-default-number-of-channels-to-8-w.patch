@@ -1,0 +1,27 @@
+From 389df94dfe85a742562135e4e53b7beef85666b0 Mon Sep 17 00:00:00 2001
+From: Nicolas Belin <nbelin@baylibre.com>
+Date: Fri, 29 Mar 2019 16:38:58 +0100
+Subject: [PATCH] Setting PulseAudio default number of channels to 8 when using
+ Vesper
+
+Simply changing the default number of channels to 8 when using Vesper.
+No source module loaded
+
+Signed-off-by: Nicolas Belin <nbelin@baylibre.com>
+---
+ src/daemon/daemon.conf.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/daemon/daemon.conf.in b/src/daemon/daemon.conf.in
+index a955523..97952d1 100644
+--- a/src/daemon/daemon.conf.in
++++ b/src/daemon/daemon.conf.in
+@@ -83,7 +83,7 @@ ifelse(@HAVE_SYS_RESOURCE_H@, 1, [dnl
+ ; default-sample-format = s16le
+ ; default-sample-rate = 44100
+ ; alternate-sample-rate = 48000
+-; default-sample-channels = 2
++default-sample-channels = 8
+ ; default-channel-map = front-left,front-right
+ 
+ ; default-fragments = 4
