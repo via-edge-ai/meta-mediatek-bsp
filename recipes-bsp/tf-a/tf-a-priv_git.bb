@@ -8,10 +8,10 @@ SRC_URI = " \
 	git://github.com/ARMmbed/mbedtls.git;name=mbedtls;destsuffix=mbedtls;protocol=git \
 "
 
-SRCREV_tf-a = "3388e72dc530d23895398024f938b4c6347f561a"
+SRCREV_tf-a = "b916281b5c020dadb9ab30bffad0e250ff5d35ef"
 SRCREV_mbedtls = "mbedtls-2.12.0"
 
-PV_tf-a="2.0+git${SRCPV}"
+PV_tf-a="2.1+git${SRCPV}"
 
 SRC_URI += "						\
 	file://key.ini			\

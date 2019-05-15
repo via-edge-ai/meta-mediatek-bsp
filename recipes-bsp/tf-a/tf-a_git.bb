@@ -5,8 +5,8 @@ include tf-a-common.inc
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware.git;branch=mt8516-bl31;protocol=ssh"
 
-SRCREV = "3b6d923fc7ba6c1149de18bef5b2965a219cc509"
-PV="2.0+git${SRCPV}"
+SRCREV = "5d025ad3f559e76781aad0d6735faec43fbf4c01"
+PV="2.1+git${SRCPV}"
 
 do_compile() {
 	oe_runmake -C ${S} bl31 fip
