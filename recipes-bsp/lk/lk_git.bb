@@ -30,6 +30,9 @@ do_configure() {
 do_buildclean() {
 }
 
-do_install () {
+inherit deploy
+
+do_deploy () {
 	install ${S}/build-${LK_PROJECT}/lk.bin ${DEPLOY_DIR_IMAGE}/lk.bin
 }
+addtask do_deploy after do_install

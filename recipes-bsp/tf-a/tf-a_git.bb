@@ -12,6 +12,9 @@ do_compile() {
 	oe_runmake -C ${S} bl31 fip
 }
 
-do_install_append() {
+inherit deploy
+
+do_deploy() {
 	install -m 0644 ${S}/prebuilt/${TFA_PLAT}/release/bl2.img ${DEPLOY_DIR_IMAGE}/
 }
+addtask do_deploy after do_install
