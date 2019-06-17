@@ -8,7 +8,7 @@ SRC_URI = " \
 	git://github.com/ARMmbed/mbedtls.git;name=mbedtls;destsuffix=mbedtls;protocol=git \
 "
 
-SRCREV_tf-a = "b916281b5c020dadb9ab30bffad0e250ff5d35ef"
+SRCREV_tf-a = "7782014a6f3e9c90d6be3cc77b93101d2c7cf523"
 SRCREV_mbedtls = "mbedtls-2.12.0"
 
 PV_tf-a="2.1+git${SRCPV}"
@@ -25,6 +25,10 @@ SRC_URI += "						\
 DEFAULT_ROT_KEY = "${WORKDIR}/rot_key.pem"
 SECURE_BOOT_ROT_KEY ?= "${DEFAULT_ROT_KEY}"
 
+CFLAGS_append = ' \
+	${@bb.utils.contains("DISTRO_FEATURES", "optee", "-DNEED_BL32", "", d)} \
+'
+
 TFA_SECURE_BOOT_OPTION = " \
 	TRUSTED_BOARD_BOOT=1 \
 	GENERATE_COT=1 \
@@ -33,7 +37,7 @@ TFA_SECURE_BOOT_OPTION = " \
 "
 
 EXTRA_OEMAKE += " \
-	SPD=opteed \
+	${@bb.utils.contains("DISTRO_FEATURES", "optee", "SPD=opteed", "", d)} \
 	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "${TFA_SECURE_BOOT_OPTION}", "", d)} \
 "
 

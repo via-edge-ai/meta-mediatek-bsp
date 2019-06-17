@@ -4,7 +4,11 @@
 SUMMARY = "Trusted Firmware-A"
 HOMEPAGE = "https://github.com/ARM-software/arm-trusted-firmware"
 SECTION = "bootloaders"
-DEPENDS = "u-boot optee-os openssl-native"
+DEPENDS = ' \
+	u-boot \
+	${@bb.utils.contains("DISTRO_FEATURES", "optee", "optee-os", "", d)} \
+	openssl-native \
+'
 
 PROVIDES = "virtual/tf-a"
 
@@ -33,10 +37,9 @@ EXTRA_OEMAKE = ' \
 	LDFLAGS= \
 	BL32=${STAGING_DIR_TARGET}/lib/firmware/tee.bin \
 	BL33=${STAGING_DIR_TARGET}/boot/u-boot.bin \
-	NEED_BL32=yes \
+	NEED_BL32=${@bb.utils.contains("DISTRO_FEATURES", "optee", "yes", "no", d)} \
 	NEED_BL33=yes \
 	HOSTCC="${BUILD_CC} ${BUILD_CFLAGS} ${BUILD_LDFLAGS}" \
-	SPD=opteed \
 '
 
 do_install() {

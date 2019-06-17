@@ -33,6 +33,8 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS = " \
 	packagegroup-mtk-wireless \
 "
 
+DISTRO_FEATURES_append = " optee"
+
 EXTRA_IMAGEDEPENDS = " \
 	lk \
 	virtual/tf-a \
