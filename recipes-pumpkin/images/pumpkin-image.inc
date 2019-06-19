@@ -9,6 +9,7 @@ IMAGE_INSTALL = "\
 	packagegroup-core-full-cmdline \
 	busybox \
 	dropbear \
+	${@bb.utils.contains("DISTRO_FEATURES", "optee", "optee-client", "", d)} \
 "
 
 PACKAGE_EXCLUDE = "openssh"

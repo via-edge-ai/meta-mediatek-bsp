@@ -40,6 +40,7 @@ EXTRA_OEMAKE = ' \
 	NEED_BL32=${@bb.utils.contains("DISTRO_FEATURES", "optee", "yes", "no", d)} \
 	NEED_BL33=yes \
 	HOSTCC="${BUILD_CC} ${BUILD_CFLAGS} ${BUILD_LDFLAGS}" \
+	${@bb.utils.contains("DISTRO_FEATURES", "optee", "SPD=opteed", "", d)} \
 '
 
 do_install() {
