@@ -8,7 +8,7 @@ SRC_URI_append = " \
 do_install_append() {
 	install -m 0644 ${WORKDIR}/interfaces ${D}${sysconfdir}/network/interfaces
 
-	if [ "${MACHINE}" = "pumpkin-mt8516" ] || [ "${MACHINE}" = "pumpkin-mt8167s" ]; then
+	if [ "${MACHINE}" = "mt8516-pumpkin" ] || [ "${MACHINE}" = "mt8167-pumpkin" ]; then
 		if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', 'sysvinit', d)}" = "sysvinit" ]; then
 			install -m 0755 ${WORKDIR}/30-mt7668 ${D}${sysconfdir}/network/if-pre-up.d/
 		fi

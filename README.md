@@ -3,10 +3,10 @@
 This layer provides a minimal BSP and rootfs for booting the MediaTek boards.
 
 The following machines are supported:
-	* pumpkin-mt8516: Pumpkin board with MediaTek MT8516.
-	* pumpkin-mt8167s: Pumpkin board with MediaTek MT8167S.
+	* mt8516-pumpkin: Pumpkin board with MediaTek MT8516.
+	* mt8167-pumpkin: Pumpkin board with MediaTek MT8167.
 
-The machine by default is set to pumpkin-mt8516. See [local.conf Options](#local.conf-options) on how to change it.
+The machine by default is set to mt8516-pumpkin. See [local.conf Options](#local.conf-options) on how to change it.
 
 ## Building
 
@@ -21,7 +21,7 @@ The machine by default is set to pumpkin-mt8516. See [local.conf Options](#local
 
 ### Flashing everything
 
-    $ cd rich-iot/build/tmp/deploy/images/pumpkin-mt8516
+    $ cd rich-iot/build/tmp/deploy/images/mt8516-pumpkin
     $ ./flashimage.py
                                      Checking image
     --------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ The machine by default is set to pumpkin-mt8516. See [local.conf Options](#local
                             u-boot-env.bin : PASS
                                    fip.bin : PASS
                                   fitImage : PASS
-         pumpkin-image-pumpkin-mt8516.ext4 : PASS
+         pumpkin-image-mt8516-pumpkin.ext4 : PASS
 
                                      Start flashing
     --------------------------------------------------------------------------------
@@ -46,31 +46,31 @@ Once you see *Waiting for DA mode*:
 
 To flash just one partition, you can run the following command:
 
-    $ cd rich-iot/build/tmp/deploy/images/pumpkin-mt8516
+    $ cd rich-iot/build/tmp/deploy/images/mt8516-pumpkin
     $ fastboot flash [PARTITION] [FILE]
     $ fastboot continue
 
 [PARTITION] should be replaced with one of the following:
     - *bootloaders*: for flashing the bootloaders (bl31, OP-TEE, and u-boot)
     - *kernel*: for flashing the Linux Kernel (fitImage).
-    - *rootfs*: for flashing the root filesystem (pumpkin-image-pumpkin-mt8516.ext4).
+    - *rootfs*: for flashing the root filesystem (pumpkin-image-mt8516-pumpkin.ext4).
 
 For example, the commands to flash the kernel are:
 
-    $ cd rich-iot/build/tmp/deploy/images/pumpkin-mt8516
+    $ cd rich-iot/build/tmp/deploy/images/mt8516-pumpkin
     $ fastboot flash kernel fitImage
     $ fastboot continue
 
 The commands to flash the bootloaders are:
 
-    $ cd rich-iot/build/tmp/deploy/images/pumpkin-mt8516
+    $ cd rich-iot/build/tmp/deploy/images/mt8516-pumpkin
     $ fastboot flash bootloaders fip.bin
     $ fastboot continue
 
 The commands to flash the root filesystem are:
 
-    $ cd rich-iot/build/tmp/deploy/images/pumpkin-mt8516
-    $ fastboot flash rootfs pumpkin-image-pumpkin-mt8516.ext4
+    $ cd rich-iot/build/tmp/deploy/images/mt8516-pumpkin
+    $ fastboot flash rootfs pumpkin-image-mt8516-pumpkin.ext4
     $ fastboot continue
 
 ## Connecting to the board
@@ -78,13 +78,13 @@ The commands to flash the root filesystem are:
 You can connect to the board via the serial console exported on the Micro-B USB connector:
 
     $ picocom -b 921600 /dev/ttyUSB0
-    root@pumpkin-mt8516:~#
+    root@mt8516-pumpkin:~#
 
 ---
 The image is running ssh (dropbear) and avahi in order to make it easily accessible through a Network Interface:
 
-    $ ssh root@pumpkin-mt8516.local
-    root@pumpkin-mt8516:~#
+    $ ssh root@mt8516-pumpkin.local
+    root@mt8516-pumpkin:~#
 
 The image is also configuring a USB Gadget on the USB Type-C connector that can be used as a Network Interface to connect to the board.
 
@@ -104,7 +104,7 @@ associated to that SSID.
 Options available in `build/conf/local.conf` to modify the BSP:
 
 * `MACHINE`: This option defines the machine configuration used to generates
-	the image. It is set by default to `pumpkin-mt8516` but can be changed to
+	the image. It is set by default to `mt8516-pumpkin` but can be changed to
 	any of the machine available.
 
 * `USB_GADGET_FUNCTION`: This option allows to choose the USB gadget used

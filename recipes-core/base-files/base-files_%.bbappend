@@ -33,7 +33,7 @@ do_install_append() {
 	sed -i -e "s,@USB_GADGET_FUNCTION@,${USB_GADGET_FUNCTION},g" \
 		${D}${systemd_unitdir}/usbgadget-net.sh
 
-	if [ "${MACHINE}" = "pumpkin-mt8516" ] || [ "${MACHINE}" = "pumpkin-mt8167s" ]; then
+	if [ "${MACHINE}" = "mt8516-pumpkin" ] || [ "${MACHINE}" = "mt8167-pumpkin" ]; then
 		if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', 'sysvinit', d)}" = "sysvinit" ]; then
 			install -d ${D}${sysconfdir}/modprobe.d
 			install -m 0644 ${WORKDIR}/mt7668.conf ${D}${sysconfdir}/modprobe.d/
