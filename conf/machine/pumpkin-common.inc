@@ -6,11 +6,14 @@ KERNEL_CLASSES += "kernel-fitimage"
 DTB_LOADADDRESS = "0x44000000"
 KERNEL_COMPRESSION = "gzip"
 
-# Bootloader
+# U-Boot
 UBOOT_ENTRYPOINT = "0x40080000"
 UBOOT_LOADADDRESS = "0x40080000"
 UBOOT_MACHINE = "pumpkin_emmc_defconfig"
 UBOOT_SUFFIX = "bin"
+
+# Trusted Firmware-A
+TFA_PLAT = "mt8516"
 
 IMAGE_BOOT_FILES = " \
 	${KERNEL_IMAGETYPE} \

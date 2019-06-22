@@ -20,9 +20,6 @@ inherit nopackages
 B = "${WORKDIR}/build"
 S = "${WORKDIR}/git"
 
-# For now hardcode it to MT8516 since we don't support yet MT8167 differences
-TFA_PLAT = "mt8516"
-
 CFLAGS_append = " \
 	-Wno-error=missing-braces \
 	-Wno-error=unused-function \
