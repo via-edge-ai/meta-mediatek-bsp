@@ -1,8 +1,15 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-VESPER_PATCH = "${@bb.utils.contains('MACHINE_FEATURES', 'vesper-hat', 'file://0001-Vesper-Using-vesper-config-from-alsa-as-the-default-.patch', '', d)}"
+MYCONF = "${@bb.utils.contains('MACHINE_FEATURES', 'vesper-hat', 'vesper', 'internalmic', d)}"
 
 SRC_URI_append = " \
-	file://0001-pumpkin-add-static-alsa-driver-for-audio-sink.patch \
-	${VESPER_PATCH} \
+	file://client_${MYCONF}.conf \
+	file://default_${MYCONF}.pa \
 "
+
+do_install_append() {
+	install -d ${D}${sysconfdir}/pulse
+	install -m 0644 ${WORKDIR}/client_${MYCONF}.conf ${D}${sysconfdir}/pulse/client.conf
+	install -m 0644 ${WORKDIR}/default_${MYCONF}.pa ${D}${sysconfdir}/pulse/default.pa
+}
+
