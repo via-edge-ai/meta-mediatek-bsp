@@ -7,7 +7,7 @@ DTB_LOADADDRESS = "0x44000000"
 # U-Boot
 UBOOT_ENTRYPOINT = "0x40080000"
 UBOOT_LOADADDRESS = "0x40080000"
-UBOOT_MACHINE = "pumpkin_emmc_defconfig"
+UBOOT_MACHINE = "pumpkin_defconfig"
 
 # Trusted Firmware-A
 TFA_PLAT = "mt8516"
