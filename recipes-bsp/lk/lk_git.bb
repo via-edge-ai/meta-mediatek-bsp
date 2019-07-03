@@ -12,8 +12,6 @@ SRC_URI += "						\
 	file://blob.h				\
 "
 
-LK_PROJECT = "pumpkin8516-emmc"
-
 do_compile () {
 	oe_runmake ARCH_arm64_TOOLCHAIN_PREFIX=${TARGET_PREFIX}	\
 			   CFLAGS=""									\
