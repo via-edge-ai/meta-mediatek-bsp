@@ -1,4 +1,4 @@
-require conf/machine/include/arm/arch-arm64.inc
+require conf/machine/include/tune-cortexa35.inc
 
 # Kernel
 KERNEL_IMAGETYPE = "fitImage"
