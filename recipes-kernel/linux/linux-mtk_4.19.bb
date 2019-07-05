@@ -11,4 +11,5 @@ SRCREV = "55f62f3637fc8003bc35188fb2b49a19bc11230f"
 
 SRC_URI_append = " \
 	file://defconfig \
+	${@bb.utils.contains('DISTRO_FEATURES', 'optee', 'file://optee.cfg', '', d)} \
 "
