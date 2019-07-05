@@ -15,6 +15,9 @@ UBOOT_SUFFIX = "bin"
 # Trusted Firmware-A
 TFA_PLAT = "mt8516"
 
+# OP-TEE
+OPTEE_TARGET = "mediatek-mt8516"
+
 # LK
 LK_PROJECT = "pumpkin8516-emmc"
 
