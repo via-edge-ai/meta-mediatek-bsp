@@ -1,7 +1,7 @@
-From 6dee9143bb6c734c257b23bc673a39a2e4fe1f36 Mon Sep 17 00:00:00 2001
+From d01a250b37a1c6c61ba2ed8ce1baab7531a4cf62 Mon Sep 17 00:00:00 2001
 From: Fabien Parent <fparent@baylibre.com>
 Date: Sun, 24 Feb 2019 19:41:08 +0100
-Subject: [PATCH] mediatek: add support for MT8516 SoC
+Subject: [PATCH 2/3] mediatek: add support for MT8516 SoC
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Fabien Parent <fparent@baylibre.com>
  2 files changed, 24 insertions(+), 4 deletions(-)
 
 diff --git a/core/arch/arm/plat-mediatek/conf.mk b/core/arch/arm/plat-mediatek/conf.mk
-index 3bae090b..09c7ad07 100644
+index 2cd2acdee2d4..3a3d8fb9ef5d 100644
 --- a/core/arch/arm/plat-mediatek/conf.mk
 +++ b/core/arch/arm/plat-mediatek/conf.mk
 @@ -3,10 +3,6 @@ PLATFORM_FLAVOR ?= mt8173
@@ -24,7 +24,7 @@ index 3bae090b..09c7ad07 100644
  
  $(call force,CFG_8250_UART,y)
  $(call force,CFG_GENERIC_BOOT,y)
-@@ -28,4 +24,14 @@ CFG_WITH_STACK_CANARIES ?= y
+@@ -25,4 +21,14 @@ CFG_WITH_STACK_CANARIES ?= y
  ifeq ($(PLATFORM_FLAVOR),mt8173)
  # 2**1 = 2 cores per cluster
  $(call force,CFG_CORE_CLUSTER_SHIFT,1)
@@ -40,7 +40,7 @@ index 3bae090b..09c7ad07 100644
 +CFG_SHMEM_SIZE ?= 0x00200000
  endif
 diff --git a/core/arch/arm/plat-mediatek/platform_config.h b/core/arch/arm/plat-mediatek/platform_config.h
-index bf5b0bdc..b8525b21 100644
+index bf5b0bdc73a0..b8525b21dd43 100644
 --- a/core/arch/arm/plat-mediatek/platform_config.h
 +++ b/core/arch/arm/plat-mediatek/platform_config.h
 @@ -35,6 +35,20 @@
@@ -64,3 +64,6 @@ index bf5b0bdc..b8525b21 100644
  #else
  #error "Unknown platform flavor"
  #endif
+-- 
+2.25.0
+

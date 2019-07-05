@@ -1,0 +1,63 @@
+From 568090b3f9218e78b6778bb00895dc7b70c1ec2b Mon Sep 17 00:00:00 2001
+From: Fabien Parent <fparent@baylibre.com>
+Date: Thu, 13 Feb 2020 17:43:20 +0100
+Subject: [PATCH 1/3] plat-mediatek: Add support for GIC
+
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ core/arch/arm/plat-mediatek/main.c | 32 ++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/core/arch/arm/plat-mediatek/main.c b/core/arch/arm/plat-mediatek/main.c
+index 6a38e58c4076..6a77d6ea157a 100644
+--- a/core/arch/arm/plat-mediatek/main.c
++++ b/core/arch/arm/plat-mediatek/main.c
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include <console.h>
++#include <drivers/gic.h>
+ #include <drivers/serial8250_uart.h>
+ #include <kernel/generic_boot.h>
+ #include <kernel/panic.h>
+@@ -28,6 +29,37 @@ static const struct thread_handlers handlers = {
+ 
+ static struct serial8250_uart_data console_data;
+ 
++#ifdef CFG_GIC
++static struct gic_data gic_data;
++
++register_phys_mem_pgdir(MEM_AREA_IO_SEC, GIC_BASE + GICD_OFFSET,
++	CORE_MMU_PGDIR_SIZE);
++register_phys_mem_pgdir(MEM_AREA_IO_SEC, GIC_BASE + GICC_OFFSET,
++	CORE_MMU_PGDIR_SIZE);
++
++void main_init_gic(void)
++{
++	vaddr_t gicc_base;
++	vaddr_t gicd_base;
++
++	gicc_base = (vaddr_t)phys_to_virt(GIC_BASE + GICC_OFFSET,
++					  MEM_AREA_IO_SEC);
++	gicd_base = (vaddr_t)phys_to_virt(GIC_BASE + GICD_OFFSET,
++					  MEM_AREA_IO_SEC);
++	if (!gicc_base || !gicd_base)
++		panic();
++
++	gic_init_base_addr(&gic_data, gicc_base, gicd_base);
++
++	itr_init(&gic_data.chip);
++}
++
++void itr_core_handler(void)
++{
++	gic_it_handle(&gic_data);
++}
++#endif
++
+ const struct thread_handlers *generic_boot_get_handlers(void)
+ {
+ 	return &handlers;
+-- 
+2.25.0
+
