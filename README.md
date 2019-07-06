@@ -34,7 +34,7 @@ The following machines are supported:
     .
 
 Once you see *Waiting for DA mode*:
-1) press the *reset* and *volume down* buttons **simultaneously**
+1) press the *reset* and *volume up* buttons **simultaneously**
 2) then release only the *reset* button
 3) release the *volume* button once you see that the image is getting flashed.
 
