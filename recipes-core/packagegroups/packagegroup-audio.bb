@@ -1,7 +1,7 @@
 # Copyright (C) 2018 Fabien Parent <fparent@baylibre.com>
 # Released under the MIT license (see COPYING.MIT for the terms)
 
-SUMMARY = "Audio packages for pumpkin board"
+SUMMARY = "Audio packages"
 
 inherit packagegroup
 

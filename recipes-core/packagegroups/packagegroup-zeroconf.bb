@@ -1,7 +1,7 @@
 # Copyright (C) 2018 Fabien Parent <fparent@baylibre.com>
 # Released under the MIT license (see COPYING.MIT for the terms)
 
-SUMMARY = "Zeroconf packages for pumpkin board"
+SUMMARY = "Zeroconf packages"
 
 inherit packagegroup
 
