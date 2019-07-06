@@ -4,6 +4,9 @@ This layer provides a minimal BSP and rootfs for booting the MediaTek boards.
 
 The following machines are supported:
 	* pumpkin-mt8516: Pumpkin board with MediaTek MT8516.
+	* pumpkin-mt8167s: Pumpkin board with MediaTek MT8167S.
+
+The machine by default is set to pumpkin-mt8516. See [local.conf Options](#local.conf-options) on how to change it.
 
 ## Building
 
@@ -97,7 +100,11 @@ associated to that SSID.
 
 ## local.conf options
 
-Options available in `local.conf` to modify the BSP:
+Options available in `build/conf/local.conf` to modify the BSP:
+
+* `MACHINE`: This option defines the machine configuration used to generates
+	the image. It is set by default to `pumpkin-mt8516` but can be changed to
+	any of the machine available.
 
 * `USB_GADGET_FUNCTION`: This option allows to choose the USB gadget used
 	to expose an Ethernet interface over USB. Available choices are: `ecm` (default),
