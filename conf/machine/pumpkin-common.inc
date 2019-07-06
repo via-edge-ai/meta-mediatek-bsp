@@ -33,10 +33,12 @@ PREFERRED_VERSION_linux-mtk ?= "4.19%"
 
 MACHINE_FEATURES_append = " alsa bluetooth usbgadget wifi"
 
-IMAGE_FSTYPES ?= "ext4"
+IMAGE_FSTYPES ?= "ext4 wic"
 IMAGE_ROOTFS_ALIGNMENT = "4"
 
 SERIAL_CONSOLES = "921600;ttyS0"
+
+WKS_FILE ?= "mediatek.wks"
 
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS = " \
 	packagegroup-mtk-wireless \
