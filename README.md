@@ -27,6 +27,7 @@ The machine by default is set to pumpkin-mt8516. See [local.conf Options](#local
     --------------------------------------------------------------------------------
                                   MBR_EMMC : PASS
                                    bl2.img : PASS
+                            u-boot-env.bin : PASS
                                    fip.bin : PASS
                                   fitImage : PASS
          pumpkin-image-pumpkin-mt8516.ext4 : PASS
