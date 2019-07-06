@@ -49,6 +49,5 @@ DISTRO_FEATURES_append = " optee"
 EXTRA_IMAGEDEPENDS = " \
 	lk \
 	virtual/tf-a \
-	mbr \
 	mtk-flash-tools \
 "

@@ -14,4 +14,11 @@ IMAGE_INSTALL = "\
 
 PACKAGE_EXCLUDE = "openssh"
 
+do_gpt() {
+	dd if="${IMGDEPLOYDIR}/${IMAGE_BASENAME}-${MACHINE}.wic" \
+	   of="${IMGDEPLOYDIR}/MBR_EMMC" bs=512 count=34
+}
+
+IMAGE_POSTPROCESS_COMMAND += "do_gpt;"
+
 inherit core-image
