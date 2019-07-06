@@ -3,7 +3,7 @@
 
 DESCRIPTION = "Multimedia image with some development tools"
 
-require pumpkin-image.inc
+require mtk-image.inc
 
 IMAGE_INSTALL += "\
 	packagegroup-pumpkin-zeroconf \

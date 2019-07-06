@@ -15,7 +15,7 @@ The machine by default is set to mt8516-pumpkin. See [local.conf Options](#local
     $ repo sync
     $ export TEMPLATECONF=${PWD}/src/meta-mediatek-bsp/conf/
     $ source src/poky/oe-init-build-env
-    $ bitbake pumpkin-image
+    $ bitbake mtk-image
 
 ## Flashing
 
@@ -30,7 +30,7 @@ The machine by default is set to mt8516-pumpkin. See [local.conf Options](#local
                             u-boot-env.bin : PASS
                                    fip.bin : PASS
                                   fitImage : PASS
-         pumpkin-image-mt8516-pumpkin.ext4 : PASS
+             mtk-image-mt8516-pumpkin.ext4 : PASS
 
                                      Start flashing
     --------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ To flash just one partition, you can run the following command:
 [PARTITION] should be replaced with one of the following:
     - *bootloaders*: for flashing the bootloaders (bl31, OP-TEE, and u-boot)
     - *kernel*: for flashing the Linux Kernel (fitImage).
-    - *rootfs*: for flashing the root filesystem (pumpkin-image-mt8516-pumpkin.ext4).
+    - *rootfs*: for flashing the root filesystem (mtk-image-mt8516-pumpkin.ext4).
 
 For example, the commands to flash the kernel are:
 
@@ -70,7 +70,7 @@ The commands to flash the bootloaders are:
 The commands to flash the root filesystem are:
 
     $ cd rich-iot/build/tmp/deploy/images/mt8516-pumpkin
-    $ fastboot flash rootfs pumpkin-image-mt8516-pumpkin.ext4
+    $ fastboot flash rootfs mtk-image-mt8516-pumpkin.ext4
     $ fastboot continue
 
 ## Connecting to the board
