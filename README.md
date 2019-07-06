@@ -111,6 +111,13 @@ Options available in `build/conf/local.conf` to modify the BSP:
 	to expose an Ethernet interface over USB. Available choices are: `ecm` (default),
 	`rndis`.
 
+## DISTRO_FEATURES
+
+The Layer is defining the following custom DISTRO_FEATURES:
+* `optee`: The OP-TEE Trusted Execution Environment will be built into the image.
+
+These DISTRO_FEATURES can be added to the image by setting the variable in [local.conf](#local.conf-options).
+
 ## Known issues
 
 * On Windows 10, and possibly other version of windows, the ECM gadget is
