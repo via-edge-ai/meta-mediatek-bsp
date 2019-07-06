@@ -15,7 +15,7 @@ PROVIDES = "virtual/tf-a"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${S}/license.rst;md5=c709b197e22b81ede21109dbffd5f363"
 
-inherit nopackages
+inherit nopackages deploy
 
 B = "${WORKDIR}/build"
 S = "${WORKDIR}/git"
@@ -40,6 +40,7 @@ EXTRA_OEMAKE = ' \
 	${@bb.utils.contains("DISTRO_FEATURES", "optee", "SPD=opteed", "", d)} \
 '
 
-do_install() {
-	install -m 0644 ${B}/${TFA_PLAT}/release/fip.bin ${DEPLOY_DIR_IMAGE}/
+do_deploy() {
+	install -m 0644 ${B}/${TFA_PLAT}/release/fip.bin ${DEPLOYDIR}/
 }
+addtask do_deploy after do_install

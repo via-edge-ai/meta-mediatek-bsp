@@ -61,8 +61,8 @@ do_gen_bl2_img() {
 												${B}/bl2.img
 }
 
-do_install_append() {
-	install -m 0644 ${B}/bl2.img ${DEPLOY_DIR_IMAGE}/
+do_deploy_append() {
+	install -m 0644 ${B}/bl2.img ${DEPLOYDIR}/
 }
 
 addtask do_gen_bl2_img before do_install after do_compile
