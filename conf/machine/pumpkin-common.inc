@@ -1,16 +1,13 @@
 require conf/machine/include/tune-cortexa35.inc
+require mediatek-common.inc
 
 # Kernel
-KERNEL_IMAGETYPE = "fitImage"
-KERNEL_CLASSES += "kernel-fitimage"
 DTB_LOADADDRESS = "0x44000000"
-KERNEL_COMPRESSION = "gzip"
 
 # U-Boot
 UBOOT_ENTRYPOINT = "0x40080000"
 UBOOT_LOADADDRESS = "0x40080000"
 UBOOT_MACHINE = "pumpkin_emmc_defconfig"
-UBOOT_SUFFIX = "bin"
 
 # Trusted Firmware-A
 TFA_PLAT = "mt8516"
@@ -21,33 +18,12 @@ OPTEE_TARGET = "mediatek-mt8516"
 # LK
 LK_PROJECT = "pumpkin8516-emmc"
 
-IMAGE_BOOT_FILES = " \
-	${KERNEL_IMAGETYPE} \
-"
-
-PREFERRED_PROVIDER_virtual/kernel ??= "linux-mtk"
-PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot"
-PREFERRED_PROVIDER_virtual/tf-a ??= "tf-a"
-
 PREFERRED_VERSION_linux-mtk ?= "4.19%"
 
 MACHINE_FEATURES_append = " alsa bluetooth usbgadget wifi"
-
-IMAGE_FSTYPES ?= "ext4 wic"
-IMAGE_ROOTFS_ALIGNMENT = "4"
-
-SERIAL_CONSOLES = "921600;ttyS0"
-
-WKS_FILE ?= "mediatek.wks"
 
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS = " \
 	packagegroup-mtk-wireless \
 "
 
 DISTRO_FEATURES_append = " optee"
-
-EXTRA_IMAGEDEPENDS = " \
-	lk \
-	virtual/tf-a \
-	mtk-flash-tools \
-"
