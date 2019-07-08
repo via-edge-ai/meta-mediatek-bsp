@@ -118,6 +118,11 @@ The Layer is defining the following custom DISTRO_FEATURES:
 
 These DISTRO_FEATURES can be added to the image by setting the variable in [local.conf](#local.conf-options).
 
+## MACHINE_FEATURES
+
+The layer is defining the following custom MACHINE_FEATURES:
+* `vesper-hat`: Enable the use of the vesper audio hat for the pumpkin board.
+
 ## Known issues
 
 * On Windows 10, and possibly other version of windows, the ECM gadget is
