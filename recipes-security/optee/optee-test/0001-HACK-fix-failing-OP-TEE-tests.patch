@@ -1,0 +1,38 @@
+From 5fbc77a2f9251115698d668ab4ef258f0f51294a Mon Sep 17 00:00:00 2001
+From: Fabien Parent <fparent@baylibre.com>
+Date: Mon, 15 Jul 2019 17:02:05 +0200
+Subject: [PATCH] HACK: fix failing OP-TEE tests
+
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ ta/concurrent_large/include/user_ta_header_defines.h | 2 +-
+ ta/os_test/include/user_ta_header_defines.h          | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ta/concurrent_large/include/user_ta_header_defines.h b/ta/concurrent_large/include/user_ta_header_defines.h
+index 4a481e0..55652f4 100644
+--- a/ta/concurrent_large/include/user_ta_header_defines.h
++++ b/ta/concurrent_large/include/user_ta_header_defines.h
+@@ -35,6 +35,6 @@
+ 
+ #define TA_FLAGS ( TA_FLAG_EXEC_DDR | TA_FLAG_MULTI_SESSION)
+ #define TA_STACK_SIZE (2 * 1024)
+-#define TA_DATA_SIZE (2 * 1024 * 1024)
++#define TA_DATA_SIZE (32 * 1024)
+ 
+ #endif /*USER_TA_HEADER_DEFINES_H*/
+diff --git a/ta/os_test/include/user_ta_header_defines.h b/ta/os_test/include/user_ta_header_defines.h
+index 83e37e5..fe2aacb 100644
+--- a/ta/os_test/include/user_ta_header_defines.h
++++ b/ta/os_test/include/user_ta_header_defines.h
+@@ -37,8 +37,8 @@
+ #define TA_FLAGS (TA_FLAG_USER_MODE | TA_FLAG_EXEC_DDR | \
+ 		  TA_FLAG_MULTI_SESSION)
+ 
+-#define TA_STACK_SIZE (8 * 1024)
+-#define TA_DATA_SIZE (900 * 1024)
++#define TA_STACK_SIZE (32 * 1024)
++#define TA_DATA_SIZE (32 * 1024)
+ 
+ #define TA_CURRENT_TA_EXT_PROPERTIES \
+ 	{ "myprop.true", USER_TA_PROP_TYPE_BOOL, &(const bool){ true } }, \

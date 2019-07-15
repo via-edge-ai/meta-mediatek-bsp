@@ -3,4 +3,10 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 OPTEEMACHINE = "${OPTEE_TARGET}"
 OPTEEOUTPUTMACHINE = "mediatek"
 
+OPTEE_CORE_HEAP_SIZE ?= "1090000"
+
+EXTRA_OEMAKE += " \
+	CFG_CORE_HEAP_SIZE=${OPTEE_CORE_HEAP_SIZE} \
+"
+
 SRC_URI += "file://0001-mediatek-add-support-for-MT8516-SoC.patch"
