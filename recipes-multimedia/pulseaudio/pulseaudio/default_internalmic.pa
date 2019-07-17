@@ -32,6 +32,10 @@ load-module module-augment-properties
 ### Should be after module-*-restore but before module-*-detect
 load-module module-switch-on-port-available
 
+.ifexists module-switch-on-connect.so
+load-module module-switch-on-connect
+.endif
+
 ### Load audio drivers statically
 ### (it's probably better to not load these drivers manually, but instead
 ### use module-udev-detect -- see below -- for doing this automatically)
@@ -66,6 +70,14 @@ load-module module-bluetooth-policy
 
 .ifexists module-bluetooth-discover.so
 load-module module-bluetooth-discover
+.endif
+
+.ifexists module-bluez5-device.so
+load-module module-bluez5-device
+.endif
+
+.ifexists module-bluez5-discover.so
+load-module module-bluez5-discover
 .endif
 
 ### Load several protocols
