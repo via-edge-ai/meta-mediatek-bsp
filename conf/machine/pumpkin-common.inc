@@ -1,6 +1,8 @@
 require conf/machine/include/tune-cortexa35.inc
 require mediatek-common.inc
 
+MACHINEOVERRIDES =. "pumpkin:"
+
 # Kernel
 DTB_LOADADDRESS = "0x44000000"
 
