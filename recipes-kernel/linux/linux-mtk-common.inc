@@ -2,6 +2,7 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 require recipes-kernel/linux/linux-yocto.inc
+inherit kernel-fitimage-with-dtbo
 
 DEPENDS += "lz4-native"
 
@@ -14,26 +15,9 @@ S = "${WORKDIR}/git"
 KERNEL_EXTRA_ARGS = "Image.gz dtbs"
 KCONFIG_MODE = "--alldefconfig"
 
+export DTC_FLAGS = '${@bb.utils.contains("DISTRO_FEATURES", "dtbo", "-@", "", d)}'
+
 PV = "${LINUX_VERSION}+git${SRCPV}"
-
-fitimage_emit_section_dtb() {
-
-	dtb_csum="sha1"
-
-	cat << EOF >> ${1}
-                fdt@${2} {
-                        description = "Flattened Device Tree blob";
-                        data = /incbin/("${3}");
-                        type = "flat_dt";
-                        arch = "${UBOOT_ARCH}";
-                        compression = "none";
-                        load = <${DTB_LOADADDRESS}>;
-                        hash@1 {
-                                algo = "${dtb_csum}";
-                        };
-                };
-EOF
-}
 
 uboot_prep_kimage() {
 	linux_comp="${KERNEL_COMPRESSION}"

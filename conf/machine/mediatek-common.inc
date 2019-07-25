@@ -1,7 +1,6 @@
 
 # Kernel
 KERNEL_IMAGETYPE = "fitImage"
-KERNEL_CLASSES += "kernel-fitimage"
 KERNEL_COMPRESSION = "gzip"
 
 # U-Boot
