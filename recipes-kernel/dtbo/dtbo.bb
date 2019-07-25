@@ -5,6 +5,10 @@ SUMMARY = "Device-Tree Blob Overlays"
 
 inherit devicetree
 
+SRC_URI_pumpkin = " \
+	file://vesper.dts \
+"
+
 DT_FILES_PATH = "${WORKDIR}"
 
 COMPATIBLE_MACHINE = "mt*"
