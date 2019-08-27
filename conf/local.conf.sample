@@ -13,8 +13,8 @@
 
 #
 # Machine Selection
-MACHINE ??= "mt8516-pumpkin"
-#MACHINE ??= "mt8167-pumpkin"
+#MACHINE ??= "mt8516-pumpkin"
+MACHINE ??= "mt8167-pumpkin"
 #MACHINE ??= "mt8183-evb"
 
 #
@@ -237,7 +237,14 @@ DISTRO_FEATURES_append = " \
 	zeroconf \
 "
 
-USE_VT = "0"
+DISTRO_FEATURES_append = " \
+	wayland \
+	opengl \
+	pam \
+	kmscube \
+"
+
+USE_VT = "1"
 
 # USB Gadget function to use to export an ethernet device over USB.
 # Options: ecm, rndis.
