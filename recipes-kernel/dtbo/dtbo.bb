@@ -9,6 +9,10 @@ SRC_URI_pumpkin = " \
 	file://vesper.dts \
 "
 
+SRC_URI_mt8167-pumpkin += " \
+	file://rpi-display.dts \
+"
+
 DT_FILES_PATH = "${WORKDIR}"
 
 COMPATIBLE_MACHINE = "mt*"
