@@ -286,7 +286,7 @@ state.mtsndcard {
 	control.18 {
 		iface MIXER
 		name 'Audio HPL Offset'
-		value -471
+		value 0
 		comment {
 			access 'read write'
 			type INTEGER
@@ -297,7 +297,7 @@ state.mtsndcard {
 	control.19 {
 		iface MIXER
 		name 'Audio HPR Offset'
-		value -415
+		value 0
 		comment {
 			access 'read write'
 			type INTEGER
@@ -358,6 +358,282 @@ state.mtsndcard {
 	}
 	control.24 {
 		iface MIXER
+		name 'Digital Playback Volume'
+		value.0 207
+		value.1 207
+		comment {
+			access 'read write'
+			type INTEGER
+			count 2
+			range '0 - 255'
+			dbmin -9999999
+			dbmax 2400
+			dbvalue.0 0
+			dbvalue.1 0
+		}
+	}
+	control.25 {
+		iface MIXER
+		name 'Analogue Playback Volume'
+		value.0 1
+		value.1 1
+		comment {
+			access 'read write'
+			type INTEGER
+			count 2
+			range '0 - 1'
+			dbmin -600
+			dbmax 0
+			dbvalue.0 0
+			dbvalue.1 0
+		}
+	}
+	control.26 {
+		iface MIXER
+		name 'Analogue Playback Boost Volume'
+		value.0 0
+		value.1 0
+		comment {
+			access 'read write'
+			type INTEGER
+			count 2
+			range '0 - 1'
+			dbmin 0
+			dbmax 80
+			dbvalue.0 0
+			dbvalue.1 0
+		}
+	}
+	control.27 {
+		iface MIXER
+		name 'Digital Playback Switch'
+		value.0 true
+		value.1 true
+		comment {
+			access 'read write'
+			type BOOLEAN
+			count 2
+		}
+	}
+	control.28 {
+		iface MIXER
+		name 'Deemphasis Switch'
+		value true
+		comment {
+			access 'read write'
+			type BOOLEAN
+			count 1
+		}
+	}
+	control.29 {
+		iface MIXER
+		name 'DSP Program'
+		value 'FIR interpolation with de-emphasis'
+		comment {
+			access 'read write'
+			type ENUMERATED
+			count 1
+			item.0 'FIR interpolation with de-emphasis'
+			item.1 'Low latency IIR with de-emphasis'
+			item.2 'High attenuation with de-emphasis'
+			item.3 'Fixed process flow'
+			item.4 'Ringing-less low latency FIR'
+		}
+	}
+	control.30 {
+		iface MIXER
+		name 'Clock Missing Period'
+		value '1s'
+		comment {
+			access 'read write'
+			type ENUMERATED
+			count 1
+			item.0 '1s'
+			item.1 '2s'
+			item.2 '3s'
+			item.3 '4s'
+			item.4 '5s'
+			item.5 '6s'
+			item.6 '7s'
+			item.7 '8s'
+		}
+	}
+	control.31 {
+		iface MIXER
+		name 'Auto Mute Time Left'
+		value '21ms'
+		comment {
+			access 'read write'
+			type ENUMERATED
+			count 1
+			item.0 '21ms'
+			item.1 '106ms'
+			item.2 '213ms'
+			item.3 '533ms'
+			item.4 '1.07s'
+			item.5 '2.13s'
+			item.6 '5.33s'
+			item.7 '10.66s'
+		}
+	}
+	control.32 {
+		iface MIXER
+		name 'Auto Mute Time Right'
+		value '21ms'
+		comment {
+			access 'read write'
+			type ENUMERATED
+			count 1
+			item.0 '21ms'
+			item.1 '106ms'
+			item.2 '213ms'
+			item.3 '533ms'
+			item.4 '1.07s'
+			item.5 '2.13s'
+			item.6 '5.33s'
+			item.7 '10.66s'
+		}
+	}
+	control.33 {
+		iface MIXER
+		name 'Auto Mute Mono Switch'
+		value true
+		comment {
+			access 'read write'
+			type BOOLEAN
+			count 1
+		}
+	}
+	control.34 {
+		iface MIXER
+		name 'Auto Mute Switch'
+		value.0 true
+		value.1 true
+		comment {
+			access 'read write'
+			type BOOLEAN
+			count 2
+		}
+	}
+	control.35 {
+		iface MIXER
+		name 'Volume Ramp Down Rate'
+		value '1 sample/update'
+		comment {
+			access 'read write'
+			type ENUMERATED
+			count 1
+			item.0 '1 sample/update'
+			item.1 '2 samples/update'
+			item.2 '4 samples/update'
+			item.3 Immediate
+		}
+	}
+	control.36 {
+		iface MIXER
+		name 'Volume Ramp Down Step'
+		value '1dB/step'
+		comment {
+			access 'read write'
+			type ENUMERATED
+			count 1
+			item.0 '4dB/step'
+			item.1 '2dB/step'
+			item.2 '1dB/step'
+			item.3 '0.5dB/step'
+		}
+	}
+	control.37 {
+		iface MIXER
+		name 'Volume Ramp Up Rate'
+		value '1 sample/update'
+		comment {
+			access 'read write'
+			type ENUMERATED
+			count 1
+			item.0 '1 sample/update'
+			item.1 '2 samples/update'
+			item.2 '4 samples/update'
+			item.3 Immediate
+		}
+	}
+	control.38 {
+		iface MIXER
+		name 'Volume Ramp Up Step'
+		value '1dB/step'
+		comment {
+			access 'read write'
+			type ENUMERATED
+			count 1
+			item.0 '4dB/step'
+			item.1 '2dB/step'
+			item.2 '1dB/step'
+			item.3 '0.5dB/step'
+		}
+	}
+	control.39 {
+		iface MIXER
+		name 'Volume Ramp Down Emergency Rate'
+		value '1 sample/update'
+		comment {
+			access 'read write'
+			type ENUMERATED
+			count 1
+			item.0 '1 sample/update'
+			item.1 '2 samples/update'
+			item.2 '4 samples/update'
+			item.3 Immediate
+		}
+	}
+	control.40 {
+		iface MIXER
+		name 'Volume Ramp Down Emergency Step'
+		value '4dB/step'
+		comment {
+			access 'read write'
+			type ENUMERATED
+			count 1
+			item.0 '4dB/step'
+			item.1 '2dB/step'
+			item.2 '1dB/step'
+			item.3 '0.5dB/step'
+		}
+	}
+	control.41 {
+		iface MIXER
+		name 'Max Overclock PLL'
+		value 0
+		comment {
+			access 'read write'
+			type INTEGER
+			count 1
+			range '0 - 20'
+		}
+	}
+	control.42 {
+		iface MIXER
+		name 'Max Overclock DSP'
+		value 0
+		comment {
+			access 'read write'
+			type INTEGER
+			count 1
+			range '0 - 40'
+		}
+	}
+	control.43 {
+		iface MIXER
+		name 'Max Overclock DAC'
+		value 0
+		comment {
+			access 'read write'
+			type INTEGER
+			count 1
+			range '0 - 40'
+		}
+	}
+	control.44 {
+		iface MIXER
 		name 'Master Volume'
 		value 100
 		comment {
@@ -367,7 +643,7 @@ state.mtsndcard {
 			range '0 - 100'
 		}
 	}
-	control.25 {
+	control.45 {
 		iface MIXER
 		name 'Master Volume X'
 		value 100
@@ -378,7 +654,7 @@ state.mtsndcard {
 			range '0 - 100'
 		}
 	}
-	control.26 {
+	control.46 {
 		iface MIXER
 		name 'Master Switch'
 		value true
@@ -388,7 +664,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.27 {
+	control.47 {
 		iface MIXER
 		name 'Master Switch X'
 		value true
@@ -398,10 +674,10 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.28 {
+	control.48 {
 		iface MIXER
 		name 'PCM State'
-		value MTKFILE_PCM_STATE_UNKNOWN
+		value MTKFILE_PCM_STATE_CLOSE
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -419,10 +695,10 @@ state.mtsndcard {
 			item.10 MTKFILE_PCM_STATE_CLOSE
 		}
 	}
-	control.29 {
+	control.49 {
 		iface MIXER
 		name 'PCM State X'
-		value MTKFILE_PCM_STATE_UNKNOWN
+		value MTKFILE_PCM_STATE_CLOSE
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -440,7 +716,7 @@ state.mtsndcard {
 			item.10 MTKFILE_PCM_STATE_CLOSE
 		}
 	}
-	control.30 {
+	control.50 {
 		iface MIXER
 		name 'O00 I05 Switch'
 		value false
@@ -450,7 +726,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.31 {
+	control.51 {
 		iface MIXER
 		name 'O00 I07 Switch'
 		value false
@@ -460,7 +736,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.32 {
+	control.52 {
 		iface MIXER
 		name 'O01 I06 Switch'
 		value false
@@ -470,7 +746,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.33 {
+	control.53 {
 		iface MIXER
 		name 'O01 I08 Switch'
 		value false
@@ -480,7 +756,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.34 {
+	control.54 {
 		iface MIXER
 		name 'O02 I05 Switch'
 		value false
@@ -490,7 +766,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.35 {
+	control.55 {
 		iface MIXER
 		name 'O02 I06 Switch'
 		value false
@@ -500,7 +776,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.36 {
+	control.56 {
 		iface MIXER
 		name 'O03 I05 Switch'
 		value true
@@ -510,7 +786,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.37 {
+	control.57 {
 		iface MIXER
 		name 'O03 I07 Switch'
 		value false
@@ -520,7 +796,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.38 {
+	control.58 {
 		iface MIXER
 		name 'O04 I06 Switch'
 		value true
@@ -530,7 +806,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.39 {
+	control.59 {
 		iface MIXER
 		name 'O04 I08 Switch'
 		value false
@@ -540,7 +816,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.40 {
+	control.60 {
 		iface MIXER
 		name 'O05 I00 Switch'
 		value false
@@ -550,7 +826,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.41 {
+	control.61 {
 		iface MIXER
 		name 'O05 I05 Switch'
 		value false
@@ -560,7 +836,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.42 {
+	control.62 {
 		iface MIXER
 		name 'O05 I07 Switch'
 		value false
@@ -570,7 +846,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.43 {
+	control.63 {
 		iface MIXER
 		name 'O06 I01 Switch'
 		value false
@@ -580,7 +856,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.44 {
+	control.64 {
 		iface MIXER
 		name 'O06 I06 Switch'
 		value false
@@ -590,7 +866,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.45 {
+	control.65 {
 		iface MIXER
 		name 'O06 I08 Switch'
 		value false
@@ -600,7 +876,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.46 {
+	control.66 {
 		iface MIXER
 		name 'O09 I00 Switch'
 		value false
@@ -610,7 +886,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.47 {
+	control.67 {
 		iface MIXER
 		name 'O09 I03 Switch'
 		value true
@@ -620,7 +896,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.48 {
+	control.68 {
 		iface MIXER
 		name 'O09 I10 Switch'
 		value false
@@ -630,7 +906,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.49 {
+	control.69 {
 		iface MIXER
 		name 'O10 I01 Switch'
 		value false
@@ -640,7 +916,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.50 {
+	control.70 {
 		iface MIXER
 		name 'O10 I04 Switch'
 		value true
@@ -650,7 +926,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.51 {
+	control.71 {
 		iface MIXER
 		name 'O10 I11 Switch'
 		value false
@@ -660,7 +936,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.52 {
+	control.72 {
 		iface MIXER
 		name 'O11 I02 Switch'
 		value false
@@ -670,7 +946,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.53 {
+	control.73 {
 		iface MIXER
 		name 'O13 I03 Switch'
 		value false
@@ -680,7 +956,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.54 {
+	control.74 {
 		iface MIXER
 		name 'O14 I04 Switch'
 		value false
@@ -690,10 +966,10 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.55 {
+	control.75 {
 		iface MIXER
 		name 'AIN Mux'
-		value 'INT ADC'
+		value 'EXT ADC'
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -702,7 +978,7 @@ state.mtsndcard {
 			item.1 'EXT ADC'
 		}
 	}
-	control.56 {
+	control.76 {
 		iface MIXER
 		name 'DAIBT Mux'
 		value PCM
@@ -714,19 +990,9 @@ state.mtsndcard {
 			item.1 MRG
 		}
 	}
-	control.57 {
+	control.77 {
 		iface MIXER
 		name 'I2S O03_O04 Switch'
-		value false
-		comment {
-			access 'read write'
-			type BOOLEAN
-			count 1
-		}
-	}
-	control.58 {
-		iface MIXER
-		name 'INT ADDA O03_O04 Switch'
 		value true
 		comment {
 			access 'read write'
@@ -734,7 +1000,17 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.59 {
+	control.78 {
+		iface MIXER
+		name 'INT ADDA O03_O04 Switch'
+		value false
+		comment {
+			access 'read write'
+			type BOOLEAN
+			count 1
+		}
+	}
+	control.79 {
 		iface MIXER
 		name 'MRG BT O02 Switch'
 		value false
@@ -744,7 +1020,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.60 {
+	control.80 {
 		iface MIXER
 		name 'PCM0 O02 Switch'
 		value false
@@ -754,7 +1030,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.61 {
+	control.81 {
 		iface MIXER
 		name 'Left PGA Mux'
 		value CH0
@@ -767,7 +1043,7 @@ state.mtsndcard {
 			item.2 OPEN
 		}
 	}
-	control.62 {
+	control.82 {
 		iface MIXER
 		name 'Right PGA Mux'
 		value CH0
@@ -780,7 +1056,7 @@ state.mtsndcard {
 			item.2 OPEN
 		}
 	}
-	control.63 {
+	control.83 {
 		iface MIXER
 		name 'AIF TX Mux'
 		value 'Digital MIC'
@@ -793,7 +1069,7 @@ state.mtsndcard {
 			item.2 'Aif Rx'
 		}
 	}
-	control.64 {
+	control.84 {
 		iface MIXER
 		name 'HPOUT Mux'
 		value AUDIO_AMP
@@ -805,7 +1081,7 @@ state.mtsndcard {
 			item.1 AUDIO_AMP
 		}
 	}
-	control.65 {
+	control.85 {
 		iface MIXER
 		name 'LINEOUT Mux'
 		value OPEN
@@ -817,7 +1093,7 @@ state.mtsndcard {
 			item.1 VOICE_AMP
 		}
 	}
-	control.66 {
+	control.86 {
 		iface MIXER
 		name 'AIF DL_UL loopback Switch'
 		value false
@@ -827,7 +1103,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.67 {
+	control.87 {
 		iface MIXER
 		name 'DMIC Data Gen Switch'
 		value false
@@ -837,7 +1113,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.68 {
+	control.88 {
 		iface MIXER
 		name 'AMIC Data Gen Switch'
 		value false
@@ -847,7 +1123,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.69 {
+	control.89 {
 		iface MIXER
 		name 'SDM Tone Gen Switch'
 		value false
