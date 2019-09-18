@@ -3,10 +3,19 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 OPTEEMACHINE = "${OPTEE_TARGET}"
 OPTEEOUTPUTMACHINE = "mediatek"
 
-OPTEE_CORE_HEAP_SIZE ?= "1090000"
+OPTEE_CORE_HEAP_SIZE ?= "1590000"
+
+DEPENDS += "pyelftools-native"
+
+inherit python3native
 
 EXTRA_OEMAKE += " \
 	CFG_CORE_HEAP_SIZE=${OPTEE_CORE_HEAP_SIZE} \
+	PYTHONPATH=${PYTHON_SITEPACKAGES_DIR} \
 "
 
 SRC_URI += "file://0001-mediatek-add-support-for-MT8516-SoC.patch"
+
+PV = "3.6.0+git${SRCPV}"
+SRCREV = "f398d4923da875370149ffee45c963d7adb41495"
+LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=c1f21c4f72f372ef38a5a4aee55ec173"
