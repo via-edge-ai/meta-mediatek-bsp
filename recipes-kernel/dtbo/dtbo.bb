@@ -5,11 +5,11 @@ SUMMARY = "Device-Tree Blob Overlays"
 
 inherit devicetree
 
-SRC_URI_pumpkin = " \
+SRC_URI_append_pumpkin = " \
 	file://vesper.dts \
 "
 
-SRC_URI_mt8167-pumpkin += " \
+SRC_URI_append_mt8167-pumpkin = " \
 	file://rpi-display.dts \
 "
 
