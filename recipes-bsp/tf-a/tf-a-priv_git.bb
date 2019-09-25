@@ -3,12 +3,14 @@
 
 include tf-a-common.inc
 
+DEPENDS_append = " coreutils-native "
+
 SRC_URI = " \
-	git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware-private.git;name=tf-a;branch=mt8516-full;protocol=ssh \
+	git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware-private.git;name=tf-a;branch=mtk-v2.1-full;protocol=ssh \
 	git://github.com/ARMmbed/mbedtls.git;name=mbedtls;destsuffix=mbedtls;protocol=git \
 "
 
-SRCREV_tf-a = "7782014a6f3e9c90d6be3cc77b93101d2c7cf523"
+SRCREV_tf-a = "011337f3d7ede68bb43dfd3a6d68901c44d1e6bb"
 SRCREV_mbedtls = "mbedtls-2.12.0"
 
 PV_tf-a="2.1+git${SRCPV}"
@@ -28,6 +30,21 @@ SECURE_BOOT_ROT_KEY ?= "${DEFAULT_ROT_KEY}"
 CFLAGS_append = ' \
 	${@bb.utils.contains("DISTRO_FEATURES", "optee", "-DNEED_BL32", "", d)} \
 '
+
+CFLAGS_append_mt8183 = " \
+	-Wno-error=unused-const-variable \
+	-Wno-error=unused-value \
+	-Wno-error=unused-but-set-variable \
+	-Wno-error=enum-compare \
+	-Wno-error=int-to-pointer-cast \
+	-Wno-error=return-type \
+	-Wno-error=pointer-sign \
+	-Wno-error=parentheses \
+	-Wno-error=comment \
+	-Wno-error=discarded-qualifiers \
+	-Wno-error=int-conversion \
+	-Wno-error=implicit-function-declaration \
+"
 
 TFA_SECURE_BOOT_OPTION = " \
 	TRUSTED_BOARD_BOOT=1 \
