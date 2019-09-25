@@ -54,6 +54,7 @@ do_compile() {
 
 do_gen_bl2_img() {
 	cp ${B}/${TFA_PLAT}/release/bl2.bin ${B}/bl2.img
+	truncate -s%4 ${B}/bl2.img
 	python ${WORKDIR}/mtk-pbp-tools/pbp.py -g ${WORKDIR}/gfh_conf.ini \
 		   -i ${WORKDIR}/key.ini -func sign \
 		   -o ${B}/bl2.img ${B}/bl2.img
