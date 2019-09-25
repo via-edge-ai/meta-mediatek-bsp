@@ -18,6 +18,7 @@ do_compile () {
 			   DEBUG=0										\
 			   SECURE_BOOT_ENABLE=no						\
 			   LIBGCC=""									\
+			   GLOBAL_CFLAGS="-mstrict-align"				\
 			   ${LK_PROJECT}
 }
 
