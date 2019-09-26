@@ -3,6 +3,7 @@
 This layer provides a minimal BSP and rootfs for booting the MediaTek boards.
 
 The following machines are supported:
+* mt8167-coral: Google Coral board.
 * mt8167-pumpkin: Pumpkin board with MediaTek MT8167.
 * mt8183-evb: Evaluation board for MediaTek MT8183
 * mt8516-pumpkin: Pumpkin board with MediaTek MT8516.
