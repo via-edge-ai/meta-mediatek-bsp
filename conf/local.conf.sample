@@ -13,8 +13,8 @@
 
 #
 # Machine Selection
-#MACHINE ??= "mt8516-pumpkin"
-MACHINE ??= "mt8167-pumpkin"
+MACHINE ??= "mt8516-pumpkin"
+#MACHINE ??= "mt8167-pumpkin"
 #MACHINE ??= "mt8183-evb"
 
 #
