@@ -1,6 +1,3 @@
-require conf/machine/include/tune-cortexa35.inc
-require mediatek-common.inc
-
 MACHINEOVERRIDES =. "pumpkin:"
 
 # Kernel
@@ -14,12 +11,6 @@ UBOOT_DTB_LOADADDRESS = "0x44000000"
 UBOOT_DTBO_LOADADDRESS = "0x44c00000"
 UBOOT_MACHINE = "pumpkin_defconfig"
 
-# Trusted Firmware-A
-TFA_PLAT = "mt8516"
-
-# OP-TEE
-OPTEE_TARGET = "mediatek-mt8516"
-
 # LK
 LK_PROJECT = "pumpkin8516-emmc"
 
@@ -31,4 +22,4 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS = " \
 	packagegroup-mtk-wireless \
 "
 
-DISTRO_FEATURES_append = " optee dtbo"
+DISTRO_FEATURES_append = " dtbo "
