@@ -3,8 +3,9 @@
 This layer provides a minimal BSP and rootfs for booting the MediaTek boards.
 
 The following machines are supported:
-	* mt8516-pumpkin: Pumpkin board with MediaTek MT8516.
-	* mt8167-pumpkin: Pumpkin board with MediaTek MT8167.
+* mt8167-pumpkin: Pumpkin board with MediaTek MT8167.
+* mt8183-evb: Evaluation board for MediaTek MT8183
+* mt8516-pumpkin: Pumpkin board with MediaTek MT8516.
 
 The machine by default is set to mt8516-pumpkin. See [local.conf Options](#local.conf-options) on how to change it.
 
