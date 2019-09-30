@@ -16,6 +16,7 @@
 			};
 
 			sound: sound {
+				compatible = "mediatek,mt8516-soc-vesper";
 				pinctrl-names = "default";
 				pinctrl-0 = <&aud_pins_vesper>;
 				tdmadc-1p8v-supply = <&mt6392_vcn18_reg>;
