@@ -10,7 +10,7 @@ SRC_URI = " \
 	git://github.com/ARMmbed/mbedtls.git;name=mbedtls;destsuffix=mbedtls;protocol=git \
 "
 
-SRCREV_tf-a = "011337f3d7ede68bb43dfd3a6d68901c44d1e6bb"
+SRCREV_tf-a = "0d2acf7fb871a224735d3bd39fe4aa86a90e9a33"
 SRCREV_mbedtls = "mbedtls-2.12.0"
 
 PV_tf-a="2.1+git${SRCPV}"
@@ -29,21 +29,22 @@ SECURE_BOOT_ROT_KEY ?= "${DEFAULT_ROT_KEY}"
 
 CFLAGS_append = ' \
 	${@bb.utils.contains("DISTRO_FEATURES", "optee", "-DNEED_BL32", "", d)} \
+	-Wno-error=unused-but-set-variable \
+	-Wno-error=implicit-function-declaration \
+	-Wno-error=int-conversion \
+	-Wno-error=discarded-qualifiers \
+	-DBOARD_${TFA_BOARD_NAME} \
 '
 
 CFLAGS_append_mt8183 = " \
 	-Wno-error=unused-const-variable \
 	-Wno-error=unused-value \
-	-Wno-error=unused-but-set-variable \
 	-Wno-error=enum-compare \
 	-Wno-error=int-to-pointer-cast \
 	-Wno-error=return-type \
 	-Wno-error=pointer-sign \
 	-Wno-error=parentheses \
 	-Wno-error=comment \
-	-Wno-error=discarded-qualifiers \
-	-Wno-error=int-conversion \
-	-Wno-error=implicit-function-declaration \
 "
 
 TFA_SECURE_BOOT_OPTION = " \
