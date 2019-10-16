@@ -14,4 +14,5 @@ SRC_URI_append = " \
 	file://usb_uvc.cfg \
 	${@bb.utils.contains('MACHINE_FEATURES', 'screen', 'file://ts_ft5x06.cfg', '', d)} \
 	${@bb.utils.contains('DISTRO_FEATURES', 'optee', 'file://optee.cfg', '', d)} \
+	${@bb.utils.contains('DISTRO_FEATURES', 'vesper-hat', 'file://vesper.cfg', '', d)} \
 "
