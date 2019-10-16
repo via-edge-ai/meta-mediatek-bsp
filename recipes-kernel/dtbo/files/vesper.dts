@@ -43,8 +43,13 @@
 
 			pcm1865_u12: audio-codec@4a {
 				compatible = "ti,pcm1865";
+				sound-name-prefix = "U12_";
 				reg = <0x4a>;
-				tdm_offset = <0x00>;
+				adc1-left-input-select = <0x10>;
+				adc1-right-input-select = <0x10>;
+				adc2-left-input-select = <0x20>;
+				adc2-right-input-select = <0x20>;
+				apga-gain-control = <0xff>;
 
 				avdd-supply  = <&pcm1865_3v3>;
 				dvdd-supply  = <&pcm1865_3v3>;
@@ -53,22 +58,41 @@
 
 			pcm1865_u13: audio-codec@4b {
 				compatible = "ti,pcm1865";
+				sound-name-prefix = "U13_";
 				reg = <0x4b>;
-				tdm_offset = <0x80>;
+				adc1-left-input-select = <0x10>;
+				adc1-right-input-select = <0x10>;
+				adc2-left-input-select = <0x20>;
+				adc2-right-input-select = <0x20>;
+				apga-gain-control = <0xff>;
 
 				avdd-supply  = <&pcm1865_3v3>;
 				dvdd-supply  = <&pcm1865_3v3>;
 				iovdd-supply = <&pcm1865_3v3>;
 			};
 
+			tvl320adc3101_u18: audio-codec@18 {
+				compatible = "ti,tlv320adc3101";
+				sound-name-prefix = "U18_";
+				reg = <0x18>;
+				rst-gpio = <&pio 34 0>;
+				left-pin-select = <1>;
+				right-pin-select = <1>;
+
+				av-supply  = <&pcm1865_3v3>;
+				dv-supply  = <&pcm1865_3v3>;
+				iov-supply = <&pcm1865_3v3>;
+			};
+
 			pcm5242_u14: audio-codec@4c {
 				compatible = "ti,pcm5142";
+				sound-name-prefix = "VPB_";
 				reg = <0x4c>;
 
 				AVDD-supply = <&pcm1865_3v3>;
 				DVDD-supply = <&pcm1865_3v3>;
 				CPVDD-supply = <&pcm1865_3v3>;
-	};
+			};
 		};
 	};
 
@@ -149,6 +173,10 @@
 					pinmux = <MT8516_PIN_50_SPI_MI__FUNC_GPIO50>;	/* Pin to enable Vesper 1V8 reg */
 					drive-strength = <MTK_DRIVE_4mA>;
 					output-high;
+				};
+				pins_adc3_reset {
+					pinmux = <MT8516_PIN_34_URXD2__FUNC_GPIO34>;
+					output-low;
 				};
 			};
 
