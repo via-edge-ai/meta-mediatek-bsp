@@ -1,4 +1,5 @@
 #include "mt8167-pinfunc.h"
+#include "dt-bindings/interrupt-controller/irq.h"
 
 /dts-v1/;
 /plugin/;
@@ -51,6 +52,19 @@
 				pinctrl-names = "default";
 				power-supply = <&mt6392_vgp2_reg>;
 			};
+			touch: ft5x06@38 {
+				compatible = "focaltech,ft6236";
+				reg = <0x38>;
+				status = "okay";
+				pinctrl-0 = <&ts_pins>;
+				pinctrl-names = "default";
+				interrupt-parent = <&pio>;
+				interrupts = <2 IRQ_TYPE_EDGE_FALLING>;
+				touchscreen-size-y = <480>;
+				touchscreen-size-x = <800>;
+				touchscreen-inverted-y = <1>;
+				touchscreen-inverted-x = <1>;
+			};
 		};
 	};
 
@@ -77,6 +91,13 @@
 					pinmux = <MT8167_PIN_66_LCM_RST__FUNC_GPIO66>,
 						 <MT8167_PIN_67_DSI_TE__FUNC_GPIO67>;
 					output-high;
+				};
+			};
+			ts_pins: ts_pins {
+				pins {
+					pinmux = <MT8167_PIN_2_EINT2__FUNC_GPIO2>;
+					input-enable;
+					bias-pull-up;
 				};
 			};
 		};

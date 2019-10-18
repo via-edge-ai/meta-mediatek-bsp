@@ -27,3 +27,5 @@ EXTRA_IMAGEDEPENDS = " \
 	virtual/tf-a \
 	mtk-flash-tools \
 "
+
+MACHINE_EXTRA_RRECOMMENDS += " kernel-modules "
