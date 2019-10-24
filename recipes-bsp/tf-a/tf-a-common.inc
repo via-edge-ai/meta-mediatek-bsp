@@ -13,7 +13,7 @@ DEPENDS = ' \
 PROVIDES = "virtual/tf-a"
 
 LICENSE = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://${S}/license.rst;md5=c709b197e22b81ede21109dbffd5f363"
+LIC_FILES_CHKSUM = "file://${S}/docs/license.rst;md5=189505435dbcdcc8caa63c46fe93fa89"
 
 inherit nopackages deploy
 

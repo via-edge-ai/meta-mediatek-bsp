@@ -8,10 +8,10 @@ inherit distro_features_check
 # provide it, we won't be able to boot
 REQUIRED_DISTRO_FEATURES_pumpkin = "optee"
 
-SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware.git;branch=mtk-v2.1;protocol=ssh"
+SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware.git;branch=mtk-v2.2;protocol=ssh"
 
-SRCREV = "de8fee16077fda0fdaad0d9b917e1bc6f3758300"
-PV="2.1+git${SRCPV}"
+SRCREV = "a7da017a800759982e522066580205367c9a4531"
+PV="2.2+git${SRCPV}"
 
 do_compile() {
 	oe_runmake -C ${S} bl31 fip

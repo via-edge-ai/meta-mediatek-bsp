@@ -6,14 +6,14 @@ include tf-a-common.inc
 DEPENDS_append = " coreutils-native "
 
 SRC_URI = " \
-	git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware-private.git;name=tf-a;branch=mtk-v2.1-full;protocol=ssh \
+	git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware-private.git;name=tf-a;branch=mtk-v2.2-full;protocol=ssh \
 	git://github.com/ARMmbed/mbedtls.git;name=mbedtls;destsuffix=mbedtls;protocol=git \
 "
 
-SRCREV_tf-a = "0d2acf7fb871a224735d3bd39fe4aa86a90e9a33"
-SRCREV_mbedtls = "mbedtls-2.12.0"
+SRCREV_tf-a = "ab0c9c93ce85227fdf7ec3f88f89f829391d7cca"
+SRCREV_mbedtls = "mbedtls-2.16.2"
 
-PV_tf-a="2.1+git${SRCPV}"
+PV_tf-a="2.2+git${SRCPV}"
 
 SRC_URI += "						\
 	file://key.ini			\
