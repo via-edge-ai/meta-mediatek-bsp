@@ -41,8 +41,8 @@ load-module module-switch-on-connect
 ### use module-udev-detect -- see below -- for doing this automatically)
 #load-module module-alsa-sink
 #load-module module-alsa-source device=hw:1,0
-load-module module-alsa-source device=rec_complex
-load-module module-alsa-sink device=play_complex
+load-module module-alsa-source device=default
+load-module module-alsa-sink device=default
 
 #load-module module-oss device="/dev/dsp" sink_name=output source_name=input
 #load-module module-oss-mmap device="/dev/dsp" sink_name=output source_name=input
@@ -127,7 +127,7 @@ load-module module-always-sink
 load-module module-intended-roles
 
 ### Automatically suspend sinks/sources that become idle for too long
-load-module module-suspend-on-idle
+#load-module module-suspend-on-idle
 
 ### If autoexit on idle is enabled we want to make sure we only quit
 ### when no local session needs us anymore.
@@ -152,5 +152,5 @@ load-module module-filter-heuristics
 load-module module-filter-apply
 
 ### Make some devices default
-set-default-sink alsa_output.play_complex
-set-default-source alsa_input.rec_complex
+set-default-sink alsa_output.default
+set-default-source alsa_input.default
