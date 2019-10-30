@@ -11,4 +11,6 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-yocto-bsp \
   ##OEROOT##/../meta-linaro/meta-optee \
   ##OEROOT##/../meta-mediatek-bsp \
+  ##OEROOT##/../meta-openembedded/meta-oe \
+  ##OEROOT##/../meta-openembedded/meta-python \
   "
