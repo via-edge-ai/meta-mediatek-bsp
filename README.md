@@ -8,7 +8,7 @@ The following machines are supported:
 * mt8183-evb: Evaluation board for MediaTek MT8183
 * mt8516-pumpkin: Pumpkin board with MediaTek MT8516.
 
-The machine by default is set to mt8516-pumpkin. See [local.conf Options](#local.conf-options) on how to change it.
+The machine by default is set to mt8516-pumpkin. See [local.conf Options](#localconf-options) on how to change it.
 
 ## Building
 
@@ -118,7 +118,7 @@ Options available in `build/conf/local.conf` to modify the BSP:
 The Layer is defining the following custom DISTRO_FEATURES:
 * `optee`: The OP-TEE Trusted Execution Environment will be built into the image.
 
-These DISTRO_FEATURES can be added to the image by setting the variable in [local.conf](#local.conf-options).
+These DISTRO_FEATURES can be added to the image by setting the variable in [local.conf](#localconf-options).
 
 ## MACHINE_FEATURES
 
