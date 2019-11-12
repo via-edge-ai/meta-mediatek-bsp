@@ -28,4 +28,7 @@ EXTRA_IMAGEDEPENDS = " \
 	mtk-flash-tools \
 "
 
-MACHINE_EXTRA_RRECOMMENDS += " kernel-modules "
+MACHINE_EXTRA_RRECOMMENDS += " \
+	kernel-modules \
+	packagegroup-mtk \
+"
