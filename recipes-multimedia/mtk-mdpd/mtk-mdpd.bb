@@ -33,7 +33,7 @@ do_install() {
 	install -m 644 ${B}/libmdp.mt*.so ${D}${libdir}
 
 
-	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}" = "sysvinit" ]; then
+	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}" = "systemd" ]; then
 		install -d ${D}${systemd_unitdir}/system
 		install -m 0644 ${WORKDIR}/mdpd.service ${D}${systemd_unitdir}/system/
 	else
