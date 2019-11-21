@@ -10,4 +10,6 @@ SRC_URI[sha256sum] = "89c6da6f56280c37a5ff33468591ba9a124e17d71fe42de971818cbff4
 
 inherit pypi setuptools3
 
+PROVIDES += "python3-pyelftools"
+
 BBCLASSEXTEND = "native nativesdk"
