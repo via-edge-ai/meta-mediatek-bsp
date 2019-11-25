@@ -7,7 +7,7 @@ LINUX_VERSION ?= "4.19.84"
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-4.19:"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/linux.git;protocol=ssh;branch=mtk-v4.19"
-SRCREV = "77fc07538c903cf58d75bf7808a36755914f2b14"
+SRCREV = "5d9e8dae160cda88ab4b3de477fbfea0dfab86e1"
 
 SRC_URI_append = " \
 	file://defconfig \
