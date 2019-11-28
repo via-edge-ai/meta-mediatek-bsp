@@ -3,11 +3,11 @@
 
 require linux-mtk-common.inc
 
-LINUX_VERSION ?= "4.19.84"
+LINUX_VERSION ?= "4.19.86"
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-4.19:"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/linux.git;protocol=ssh;branch=mtk-v4.19"
-SRCREV = "5d9e8dae160cda88ab4b3de477fbfea0dfab86e1"
+SRCREV = "b416bb7e78d691e3d9b2c5cf7d26081b0be3995a"
 
 SRC_URI_append = " \
 	file://defconfig \
