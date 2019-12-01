@@ -12,6 +12,14 @@ LINUX_VERSION_EXTENSION = "-mtk"
 
 S = "${WORKDIR}/git"
 
+SRC_URI_append = " \
+	file://defconfig \
+	file://usb_uvc.cfg \
+	${@bb.utils.contains('MACHINE_FEATURES', 'screen', 'file://ts_ft5x06.cfg', '', d)} \
+	${@bb.utils.contains('DISTRO_FEATURES', 'optee', 'file://optee.cfg', '', d)} \
+	${@bb.utils.contains('MACHINE_FEATURES', 'vesper-hat', 'file://vesper.cfg', '', d)} \
+"
+
 KERNEL_EXTRA_ARGS = "Image.gz dtbs"
 KCONFIG_MODE = "--alldefconfig"
 
