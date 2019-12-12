@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=90675d4b2a0ffc46ef9ff36dfe4063fe"
 inherit module
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/mt7668-wifi-mod.git;protocol=ssh"
-SRCREV = "1c49d6ebb312b45e69be0c55aeaeb78ce7229769"
+SRCREV = "3ac0c2cce3286ea7dc527cfbdf5feed8c25a433a"
 
 S = "${WORKDIR}/git"
 
