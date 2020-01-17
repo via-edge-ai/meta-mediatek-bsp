@@ -10,7 +10,7 @@ REQUIRED_DISTRO_FEATURES_pumpkin = "optee"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware.git;branch=mtk-v2.2;protocol=ssh"
 
-SRCREV = "74fe2c94c11100efbf4b9a5566f0f0310ac976dc"
+SRCREV = "f258b9716ed0c7afcbf58b0f1b1bf314520998ab"
 PV="2.2+git${SRCPV}"
 
 do_compile() {
