@@ -10,7 +10,7 @@ SRC_URI = " \
 	git://github.com/ARMmbed/mbedtls.git;name=mbedtls;destsuffix=mbedtls;protocol=git \
 "
 
-SRCREV_tf-a = "ab0c9c93ce85227fdf7ec3f88f89f829391d7cca"
+SRCREV_tf-a = "91c734302516f17f387bb29d202dd7e81250f29c"
 SRCREV_mbedtls = "mbedtls-2.16.2"
 
 PV_tf-a="2.2+git${SRCPV}"
@@ -60,7 +60,7 @@ EXTRA_OEMAKE += " \
 "
 
 do_compile() {
-	bbwarn "Building private TF-A. Please do NOT distribute binaries"
+	bbnote "Building private TF-A"
 
 	if [ "x${DEFAULT_ROT_KEY}" = "x${SECURE_BOOT_ROT_KEY}" ]; then
 		bbwarn "SECURE_BOOT_ROT_KEY is not defined in local.conf, using development key for secure boot"
