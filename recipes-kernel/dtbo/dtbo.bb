@@ -18,6 +18,11 @@ SRC_URI_append_mt8167-pumpkin = " \
 	file://rpi-display.dts \
 "
 
+SRC_URI_append_mt8183-evb = " \
+	file://panel-tpv-otm1901a.dts \
+	file://panel-truly-r63350a.dts \
+"
+
 DT_FILES_PATH = "${WORKDIR}"
 
 COMPATIBLE_MACHINE = "mt*"
