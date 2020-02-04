@@ -113,6 +113,10 @@ Options available in `build/conf/local.conf` to modify the BSP:
 	to expose an Ethernet interface over USB. Available choices are: `ecm` (default),
 	`rndis`.
 
+* `KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD`: List of kernel device-tree overlays
+	that should be automatically loaded and merged by u-boot to the main dtb
+	before jumping into the kernel.
+
 ## DISTRO_FEATURES
 
 The Layer is defining the following custom DISTRO_FEATURES:

@@ -3,6 +3,9 @@ MACHINEOVERRIDES =. "pumpkin:"
 # Kernel
 DTB_LOADADDRESS = "0x44000000"
 KERNEL_DEVICETREE_OVERLAYS += "vesper.dtbo"
+KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
+	${@bb.utils.contains("MACHINE_FEATURES", "vesper-hat", "vesper.dtbo", "", d)} \
+"
 
 # U-Boot
 UBOOT_ENTRYPOINT = "0x40080000"
