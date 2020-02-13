@@ -3,7 +3,7 @@
 
 require linux-mtk-common.inc
 
-LINUX_VERSION ?= "4.19.104"
+LINUX_VERSION ?= "4.19.105"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/linux.git;protocol=ssh;branch=mtk-v4.19"
-SRCREV = "042c73234bac09c8516876a85cca32d7c3b7aaac"
+SRCREV = "445cedf698ecd04878a4459bc454f7e04b078c7a"
