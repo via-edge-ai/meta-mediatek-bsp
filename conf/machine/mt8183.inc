@@ -12,3 +12,5 @@ OPTEE_TARGET = "mediatek-mt8183"
 
 # LK
 LK_PROJECT = "mt8183-evb"
+
+DISTRO_FEATURES_append = " optee "
