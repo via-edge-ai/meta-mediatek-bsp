@@ -6,11 +6,11 @@ include tf-a-common.inc
 inherit distro_features_check
 # optee is required because the bl2 binary requires it, and if we don't
 # provide it, we won't be able to boot
-REQUIRED_DISTRO_FEATURES_pumpkin = "optee"
+REQUIRED_DISTRO_FEATURES = "optee"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware.git;branch=mtk-v2.2;protocol=ssh"
 
-SRCREV = "f258b9716ed0c7afcbf58b0f1b1bf314520998ab"
+SRCREV = "7979c296ee5b1198f462eda442448d62cb501333"
 PV="2.2+git${SRCPV}"
 
 do_compile() {
