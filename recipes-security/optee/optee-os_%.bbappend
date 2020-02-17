@@ -1,14 +1,13 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+DEPENDS += "python3-pycrypto-native python3-pycryptodomex-native"
+
+PV = "3.8.0+git${SRCPV}"
+SRCREV = "aa3f8997fcb2eefcb588db69a7158b51355d6985"
+SRC_URI_remove = "git://github.com/OP-TEE/optee_os.git"
+SRC_URI += "git://git@gitlab.com/baylibre/rich-iot/optee-os.git;protocol=ssh;branch=mtk-v3.8"
 
 OPTEEMACHINE = "${OPTEE_TARGET}"
 OPTEEOUTPUTMACHINE = "mediatek"
 
 EXTRA_OEMAKE += " \
 	PYTHONPATH=${PYTHON_SITEPACKAGES_DIR} \
-"
-
-SRC_URI += " \
-	file://0001-plat-mediatek-Add-support-for-GIC.patch \
-	file://0002-mediatek-add-support-for-MT8516-SoC.patch \
-	file://0003-mediatek-add-support-for-MT8183-SoC.patch \
 "
