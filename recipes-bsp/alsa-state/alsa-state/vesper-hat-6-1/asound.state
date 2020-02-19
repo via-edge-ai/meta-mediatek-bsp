@@ -1240,6 +1240,78 @@ state.mtsndcard {
 	}
 	control.5 {
 		iface MIXER
+		name 'U18_ ADC Mute Left Switch'
+		value false
+		comment {
+			access 'read write'
+			type BOOLEAN
+			count 1
+		}
+	}
+	control.6 {
+		iface MIXER
+		name 'U18_ ADC Mute Right Switch'
+		value false
+		comment {
+			access 'read write'
+			type BOOLEAN
+			count 1
+		}
+	}
+	control.7 {
+		iface MIXER
+		name 'U18_ ADC Level Volume'
+		value.0 24
+		value.1 24
+		comment {
+			access 'read write'
+			type INTEGER
+			count 2
+			range '0 - 64'
+			dbmin -1200
+			dbmax 2000
+			dbvalue.0 0
+			dbvalue.1 0
+		}
+	}
+	control.8 {
+		iface MIXER
+		name 'U18_ PGA Level Volume'
+		value.0 0
+		value.1 0
+		comment {
+			access 'read write'
+			type INTEGER
+			count 2
+			range '0 - 80'
+			dbmin 0
+			dbmax 4000
+			dbvalue.0 0
+			dbvalue.1 0
+		}
+	}
+	control.9 {
+		iface MIXER
+		name 'U18_ Minus 6dB ADC Left input Switch'
+		value true
+		comment {
+			access 'read write'
+			type BOOLEAN
+			count 1
+		}
+	}
+	control.10 {
+		iface MIXER
+		name 'U18_ Minus 6dB ADC Right input Switch'
+		value true
+		comment {
+			access 'read write'
+			type BOOLEAN
+			count 1
+		}
+	}
+	control.11 {
+		iface MIXER
 		name 'U13_ ADC1 Capture Volume'
 		value.0 24
 		value.1 24
@@ -1254,7 +1326,7 @@ state.mtsndcard {
 			dbvalue.1 0
 		}
 	}
-	control.6 {
+	control.12 {
 		iface MIXER
 		name 'U13_ ADC2 Capture Volume'
 		value.0 24
@@ -1270,7 +1342,7 @@ state.mtsndcard {
 			dbvalue.1 0
 		}
 	}
-	control.7 {
+	control.13 {
 		iface MIXER
 		name 'U13_ ADC1 Digital Capture Volume'
 		value.0 0
@@ -1286,7 +1358,7 @@ state.mtsndcard {
 			dbvalue.1 0
 		}
 	}
-	control.8 {
+	control.14 {
 		iface MIXER
 		name 'U13_ ADC2 Digital Capture Volume'
 		value.0 0
@@ -1302,7 +1374,7 @@ state.mtsndcard {
 			dbvalue.1 0
 		}
 	}
-	control.9 {
+	control.15 {
 		iface MIXER
 		name Audio_SideGen_Switch
 		value AFE_SGEN_OFF
@@ -1343,7 +1415,7 @@ state.mtsndcard {
 			item.30 AFE_SGEN_SPDIFIN
 		}
 	}
-	control.10 {
+	control.16 {
 		iface MIXER
 		name Audio_SideGen_SampleRate
 		value AFE_SGEN_8K
@@ -1362,7 +1434,7 @@ state.mtsndcard {
 			item.8 AFE_SGEN_48K
 		}
 	}
-	control.11 {
+	control.17 {
 		iface MIXER
 		name AP_Loopback_Select
 		value AP_LOOPBACK_NONE
@@ -1383,7 +1455,7 @@ state.mtsndcard {
 			item.10 AP_LOOPBACK_DUAL_DMIC_TO_HP
 		}
 	}
-	control.12 {
+	control.18 {
 		iface MIXER
 		name HDMI_Force_Clk_Switch
 		value false
@@ -1393,7 +1465,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.13 {
+	control.19 {
 		iface MIXER
 		name TDM_Out_Sgen_Switch
 		value false
@@ -1403,7 +1475,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.14 {
+	control.20 {
 		iface MIXER
 		name TDM_In_Sgen_Switch
 		value false
@@ -1413,7 +1485,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.15 {
+	control.21 {
 		iface MIXER
 		name 'HW Gain1 Volume'
 		value 524288
@@ -1424,7 +1496,7 @@ state.mtsndcard {
 			range '0 - 524288'
 		}
 	}
-	control.16 {
+	control.22 {
 		iface MIXER
 		name 'HW Gain1 SamplePerStep'
 		value 200
@@ -1435,7 +1507,7 @@ state.mtsndcard {
 			range '0 - 255'
 		}
 	}
-	control.17 {
+	control.23 {
 		iface MIXER
 		name 'SPDIF In'
 		value 0
@@ -1446,7 +1518,7 @@ state.mtsndcard {
 			range '0 - 2'
 		}
 	}
-	control.18 {
+	control.24 {
 		iface MIXER
 		name 'VPB_ Digital Playback Volume'
 		value.0 207
@@ -1462,7 +1534,7 @@ state.mtsndcard {
 			dbvalue.1 0
 		}
 	}
-	control.19 {
+	control.25 {
 		iface MIXER
 		name 'VPB_ Analogue Playback Volume'
 		value.0 1
@@ -1478,7 +1550,7 @@ state.mtsndcard {
 			dbvalue.1 0
 		}
 	}
-	control.20 {
+	control.26 {
 		iface MIXER
 		name 'VPB_ Analogue Playback Boost Volume'
 		value.0 0
@@ -1494,7 +1566,7 @@ state.mtsndcard {
 			dbvalue.1 0
 		}
 	}
-	control.21 {
+	control.27 {
 		iface MIXER
 		name 'VPB_ Digital Playback Switch'
 		value.0 true
@@ -1505,7 +1577,7 @@ state.mtsndcard {
 			count 2
 		}
 	}
-	control.22 {
+	control.28 {
 		iface MIXER
 		name 'VPB_ Deemphasis Switch'
 		value true
@@ -1515,7 +1587,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.23 {
+	control.29 {
 		iface MIXER
 		name 'VPB_ DSP Program'
 		value 'FIR interpolation with de-emphasis'
@@ -1530,7 +1602,7 @@ state.mtsndcard {
 			item.4 'Ringing-less low latency FIR'
 		}
 	}
-	control.24 {
+	control.30 {
 		iface MIXER
 		name 'VPB_ Clock Missing Period'
 		value '1s'
@@ -1548,7 +1620,7 @@ state.mtsndcard {
 			item.7 '8s'
 		}
 	}
-	control.25 {
+	control.31 {
 		iface MIXER
 		name 'VPB_ Auto Mute Time Left'
 		value '21ms'
@@ -1566,7 +1638,7 @@ state.mtsndcard {
 			item.7 '10.66s'
 		}
 	}
-	control.26 {
+	control.32 {
 		iface MIXER
 		name 'VPB_ Auto Mute Time Right'
 		value '21ms'
@@ -1584,7 +1656,7 @@ state.mtsndcard {
 			item.7 '10.66s'
 		}
 	}
-	control.27 {
+	control.33 {
 		iface MIXER
 		name 'VPB_ Auto Mute Mono Switch'
 		value true
@@ -1594,7 +1666,7 @@ state.mtsndcard {
 			count 1
 		}
 	}
-	control.28 {
+	control.34 {
 		iface MIXER
 		name 'VPB_ Auto Mute Switch'
 		value.0 true
@@ -1605,7 +1677,7 @@ state.mtsndcard {
 			count 2
 		}
 	}
-	control.29 {
+	control.35 {
 		iface MIXER
 		name 'VPB_ Volume Ramp Down Rate'
 		value '1 sample/update'
@@ -1619,7 +1691,7 @@ state.mtsndcard {
 			item.3 Immediate
 		}
 	}
-	control.30 {
+	control.36 {
 		iface MIXER
 		name 'VPB_ Volume Ramp Down Step'
 		value '1dB/step'
@@ -1633,7 +1705,7 @@ state.mtsndcard {
 			item.3 '0.5dB/step'
 		}
 	}
-	control.31 {
+	control.37 {
 		iface MIXER
 		name 'VPB_ Volume Ramp Up Rate'
 		value '1 sample/update'
@@ -1647,7 +1719,7 @@ state.mtsndcard {
 			item.3 Immediate
 		}
 	}
-	control.32 {
+	control.38 {
 		iface MIXER
 		name 'VPB_ Volume Ramp Up Step'
 		value '1dB/step'
@@ -1661,7 +1733,7 @@ state.mtsndcard {
 			item.3 '0.5dB/step'
 		}
 	}
-	control.33 {
+	control.39 {
 		iface MIXER
 		name 'VPB_ Volume Ramp Down Emergency Rate'
 		value '1 sample/update'
@@ -1675,7 +1747,7 @@ state.mtsndcard {
 			item.3 Immediate
 		}
 	}
-	control.34 {
+	control.40 {
 		iface MIXER
 		name 'VPB_ Volume Ramp Down Emergency Step'
 		value '4dB/step'
@@ -1689,7 +1761,7 @@ state.mtsndcard {
 			item.3 '0.5dB/step'
 		}
 	}
-	control.35 {
+	control.41 {
 		iface MIXER
 		name 'VPB_ Max Overclock PLL'
 		value 0
@@ -1700,7 +1772,7 @@ state.mtsndcard {
 			range '0 - 20'
 		}
 	}
-	control.36 {
+	control.42 {
 		iface MIXER
 		name 'VPB_ Max Overclock DSP'
 		value 0
@@ -1711,7 +1783,7 @@ state.mtsndcard {
 			range '0 - 40'
 		}
 	}
-	control.37 {
+	control.43 {
 		iface MIXER
 		name 'VPB_ Max Overclock DAC'
 		value 0
@@ -1720,90 +1792,6 @@ state.mtsndcard {
 			type INTEGER
 			count 1
 			range '0 - 40'
-		}
-	}
-	control.38 {
-		iface MIXER
-		name 'Master Volume'
-		value 100
-		comment {
-			access 'read write'
-			type INTEGER
-			count 1
-			range '0 - 100'
-		}
-	}
-	control.39 {
-		iface MIXER
-		name 'Master Volume X'
-		value 100
-		comment {
-			access 'read write'
-			type INTEGER
-			count 1
-			range '0 - 100'
-		}
-	}
-	control.40 {
-		iface MIXER
-		name 'Master Switch'
-		value true
-		comment {
-			access 'read write'
-			type BOOLEAN
-			count 1
-		}
-	}
-	control.41 {
-		iface MIXER
-		name 'Master Switch X'
-		value true
-		comment {
-			access 'read write'
-			type BOOLEAN
-			count 1
-		}
-	}
-	control.42 {
-		iface MIXER
-		name 'PCM State'
-		value MTKFILE_PCM_STATE_CLOSE
-		comment {
-			access 'read write'
-			type ENUMERATED
-			count 1
-			item.0 MTKFILE_PCM_STATE_UNKNOWN
-			item.1 MTKFILE_PCM_STATE_OPEN
-			item.2 MTKFILE_PCM_STATE_HW_PARAMS
-			item.3 MTKFILE_PCM_STATE_PREPARE
-			item.4 MTKFILE_PCM_STATE_START
-			item.5 MTKFILE_PCM_STATE_PAUSE
-			item.6 MTKFILE_PCM_STATE_RESUME
-			item.7 MTKFILE_PCM_STATE_DRAIN
-			item.8 MTKFILE_PCM_STATE_STOP
-			item.9 MTKFILE_PCM_STATE_HW_FREE
-			item.10 MTKFILE_PCM_STATE_CLOSE
-		}
-	}
-	control.43 {
-		iface MIXER
-		name 'PCM State X'
-		value MTKFILE_PCM_STATE_CLOSE
-		comment {
-			access 'read write'
-			type ENUMERATED
-			count 1
-			item.0 MTKFILE_PCM_STATE_UNKNOWN
-			item.1 MTKFILE_PCM_STATE_OPEN
-			item.2 MTKFILE_PCM_STATE_HW_PARAMS
-			item.3 MTKFILE_PCM_STATE_PREPARE
-			item.4 MTKFILE_PCM_STATE_START
-			item.5 MTKFILE_PCM_STATE_PAUSE
-			item.6 MTKFILE_PCM_STATE_RESUME
-			item.7 MTKFILE_PCM_STATE_DRAIN
-			item.8 MTKFILE_PCM_STATE_STOP
-			item.9 MTKFILE_PCM_STATE_HW_FREE
-			item.10 MTKFILE_PCM_STATE_CLOSE
 		}
 	}
 	control.44 {

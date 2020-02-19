@@ -4,12 +4,6 @@
 SUMMARY = "Device-Tree Blob Overlays"
 inherit devicetree
 
-VESPER_MIC_CONFIG ??= "6_1"
-
-DTC_PPFLAGS_append_pumpkin = " \
-	-DVESPER_${VESPER_MIC_CONFIG} \
-"
-
 SRC_URI_append_pumpkin = " \
 	file://vesper.dts \
 "

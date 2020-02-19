@@ -16,13 +16,7 @@
 			};
 
 			sound: sound {
-#if VESPER_6_1
-				compatible = "mediatek,mt8516-soc-vesper-6-1";
-#elif VESPER_3_1
 				compatible = "mediatek,mt8516-soc-vesper";
-#else
-#error "VESPER_MIC_CONFIG should be either '6_1' or '3_1'"
-#endif
 				pinctrl-names = "default";
 				pinctrl-0 = <&aud_pins_vesper>;
 				tdmadc-1p8v-supply = <&mt6392_vcn18_reg>;
