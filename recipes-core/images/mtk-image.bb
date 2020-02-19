@@ -25,6 +25,7 @@ my_postprocess_rootfs() {
 		mkdir -p ${IMAGE_ROOTFS}/etc/xdg/weston/
 		echo "[core]" > ${IMAGE_ROOTFS}/etc/xdg/weston/weston.ini
 		echo "idle-time=0" >> ${IMAGE_ROOTFS}/etc/xdg/weston/weston.ini
+		echo "require-input=false" >> ${IMAGE_ROOTFS}/etc/xdg/weston/weston.ini
 	fi
 
 }
