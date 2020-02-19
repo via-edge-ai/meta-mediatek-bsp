@@ -7,11 +7,7 @@ IMAGE_INSTALL = "\
 	packagegroup-base \
 	packagegroup-core-boot \
 	packagegroup-core-full-cmdline \
-	busybox \
-	dropbear \
 	${@bb.utils.contains("DISTRO_FEATURES", "optee", "optee-client", "", d)} \
 "
-
-PACKAGE_EXCLUDE = "openssh"
 
 inherit core-image
