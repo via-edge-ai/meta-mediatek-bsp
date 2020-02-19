@@ -1,32 +1,32 @@
-# MT8xxx Pumpkin Board
+# i300 Pumpkin Board
 
 The i300 pumpkin board comes in two variants:
-* [MT8516 SoC](https://www.mediatek.com/products/richIot/mt8362b), 1GB DRAM, 4GB eMMC
-* [MT8167 SoC](https://www.mediatek.com/products/richIot/mt8362a), 2GB DRAM, 8GB eMMC
+* [i300B / MT8362A SoC](https://www.mediatek.com/products/richIot/mt8362b), 1GB DRAM, 4GB eMMC
+* [i300A / MT8362A SoC](https://www.mediatek.com/products/richIot/mt8362a), 2GB DRAM, 8GB eMMC
 
 The i300 pumpkin board is using the [i300 platform](../platforms/i300.md).
 
 ## Purchasing
 
 The i300 pumpkin boards are available on [Seeed](https://www.seeedstudio.com/):
-* [Pumpkin EVK - Smart Audio Edition](https://www.seeedstudio.com/Pumpkin-Evaluation-Kit-Smart-Audio-Edition-p-4263.html) (MT8516)
-* [Pumpkin EVK - Smart Hub Edition](https://www.seeedstudio.com/Pumpkin-Evaluation-Kit-Smart-Hub-Edition-p-4262.html) (MT8167)
+* [Pumpkin EVK - Smart Audio Edition](https://www.seeedstudio.com/Pumpkin-Evaluation-Kit-Smart-Audio-Edition-p-4263.html) (i300B / MT8362)
+* [Pumpkin EVK - Smart Hub Edition](https://www.seeedstudio.com/Pumpkin-Evaluation-Kit-Smart-Hub-Edition-p-4262.html) (i300A / MT8362)
 
 ## Building
 
 You can build an image for the i300 pumpkin board by setting the
-`MACHINE` variable in your `local.conf` to `mt8167-pumpkin` or `mt8516-pumpkin`.
+`MACHINE` variable in your `local.conf` to `i300a-pumpkin` or `i300b-pumpkin`.
 
-	MACHINE=mt8167-pumpkin
-	MACHINE=mt8516-pumpkin
+	MACHINE=i300a-pumpkin
+	MACHINE=i300b-pumpkin
 
 For full build instructions, please refer to the top level `README.md`.
 
 ## Display
 
-The MT8167 Pumpkin support HDMI and the [7-inch Raspberry Pi touch display](https://www.raspberrypi.org/products/raspberry-pi-touch-display/).
+The i300A Pumpkin support HDMI and the [7-inch Raspberry Pi touch display](https://www.raspberrypi.org/products/raspberry-pi-touch-display/).
 
-HDMI is working by default if you set `MACHINE=mt8167-pumpkin`. If you wish to use the 7-inch Raspberry Pi touch display, you need to add the following to your `local.conf`:
+HDMI is working by default if you set `MACHINE=i300a-pumpkin`. If you wish to use the 7-inch Raspberry Pi touch display, you need to add the following to your `local.conf`:
 
 	MACHINE_FEATURES_append = " screen "
 

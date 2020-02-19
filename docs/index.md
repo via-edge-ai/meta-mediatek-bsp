@@ -3,10 +3,10 @@
 ## Boards supported
 
 The following boards are supported:
-* [Google Coral](boards/mt8167-coral.md) (i300A)
-* [MediaTek MT8183 EVB](boards/mt8183-evb.md) (i500)
-* [Pumpkin EVK - Smart Audio Edition](boards/mt8xxx-pumpkin.md) (i300B)
-* [Pumpkin EVK - Smart Hub Edition](boards/mt8xxx-pumpkin.md) (i300A)
+* [Google Coral](boards/i300a-coral.md) (i300A)
+* [MediaTek i500 EVB](boards/i500-evb.md) (i500)
+* [Pumpkin EVK - Smart Audio Edition](boards/i300-pumpkin.md) (i300B)
+* [Pumpkin EVK - Smart Hub Edition](boards/i300-pumpkin.md) (i300A)
 
 ## SoC supported
 * [MT8167](platforms/i300.md)

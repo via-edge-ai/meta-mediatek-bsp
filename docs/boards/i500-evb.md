@@ -1,24 +1,24 @@
-# MT8183 Evaluation Board
+# i500 Evaluation Board
 
-The MT8183 EVB is using the [i500 platform](../platforms/i500.md).
+The i500 EVB is using the [i500 platform](../platforms/i500.md).
 
 ## Building
 
-You can build an image for the MT8183 Evaluation Board by setting the
-`MACHINE` variable in your `local.conf` to `mt8183-evb`.
+You can build an image for the i500 Evaluation Board by setting the
+`MACHINE` variable in your `local.conf` to `i500-evb`.
 
-	MACHINE=mt8183-evb
+	MACHINE=i500-evb
 
 For full build instructions, please refer to the top level `README.md`.
 
 ## Displays
 
-The MT8183 Evaluation board supports three differents displays:
+The i500 Evaluation board supports three differents displays:
 * Sharp NT35532 (Red display)
 * TPV OTM1901A (Green display)
 * Truly R63350A (Yellow display)
 
-The default display when building with `MACHINE=mt8183-evb` is `Sharp NT35532`.
+The default display when building with `MACHINE=i500-evb` is `Sharp NT35532`.
 If your display on your evaluation board is different, you can add support to
 your display through device-tree overlays. In order to do so, you can add one
 of the following to the `KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD` in your

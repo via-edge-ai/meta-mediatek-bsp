@@ -13,9 +13,9 @@
 
 #
 # Machine Selection
-MACHINE ??= "mt8516-pumpkin"
-#MACHINE ??= "mt8167-pumpkin"
-#MACHINE ??= "mt8183-evb"
+MACHINE ??= "i300b-pumpkin"
+#MACHINE ??= "i300a-pumpkin"
+#MACHINE ??= "i500-evb"
 
 #
 # Where to place downloads
