@@ -16,6 +16,7 @@
 #MACHINE ??= "i300a-pumpkin"
 MACHINE ??= "i300b-pumpkin"
 #MACHINE ??= "i500-evb"
+#MACHINE ??= "i500-pumpkin"
 
 #
 # Where to place downloads

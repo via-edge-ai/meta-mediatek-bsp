@@ -7,6 +7,7 @@ The following boards are supported:
 * [MediaTek i500 EVB](boards/i500-evb.md) (i500)
 * [Pumpkin EVK - Smart Audio Edition](boards/i300-pumpkin.md) (i300B)
 * [Pumpkin EVK - Smart Hub Edition](boards/i300-pumpkin.md) (i300A)
+* [Pumpkin EVK - Smart Vision Edition](boards/i500-pumpkin.md) (i500)
 
 ## SoC supported
 * [MT8167](platforms/i300.md)

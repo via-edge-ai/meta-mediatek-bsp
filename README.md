@@ -6,6 +6,7 @@ The following machines are supported:
 * i300a-coral: Google Coral board.
 * i300a-pumpkin: Pumpkin board with MediaTek i300a.
 * i300b-pumpkin: Pumpkin board with MediaTek i300b.
+* i500-pumpkin: Pumpkin board with MediaTek i500.
 * i500-evb: Evaluation board for MediaTek i500.
 
 The machine by default is set to i300b-pumpkin. See [local.conf Options](#localconf-options) on how to change it.
