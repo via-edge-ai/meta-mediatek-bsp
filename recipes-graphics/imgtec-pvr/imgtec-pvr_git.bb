@@ -34,6 +34,7 @@ EXTRA_OEMAKE = ' \
 '
 
 do_configure[noexec] = "1"
+do_buildclean[noexec] = "1"
 do_package_qa[noexec] = "1"
 
 do_install() {
