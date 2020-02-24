@@ -15,7 +15,7 @@ LK_PROJECT = "pumpkin8516-emmc"
 
 DISTRO_FEATURES_append = " optee "
 
-IMGTEC_VERSION ??= "1.9ED4917962"
+IMGTEC_VERSION ??= "1.11@5516664"
 IMGTEC_FW ??= "rgx.fw.22.40.54.30"
 
 MACHINE_EXTRA_RRECOMMENDS_append = " \
