@@ -5,6 +5,8 @@ SUMMARY = "Imagination Technologies Binaries"
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=a4f7801866fbc4b8713aadccdf4da58d"
 
+DEPENDS += "wayland"
+
 PROVIDES = " \
 	virtual/egl \
 	virtual/libegl \
@@ -26,7 +28,7 @@ RPROVIDES_${PN} = " \
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/imgtec-pvr.git;protocol=ssh"
-SRCREV = "3d245cacdcd8840a75b73a251e7c728331b8fe43"
+SRCREV = "81f8cc23958f3a140406f9231ba2e28538d6f063"
 
 EXTRA_OEMAKE = ' \
 	IMGTEC_VERSION=${IMGTEC_VERSION} \
@@ -40,32 +42,19 @@ do_package_qa[noexec] = "1"
 do_install() {
 	oe_runmake install EXEC_PREFIX=${D}${exec_prefix} LIBDIR=${D}${libdir} \
 			NONARCH_BASE_LIBDIR=${D}${nonarch_base_libdir}
-	rm ${D}${libdir}/libwayland-egl.so*
-	rm ${D}${libdir}/pkgconfig/wayland-egl.pc
+	rm -f ${D}/usr/lib/libwayland-egl.so*
+	rm -f ${D}/usr/lib/pkgconfig/wayland-egl.pc
 }
 
-FILES_${PN} = "${libdir}/libGLESv2.so* \
-               ${libdir}/libGLESv1_CM_PVR_MESA.so* \
-               ${libdir}/libGLESv2_PVR_MESA.so* \
-               ${libdir}/libglslcompiler.so* \
-               ${libdir}/libpvr_dri_support.so* \
-               ${libdir}/libsrv_um.so* \
-               ${libdir}/libusc.so* \
-               ${libdir}/liboclcompiler.so* \
-               ${libdir}/libPVROCL.so* \
-               ${libdir}/libglapi.so* \
-               ${libdir}/libGLESv1_CM.so* \
-               ${libdir}/libEGL.so* \
-               ${libdir}/libgbm.so* \
-               ${libdir}/libufwriter.so \
-               ${libdir}/libPVRScopeServices.so \
+FILES_${PN} = "${libdir}/*.so* \
+               ${libdir}/dri/*.so \
                ${nonarch_base_libdir}/firmware/rgx.fw.22.40.54.30 \
-               ${exec_prefix}/local/lib/dri/pvr_dri.so"
+               ${exec_prefix}/local/lib/dri/*.so \
+               ${datadir}/mesa/* \
+               ${datadir}/drirc.d/*"
 
-FILES_${PN}-dev = "${libdir}/pkgconfig/egl.pc \
-                   ${libdir}/pkgconfig/gbm.pc \
-                   ${libdir}/pkgconfig/glesv2.pc  \
-                   ${libdir}/pkgconfig/glesv1_cm.pc \
+FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc \
+                   ${datadir}/pkgconfig/*.pc \
                    ${includedir}/EGL/* \
                    ${includedir}/KHR/* \
                    ${includedir}/GLES/* \
@@ -73,7 +62,8 @@ FILES_${PN}-dev = "${libdir}/pkgconfig/egl.pc \
                    ${includedir}/GLES3/* \
                    ${includedir}/CL/* \
                    ${includedir}/CL_HPP/* \
-                   ${includedir}/gbm.h"
+                   ${includedir}/gbm.h \
+                   ${includedir}/GL"
 
 INHIBIT_SYSROOT_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
