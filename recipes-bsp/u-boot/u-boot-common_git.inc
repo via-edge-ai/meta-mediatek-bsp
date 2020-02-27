@@ -13,3 +13,6 @@ PV = "v2020.01+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
+
+# FIXME: Drop this when migrating to Dunfell release
+inherit python3native
