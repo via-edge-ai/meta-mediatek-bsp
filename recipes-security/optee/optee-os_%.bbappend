@@ -1,4 +1,4 @@
-DEPENDS += "python3-pycrypto-native python3-pycryptodomex-native"
+DEPENDS += "python3-pycryptodomex-native"
 
 PV = "3.8.0+git${SRCPV}"
 SRCREV = "aa3f8997fcb2eefcb588db69a7158b51355d6985"
@@ -7,7 +7,3 @@ SRC_URI += "git://git@gitlab.com/baylibre/rich-iot/optee-os.git;protocol=ssh;bra
 
 OPTEEMACHINE = "${OPTEE_TARGET}"
 OPTEEOUTPUTMACHINE = "mediatek"
-
-EXTRA_OEMAKE += " \
-	PYTHONPATH=${PYTHON_SITEPACKAGES_DIR} \
-"

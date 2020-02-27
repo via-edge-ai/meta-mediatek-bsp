@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-DEPENDS += "python3-pycrypto-native python3-pycryptodomex-native"
+DEPENDS += "python3-pycryptodomex-native"
 
 PV = "3.8.0+git${SRCPV}"
 SRCREV = "30481e381cb4285706e7516853495a7699c93b2c"
