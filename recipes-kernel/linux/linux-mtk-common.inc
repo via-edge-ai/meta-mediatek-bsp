@@ -11,19 +11,27 @@ LINUX_VERSION_EXTENSION = "-mtk"
 S = "${WORKDIR}/git"
 
 SRC_URI_append = " \
-	file://defconfig \
-	file://usb_uvc.cfg \
+	file://usbnet.cfg \
 	${@bb.utils.contains('DISTRO_FEATURES', 'optee', 'file://optee.cfg', '', d)} \
 "
 
-SRC_URI_append_i500-evb = " file://it66121.cfg "
-
+# Board specific config fragments
+SRC_URI_append_mt8183-evb = " file://mt8183-evb.cfg "
+SRC_URI_append_mt8167-pumpkin = " file://mt8167-pumpkin.cfg "
+SRC_URI_append_mt8167-coral = " file://mt8167-coral.cfg "
 SRC_URI_append_i300-pumpkin = " \
+	file://i300-pumpkin.cfg \
 	${@bb.utils.contains('MACHINE_FEATURES', 'vesper-hat', 'file://vesper.cfg', '', d)} \
 "
 
+# SoC specific config fragments
+SRC_URI_append_mt8167 = " file://mt8167.cfg file://mt8516.cfg "
+SRC_URI_append_mt8183 = " file://mt8183.cfg "
+SRC_URI_append_mt8516 = " file://mt8516.cfg "
+
 KERNEL_EXTRA_ARGS = "Image.gz dtbs"
 KCONFIG_MODE = "--alldefconfig"
+KBUILD_DEFCONFIG = "defconfig"
 
 export DTC_FLAGS = '${@bb.utils.contains("DISTRO_FEATURES", "dtbo", "-@", "", d)}'
 
