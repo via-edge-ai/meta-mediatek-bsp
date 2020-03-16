@@ -127,8 +127,8 @@ These DISTRO_FEATURES can be added to the image by setting the variable in [loca
 ## MACHINE_FEATURES
 
 The layer is defining the following custom MACHINE_FEATURES:
-* `vesper-hat`: Enable the use of the vesper audio hat for the pumpkin board.
-* `screen`: Enable the use of the Raspberry PI display for the pumpkin board.
+* `vesper-hat`: Enable the use of the vesper audio hat for the i300 pumpkin board.
+* `screen`: Enable the use of the Raspberry PI display for the i300A pumpkin board.
 
 ## Known issues
 

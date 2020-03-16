@@ -1,4 +1,4 @@
-MACHINEOVERRIDES =. "pumpkin:"
+MACHINEOVERRIDES =. "i300-pumpkin:"
 
 # Kernel
 DTB_LOADADDRESS = "0x44000000"

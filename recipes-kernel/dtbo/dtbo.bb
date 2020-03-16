@@ -4,7 +4,7 @@
 SUMMARY = "Device-Tree Blob Overlays"
 inherit devicetree
 
-SRC_URI_append_pumpkin = " \
+SRC_URI_append_i300-pumpkin = " \
 	file://vesper.dts \
 "
 
