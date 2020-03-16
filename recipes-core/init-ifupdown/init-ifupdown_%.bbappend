@@ -7,12 +7,13 @@ SRC_URI_append = " \
 
 do_install_append() {
 	install -m 0644 ${WORKDIR}/interfaces ${D}${sysconfdir}/network/interfaces
+}
 
-	if [ "${MACHINE}" = "mt8516-pumpkin" ] || [ "${MACHINE}" = "mt8167-pumpkin" ]; then
-		if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', 'sysvinit', d)}" = "sysvinit" ]; then
-			install -m 0755 ${WORKDIR}/30-mt7668 ${D}${sysconfdir}/network/if-pre-up.d/
-		fi
+do_install_append_i300-pumpkin() {
+	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', 'sysvinit', d)}" = "sysvinit" ]; then
+		install -m 0755 ${WORKDIR}/30-mt7668 ${D}${sysconfdir}/network/if-pre-up.d/
 	fi
+
 }
 
 FILES_${PN} += " \
