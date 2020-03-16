@@ -32,12 +32,12 @@ do_install_append() {
 		${D}${sysconfdir}/init.d/usbgadget-net.sh
 	sed -i -e "s,@USB_GADGET_FUNCTION@,${USB_GADGET_FUNCTION},g" \
 		${D}${systemd_unitdir}/usbgadget-net.sh
+}
 
-	if [ "${MACHINE}" = "mt8516-pumpkin" ] || [ "${MACHINE}" = "mt8167-pumpkin" ]; then
-		if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', 'sysvinit', d)}" = "sysvinit" ]; then
-			install -d ${D}${sysconfdir}/modprobe.d
-			install -m 0644 ${WORKDIR}/mt7668.conf ${D}${sysconfdir}/modprobe.d/
-		fi
+do_install_append_i300-pumpkin() {
+	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', 'sysvinit', d)}" = "sysvinit" ]; then
+		install -d ${D}${sysconfdir}/modprobe.d
+		install -m 0644 ${WORKDIR}/mt7668.conf ${D}${sysconfdir}/modprobe.d/
 	fi
 }
 
