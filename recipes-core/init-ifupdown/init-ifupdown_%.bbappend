@@ -1,13 +1,8 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI_append = " \
-	file://interfaces \
 	file://30-mt7668 \
 "
-
-do_install_append() {
-	install -m 0644 ${WORKDIR}/interfaces ${D}${sysconfdir}/network/interfaces
-}
 
 do_install_append_i300-pumpkin() {
 	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', 'sysvinit', d)}" = "sysvinit" ]; then
