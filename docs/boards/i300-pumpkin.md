@@ -32,6 +32,15 @@ HDMI is working by default if you set `MACHINE=i300a-pumpkin`. If you wish to us
 
 Warning: Adding `screen` as MACHINE_FEATURES requires you to plug the 7-inch Raspberry Pi touch display to the i300A pumpkin board. Failing to connect it will prevent HDMI from working. If you only want HDMI, you should not add `screen`.
 
+## Audio
+
+By default, the pumpkin board ouputs audio on the jack connector.
+It is possible to output the audio on the mt6392 PMIC mono lineout as well. To enable this output, you will need to change one of the alsa settings using the following command:
+	amixer set -c mtsndcard 'Codec_Loopback_Select',0 CODEC_LOOPBACK_DMIC_TO_SPK
+Note that setting any loopback to the speaker will work.
+In order to disable this audio output, simply disable the loopback by using the following command:
+	amixer set -c mtsndcard 'Codec_Loopback_Select',0 CODEC_LOOPBACK_NONE
+
 ## Device-Tree Overlays (DTBO)
 
 The following Device-Tree Overlays are supported:
