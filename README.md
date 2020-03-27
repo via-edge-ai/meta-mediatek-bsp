@@ -53,9 +53,9 @@ To flash just one partition, you can run the following command:
     $ fastboot continue
 
 [PARTITION] should be replaced with one of the following:
-    - *bootloaders*: for flashing the bootloaders (bl31, OP-TEE, and u-boot)
-    - *kernel*: for flashing the Linux Kernel (fitImage).
-    - *rootfs*: for flashing the root filesystem (mtk-image-i300b-pumpkin.ext4).
+- *bootloaders*: for flashing the bootloaders (bl31, OP-TEE, and u-boot)
+- *kernel*: for flashing the Linux Kernel (fitImage).
+- *rootfs*: for flashing the root filesystem (mtk-image-i300b-pumpkin.ext4).
 
 For example, the commands to flash the kernel are:
 
