@@ -3,7 +3,7 @@
 
 include tf-a-common.inc
 
-DEPENDS_append = " coreutils-native "
+DEPENDS_append = " coreutils-native u-boot-tools-native "
 
 SRC_URI = " \
 	git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware-private.git;name=tf-a;branch=mtk-v2.2-full;protocol=ssh \
@@ -16,11 +16,6 @@ SRCREV_mbedtls = "mbedtls-2.16.2"
 PV_tf-a="2.2+git${SRCPV}"
 
 SRC_URI += "						\
-	file://key.ini			\
-	file://gfh_conf.ini			\
-	file://mtk-pbp-tools		\
-	file://dev-info-hdr-tool.py	\
-	file://root_prvk.pem		\
 	file://rot_key.pem \
 "
 
@@ -71,13 +66,10 @@ do_compile() {
 }
 
 do_gen_bl2_img() {
-	cp ${B}/${TFA_PLAT}/release/bl2.bin ${B}/bl2.img
-	truncate -s%4 ${B}/bl2.img
-	python ${WORKDIR}/mtk-pbp-tools/pbp.py -g ${WORKDIR}/gfh_conf.ini \
-		   -i ${WORKDIR}/key.ini -func sign \
-		   -o ${B}/bl2.img ${B}/bl2.img
-	python ${WORKDIR}/dev-info-hdr-tool.py emmc ${B}/bl2.img \
-												${B}/bl2.img
+	cp ${B}/${TFA_PLAT}/release/bl2.bin ${B}/bl2.img.tmp
+	truncate -s%4 ${B}/bl2.img.tmp
+	uboot-mkimage -T mtk_image -a 0x201000 -e 0x201000 -n "media=emmc;aarch64=1" \
+			-d ${B}/bl2.img.tmp ${B}/bl2.img
 }
 
 do_deploy_append() {
