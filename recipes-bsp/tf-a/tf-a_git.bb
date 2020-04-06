@@ -3,7 +3,7 @@
 
 include tf-a-common.inc
 
-inherit distro_features_check
+inherit features_check
 # optee is required because the bl2 binary requires it, and if we don't
 # provide it, we won't be able to boot
 REQUIRED_DISTRO_FEATURES = "optee"
