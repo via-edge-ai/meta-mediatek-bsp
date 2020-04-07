@@ -1,4 +1,8 @@
 HOMEPAGE = "http://www.denx.de/wiki/U-Boot/WebHome"
+DESCRIPTION = "U-Boot, a boot loader for Embedded boards based on PowerPC, \
+ARM, MIPS and several other processors, which can be installed in a boot \
+ROM and used to initialize and test the hardware or to download and run \
+application code."
 SECTION = "bootloaders"
 DEPENDS += "flex-native bison-native"
 
@@ -9,7 +13,8 @@ PE = "1"
 SRCREV = "31afd9c340a9402418792082b9feb9519321b65a"
 SRC_URI = "git://git@gitlab.com/baylibre/pumpkin/u-boot.git;branch=mtk-v2020.01;protocol=ssh"
 
-PV = "v2020.01+git${SRCPV}"
+PV = "2020.01+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
+do_configure[cleandirs] = "${B}"
