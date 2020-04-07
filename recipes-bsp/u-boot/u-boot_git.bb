@@ -3,6 +3,10 @@ require recipes-bsp/u-boot/u-boot.inc
 
 DEPENDS += "bc-native dtc-native"
 
+SRC_URI += " \
+	file://fw_env.config \
+"
+
 UBOOT_MAKE_TARGET_append = " u-boot-initial-env "
 
 do_deploy() {
