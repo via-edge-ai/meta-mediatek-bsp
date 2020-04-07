@@ -7,11 +7,7 @@ SRC_URI += " \
 	file://fw_env.config \
 "
 
-UBOOT_MAKE_TARGET_append = " u-boot-initial-env "
-
-do_deploy() {
-	install -m 0644 ${B}/u-boot-initial-env ${DEPLOYDIR}
-
+do_deploy_append() {
 	boot_conf=`echo "boot_conf=#conf@${KERNEL_DEVICETREE}" | tr '/' '_'`
 
 	for dtbo in ${KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD};
