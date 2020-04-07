@@ -1,3 +1,5 @@
+DEPENDS += "python3-pycryptodomex-native"
+
 INSANE_SKIP_${PN} = "ldflags"
 
 PV = "3.8.0+git${SRCPV}"
