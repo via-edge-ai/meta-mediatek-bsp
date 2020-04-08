@@ -13,8 +13,8 @@
 
 #
 # Machine Selection
-MACHINE ??= "i300b-pumpkin"
 #MACHINE ??= "i300a-pumpkin"
+MACHINE ??= "i300b-pumpkin"
 #MACHINE ??= "i500-evb"
 
 #
@@ -226,27 +226,46 @@ PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
 # this doesn't mean anything to you.
 CONF_VERSION = "1"
 
-DISTRO_FEATURES = " \
-	alsa \
-	bluetooth \
-	bluez5 \
-	ipv4 \
-	ipv6 \
-	usbgadget \
-	wifi \
-	zeroconf \
-"
-
+# Additional DISTRO_FEATURES
 DISTRO_FEATURES_append = " \
 	wayland \
 	opengl \
 	pam \
-	kmscube \
 "
 
-USE_VT = "1"
+# Change the prefered kernel version.
+# PREFERRED_VERSION_linux-mtk = "4.19%"
+
+# Device-Tree overlays to autoload at boot. Device-Tree overlays are used to
+# customized features at build time. For instance not all the i500-evb
+# board have the same display. The device-tree overlay allows to choose
+# which display will be loaded at boot time.
+# Loading the wrong device-tree overlay for a specific hardware will result
+# in a non-working functionality.
+#
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-evb += "panel-tpv-otm1901a.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-evb += "panel-truly-r63350a.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "rpi-display.dtbo"
+
+# i300A's IMG technology binaries generated to not support yet x11 or vulkan
+DISTRO_FEATURES_remove_i300a = "x11 vulkan"
+
+# Name exported by avahi and used to connect to the board.
+# By default the hostname is equal to `MACHINE`. In case several board with
+# the same machine runs on the same network, it is recommended to have an unique
+# hostname for each board. The hostname can either be changed in /etc/hosts
+# or at build by redefining the following variable.
+#hostname_pn-base-files = "myboard"
 
 # USB Gadget function to use to export an ethernet device over USB.
 # Options: ecm, rndis.
 # Note: ecm does not work well with all version of Windows
 #USB_GADGET_FUNCTION = "ecm"
+
+# TAR rootfs can be enabled to provide NFS rootfs.
+# IMAGE_FSTYPES_append = " tar "
+
+# By default the rootfs will just be big enough to fit its content. If you
+# need more space you can set the IMAGE_ROOTFS_EXTRA_SPACE variable to set
+# how much space in kB you need.
+IMAGE_ROOTFS_EXTRA_SPACE = "200000"
