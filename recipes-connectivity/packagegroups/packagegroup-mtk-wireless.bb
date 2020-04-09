@@ -16,7 +16,6 @@ BT_PKGS = " \
 "
 
 RDEPENDS_${PN} = " \
-	${BT_PKGS} \
 	${@bb.utils.contains("DISTRO_FEATURES", "wifi", "${WIFI_PKGS}", "", d)} \
 	${@bb.utils.contains("DISTRO_FEATURES", "bluetooth", "${BT_PKGS}", "", d)} \
 "
