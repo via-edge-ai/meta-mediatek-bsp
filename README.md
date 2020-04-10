@@ -42,7 +42,7 @@ The machine by default is set to i300b-pumpkin. See [local.conf Options](#localc
 Once you see *Waiting for DA mode*:
 1) press the *reset* and *volume up* buttons **simultaneously**
 2) then release only the *reset* button
-3) release the *volume* button once you see that the image is getting flashed.
+3) release the *volume up* button once you see that the image is getting flashed.
 
 ### Flash only one partition
 
