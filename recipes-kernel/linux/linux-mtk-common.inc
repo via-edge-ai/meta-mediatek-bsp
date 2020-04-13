@@ -13,8 +13,12 @@ S = "${WORKDIR}/git"
 SRC_URI_append = " \
 	file://defconfig \
 	file://usb_uvc.cfg \
-	${@bb.utils.contains('MACHINE_FEATURES', 'screen', 'file://ts_ft5x06.cfg', '', d)} \
 	${@bb.utils.contains('DISTRO_FEATURES', 'optee', 'file://optee.cfg', '', d)} \
+"
+
+SRC_URI_append_i500-evb = " file://it66121.cfg "
+
+SRC_URI_append_i300-pumpkin = " \
 	${@bb.utils.contains('MACHINE_FEATURES', 'vesper-hat', 'file://vesper.cfg', '', d)} \
 "
 
