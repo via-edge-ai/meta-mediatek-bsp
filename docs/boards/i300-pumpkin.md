@@ -37,11 +37,16 @@ Warning: Adding `rpi-display.dtbo` to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD requir
 ## Audio
 
 By default, the pumpkin board ouputs audio on the jack connector.
-It is possible to output the audio on the mt6392 PMIC mono lineout as well. To enable this output, you will need to change one of the alsa settings using the following command:
-	amixer set -c mtsndcard 'Codec_Loopback_Select',0 CODEC_LOOPBACK_DMIC_TO_SPK
-Note that setting any loopback to the speaker will work.
+
+It is possible to output the audio on the MT6392 PMIC mono lineout as well. To enable this output, you will need to change one of the alsa settings using the following command:
+
+	$ amixer set -c mtsndcard 'Codec_Loopback_Select',0 CODEC_LOOPBACK_DMIC_TO_SPK
+
+Setting any loopback to the speaker will work.
+
 In order to disable this audio output, simply disable the loopback by using the following command:
-	amixer set -c mtsndcard 'Codec_Loopback_Select',0 CODEC_LOOPBACK_NONE
+
+	$ amixer set -c mtsndcard 'Codec_Loopback_Select',0 CODEC_LOOPBACK_NONE
 
 ## Device-Tree Overlays (DTBO)
 
