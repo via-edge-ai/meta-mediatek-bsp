@@ -28,9 +28,11 @@ The i300A Pumpkin support HDMI and the [7-inch Raspberry Pi touch display](https
 
 HDMI is working by default if you set `MACHINE=i300a-pumpkin`. If you wish to use the 7-inch Raspberry Pi touch display, you need to add the following to your `local.conf`:
 
-	MACHINE_FEATURES_append = " screen "
+	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
+		rpi-display.dtbo \
+	"
 
-Warning: Adding `screen` as MACHINE_FEATURES requires you to plug the 7-inch Raspberry Pi touch display to the i300A pumpkin board. Failing to connect it will prevent HDMI from working. If you only want HDMI, you should not add `screen`.
+Warning: Adding `rpi-display.dtbo` to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD requires you to plug the 7-inch Raspberry Pi touch display to the i300A pumpkin board. Failing to connect it will prevent HDMI from working. If you only want HDMI, you should not add `rpi-display.dtbo`.
 
 ## Audio
 
