@@ -28,3 +28,5 @@ PREFERRED_PROVIDER_virtual/libgbm ?= "imgtec-pvr"
 PREFERRED_PROVIDER_virtual/libgl ?= "imgtec-pvr"
 PREFERRED_PROVIDER_virtual/libgles2 ?= "imgtec-pvr"
 PREFERRED_PROVIDER_virtual/mesa ?= "imgtec-pvr"
+
+MACHINEOVERRIDES =. "mt8362:mt8362a:i300:i300a:"

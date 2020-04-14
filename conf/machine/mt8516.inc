@@ -12,3 +12,5 @@ OPTEE_TARGET = "mediatek-mt8516"
 
 
 DISTRO_FEATURES_append = " optee "
+
+MACHINEOVERRIDES =. "mt8362:mt8362b:i300:i300b:"
