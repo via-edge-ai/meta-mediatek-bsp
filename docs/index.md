@@ -20,3 +20,4 @@ The following boards are supported:
 
 ## Other
 * [Frequently Asked Questions](faq.md)
+* [Working with the BSP](development.md)
