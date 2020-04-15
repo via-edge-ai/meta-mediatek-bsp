@@ -22,6 +22,52 @@
 				tdmadc-1p8v-supply = <&mt6392_vcn18_reg>;
 				tdmadc-3p3v-supply = <&mt6392_vmch_reg>;
 				mediatek,tdmin-adc = <&pcm1865_u12>, <&pcm1865_u13>;
+
+				dai-link-0 {
+					sound-dai = <&afe>;
+					dai-link-name = "TDM Capture";
+					dai-format = "tdm";
+
+					codec-0 {
+						sound-dai = <&pcm1865_u12>;
+						tdm-mask = <0x0f>;
+					};
+
+					codec-1 {
+						sound-dai = <&pcm1865_u13>;
+						tdm-mask = <0xc0>;
+					};
+
+					codec-2 {
+						sound-dai = <&tvl320adc3101_u18>;
+						tdm-mask = <0x30>;
+					};
+				};
+
+				dai-link-1 {
+					sound-dai = <&afe>;
+					dai-link-name = "TDM Capture 6.1";
+					dai-format = "tdm";
+
+					codec-0 {
+						sound-dai = <&pcm1865_u12>;
+						tdm-mask = <0x0f>;
+					};
+
+					codec-1 {
+						sound-dai = <&pcm1865_u13>;
+						tdm-mask = <0xf0>;
+					};
+				};
+
+				dai-link-2 {
+					sound-dai = <&afe>;
+					dai-link-name = "I2S BE";
+
+					codec-0 {
+						sound-dai = <&pcm5242_u14>;
+					};
+				};
 			};
 		};
 	};
@@ -45,6 +91,7 @@
 				compatible = "ti,pcm1865";
 				sound-name-prefix = "U12_";
 				reg = <0x4a>;
+				#sound-dai-cells = <0>;
 				adc1-left-input-select = <0x10>;
 				adc1-right-input-select = <0x10>;
 				adc2-left-input-select = <0x20>;
@@ -60,6 +107,7 @@
 				compatible = "ti,pcm1865";
 				sound-name-prefix = "U13_";
 				reg = <0x4b>;
+				#sound-dai-cells = <0>;
 				adc1-left-input-select = <0x10>;
 				adc1-right-input-select = <0x10>;
 				adc2-left-input-select = <0x20>;
@@ -75,6 +123,7 @@
 				compatible = "ti,tlv320adc3101";
 				sound-name-prefix = "U18_";
 				reg = <0x18>;
+				#sound-dai-cells = <0>;
 				rst-gpio = <&pio 34 0>;
 				left-pin-select = <1>;
 				right-pin-select = <1>;
@@ -88,7 +137,7 @@
 				compatible = "ti,pcm5142";
 				sound-name-prefix = "VPB_";
 				reg = <0x4c>;
-
+				#sound-dai-cells = <0>;
 				AVDD-supply = <&pcm1865_3v3>;
 				DVDD-supply = <&pcm1865_3v3>;
 				CPVDD-supply = <&pcm1865_3v3>;
