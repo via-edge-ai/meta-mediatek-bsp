@@ -10,6 +10,7 @@ TFA_PLAT = "mt8516"
 # OP-TEE
 OPTEE_TARGET = "mediatek-mt8516"
 
+USE_VT = "0"
 
 DISTRO_FEATURES_append = " optee "
 
