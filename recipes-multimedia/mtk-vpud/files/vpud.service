@@ -1,0 +1,8 @@
+[Unit]
+Description=MediaTek VPUD daemon
+
+[Service]
+ExecStart=/usr/bin/vpud
+
+[Install]
+WantedBy=multi-user.target
