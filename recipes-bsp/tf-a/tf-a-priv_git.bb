@@ -6,14 +6,14 @@ include tf-a-common.inc
 DEPENDS_append = " coreutils-native u-boot-tools-native "
 
 SRC_URI = " \
-	git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware-private.git;name=tf-a;branch=mtk-v2.2-full;protocol=ssh \
-	git://github.com/ARMmbed/mbedtls.git;name=mbedtls;destsuffix=mbedtls;protocol=git \
+	git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware-private.git;name=tf-a;branch=mtk-v2.3-full;protocol=ssh \
+	git://github.com/ARMmbed/mbedtls.git;name=mbedtls;destsuffix=mbedtls;nobranch=1 \
 "
 
-SRCREV_tf-a = "91c734302516f17f387bb29d202dd7e81250f29c"
-SRCREV_mbedtls = "mbedtls-2.16.2"
+SRCREV_tf-a = "ee5c7209907338ea8943f282c557f74e792dc865"
+SRCREV_mbedtls = "mbedtls-2.18.0"
 
-PV_tf-a="2.2+git${SRCPV}"
+PV_tf-a="2.3+git${SRCPV}"
 
 SRC_URI += "						\
 	file://rot_key.pem \
@@ -34,7 +34,6 @@ CFLAGS_append = ' \
 CFLAGS_append_mt8183 = " \
 	-Wno-error=unused-const-variable \
 	-Wno-error=unused-value \
-	-Wno-error=enum-compare \
 	-Wno-error=int-to-pointer-cast \
 	-Wno-error=return-type \
 	-Wno-error=pointer-sign \
