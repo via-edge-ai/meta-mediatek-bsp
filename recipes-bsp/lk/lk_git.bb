@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=ba5e70cccfd7c167a0ace6a1eb1d5457 \
                     file://dramk_8516/dram/LICENCE;md5=c37bc3b99197620e07a34c5375b2700a"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/mtk-lk.git;protocol=ssh;branch=fparent/coral"
-SRCREV = "20d6c23c8e593d23ba72834f53d8c1288d3ff4a2"
+SRCREV = "00e069f0cdcad7a8321f7f22ad6fcff63f12be1a"
 
 SRC_URI += "						\
 	file://blob.h				\
