@@ -7,4 +7,5 @@ inherit packagegroup
 
 RDEPENDS_${PN}_mt8167 = " \
 	mtk-mdpd \
+	mtk-vpud \
 "
