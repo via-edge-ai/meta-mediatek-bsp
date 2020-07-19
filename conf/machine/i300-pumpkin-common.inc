@@ -20,7 +20,7 @@ TFA_BOARD_NAME = "pumpkin"
 # LK
 LK_PROJECT = "pumpkin8516-emmc"
 
-MACHINE_FEATURES_append = " alsa bluetooth usbgadget wifi"
+MACHINE_FEATURES_append = " alsa bluetooth usbgadget usbhost wifi"
 
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS = " \
 	packagegroup-mtk-wireless \
