@@ -21,6 +21,10 @@ SRC_URI_append_mt8183-evb = " \
 	file://panel-truly-r63350a.dts \
 "
 
+SRC_URI_append_mt8183-pumpkin = " \
+	file://panel-urt-umo9465md.dts \
+"
+
 DT_FILES_PATH = "${WORKDIR}"
 
 COMPATIBLE_MACHINE = "mt*"
