@@ -81,3 +81,82 @@ not supported yet. You can see the configuration below:
 +-----------------------+------------------+
 | Server (Your machine) | 192.168.96.20/24 |
 +-----------------------+------------------+
+
+Building Linux outside of Yocto
+-------------------------------
+
+When making changes to the Linux kernel, it can be useful to build it outside
+of yocto. This allow to quickly do build changes without having to rebuild the
+full kernel everytime. This section describes how to build a fitImage that
+can be flashed or downloaded via TFTP boot without yocto.
+
+Setting up the environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A few variables need to be defined in order to run the commands below to build
+the kernel.
+
+.. prompt:: bash $
+
+	MACHINE=i500-pumpkin
+	RITYDIR=/path/to/rich-iot
+	IMAGENAME=core-image-weston
+	export ARCH=arm64
+	export CROSS_COMPILE=aarch64-linux-gnu-
+	export DTC_FLAGS=-@
+
+Please modify `MACHINE`, `RITYDIR`, `IMAGE` and `CROSS_COMPILE` to fit
+your setup.
+
+Cloning Linux
+^^^^^^^^^^^^^
+
+.. prompt:: bash $
+
+	git clone git@gitlab.com:baylibre/rich-iot/linux.git
+
+Alternatively if you already have a Linux repository cloned, you can add
+the `rich-iot` remote:
+
+.. prompt:: bash $
+
+	 cd /path/to/linux
+	 git remote add rich-iot git@gitlab.com:baylibre/rich-iot/linux.git
+
+Installing .config file
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The kernel configuration used by yocto is a merge of the Linux ARM64 defconfig
+and config fragments that can be found in `recipes-kernel/linux/linux-mtk`.
+To install the generated yocto defconfig you can run the following commands:
+
+.. prompt:: bash $ auto
+
+	$cd linux
+	$$RITYDIR/src/meta-mediatek-bsp/scripts/copy_kernel_config.sh $RITYDIR $MACHINE $IMAGENAME
+	Copying kernel config to i500-pumpkin-config...
+	$mv i500-pumpkin-config .config
+
+The commands above will retrieve the `.config` from the existing i500-pumpkin
+build and copy it at the root of your linux repository.
+
+Generating the image-tree script
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+fitImage are created using image-tree scripts (its). A template exists
+under `docs/kernel-fitimage.its`.
+
+In order to generate the correct image-tree script for the MACHINE you are using,
+please run the following command:
+
+.. prompt:: bash $
+
+	$RITYDIR/src/meta-mediatek-bsp/scripts/generate_kernel_its.sh $RITYDIR $MACHINE $IMAGENAME
+
+Building the kernel fitImage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. prompt:: bash $
+
+	make
+	mkimage -f $MACHINE.its fitImage
