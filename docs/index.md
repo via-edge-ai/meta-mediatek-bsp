@@ -4,6 +4,7 @@
 
 The following boards are supported:
 * [Google Coral](boards/i300a-coral.md) (i300A)
+* [Innocomm SB30](boards/i300a-sb30.md) (i300A)
 * [MediaTek i500 EVB](boards/i500-evb.md) (i500)
 * [Pumpkin EVK - Smart Audio Edition](boards/i300-pumpkin.md) (i300B)
 * [Pumpkin EVK - Smart Hub Edition](boards/i300-pumpkin.md) (i300A)
