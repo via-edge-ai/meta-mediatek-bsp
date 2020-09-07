@@ -19,6 +19,7 @@ SRC_URI_append = " \
 SRC_URI_append_mt8183-pumpkin = " file://mt8183-pumpkin.cfg "
 SRC_URI_append_mt8183-evb = " file://mt8183-evb.cfg "
 SRC_URI_append_mt8167-pumpkin = " file://mt8167-pumpkin.cfg "
+SRC_URI_append_mt8167-sb30 = " file://mt8167-sb30.cfg "
 SRC_URI_append_mt8167-coral = " file://mt8167-coral.cfg "
 SRC_URI_append_i300-pumpkin = " \
 	file://i300-pumpkin.cfg \
