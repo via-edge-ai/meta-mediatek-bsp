@@ -248,6 +248,7 @@ DISTRO_FEATURES_append = " \
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-evb += "panel-tpv-otm1901a.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-evb += "panel-truly-r63350a.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "rpi-display.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-sb30 += "mt8167-sb30_rpi-display.dtbo"
 
 # i300A's IMG technology binaries generated to not support yet x11 or vulkan
 DISTRO_FEATURES_remove_i300a = "x11 vulkan"
