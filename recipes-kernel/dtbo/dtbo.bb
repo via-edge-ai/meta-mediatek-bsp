@@ -10,6 +10,7 @@ SRC_URI_append_i300-pumpkin = " \
 
 SRC_URI_append_mt8167-pumpkin = " \
 	file://rpi-display.dts \
+	file://panel-avd-tt70ws-cn-134-a.dts \
 "
 
 SRC_URI_append_mt8167-sb30 = " \

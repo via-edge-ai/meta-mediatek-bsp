@@ -251,6 +251,7 @@ DISTRO_FEATURES_append = " \
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "panel-urt-umo9465md.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "mt8183-pumpkin-ar0330.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "rpi-display.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "panel-avd-tt70ws-cn-134-a.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-sb30 += "mt8167-sb30_rpi-display.dtbo"
 
 # i300A & i500 do not support x11 or vulkan yet

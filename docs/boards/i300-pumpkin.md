@@ -34,6 +34,12 @@ HDMI is working by default if you set `MACHINE=i300a-pumpkin`. If you wish to us
 
 Warning: Adding `rpi-display.dtbo` to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD requires you to plug the 7-inch Raspberry Pi touch display to the i300A pumpkin board. Failing to connect it will prevent HDMI from working. If you only want HDMI, you should not add `rpi-display.dtbo`.
 
+The i300A Pumpkin also supports the AVD-TT70WS-CN-134-A touch display. If you wish to use it, you need to add the following to your `local.conf`:
+
+	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
+		avd-tt70ws-cn-134-a.dtbo \
+	"
+
 ## Audio
 
 By default, the pumpkin board ouputs audio on the jack connector.
@@ -52,6 +58,7 @@ In order to disable this audio output, simply disable the loopback by using the 
 
 The following Device-Tree Overlays are supported:
 * `rpi-display.dtbo`: Raspberry Pi touch display (see [Displays](#displays) section)
+* `panel-avd-tt70ws-cn-134-a.dtbo`: AVD-TT70WS-CN-134-A touch display module (see [Displays](#displays) section)
 
 ## Limitations
 
