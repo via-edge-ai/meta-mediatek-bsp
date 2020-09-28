@@ -248,6 +248,7 @@ DISTRO_FEATURES_append = " \
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-evb += "panel-tpv-otm1901a.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-evb += "panel-truly-r63350a.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "panel-urt-umo9465md.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "mt8183-pumpkin-ar0330.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "rpi-display.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-sb30 += "mt8167-sb30_rpi-display.dtbo"
 

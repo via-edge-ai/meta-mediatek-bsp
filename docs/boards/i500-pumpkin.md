@@ -28,10 +28,23 @@ plug the DSI display to the pumpkin board. Failing to connect it will
 prevent HDMI from working. If you only want HDMI, you should not add the dtbo
 to your `local.conf`.
 
+## Cameras
+
+The i500 Pumpkin board supports the following csi camera sensor:
+* Onsemi AR0330CS
+
+If you wish to use the AR0330CS camera, you need to add the following to your
+`local.conf`:
+
+	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
+		mt8183-pumpkin-ar0330.dtbo \
+	"
+
 ## Device-Tree Overlays (DTBO)
 
 The following Device-Tree Overlays are supported:
 * `panel-urt-umo-9465md.dtbo`: URT UMO display (see [Displays](#displays) section)
+* `mt8183-pumpkin-ar0330.dtbo`: AR0330CS camera (see [Cameras](#cameras) section)
 
 ## Limitations
 
