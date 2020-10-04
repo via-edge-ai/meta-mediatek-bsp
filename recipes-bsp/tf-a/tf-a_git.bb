@@ -10,7 +10,7 @@ REQUIRED_DISTRO_FEATURES = "optee"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware.git;branch=mtk-v2.3;protocol=ssh"
 
-SRCREV = "47e0f24ce38ccd550ca719c5cc7a511bfa0b2460"
+SRCREV = "698e8df1a5975675d118792d5529eb9311206385"
 PV="2.3+git${SRCPV}"
 
 do_compile() {
