@@ -16,7 +16,7 @@ IMAGE_ROOTFS_ALIGNMENT = "4"
 SERIAL_CONSOLES = "921600;ttyS0"
 
 WKS_FILE ?= "mediatek.wks"
-do_image_wic[depends] += "virtual/tf-a:do_deploy linux-mtk:do_deploy"
+do_image_wic[depends] += "virtual/tf-a:do_deploy virtual/kernel:do_deploy"
 
 PREFERRED_PROVIDER_virtual/kernel ??= "linux-mtk"
 PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot"
