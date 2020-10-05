@@ -13,6 +13,7 @@
 
 #
 # Machine Selection
+#MACHINE ??= "i300a-coral"
 #MACHINE ??= "i300a-pumpkin"
 #MACHINE ??= "i300a-sb30"
 MACHINE ??= "i300b-pumpkin"
