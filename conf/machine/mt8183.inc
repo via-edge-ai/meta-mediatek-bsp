@@ -31,4 +31,6 @@ PREFERRED_PROVIDER_virtual/libgles1 ?= "libmali"
 PREFERRED_PROVIDER_virtual/libgles2 ?= "libmali"
 PREFERRED_PROVIDER_virtual/mesa ?= "libmali"
 
+PREFERRED_VERSION_weston = "4.0%"
+
 MACHINEOVERRIDES =. "mt8385:i500:"

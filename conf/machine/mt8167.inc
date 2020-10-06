@@ -29,4 +29,6 @@ PREFERRED_PROVIDER_virtual/libgl ?= "imgtec-pvr"
 PREFERRED_PROVIDER_virtual/libgles2 ?= "imgtec-pvr"
 PREFERRED_PROVIDER_virtual/mesa ?= "imgtec-pvr"
 
+PREFERRED_VERSION_weston = "8.0%"
+
 MACHINEOVERRIDES =. "mt8362:mt8362a:i300:i300a:"
