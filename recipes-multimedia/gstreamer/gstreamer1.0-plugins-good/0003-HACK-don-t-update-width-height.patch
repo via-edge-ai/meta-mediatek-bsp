@@ -1,0 +1,36 @@
+From 00faa73ea80fad201673175bd535f1432037311d Mon Sep 17 00:00:00 2001
+From: Fabien Parent <fparent@baylibre.com>
+Date: Sat, 3 Oct 2020 12:41:58 +0200
+Subject: [PATCH 3/3] HACK: don't update width/height
+
+mtk-vcodec adds some padding to the video and make the frame size larger than
+initially requested by gstreamer. The two lines would force to use the
+negociated size.
+We cannot use the negociated size because MDP is used afterwards to convert
+the video format from MT21 to something actually usable. The frame size must
+contains the padding otherwise MDP is confused and generates blank output
+frames.
+
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ sys/v4l2/gstv4l2object.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sys/v4l2/gstv4l2object.c b/sys/v4l2/gstv4l2object.c
+index 21efbf5db0a4..3af45e492f15 100644
+--- a/sys/v4l2/gstv4l2object.c
++++ b/sys/v4l2/gstv4l2object.c
+@@ -3965,8 +3965,8 @@ gst_v4l2_object_acquire_format (GstV4l2Object * v4l2object, GstVideoInfo * info)
+     align.padding_top = r->top;
+     align.padding_right = width - r->width - r->left;
+     align.padding_bottom = height - r->height - r->top;
+-    width = r->width;
+-    height = r->height;
++    //width = r->width;
++    //height = r->height;
+   }
+ 
+   gst_video_info_set_format (info, format, width, height);
+-- 
+2.28.0
+

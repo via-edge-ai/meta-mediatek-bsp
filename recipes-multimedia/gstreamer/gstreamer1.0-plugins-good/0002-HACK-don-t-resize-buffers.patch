@@ -1,0 +1,32 @@
+From d14be52f9e5ebd00a9f0215e88db9b1e4e298657 Mon Sep 17 00:00:00 2001
+From: Fabien Parent <fparent@baylibre.com>
+Date: Fri, 7 Aug 2020 11:10:01 +0200
+Subject: [PATCH 2/3] HACK: don't resize buffers
+
+Gstreamer get's confused about the size of the buffer being bigger that the
+smaller frame size and quit early. The resize is not necessary since the driver
+already did the resize and that's actually what confused gstreamer.
+
+This issue probably need to be fixed in the mtk-vcodec driver.
+
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ sys/v4l2/gstv4l2allocator.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sys/v4l2/gstv4l2allocator.c b/sys/v4l2/gstv4l2allocator.c
+index 05bde3d2a5ae..d2ef4d669752 100644
+--- a/sys/v4l2/gstv4l2allocator.c
++++ b/sys/v4l2/gstv4l2allocator.c
+@@ -1374,7 +1374,7 @@ gst_v4l2_allocator_dqbuf (GstV4l2Allocator * allocator,
+       }
+ 
+       if (G_LIKELY (size + offset <= group->mem[i]->maxsize))
+-        gst_memory_resize (group->mem[i], offset, size);
++        ;//gst_memory_resize (group->mem[i], offset, size);
+       else {
+         GST_WARNING_OBJECT (allocator,
+             "v4l2 provided buffer that is too big for the memory it was "
+-- 
+2.28.0
+
