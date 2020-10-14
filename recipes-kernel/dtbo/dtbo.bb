@@ -17,6 +17,10 @@ SRC_URI_append_mt8167-sb30 = " \
 	file://mt8167-sb30_rpi-display.dts \
 "
 
+SRC_URI_append_mt8167-coral = " \
+	file://mt8167-coral-ov5645.dts \
+"
+
 SRC_URI_append_mt8183-evb = " \
 	file://panel-tpv-otm1901a.dts \
 	file://panel-truly-r63350a.dts \
