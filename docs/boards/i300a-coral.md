@@ -17,6 +17,23 @@ You can build an image for the Google Coral Board by setting the
 
 For full build instructions, please refer to the top level `README.md`.
 
+## Cameras
+
+The Google Coral Board supports the following csi camera sensor:
+* Omnivision ov5645
+
+If you wish to use the ov5645 camera, you need to add the following to your
+`local.conf`:
+
+	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
+		mt8167-coral-ov5645.dtbo \
+	"
+
+## Device-Tree Overlays (DTBO)
+
+The following Device-Tree Overlays are supported:
+* `mt8167-coral-ov5645.dtbo`: ov5645 camera (see [Cameras](#cameras) section)
+
 ## Limitations
 
 Most peripherals provided by the board are not supported.
