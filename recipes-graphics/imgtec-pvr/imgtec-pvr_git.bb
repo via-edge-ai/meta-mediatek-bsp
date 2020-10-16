@@ -23,6 +23,7 @@ RPROVIDES_${PN} = " \
 	libgl \
 	libgles2 \
 	mesa \
+	mesa-vulkan-drivers \
 "
 
 S = "${WORKDIR}/git"
@@ -44,8 +45,7 @@ do_install() {
 	oe_runmake install EXEC_PREFIX=${D}${exec_prefix} LIBDIR=${D}${libdir} \
 			NONARCH_BASE_LIBDIR=${D}${nonarch_base_libdir} \
 			SYSCONFDIR=${D}${sysconfdir} BINDIR=${D}/${bindir}
-	rm -f ${D}/usr/lib/libwayland-egl.so*
-	rm -f ${D}/usr/lib/pkgconfig/wayland-egl.pc
+	rm -f ${D}/usr/lib/libvulkan.so*
 }
 
 PACKAGES =+ "${PN}-tests"
