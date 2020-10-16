@@ -1,0 +1,27 @@
+From 5d6b4fb163483f6012c369184cb47a1007ecd88a Mon Sep 17 00:00:00 2001
+From: Fabien Parent <fparent@baylibre.com>
+Date: Fri, 16 Oct 2020 15:36:03 +0200
+Subject: [PATCH] Use correct filepath to find TTF resource
+
+The code hardcode the path of the resource to be
+./../data/Roboto-Medium.ttf which is never the case for yocto. Set the
+correct path to the resource.
+
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ base/VulkanUIOverlay.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/base/VulkanUIOverlay.cpp b/base/VulkanUIOverlay.cpp
+index 4361edf56e34..c3e3f2a9e971 100644
+--- a/base/VulkanUIOverlay.cpp
++++ b/base/VulkanUIOverlay.cpp
+@@ -72,7 +72,7 @@ namespace vks
+ 			delete[] fontAsset;
+ 		}
+ #else
+-		io.Fonts->AddFontFromFileTTF("./../data/Roboto-Medium.ttf", 16.0f);
++		io.Fonts->AddFontFromFileTTF("/usr/share/vulkan-demos/Roboto-Medium.ttf", 16.0f);
+ #endif		
+ 		io.Fonts->GetTexDataAsRGBA32(&fontData, &texWidth, &texHeight);
+ 		VkDeviceSize uploadSize = texWidth*texHeight * 4 * sizeof(char);
