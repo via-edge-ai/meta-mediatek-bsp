@@ -28,11 +28,12 @@ RPROVIDES_${PN} = " \
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/imgtec-pvr.git;protocol=ssh"
-SRCREV = "e43957f70302c2b164ea0c6a5b1ec83acde6b9c8"
+SRCREV = "682bfde7078d4346e05fd6fbebfc515bd04f68f3"
 
 EXTRA_OEMAKE = ' \
 	IMGTEC_VERSION=${IMGTEC_VERSION} \
 	IMGTEC_FW=${IMGTEC_FW} \
+	IMGTEC_SH=${IMGTEC_SH} \
 '
 
 do_configure[noexec] = "1"
@@ -42,14 +43,19 @@ do_package_qa[noexec] = "1"
 do_install() {
 	oe_runmake install EXEC_PREFIX=${D}${exec_prefix} LIBDIR=${D}${libdir} \
 			NONARCH_BASE_LIBDIR=${D}${nonarch_base_libdir} \
-			SYSCONFDIR=${D}${sysconfdir}
+			SYSCONFDIR=${D}${sysconfdir} BINDIR=${D}/${bindir}
 	rm -f ${D}/usr/lib/libwayland-egl.so*
 	rm -f ${D}/usr/lib/pkgconfig/wayland-egl.pc
 }
 
 FILES_${PN} = "${libdir}/*.so* \
+               ${bindir}/rgx*test \
+               ${bindir}/pvr* \
+               ${bindir}/ocl_unit_test \
+               ${bindir}/hwperfbin2jsont \
                ${libdir}/dri/*.so \
                ${nonarch_base_libdir}/firmware/rgx.fw.22.40.54.30 \
+               ${nonarch_base_libdir}/firmware/rgx.sh.22.40.54.30 \
                ${exec_prefix}/local/lib/dri/*.so \
                ${datadir}/mesa/* \
                ${datadir}/drirc.d/* \
