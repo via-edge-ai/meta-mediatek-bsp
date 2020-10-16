@@ -63,7 +63,7 @@ The following Device-Tree Overlays are supported:
 ## Limitations
 
 The software image has the current limitations:
-* OpenGL, and Vulkan are not yet supported. Only OpenGL ES and OpenCL are supported.
+* OpenGL is not yet supported. Only OpenGL ES, OpenCL and Vulkan are supported.
 * X11 is not available (because of the lack of OpenGL)
 * CSI Camera / NAND Storage / HW accelerated video encode are not yet
 supported
