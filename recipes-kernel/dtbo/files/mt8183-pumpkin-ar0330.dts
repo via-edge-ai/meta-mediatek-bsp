@@ -117,7 +117,7 @@
 		target = <&seninf>;
 		__overlay__ {
 			ports {
-				port@3 {
+				port@0 {
 					mipi_ar0330: endpoint {
 						clock-lanes = <1>;
 						data-lanes = <0 2>;
