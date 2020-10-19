@@ -31,7 +31,7 @@ EXTRA_OEMAKE = ' \
 do_install() {
 	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}" = "systemd" ]; then
 		install -d ${D}${systemd_unitdir}/system
-		install -m 0644 ${WORKDIR}/mdpd.service ${D}${systemd_unitdir}/system/
+		install -m 0644 ${WORKDIR}/vpud.service ${D}${systemd_unitdir}/system/
 	else
 		install -d ${D}${sysconfdir}/init.d
 		install -m 0755 ${WORKDIR}/vpud.sh ${D}${sysconfdir}/init.d/vpud
