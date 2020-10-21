@@ -25,6 +25,7 @@ CFLAGS_append = " \
 	-Wno-error=unused-function \
 	-Wno-error=unused-variable \
 	-Wno-error=maybe-uninitialized \
+	-Wno-error=array-bounds \
 "
 
 EXTRA_OEMAKE = ' \
