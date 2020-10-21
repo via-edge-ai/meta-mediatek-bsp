@@ -14,7 +14,7 @@ The machine by default is set to i300b-pumpkin. See [local.conf Options](#localc
 ## Building
 
     $ mkdir rich-iot; cd rich-iot
-    $ repo init -u git@gitlab.com:baylibre/rich-iot/manifest.git
+    $ repo init -u git@gitlab.com:baylibre/rich-iot/manifest.git -b gatesgarth
     $ repo sync
     $ export TEMPLATECONF=${PWD}/src/meta-mediatek-bsp/conf/
     $ source src/poky/oe-init-build-env
