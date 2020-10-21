@@ -6,19 +6,19 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=ba5e70cccfd7c167a0ace6a1eb1d5457 \
                     file://dramk_8516/dram/LICENCE;md5=c37bc3b99197620e07a34c5375b2700a"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/mtk-lk.git;protocol=ssh;branch=fparent/coral"
-SRCREV = "91c3020383bf186c6a4a05d623cd4c63bbc3d818"
+SRCREV = "a0e3295fc685968740ac4493241b7c8f18955c37"
 
 SRC_URI += "						\
 	file://blob.h				\
 "
 
 do_compile () {
-	oe_runmake ARCH_arm64_TOOLCHAIN_PREFIX=${TARGET_PREFIX}	\
-			   CFLAGS=""									\
-			   DEBUG=0										\
-			   SECURE_BOOT_ENABLE=no						\
-			   LIBGCC=""									\
-			   GLOBAL_CFLAGS="-mstrict-align"				\
+	oe_runmake ARCH_arm64_TOOLCHAIN_PREFIX=${TARGET_PREFIX}			\
+			   CFLAGS=""											\
+			   DEBUG=0												\
+			   SECURE_BOOT_ENABLE=no								\
+			   LIBGCC=""											\
+			   GLOBAL_CFLAGS="-mstrict-align -mno-outline-atomics"	\
 			   ${LK_PROJECT}
 }
 
