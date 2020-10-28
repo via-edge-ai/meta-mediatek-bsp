@@ -22,6 +22,7 @@ MALI_VERSION ??= "r20p0"
 
 MACHINE_EXTRA_RRECOMMENDS_append = " \
 	libmali \
+	linux-firmware-mt8183-scp \
 "
 
 PREFERRED_PROVIDER_virtual/egl ?= "libmali"
