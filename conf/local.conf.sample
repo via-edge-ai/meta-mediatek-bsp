@@ -255,10 +255,6 @@ DISTRO_FEATURES_append = " \
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-sb30 += "mt8167-sb30_rpi-display.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-coral += "mt8167-coral-ov5645.dtbo"
 
-# i300A & i500 do not support x11 or vulkan yet
-DISTRO_FEATURES_remove_i300a = "x11"
-DISTRO_FEATURES_remove_i500 = "x11 vulkan"
-
 # Name exported by avahi and used to connect to the board.
 # By default the hostname is equal to `MACHINE`. In case several board with
 # the same machine runs on the same network, it is recommended to have an unique

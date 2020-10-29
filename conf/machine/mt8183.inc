@@ -14,6 +14,7 @@ OPTEE_TARGET = "mediatek-mt8183"
 LK_PROJECT = "mt8183-evb"
 
 DISTRO_FEATURES_append = " optee "
+DISTRO_FEATURES_remove = " x11 vulkan "
 
 # Mali
 MALI_GEN = "bifrost"

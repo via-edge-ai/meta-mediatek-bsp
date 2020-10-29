@@ -14,6 +14,7 @@ OPTEE_TARGET = "mediatek-mt8516"
 LK_PROJECT = "pumpkin8516-emmc"
 
 DISTRO_FEATURES_append = " optee "
+DISTRO_FEATURES_remove = " x11 "
 
 IMGTEC_VERSION ??= "1.13@5776728"
 IMGTEC_FW ??= "rgx.fw.22.40.54.30"
