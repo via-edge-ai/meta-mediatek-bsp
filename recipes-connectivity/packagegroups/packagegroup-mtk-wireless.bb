@@ -15,7 +15,7 @@ BT_PKGS = " \
 
 # MT7668
 WIFI_PKGS_append_mt7668 = " kernel-module-mt7668-wifi "
-BT_PKGS_append_mt7668 = " kernel-module-mt7668-bt "
+BT_PKGS_append_mt7668 = " linux-firmware-mt7668 "
 
 RDEPENDS_${PN} = " \
 	${@bb.utils.contains("DISTRO_FEATURES", "wifi", "${WIFI_PKGS}", "", d)} \
