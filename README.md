@@ -18,7 +18,7 @@ The machine by default is set to i300b-pumpkin. See [local.conf Options](#localc
     $ repo sync
     $ export TEMPLATECONF=${PWD}/src/meta-mediatek-bsp/conf/
     $ source src/poky/oe-init-build-env
-    $ bitbake mtk-image
+    $ bitbake core-image-weston
 
 ## Flashing
 
@@ -42,7 +42,7 @@ in effect.
 ### Flashing everything
 
     $ cd rich-iot/build/tmp/deploy/images/i300b-pumpkin
-    $ ./flashimage.py
+    $ ./flashimage.py -i core-image-weston
                                      Checking image
     --------------------------------------------------------------------------------
                                   MBR_EMMC : PASS
@@ -50,7 +50,7 @@ in effect.
                             u-boot-env.bin : PASS
                                    fip.bin : PASS
                                   fitImage : PASS
-              mtk-image-i300b-pumpkin.ext4 : PASS
+      core-image-weston-i300b-pumpkin.ext4 : PASS
 
                                      Start flashing
     --------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ To flash just one partition, you can run the following command:
 [PARTITION] should be replaced with one of the following:
 - *bootloaders*: for flashing the bootloaders (bl31, OP-TEE, and u-boot)
 - *kernel*: for flashing the Linux Kernel (fitImage).
-- *rootfs*: for flashing the root filesystem (mtk-image-i300b-pumpkin.ext4).
+- *rootfs*: for flashing the root filesystem (core-image-weston-i300b-pumpkin.ext4).
 
 For example, the commands to flash the kernel are:
 
@@ -90,7 +90,7 @@ The commands to flash the bootloaders are:
 The commands to flash the root filesystem are:
 
     $ cd rich-iot/build/tmp/deploy/images/i300b-pumpkin
-    $ fastboot flash rootfs mtk-image-i300b-pumpkin.ext4
+    $ fastboot flash rootfs core-image-weston-i300b-pumpkin.ext4
     $ fastboot continue
 
 ## Connecting to the board
