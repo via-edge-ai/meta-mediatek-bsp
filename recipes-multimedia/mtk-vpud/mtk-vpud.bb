@@ -11,9 +11,9 @@ inherit systemd
 inherit update-rc.d
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/vpud.git;protocol=ssh"
-SRCREV = "0cd899603229daec3eb58a665bbb7daa8e5a0175"
+SRCREV = "48c29e184ef48cdd09861cddde39cf310732091c"
 
-SRC_URI = " \
+SRC_URI += " \
 	file://vpud.service \
 	file://vpud.sh \
 "
@@ -22,6 +22,7 @@ do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 do_buildclean[noexec] = "1"
 
+S = "${WORKDIR}/git"
 
 EXTRA_OEMAKE = ' \
 	BINDIR=${D}${bindir} \
@@ -29,6 +30,8 @@ EXTRA_OEMAKE = ' \
 '
 
 do_install() {
+	oe_runmake install
+
 	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}" = "systemd" ]; then
 		install -d ${D}${systemd_unitdir}/system
 		install -m 0644 ${WORKDIR}/vpud.service ${D}${systemd_unitdir}/system/
