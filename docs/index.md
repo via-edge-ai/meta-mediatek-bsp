@@ -17,6 +17,9 @@ The following boards are supported:
 * [MT8385](platforms/i500.md)
 * [MT8516](platforms/i300.md)
 
+## Connectivity chips supported
+* [MT7668](platforms/mt7668.md)
+
 ## Design
 * [Boot Architecture](design/boot.md)
 
