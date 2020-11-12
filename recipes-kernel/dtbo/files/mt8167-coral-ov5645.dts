@@ -64,6 +64,8 @@
 	fragment@2 {
 		target = <&mipicsi0>;
 		__overlay__ {
+			status = "okay";
+
 			port {
 				mipicsi0_endpoint: endpoint {
 					remote-endpoint = <&ov5645_endpoint>;
