@@ -29,6 +29,7 @@ SRC_URI_append_mt8183-evb = " \
 SRC_URI_append_mt8183-pumpkin = " \
 	file://panel-urt-umo9465md.dts \
 	file://mt8183-pumpkin-ar0330.dts \
+	file://mt8183-pumpkin-ap1302-ar0330.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
