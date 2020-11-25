@@ -45,13 +45,20 @@ do_install() {
 	oe_runmake install EXEC_PREFIX=${D}${exec_prefix} LIBDIR=${D}${libdir} \
 			NONARCH_BASE_LIBDIR=${D}${nonarch_base_libdir} \
 			SYSCONFDIR=${D}${sysconfdir} BINDIR=${D}/${bindir}
-	rm -f ${D}/usr/lib/libvulkan.so*
+	rm -f ${D}${libdir}/libvulkan.so*
+
+	if [ ! -d ${D}${exec_prefix}/lib/dri ]; then \
+		install -d ${D}${exec_prefix}/lib; \
+		install -d ${D}${exec_prefix}/lib/dri; \
+		cp -r ${D}${exec_prefix}/lib64/dri/*.so ${D}${exec_prefix}/lib/dri/; \
+	fi
 }
 
 PACKAGES =+ "${PN}-tests"
 
 FILES_${PN} = "${libdir}/*.so* \
                ${libdir}/dri/*.so \
+               ${exec_prefix}/lib/dri/*.so \
                ${nonarch_base_libdir}/firmware/rgx.fw.22.40.54.30 \
                ${nonarch_base_libdir}/firmware/rgx.sh.22.40.54.30 \
                ${exec_prefix}/local/lib/dri/*.so \
