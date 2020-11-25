@@ -3,15 +3,15 @@
 
 SUMMARY = "MediaTek VPUD daemon"
 LICENSE = "CLOSED"
-DEPENDS = " libgcc glibc "
+RDEPENDS_${PN} = " libgcc glibc "
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 inherit systemd
 inherit update-rc.d
 
-SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/vpud.git;protocol=ssh"
-SRCREV = "48c29e184ef48cdd09861cddde39cf310732091c"
+SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/vpud.git;protocol=ssh;branch=fparent/aarch32"
+SRCREV = "2b83f77f7987028a66907652a53dbef444937fb9"
 
 SRC_URI += " \
 	file://vpud.service \
@@ -27,6 +27,14 @@ S = "${WORKDIR}/git"
 EXTRA_OEMAKE = ' \
 	BINDIR=${D}${bindir} \
 	LIBDIR=${D}${libdir} \
+'
+
+EXTRA_OEMAKE_append_aarch64 += ' \
+	VPUD_ARCH=aarch64 \
+'
+
+EXTRA_OEMAKE_append_armv7a += ' \
+	VPUD_ARCH=aarch32 \
 '
 
 do_install() {
@@ -57,6 +65,10 @@ FILES_${PN} += " \
 	${systemd_unitdir}/system/vpud.service \
 "
 
+FILES_${PN}_append_armv7a = " \
+	${libdir}/libherope_sa.ca7.so \
+"
+
 INSANE_SKIP_${PN} += "already-stripped"
 INSANE_SKIP_${PN} += "file-rdeps"
 INSANE_SKIP_${PN} += "ldflags"
@@ -64,6 +76,8 @@ INSANE_SKIP_${PN}-dev += "file-rdeps"
 INSANE_SKIP_${PN}-dev += "dev-elf"
 INSANE_SKIP_${PN}-dev += "ldflags"
 EXCLUDE_FROM_SHLIBS = "1"
+INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
