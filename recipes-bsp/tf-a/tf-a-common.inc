@@ -5,7 +5,7 @@ SUMMARY = "Trusted Firmware-A"
 HOMEPAGE = "https://github.com/ARM-software/arm-trusted-firmware"
 SECTION = "bootloaders"
 DEPENDS = ' \
-	u-boot \
+	virtual/bootloader \
 	${@bb.utils.contains("DISTRO_FEATURES", "optee", "optee-os", "", d)} \
 	openssl-native \
 '
