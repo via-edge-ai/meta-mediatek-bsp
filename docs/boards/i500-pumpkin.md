@@ -15,12 +15,20 @@ For full build instructions, please refer to the top level `README.md`.
 
 The i500 Pumpkin board supports the following display:
 * URT UMO 9465MD-T
+* [7-inch Raspberry Pi touch display](https://www.raspberrypi.org/products/raspberry-pi-touch-display/).
 
-If you wish to use the DSI display, you need to add the following to your
-`local.conf`:
+If you wish to use the URT UMO 9465MD-T display, you need to add
+the following to your `local.conf`:
 
 	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
 		panel-urt-umo9465md.dtbo \
+	"
+
+To use the 7-inch Raspberry Pi touch display, you need to add the following to
+your `local.conf`:
+
+	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
+		panel-raspberrypi.dtbo \
 	"
 
 Warning: Adding the dtbo to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD requires you to
@@ -51,6 +59,7 @@ the following to your `local.conf`:
 ## Device-Tree Overlays (DTBO)
 
 The following Device-Tree Overlays are supported:
+* `panel-raspberrypi.dtbo`: Raspberry Pi touch display (see [Displays](#displays) section)
 * `panel-urt-umo-9465md.dtbo`: URT UMO display (see [Displays](#displays) section)
 * `camera-ar0330.dtbo`: AR0330CS camera (see [Cameras](#cameras) section)
 * `camera-ap1303-ar0330.dtbo`: AR0330CS camera with AP1302 ISP (see [Cameras](#cameras) section)
