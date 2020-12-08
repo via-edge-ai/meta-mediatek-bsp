@@ -5,7 +5,7 @@ SUMMARY = "Imagination Technologies Binaries"
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=a4f7801866fbc4b8713aadccdf4da58d"
 
-DEPENDS += "wayland"
+DEPENDS += "wayland libdrm"
 
 PROVIDES = " \
 	virtual/egl \
