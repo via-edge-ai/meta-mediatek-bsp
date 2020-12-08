@@ -4,13 +4,17 @@
 SUMMARY = "Device-Tree Blob Overlays"
 inherit devicetree
 
-SRC_URI_append_i300-pumpkin = " \
-	file://vesper.dts \
-"
+FILESEXTRAPATHS_prepend_mt8167-coral := "${THISDIR}/mt8167-coral:"
+FILESEXTRAPATHS_prepend_mt8167-pumpkin := "${THISDIR}/mt8167-pumpkin:"
+FILESEXTRAPATHS_prepend_mt8167-sb30 := "${THISDIR}/mt8167-sb30:"
+FILESEXTRAPATHS_prepend_mt8516-pumpkin:= "${THISDIR}/mt8516-pumpkin:"
+FILESEXTRAPATHS_prepend_mt8183-evb := "${THISDIR}/mt8183-evb:"
+FILESEXTRAPATHS_prepend_mt8183-pumpkin:= "${THISDIR}/mt8183-pumpkin:"
 
 SRC_URI_append_mt8167-pumpkin = " \
 	file://rpi-display.dts \
 	file://panel-avd-tt70ws-cn-134-a.dts \
+	file://vesper.dts \
 "
 
 SRC_URI_append_mt8167-sb30 = " \
