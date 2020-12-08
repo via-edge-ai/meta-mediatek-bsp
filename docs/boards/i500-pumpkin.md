@@ -38,22 +38,22 @@ If you wish to use the AR0330CS camera, you need to add the following to your
 `local.conf`:
 
 	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		mt8183-pumpkin-ar0330.dtbo \
+		camera-ar0330.dtbo \
 	"
 
 Or if you wish to use the AR0330CS camera with the AP1303 ISP, you need to add
 the following to your `local.conf`:
 
 	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		mt8183-pumpkin-ap1302-ar0330.dtbo \
+		camera-ap1302-ar0330.dtbo \
 	"
 
 ## Device-Tree Overlays (DTBO)
 
 The following Device-Tree Overlays are supported:
 * `panel-urt-umo-9465md.dtbo`: URT UMO display (see [Displays](#displays) section)
-* `mt8183-pumpkin-ar0330.dtbo`: AR0330CS camera (see [Cameras](#cameras) section)
-* `mt8183-pumpkin-ap1303-ar0330.dtbo`: AR0330CS camera with AP1302 ISP (see [Cameras](#cameras) section)
+* `camera-ar0330.dtbo`: AR0330CS camera (see [Cameras](#cameras) section)
+* `camera-ap1303-ar0330.dtbo`: AR0330CS camera with AP1302 ISP (see [Cameras](#cameras) section)
 
 ## Limitations
 

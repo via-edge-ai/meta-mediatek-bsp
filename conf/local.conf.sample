@@ -249,11 +249,12 @@ DISTRO_FEATURES_append = " \
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-evb += "panel-tpv-otm1901a.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-evb += "panel-truly-r63350a.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "panel-urt-umo9465md.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "mt8183-pumpkin-ar0330.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "rpi-display.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "camera-ar0330.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "camera-ap1302-ar0330.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "panel-raspberrypi.dtbo"
 #KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "panel-avd-tt70ws-cn-134-a.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-sb30 += "mt8167-sb30_rpi-display.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-coral += "mt8167-coral-ov5645.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-sb30 += "panel-raspberrypi.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-coral += "camera-ov5645.dtbo"
 
 # Name exported by avahi and used to connect to the board.
 # By default the hostname is equal to `MACHINE`. In case several board with

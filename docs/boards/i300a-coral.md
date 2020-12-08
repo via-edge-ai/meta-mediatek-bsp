@@ -26,13 +26,13 @@ If you wish to use the ov5645 camera, you need to add the following to your
 `local.conf`:
 
 	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		mt8167-coral-ov5645.dtbo \
+		camera-ov5645.dtbo \
 	"
 
 ## Device-Tree Overlays (DTBO)
 
 The following Device-Tree Overlays are supported:
-* `mt8167-coral-ov5645.dtbo`: ov5645 camera (see [Cameras](#cameras) section)
+* `camera-ov5645.dtbo`: ov5645 camera (see [Cameras](#cameras) section)
 
 ## Limitations
 
