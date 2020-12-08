@@ -11,6 +11,10 @@ FILESEXTRAPATHS_prepend_mt8516-pumpkin:= "${THISDIR}/mt8516-pumpkin:"
 FILESEXTRAPATHS_prepend_mt8183-evb := "${THISDIR}/mt8183-evb:"
 FILESEXTRAPATHS_prepend_mt8183-pumpkin:= "${THISDIR}/mt8183-pumpkin:"
 
+SRC_URI_append = " \
+	file://panel-raspberrypi.dtsi \
+"
+
 SRC_URI_append_mt8167-pumpkin = " \
 	file://panel-raspberrypi.dts \
 	file://panel-avd-tt70ws-cn-134-a.dts \
