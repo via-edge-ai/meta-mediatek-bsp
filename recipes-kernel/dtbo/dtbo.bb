@@ -4,6 +4,7 @@
 SUMMARY = "Device-Tree Blob Overlays"
 inherit devicetree
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/common:"
 FILESEXTRAPATHS_prepend_mt8167-coral := "${THISDIR}/mt8167-coral:"
 FILESEXTRAPATHS_prepend_mt8167-pumpkin := "${THISDIR}/mt8167-pumpkin:"
 FILESEXTRAPATHS_prepend_mt8167-sb30 := "${THISDIR}/mt8167-sb30:"
@@ -35,6 +36,7 @@ SRC_URI_append_mt8183-evb = " \
 "
 
 SRC_URI_append_mt8183-pumpkin = " \
+	file://panel-raspberrypi.dts \
 	file://panel-urt-umo9465md.dts \
 	file://camera-ar0330.dts \
 	file://camera-ap1302-ar0330.dts \
