@@ -42,6 +42,10 @@ SRC_URI_append_mt8183-pumpkin = " \
 	file://camera-ap1302-ar0330.dts \
 "
 
+SRC_URI_append_mt8516-pumpkin = " \
+	file://vesper.dts \
+"
+
 DT_FILES_PATH = "${WORKDIR}"
 
 COMPATIBLE_MACHINE = "mt*"
