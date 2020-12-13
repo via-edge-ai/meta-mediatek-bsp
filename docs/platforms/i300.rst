@@ -1,12 +1,15 @@
-# i300 (MT8362)
+i300 (MT8362)
+=============
 
-The [i300 platform](https://www.mediatek.com/products/smartHome/i300) is
+The `i300 platform <https://www.mediatek.com/products/smartHome/i300>`_ is
 composed of the MT8362 SoC, the MT6392 PMIC, and the
-[MT7668 wireless chipset](./mt7668.md).
+:ref:`platforms/mt7668:MT7668 wireless chipset`.
 The i300 platform is available in two packages
-[i300A](https://www.mediatek.com/products/richIot/mt8362a) and
-[i300B](https://www.mediatek.com/products/richIot/mt8362b).
+`i300A <https://www.mediatek.com/products/richIot/mt8362a>`_ and
+`i300B <https://www.mediatek.com/products/richIot/mt8362b>`_.
+
 i300A contains the same features as the i300B but also contains:
+
 * an IMG PowerVR GE8300 GPU
 * Display support (DSI and HDMI)
 * Video Encoding (H.264) and Video Decoding (H.265 / HEVC) support.

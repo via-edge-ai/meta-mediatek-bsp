@@ -1,6 +1,8 @@
-# Development
+Development
+===========
 
-## TFTP boot
+TFTP boot
+---------
 
 During kernel development, it can be useful to not have to reflash the board
 every time you generate a new kernel image. We support TFTP kernel boot via
@@ -8,17 +10,21 @@ every time you generate a new kernel image. We support TFTP kernel boot via
 Only the client side is described here. The installation and configuration
 of a TFTP server is not described in this document.
 
-### Enabling TFTP boot
+Enabling TFTP boot
+^^^^^^^^^^^^^^^^^^
 
 TFTP boot can be enabled from withing U-Boot shell or from Linux userspace.
 
-#### Linux
+Enabling in Linux
+~~~~~~~~~~~~~~~~~
 
 To be able to modify the `u-boot` environment from within the Linux userspace,
 you need to make sure you have included `u-boot-env` and `u-boot-fw-utils` as
 part of your image.
 
 For instance you can add the following to your `local.conf` file:
+
+.. code::
 
 	IMAGE_INSTALL_append = " \
 		u-boot-env \
@@ -27,35 +33,51 @@ For instance you can add the following to your `local.conf` file:
 
 In the Linux userspace you can run the following command to enable TFTP boot:
 
-	$ fw_setenv force_tftpboot 1
+.. prompt:: bash $
 
-#### U-Boot
+	fw_setenv force_tftpboot 1
+
+Enabling in U-Boot
+~~~~~~~~~~~~~~~~~~
 
 To enable TFTP boot from within the `u-boot` shell, you can run the following
 command:
 
-	=> setenv force_tftpboot 1
+.. prompt:: u-boot =>
 
-### Disabling TFTP boot
+	setenv force_tftpboot 1
+
+Disabling TFTP boot
+^^^^^^^^^^^^^^^^^^^
 
 Once you want to disable TFTP boot and start booting again the kernel present
 in the `kernel` partition of the mass storage, you can run one of the following
 commands:
 
-#### Linux
+Disabling in Linux
+~~~~~~~~~~~~~~~~~~
 
-	$ fw_setenv force_tftpboot 0
+.. prompt:: bash $
 
-#### U-Boot
+	fw_setenv force_tftpboot 0
 
-	=> setenv force_tftpboot 0
+Disabling in U-Boot
+~~~~~~~~~~~~~~~~~~~
 
-### Network configuration
+.. prompt:: u-boot =>
+
+	setenv force_tftpboot 0
+
+Network configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 U-Boot is using staticly defined IPs to connect to the TFTP server. DHCP is
 not supported yet. You can see the configuration below:
 
-|  Machine              |  IP              |
-|-----------------------|------------------|
++-----------------------+------------------+
+| Machine               | IP               |
++=======================+==================+
 | Client (U-Boot)       | 192.168.96.1/24  |
++-----------------------+------------------+
 | Server (Your machine) | 192.168.96.20/24 |
++-----------------------+------------------+
