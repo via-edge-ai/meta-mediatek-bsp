@@ -9,7 +9,7 @@ inherit allarch
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/rity-firmware.git;protocol=ssh"
-SRCREV = "fc944ccfe613d9a613ab442c0d3d1eadc287cea2"
+SRCREV = "79da59b351705ba339a64d5418ce0ef2d0a9b2aa"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
@@ -21,4 +21,6 @@ do_install() {
 }
 
 PACKAGES =+ "${PN}-ap1302-ar0330"
-FILES_${PN}-ap1302-ar0330 = "${nonarch_base_libdir}/firmware/ap1302_ar0330_none_fw.bin"
+PACKAGES =+ "${PN}-ap1302-ar0144"
+FILES_${PN}-ap1302-ar0330 = "${nonarch_base_libdir}/firmware/ap1302_ar0330_single_fw.bin"
+FILES_${PN}-ap1302-ar0144 = "${nonarch_base_libdir}/firmware/ap1302_ar0144_single_fw.bin"
