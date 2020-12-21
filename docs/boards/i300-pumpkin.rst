@@ -55,6 +55,22 @@ The i300A Pumpkin also supports the AVD-TT70WS-CN-134-A touch display. If you wi
 		panel-avd-tt70ws-cn-134-a.dtbo \
 	"
 
+Cameras
+-------
+
+The pumpkin board supports the following csi camera sensor:
+
+* Omnivision ov5645
+
+If you wish to use the ov5645 camera, you need to add the following to your
+`local.conf`:
+
+.. code::
+
+	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
+		camera-ov5645.dtbo \
+	"
+
 Audio
 -----
 
@@ -81,6 +97,7 @@ The following Device-Tree Overlays are supported:
 
 * `panel-raspberrypi.dtbo`: Raspberry Pi touch display (see :ref:`boards/i300-pumpkin:Display` section)
 * `panel-avd-tt70ws-cn-134-a.dtbo`: AVD-TT70WS-CN-134-A touch display module (see :ref:`boards/i300-pumpkin:Display` section)
+* `camera-ov5645.dtbo`: Ov5645 camera (see :ref:`boards/i300-pumpkin:Cameras` section)
 
 Limitations
 -----------
