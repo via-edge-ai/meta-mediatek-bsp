@@ -229,13 +229,6 @@ PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
 # this doesn't mean anything to you.
 CONF_VERSION = "1"
 
-# Additional DISTRO_FEATURES
-DISTRO_FEATURES_append = " \
-	wayland \
-	opengl \
-	pam \
-"
-
 # Change the prefered kernel version.
 # PREFERRED_VERSION_linux-mtk = "4.19%"
 
