@@ -10,13 +10,19 @@ SRC_URI += " \
 
 do_deploy_append() {
 	boot_conf=`echo "boot_conf=#conf@${KERNEL_DEVICETREE}" | tr '/' '_'`
+	fastboot_entry=`echo "check_fastboot_entry=setenv fasbtoot_entry 0"`
 
 	for dtbo in ${KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD};
 	do
 		boot_conf="$boot_conf#conf@$dtbo"
 	done
 
+	echo $fastboot_entry >> ${DEPLOYDIR}/u-boot-initial-env
 	echo $boot_conf >> ${DEPLOYDIR}/u-boot-initial-env
+}
+
+do_deploy_append_i300-pumpkin() {
+	sed -i '/^check_fastboot_entry=.*/c\check_fastboot_entry=gpio input 42; if test $? -eq 0; then setenv fastboot_entry 1; else setenv_fastboot_entry 0; fi' ${DEPLOYDIR}/u-boot-initial-env
 }
 
 inherit deploy

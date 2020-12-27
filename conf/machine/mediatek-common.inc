@@ -5,9 +5,12 @@ KERNEL_COMPRESSION = "gzip"
 
 # U-Boot
 UBOOT_SUFFIX = "bin"
+UBOOT_ENV_SUFFIX = "scr"
+UBOOT_ENV = "boot"
 
 IMAGE_BOOT_FILES = " \
 	${KERNEL_IMAGETYPE} \
+	${UBOOT_ENV}.${UBOOT_ENV_SUFFIX} \
 "
 
 IMAGE_FSTYPES ?= "ext4 wic"
@@ -34,4 +37,5 @@ EXTRA_IMAGEDEPENDS = " \
 MACHINE_EXTRA_RRECOMMENDS += " \
 	kernel-modules \
 	packagegroup-mtk \
+	u-boot-scr \
 "
