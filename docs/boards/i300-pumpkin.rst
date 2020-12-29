@@ -58,7 +58,7 @@ The i300A Pumpkin also supports the AVD-TT70WS-CN-134-A touch display. If you wi
 Cameras
 -------
 
-The pumpkin board supports the following csi camera sensor:
+The i300A Pumpkin board supports the following csi camera sensor:
 
 * Omnivision ov5645
 
