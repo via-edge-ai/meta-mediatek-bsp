@@ -106,7 +106,7 @@ The software image has the current limitations:
 
 * OpenGL is not yet supported. Only OpenGL ES, OpenCL and Vulkan are supported.
 * X11 is not available (because of the lack of OpenGL)
-* CSI Camera / NAND Storage / HW accelerated video encode are not yet supported
+* NAND Storage / HW accelerated video encode are not yet supported
 
 .. _i300B / MT8362A SoC: https://www.mediatek.com/products/richIot/mt8362b
 .. _i300A / MT8362A SoC: https://www.mediatek.com/products/richIot/mt8362a
