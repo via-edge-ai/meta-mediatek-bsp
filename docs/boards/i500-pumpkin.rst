@@ -72,6 +72,16 @@ the following to your `local.conf`:
 		camera-ap1302-ar0330.dtbo \
 	"
 
+MT7668 wireless chipset
+------------------------
+
+The i500 Pumpkin board is integrating
+a :ref:`platforms/mt7668:MT7668 wireless chipset`.
+By default the chipset comes with no MAC or BD address. Please refer to the
+:ref:`platforms/mt7668:MT7668 wireless chipset` documentation to see how to
+program a MAC or BD address.
+
+
 Device-Tree Overlays (DTBO)
 ---------------------------
 

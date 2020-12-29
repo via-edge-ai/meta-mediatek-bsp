@@ -90,6 +90,15 @@ In order to disable this audio output, simply disable the loopback by using the 
 
 	amixer set -c mtsndcard 'Codec_Loopback_Select',0 CODEC_LOOPBACK_NONE
 
+MT7668 wireless chipset
+------------------------
+
+The i300 Pumpkin board is integrating
+a :ref:`platforms/mt7668:MT7668 wireless chipset`.
+By default the chipset comes with no MAC or BD address. Please refer to the
+:ref:`platforms/mt7668:MT7668 wireless chipset` documentation to see how to
+program a MAC or BD address.
+
 Device-Tree Blob Overlays (DTBO)
 --------------------------------
 

@@ -35,6 +35,15 @@ requires you to plug the 7-inch Raspberry Pi touch display to
 the i300A SB30 board. Failing to connect it will prevent HDMI from working.
 If you only want HDMI, you should not add `panel-raspberrypi.dtbo`.
 
+MT7668 wireless chipset
+------------------------
+
+The i300A SB30 board is integrating
+a :ref:`platforms/mt7668:MT7668 wireless chipset`.
+By default the chipset comes with no MAC or BD address. Please refer to the
+:ref:`platforms/mt7668:MT7668 wireless chipset` documentation to see how to
+program a MAC or BD address.
+
 Device-Tree Overlays (DTBO)
 ---------------------------
 
