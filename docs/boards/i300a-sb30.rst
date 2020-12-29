@@ -30,10 +30,12 @@ you need to add the following to your `local.conf`:
 		panel-raspberrypi.dtbo \
 	"
 
-Warning: Adding `panel-raspberrypi.dtbo` to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD
-requires you to plug the 7-inch Raspberry Pi touch display to
-the i300A SB30 board. Failing to connect it will prevent HDMI from working.
-If you only want HDMI, you should not add `panel-raspberrypi.dtbo`.
+.. warning::
+
+	Adding `panel-raspberrypi.dtbo` to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD
+	requires you to plug the 7-inch Raspberry Pi touch display to
+	the i300A SB30 board. Failing to connect it will prevent HDMI from working.
+	If you only want HDMI, you should not add `panel-raspberrypi.dtbo`.
 
 MT7668 wireless chipset
 ------------------------

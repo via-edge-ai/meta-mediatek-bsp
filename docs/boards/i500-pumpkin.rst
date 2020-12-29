@@ -41,10 +41,12 @@ your `local.conf`:
 		panel-raspberrypi.dtbo \
 	"
 
-Warning: Adding the dtbo to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD requires you to
-plug the DSI display to the pumpkin board. Failing to connect it will
-prevent HDMI from working. If you only want HDMI, you should not add the dtbo
-to your `local.conf`.
+.. warning::
+
+	Adding the dtbo to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD requires you to
+	plug the DSI display to the pumpkin board. Failing to connect it will
+	prevent HDMI from working. If you only want HDMI, you should not add
+	the dtbo to your `local.conf`.
 
 Cameras
 -------

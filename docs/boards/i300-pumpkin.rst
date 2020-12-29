@@ -42,10 +42,12 @@ HDMI is working by default if you set `MACHINE=i300a-pumpkin`. If you wish to us
 		panel-raspberrypi.dtbo \
 	"
 
-Warning: Adding `panel-raspberrypi.dtbo` to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD
-requires you to plug the 7-inch Raspberry Pi touch display to
-the i300A pumpkin board. Failing to connect it will prevent HDMI from working.
-If you only want HDMI, you should not add `panel-raspberrypi.dtbo`.
+.. warning::
+
+	Adding `panel-raspberrypi.dtbo` to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD
+	requires you to plug the 7-inch Raspberry Pi touch display to the i300A
+	pumpkin board. Failing to connect it will prevent HDMI from working.
+	If you only want HDMI, you should not add `panel-raspberrypi.dtbo`.
 
 The i300A Pumpkin also supports the AVD-TT70WS-CN-134-A touch display. If you wish to use it, you need to add the following to your `local.conf`:
 
