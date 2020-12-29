@@ -82,6 +82,28 @@ The following Device-Tree Overlays are supported:
 * `camera-ar0330.dtbo`: AR0330CS camera (see :ref:`boards/i500-pumpkin:Cameras` section)
 * `camera-ap1303-ar0330.dtbo`: AR0330CS camera with AP1302 ISP (see :ref:`boards/i500-pumpkin:Cameras` section)
 
+FTDI board control
+------------------
+
+The FTDI chip connected to the DEBUG (CN7) port is able to control the
+power (PWRKEY), reset (SYSRST), and download (KPCOL0) lines.
+
++----------------+-------------------+
+| FTDI GPIO Line | Function          |
++================+===================+
+| 0              | Power (PWRKEY)    |
++----------------+-------------------+
+| 1              | Reset (SYSRST)    |
++----------------+-------------------+
+| 2              | Download (KPCOL0) |
++----------------+-------------------+
+
+.. note::
+
+	By default the FTDI chip is not configured to use these 3 lines.
+	Please refer to the `RITY tools manual`_ to see how to `configure`_ and
+	`control`_ these 3 lines.
+
 Limitations
 -----------
 
@@ -90,3 +112,6 @@ The software image has the following limitations:
 * HW accelarated video encode / decode are not yet supported
 
 .. _7-inch Raspberry Pi touch display: https://www.raspberrypi.org/products/raspberry-pi-touch-display/
+.. _RITY tools manual: https://baylibre.gitlab.io/rich-iot/tools/rity-tools/
+.. _configure: https://baylibre.gitlab.io/rich-iot/tools/rity-tools/#configuration-of-the-ftdi-chip
+.. _control: https://baylibre.gitlab.io/rich-iot/tools/rity-tools/#rity-board
