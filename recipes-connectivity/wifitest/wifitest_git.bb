@@ -9,9 +9,3 @@ PV = "git${SRCPV}"
 inherit autotools
 
 S = "${WORKDIR}/git"
-
-pkg_postinst_ontarget_${PN}() {
-	bdaddr=$(printf "00:C0:E7:%x:%x:%x" `expr $RANDOM % 256` `expr $RANDOM % 256` `expr $RANDOM % 256`)
-	wifitest -z "B $bdaddr"
-	echo "btmtksdio: set bdaddr to $bdaddr" > /dev/kmsg
-}
