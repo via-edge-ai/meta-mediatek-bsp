@@ -18,3 +18,5 @@ EXTRA_OEMAKE_append = " \
 	NEED_BL32=${@bb.utils.contains("DISTRO_FEATURES", "optee", "yes", "no", d)} \
 	CFLAGS+=${@bb.utils.contains("DISTRO_FEATURES", "optee", "-DNEED_BL32", "", d)} \
 "
+
+S = "${WORKDIR}/git"

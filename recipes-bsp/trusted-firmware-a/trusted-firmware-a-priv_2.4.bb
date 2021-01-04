@@ -1,10 +1,19 @@
-require recipes-bsp/trusted-firmware-a/trusted-firmware-a_${PV}.bb
+require recipes-bsp/trusted-firmware-a/trusted-firmware-a.inc
 require trusted-firmware-a-mtk.inc
 
-SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware-private.git;name=tfa;branch=mtk-v2.3-full;protocol=ssh"
-SRCREV_tfa = "c1984dc174faaff21a7599d954c01cef97710229"
+SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware-private.git;name=tfa;branch=mtk-v2.4-full;protocol=ssh"
+SRCREV_tfa = "464ae67c4097eb0ed71648f707577ba4d57a47cc"
 
 SRC_URI += "file://rot_key.pem"
+
+LIC_FILES_CHKSUM += "file://docs/license.rst;md5=189505435dbcdcc8caa63c46fe93fa89"
+
+# mbed TLS v2.24.0
+SRC_URI_MBEDTLS = "git://github.com/ARMmbed/mbedtls.git;name=mbedtls;protocol=https;destsuffix=git/mbedtls;branch=master"
+SRCREV_mbedtls = "mbedtls-2.24.0"
+
+LIC_FILES_CHKSUM_MBEDTLS = "file://mbedtls/LICENSE;md5=3b83ef96387f14655fc854ddc3c6bd57"
+
 
 TFA_BUILD_TARGET = "bl2 bl31 fip"
 
