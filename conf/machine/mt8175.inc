@@ -5,7 +5,7 @@ require mediatek-common.inc
 SOC_FAMILY = "mt8175"
 
 # Trusted Firmware-A
-TFA_PLAT = "mt8175"
+TFA_PLATFORM = "mt8175"
 
 # OP-TEE
 OPTEE_TARGET = "mediatek-mt8175"

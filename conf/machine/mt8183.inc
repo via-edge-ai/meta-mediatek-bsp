@@ -5,7 +5,7 @@ require mediatek-common.inc
 SOC_FAMILY = "mt8183"
 
 # Trusted Firmware-A
-TFA_PLAT = "mt8183"
+TFA_PLATFORM = "mt8183"
 
 # OP-TEE
 OPTEE_TARGET = "mediatek-mt8183"

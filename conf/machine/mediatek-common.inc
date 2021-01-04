@@ -16,15 +16,18 @@ IMAGE_ROOTFS_ALIGNMENT = "4"
 SERIAL_CONSOLES = "921600;ttyS0"
 
 WKS_FILE ?= "mediatek.wks"
-do_image_wic[depends] += "virtual/tf-a:do_deploy virtual/kernel:do_deploy"
+do_image_wic[depends] += " \
+	virtual/trusted-firmware-a:do_deploy \
+	virtual/kernel:do_deploy \
+"
 
 PREFERRED_PROVIDER_virtual/kernel ??= "linux-mtk"
 PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot"
-PREFERRED_PROVIDER_virtual/tf-a ??= "tf-a"
+PREFERRED_PROVIDER_virtual/trusted-firmware-a ??= "trusted-firmware-a"
 
 EXTRA_IMAGEDEPENDS = " \
 	lk \
-	virtual/tf-a \
+	virtual/trusted-firmware-a \
 	mtk-flash-tools \
 "
 
