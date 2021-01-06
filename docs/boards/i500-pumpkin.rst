@@ -1,7 +1,18 @@
 i500 Pumpkin Board
 ==================
 
-The i500 pumpkin is using the :ref:`platforms/i500:i500 (MT8385)` platform.
+The `i500 pumpkin`_ is using the :ref:`platforms/i500:i500 (MT8385)` platform.
+
+.. _i500 pumpkin: https://ologicinc.com/portfolio/mediateki500/
+
+Purchasing
+----------
+
+The i500 pumpkin board is made by `OLogic`_. To request a pumpkin i500, please
+`contact OLogic`_.
+
+.. _OLogic: https://ologicinc.com/
+.. _contact OLogic: https://ologicinc.com/contact/
 
 Building
 --------

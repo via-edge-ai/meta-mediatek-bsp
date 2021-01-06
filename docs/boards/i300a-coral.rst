@@ -1,9 +1,11 @@
 i300A Coral Board
 =================
 
-The Coral board (aka Coral dev board mini) is made by Google. The board is
+The Coral board (aka `Coral dev board mini`_) is made by Google. The board is
 designed for Machine Learning application with the integration of a
 Tensor Processing Unit ASIC.
+
+.. _Coral dev board mini: https://coral.ai/products/dev-board-mini
 
 Purchasing
 ----------

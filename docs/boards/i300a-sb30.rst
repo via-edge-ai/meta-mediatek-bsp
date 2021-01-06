@@ -1,7 +1,9 @@
 i300A SB30 Board
 ================
 
-The SB30 is a development board made by Innocomm.
+The `SB30`_ is a development board made by Innocomm.
+
+.. _SB30: https://www.innocomm.com/product_inner.aspx?num=2238
 
 Building
 --------
