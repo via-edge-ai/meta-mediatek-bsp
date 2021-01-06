@@ -22,6 +22,8 @@ SRC_URI += " \
 	file://mdpd.sh \
 "
 
+BUILD_DEBUG = "1"
+
 EXTRA_OEMAKE = "mdpd libmdp.mt8167.so"
 
 do_install() {
