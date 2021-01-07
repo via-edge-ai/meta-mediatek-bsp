@@ -1,7 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 PV = "3.11.0+git${SRCPV}"
-SRCREV = "13fcc3349370ab5ba53f6e5c2119112cfe4a7708"
+SRCREV = "b86ae8a3c3750294eba924a6226aaefdf0f51e39"
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/optee-os.git;protocol=ssh;branch=mtk-v3.11"
 
 SRC_URI_append = " \

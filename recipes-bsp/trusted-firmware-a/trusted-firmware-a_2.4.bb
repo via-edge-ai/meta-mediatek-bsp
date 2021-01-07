@@ -7,7 +7,7 @@ SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware.git;name=
 SRCREV_FORMAT = "tfa"
 
 # TF-A v2.4
-SRCREV_tfa = "2a16e84daf223faebc12667344a65e599f884ed2"
+SRCREV_tfa = "018e720ef4063150b08cb845d531fd95a85b24a2"
 
 LIC_FILES_CHKSUM += "file://docs/license.rst;md5=189505435dbcdcc8caa63c46fe93fa89"
 
