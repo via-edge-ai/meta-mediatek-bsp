@@ -8,4 +8,4 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 LINUX_VERSION ?= "5.10"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/linux.git;protocol=ssh;branch=mtk-v5.10"
-SRCREV = "52372772c433ff90343425e3209ef10426c07cb4"
+SRCREV = "8eccc61f0e7ea85e6385ab8cd6125b439229e2f1"
