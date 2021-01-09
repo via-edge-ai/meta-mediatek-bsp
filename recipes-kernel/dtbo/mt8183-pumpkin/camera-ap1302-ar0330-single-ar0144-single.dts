@@ -150,6 +150,8 @@
 	fragment@4 {
 		target = <&seninf>;
 		__overlay__ {
+			status = "okay";
+
 			ports {
 				port@1 {
 					seninf_in1: endpoint {
@@ -167,6 +169,13 @@
 					};
 				};
 			};
+		};
+	};
+
+	fragment@5 {
+		target = <&camsv0>;
+		__overlay__ {
+			status = "okay";
 		};
 	};
 };
