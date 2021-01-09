@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0
 /*
- * Copyright (c) 2020 BayLibre, SAS.
- * Author: Fabien Parent <fparent@baylibre.com>
+ * Copyright (c) 2020 Laurent Pinchart <laurent.pinchart@ideasonboard.com>
  */
 
 #include "mt8183-pinfunc.h"
@@ -125,6 +124,8 @@
 	fragment@4 {
 		target = <&seninf>;
 		__overlay__ {
+			status = "okay";
+
 			ports {
 				port@0 {
 					mipi_ar0330_1: endpoint {
@@ -142,6 +143,13 @@
 					};
 				};
 			};
+		};
+	};
+
+	fragment@5 {
+		target = <&camsv0>;
+		__overlay__ {
+			status = "okay";
 		};
 	};
 };
