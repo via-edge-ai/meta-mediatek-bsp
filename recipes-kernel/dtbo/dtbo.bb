@@ -48,6 +48,7 @@ SRC_URI_append_mt8183-pumpkin = " \
 	file://camera-ar0330-single.dts \
 	file://camera-ar0330-dual.dts \
 	file://camera-ap1302-ar0330-single.dts \
+	file://camera-ap1302-ar0144-single.dts \
 	file://camera-ap1302-ar0330-single-ar0144-single.dts \
 "
 
