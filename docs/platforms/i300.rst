@@ -16,3 +16,20 @@ i300A contains the same features as the i300B but also contains:
 
 The MT8362 SoC is also known as MT8167. The SoC is **only** referenced as
 MT8167 in the source code.
+
+Supported DDR modules
+---------------------
+
+The following DDR modules are currently supported by RITY for i300 based boards:
+
++--------------+---------+--------+---------------------+
+| Manufacturer | Density | Type   | Part number         |
++==============+=========+========+=====================+
+| SK Hynix     | 1 GB    | LPDDR3 | H9CCNNN8GTALAR-NUD  |
++--------------+---------+--------+---------------------+
+| SK Hynix     | 2 GB    | LPDDR3 | H9CCNNNBJTALAR-NUD  |
++--------------+---------+--------+---------------------+
+| Micron       | 1 GB    | LPDDR3 | MT52L256M32D1PF-107 |
++--------------+---------+--------+---------------------+
+| Micron       | 2 GB    | LPDDR3 | MT52L512M32D2PF-107 |
++--------------+---------+--------+---------------------+
