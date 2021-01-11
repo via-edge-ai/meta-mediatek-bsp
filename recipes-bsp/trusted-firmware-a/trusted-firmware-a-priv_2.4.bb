@@ -2,7 +2,7 @@ require recipes-bsp/trusted-firmware-a/trusted-firmware-a.inc
 require trusted-firmware-a-mtk.inc
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/arm-trusted-firmware-private.git;name=tfa;branch=mtk-v2.4-full;protocol=ssh"
-SRCREV_tfa = "44ab7df6689fce299854f7c2884b50afce7f9107"
+SRCREV_tfa = "bcabcb59bec430a385a884425657279b10f5b9b9"
 
 SRC_URI += "file://rot_key.pem"
 
