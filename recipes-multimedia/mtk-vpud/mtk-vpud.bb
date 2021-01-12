@@ -11,7 +11,7 @@ inherit systemd
 inherit update-rc.d
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/vpud.git;protocol=ssh"
-SRCREV = "89e1fe09fa64f572ef70c2d7707da5d670e202f9"
+SRCREV = "a8086d17f0cc02278d5b540c4e9dfc85ea5f969c"
 
 SRC_URI += " \
 	file://vpud.service \
