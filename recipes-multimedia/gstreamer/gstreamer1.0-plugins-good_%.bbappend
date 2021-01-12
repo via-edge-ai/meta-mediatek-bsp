@@ -8,3 +8,8 @@ SRC_URI_append_i300a = " \
 	file://0002-HACK-don-t-resize-buffers.patch \
 	file://0003-HACK-don-t-update-width-height.patch \
 "
+
+SRC_URI_append_mt8183 = " \
+	file://0002-HACK-don-t-resize-buffers.patch \
+	file://0003-HACK-don-t-update-width-height.patch \
+"
