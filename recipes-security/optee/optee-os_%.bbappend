@@ -6,9 +6,11 @@ SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/optee-os.git;protocol=ssh;bran
 
 SRC_URI_append = " \
 	file://0001-allow-setting-sysroot-for-libgcc-lookup.patch \
+	file://0002-allow-setting-sysroot-for-clang.patch \
 "
 SRC_URI_remove = " \
     file://0006-allow-setting-sysroot-for-libgcc-lookup.patch \
+    file://0007-allow-setting-sysroot-for-clang.patch \
 "
 
 COMPATIBLE_MACHINE = "mt*"
