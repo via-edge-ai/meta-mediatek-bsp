@@ -9,6 +9,7 @@ TFA_PLATFORM = "mt8183"
 
 # OP-TEE
 OPTEE_TARGET = "mediatek-mt8183"
+OPTEE_DRAM_SIZE = "0x80000000"
 
 # LK
 LK_PROJECT = "mt8183-evb"

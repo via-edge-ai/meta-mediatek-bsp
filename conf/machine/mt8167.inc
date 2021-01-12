@@ -9,6 +9,7 @@ TFA_PLATFORM = "mt8516"
 
 # OP-TEE
 OPTEE_TARGET = "mediatek-mt8516"
+OPTEE_DRAM_SIZE = "0x80000000"
 
 # LK
 LK_PROJECT = "pumpkin8516-emmc"
