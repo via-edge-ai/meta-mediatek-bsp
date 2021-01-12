@@ -37,6 +37,10 @@ EXTRA_OEMAKE_append_armv7a += ' \
 	VPUD_ARCH=aarch32 \
 '
 
+EXTRA_OEMAKE_append_mt8183 += ' \
+	VPUD_SOC=mt8183 \
+'
+
 do_install() {
 	oe_runmake install
 
