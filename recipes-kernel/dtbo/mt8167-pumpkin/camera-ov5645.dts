@@ -6,6 +6,7 @@
 
 #include <dt-bindings/power/mt8167-power.h>
 #include <dt-bindings/gpio/gpio.h>
+#include <uapi/linux/version.h>
 #include "mt8167-pinfunc.h"
 
 /dts-v1/;
@@ -53,7 +54,12 @@
 			ov5645: ov5645@3C {
 				compatible = "ovti,ov5645";
 				reg = <0x3C>;
+
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,10,0))
+				power-domains = <&spm MT8167_POWER_DOMAIN_ISP>;
+#else
 				power-domains = <&scpsys MT8167_POWER_DOMAIN_ISP>;
+#endif
 
 				enable-gpios = <&tca6416 15 GPIO_ACTIVE_HIGH>;
 				reset-gpios = <&tca6416 14 GPIO_ACTIVE_LOW>;
