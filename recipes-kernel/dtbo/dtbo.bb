@@ -12,6 +12,12 @@ FILESEXTRAPATHS_prepend_mt8516-pumpkin:= "${THISDIR}/mt8516-pumpkin:"
 FILESEXTRAPATHS_prepend_mt8183-evb := "${THISDIR}/mt8183-evb:"
 FILESEXTRAPATHS_prepend_mt8183-pumpkin:= "${THISDIR}/mt8183-pumpkin:"
 
+do_compile[depends] += "virtual/kernel:do_shared_workdir"
+KERNEL_INCLUDE_append = " \
+	${STAGING_KERNEL_BUILDDIR}/include \
+	${STAGING_KERNEL_BUILDDIR}/include/generated \
+"
+
 SRC_URI_append = " \
 	file://panel-raspberrypi.dtsi \
 "
