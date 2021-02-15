@@ -22,7 +22,7 @@ do_deploy_append() {
 }
 
 do_deploy_append_i300-pumpkin() {
-	sed -i '/^check_fastboot_entry=.*/c\check_fastboot_entry=gpio input 42; if test $? -eq 0; then setenv fastboot_entry 1; else setenv_fastboot_entry 0; fi' ${DEPLOYDIR}/u-boot-initial-env
+	sed -i '/^check_fastboot_entry=.*/c\check_fastboot_entry=gpio input 42; if test $? -eq 0; then setenv fastboot_entry 1; else setenv fastboot_entry 0; fi' ${DEPLOYDIR}/u-boot-initial-env
 }
 
 inherit deploy
