@@ -4,4 +4,4 @@ MIC_CONFIG = "${@bb.utils.contains('MACHINE_FEATURES', 'vesper-hat', 'vesper-hat
 FILESEXTRAPATHS_prepend_i300-pumpkin := "${THISDIR}/pumpkin/${MIC_CONFIG}:"
 FILESEXTRAPATHS_prepend_i300a-sb30 := "${THISDIR}/pumpkin/${MIC_CONFIG}:"
 FILESEXTRAPATHS_prepend_mt8183-evb := "${THISDIR}/mt8183-evb:"
-FILESEXTRAPATHS_prepend_mt8183-pumpkin := "${THISDIR}/mt8183-evb:"
+FILESEXTRAPATHS_prepend_mt8183-pumpkin := "${THISDIR}/mt8183-pumpkin:"
