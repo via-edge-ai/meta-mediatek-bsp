@@ -32,6 +32,7 @@ SRC_URI_append_mt8183 = " file://mt8183.cfg "
 SRC_URI_append_mt8516 = " file://mt8516.cfg "
 
 # Connectivity config fragments
+SRC_URI_append_mt7663 = " file://mt7663.cfg "
 SRC_URI_append_mt7668 = " file://mt7668.cfg "
 
 KERNEL_EXTRA_ARGS = "Image.gz dtbs"
