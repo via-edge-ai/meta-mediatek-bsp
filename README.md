@@ -93,32 +93,6 @@ The commands to flash the root filesystem are:
     $ fastboot flash rootfs core-image-weston-i300b-pumpkin.ext4
     $ fastboot continue
 
-## Connecting to the board
-
-You can connect to the board via the serial console exported on the Micro-B USB connector:
-
-    $ picocom -b 921600 /dev/ttyUSB0
-    root@i300b-pumpkin:~#
-
----
-The image is running ssh (dropbear) and avahi in order to make it easily accessible through a Network Interface:
-
-    $ ssh root@i300b-pumpkin.local
-    root@i300b-pumpkin:~#
-
-The image is also configuring a USB Gadget on the USB Type-C connector that can be used as a Network Interface to connect to the board.
-
-## Configuring the Wi-Fi
-
-To configure the board to connect to your Wi-Fi AP you need to run the following command:
-
-    root@i300b-pumpkin:~# wpa_passphrase [SSID] [PASSPHRASE] >> /etc/wpa_supplicant.conf
-
-This command needs to be typed only once, the Wi-Fi network will be saved in
-the *wpa_supplicant.conf* file. [SSID] needs to be replaced with your
-Wi-Fi SSID, and [PASSPHRASE] needs to be replaced with the passphrase
-associated to that SSID.
-
 ## local.conf options
 
 Options available in `build/conf/local.conf` to modify the BSP:
@@ -126,10 +100,6 @@ Options available in `build/conf/local.conf` to modify the BSP:
 * `MACHINE`: This option defines the machine configuration used to generates
 	the image. It is set by default to `i300b-pumpkin` but can be changed to
 	any of the machine available.
-
-* `USB_GADGET_FUNCTION`: This option allows to choose the USB gadget used
-	to expose an Ethernet interface over USB. Available choices are: `ecm` (default),
-	`rndis`.
 
 * `KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD`: List of kernel device-tree overlays
 	that should be automatically loaded and merged by u-boot to the main dtb
@@ -146,9 +116,3 @@ These DISTRO_FEATURES can be added to the image by setting the variable in [loca
 
 The layer is defining the following custom MACHINE_FEATURES:
 * `vesper-hat`: Enable the use of the vesper audio hat for the i300 pumpkin board.
-
-## Known issues
-
-* On Windows 10, and possibly other version of windows, the ECM gadget is
-	not well supported, to fix it you can set the USB_GADGET_FUNCTION to `rndis`,
-	see `local.conf options` for more details.
