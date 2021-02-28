@@ -64,19 +64,11 @@ fitimage_assemble() {
 		done
 	fi
 
-	if [ -n "${KERNEL_DEVICETREE_OVERLAYS}" ]; then
-		for DTB in ${KERNEL_DEVICETREE_OVERLAYS}; do
-			if echo ${DTB} | grep -q '/devicetree/'; then
-				bbwarn "${DTB} contains the full path to the the dts file, but only the dtb name should be used."
-				DTB=`basename ${DTB} | sed 's,\.dts$,.dtb,g'`
-			fi
-			DTB_PATH="${WORKDIR}/recipe-sysroot/boot/devicetree/${DTB}"
-
-			DTB=$(echo "${DTB}" | tr '/' '_')
-			DTBS="${DTBS} ${DTB}"
-			fitimage_emit_section_dtb ${1} ${DTB} ${DTB_PATH}
-		done
-	fi
+	for DTBO_PATH in "${WORKDIR}"/recipe-sysroot/boot/devicetree/*.dtbo; do
+		DTBO=$(basename "${DTBO_PATH}")
+		DTBS="${DTBS} ${DTBO}"
+		fitimage_emit_section_dtb ${1} ${DTBO} ${DTBO_PATH}
+	done
 
 	#
 	# Step 3: Prepare a setup section. (For x86)
