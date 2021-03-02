@@ -9,7 +9,7 @@ inherit allarch
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/rity-firmware.git;protocol=ssh"
-SRCREV = "79da59b351705ba339a64d5418ce0ef2d0a9b2aa"
+SRCREV = "27fd184827c510a1a1cdf76840b86bfbfc6ba055"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
