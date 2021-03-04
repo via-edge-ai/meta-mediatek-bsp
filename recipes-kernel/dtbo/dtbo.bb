@@ -26,6 +26,7 @@ SRC_URI_append_mt8167-pumpkin = " \
 	file://panel-raspberrypi.dts \
 	file://panel-avd-tt70ws-cn-134-a.dts \
 	file://vesper.dts \
+	file://audio-i2s.dts \
 	file://camera-ov5645.dts \
 "
 
@@ -58,6 +59,7 @@ SRC_URI_append_mt8183-pumpkin = " \
 
 SRC_URI_append_mt8516-pumpkin = " \
 	file://vesper.dts \
+	file://audio-i2s.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"

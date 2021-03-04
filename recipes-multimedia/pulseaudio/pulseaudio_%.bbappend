@@ -1,6 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-MYCONF = "${@bb.utils.contains('MACHINE_FEATURES', 'vesper-hat', 'vesper', 'internalmic', d)}"
+INTERNAL_OR_PIN_HEADER = "${@bb.utils.contains('I300_PUMPKIN_AUDIO_CONF', 'i2s', '40-pins-header' , 'internalmic', d)}"
+MYCONF = "${@bb.utils.contains('MACHINE_FEATURES', 'vesper-hat', 'vesper' , '${INTERNAL_OR_PIN_HEADER}', d)}"
 
 SRC_URI_append = " \
 	file://client_${MYCONF}.conf \
