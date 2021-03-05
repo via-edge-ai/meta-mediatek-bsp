@@ -144,7 +144,6 @@ Limitations
 
 The software image has the following limitations:
 
-* HW accelarated video encode / decode are not yet supported
 * The 2 USB Type-A port (CN3) and the Ethernet port (CN5) can be used only when no cable is connected to the USB Type-C CN2 port. This is a hardware limitation that prevents USB host and USB device to be usable at the same time.
 
 .. _7-inch Raspberry Pi touch display: https://www.raspberrypi.org/products/raspberry-pi-touch-display/
