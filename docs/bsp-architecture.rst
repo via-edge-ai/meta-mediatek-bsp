@@ -134,3 +134,25 @@ Linux
 
 The `Linux kernel <https://www.kernel.org/>`_ is the main OS running. It will
 load the root filesystem (rootfs) and starts running the `init` process.
+
+The following versions of Linux are currently supported:
+
++----------------+-------------+
+| Kernel version | Branch name |
++================+=============+
+|      v4.19     |  mtk-v4.19  |
++----------------+-------------+
+|      v5.4      |  mtk-v5.4   |
++----------------+-------------+
+|      v5.10     |  mtk-v5.10  |
++----------------+-------------+
+
+By default the latest Linux release will be built, if you wan to use an older
+supported kernel you can set the `PREFERRED_VERSION_linux-mtk` variable
+in your `local.conf`.
+
+For example if you want to use the v5.4 branch you can set:
+
+.. code-block::
+
+	PREFERRED_VERSION_linux-mtk = "5.4%"
