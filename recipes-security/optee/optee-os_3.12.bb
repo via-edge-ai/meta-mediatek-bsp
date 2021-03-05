@@ -5,7 +5,7 @@ require recipes-security/optee/optee-os.inc
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-SRCREV = "a2f1cc11b20bf18c120801785e3ef0f73d044dd9"
+SRCREV = "8814ef1511beca073e19d736ed06f4dbf4a41df3"
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/optee-os.git;protocol=ssh;branch=mtk-v3.12"
 
 SRC_URI_append = " \
