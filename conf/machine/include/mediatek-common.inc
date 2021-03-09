@@ -36,6 +36,7 @@ EXTRA_IMAGEDEPENDS = " \
 	lk \
 	virtual/trusted-firmware-a \
 	mtk-flash-tools \
+	rity-tools \
 "
 
 MACHINE_EXTRA_RRECOMMENDS += " \
