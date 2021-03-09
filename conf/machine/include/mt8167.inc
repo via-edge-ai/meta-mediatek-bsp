@@ -31,6 +31,7 @@ PREFERRED_PROVIDER_virtual/libgbm ?= "imgtec-pvr"
 PREFERRED_PROVIDER_virtual/libgl ?= "imgtec-pvr"
 PREFERRED_PROVIDER_virtual/libgles2 ?= "imgtec-pvr"
 PREFERRED_PROVIDER_virtual/mesa ?= "imgtec-pvr"
+PREFERRED_PROVIDER_virtual/opencl ?= "imgtec-pvr"
 
 PREFERRED_VERSION_weston = "9.0%"
 

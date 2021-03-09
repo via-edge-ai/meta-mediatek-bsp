@@ -14,6 +14,7 @@ PROVIDES = " \
 	virtual/libgl \
 	virtual/libgles2 \
 	virtual/mesa \
+	virtual/opencl \
 "
 
 RPROVIDES_${PN} = " \
@@ -24,6 +25,7 @@ RPROVIDES_${PN} = " \
 	libgles2 \
 	mesa \
 	mesa-vulkan-drivers \
+	opencl \
 "
 
 S = "${WORKDIR}/git"

@@ -18,6 +18,7 @@ PROVIDES = " \
 	virtual/libgles1 \
 	virtual/libgles2 \
 	virtual/mesa \
+	virtual/opencl \
 "
 
 RPROVIDES_${PN} = " \
@@ -28,6 +29,7 @@ RPROVIDES_${PN} = " \
 	libgles1 \
 	libgles2 \
 	mesa \
+	opencl \
 "
 
 S = "${WORKDIR}/git"
