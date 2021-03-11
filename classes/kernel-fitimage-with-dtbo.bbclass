@@ -66,9 +66,9 @@ fitimage_assemble() {
 
 	if [ -e "${WORKDIR}"/recipe-sysroot/boot/devicetree/ ]; then
 		for DTBO_PATH in "${WORKDIR}"/recipe-sysroot/boot/devicetree/*.dtbo; do
-			DTBO=$(basename "${DTBO_PATH}")
-			DTBS="${DTBS} ${DTBO}"
-			fitimage_emit_section_dtb ${1} ${DTBO} ${DTBO_PATH}
+			DTB=$(basename "${DTBO_PATH}")
+			DTBS="${DTBS} ${DTB}"
+			fitimage_emit_section_dtb ${1} ${DTB} ${DTBO_PATH}
 		done
 	fi
 
