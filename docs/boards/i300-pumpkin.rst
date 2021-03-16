@@ -76,6 +76,9 @@ If you wish to use the ov5645 camera, you need to add the following to your
 Audio
 -----
 
+Default Playback
+^^^^^^^^^^^^^^^^
+
 By default, the pumpkin board ouputs audio on the jack connector.
 
 It is possible to output the audio on the MT6392 PMIC mono lineout as well. To enable this output, you will need to change one of the alsa settings using the following command:
@@ -91,6 +94,77 @@ In order to disable this audio output, simply disable the loopback by using the 
 .. prompt:: bash $
 
 	amixer set -c mtsndcard 'Codec_Loopback_Select',0 CODEC_LOOPBACK_NONE
+
+Default Capture
+^^^^^^^^^^^^^^^
+
+By default, the pumpkin board captures audio using 2 PDM microphones that must be plugged directly on the board.
+
+The following command is an example that will start a stereo record with a sampling rate of 48kHz and a signed 32bits bit format:
+
+.. prompt:: bash $
+
+	arecord -c 2 -r 48000 -f s32_le recorded_file.wav
+
+It is possible to record using the jack microphone instead. In order to switch to this input, you will need to change a couple of alsa settings using the following commands:
+
+.. prompt:: bash $
+
+	amixer set -c mtsndcard 'AIF TX Mux',0 'Analog MIC'
+	amixer set -c mtsndcard 'Left PGA Mux',0 'CH1'
+
+In this case, in order to record, the jack device will have to be specified as follows:
+
+.. prompt:: bash $
+
+	arecord -D hwjackmic -c 2 -r 48000 -f s32_le recorded_file.wav
+
+Using the audio I2S inputs/outputs on the 40 pins header
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+At build time, it is possible to move from jack/pdm mics to the audio inputs/outputs available on the 40 pins header.
+In order to do so, you can set the `I300_PUMPKIN_AUDIO_CONF` variable in your `local.conf` to `i2s`.
+
+.. code::
+
+	I300_PUMPKIN_AUDIO_CONF=i2s
+
+With this configuration, it is currently possible to use a 2channels I2S in device (named I2S2) for the capture and and 8 channels I2S out device (named I2S) for the playback.
+
+.. warning::
+
+	Please note that the SD card will be disabled in this case as the SD card share its pins with the I2S 8 channels out device.
+
+Here is the pin configuration to use on the 40 pins header:
+
++-------------+---------+---------------+
+| Header pin  | GPIO    | Function      |
++=============+=========+===============+
+| 19          | GPIO51  | I2S2_MCK      |
++-------------+---------+---------------+
+| 40          | GPIO55  | I2S2_BCK      |
++-------------+---------+---------------+
+| 7           | GPIO2   | I2S2_LRCK     |
++-------------+---------+---------------+
+| 23          | GPIO49  | I2S2_DI       |
++-------------+---------+---------------+
+| 11          | GPIO25  | I2S_8CH_MCK   |
++-------------+---------+---------------+
+| 13          | GPIO73  | I2S_8CH_BCK   |
++-------------+---------+---------------+
+| 37          | GPIO72  | I2S_8CH_LRCK  |
++-------------+---------+---------------+
+| 22          | GPIO71  | I2S_8CH_DO1   |
++-------------+---------+---------------+
+| 18          | GPIO70  | I2S_8CH_DO2   |
++-------------+---------+---------------+
+| 15          | GPIO69  | I2S_8CH_DO3   |
++-------------+---------+---------------+
+| 16          | GPIO68  | I2S_8CH_DO4   |
++-------------+---------+---------------+
+
+I2S devices can be connected to these pins and, provided they don't need any configuration and as a consequence don't need any codec, they will work without any additional modifications.
+Regarding the I2S 8 channels out device, we can imagine using 4 x 2 channels I2S devices. In that case, the devices will share the same MCK, LRCK and BCK but will have a different data line each (DO1, DO2, DO3 or DO4).
 
 MT7668 wireless chipset
 ------------------------
