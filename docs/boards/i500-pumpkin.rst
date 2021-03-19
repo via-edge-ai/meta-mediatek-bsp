@@ -97,6 +97,82 @@ For example, for one AP1302 + one AR0330 combination:
 		camera-ap1302-ar0330-single.dtbo \
 	"
 
+Audio
+-----
+
+Playback
+^^^^^^^^
+
+By default, the i500 Pumpkin board ouputs audio on the jack connector.
+
+It is possible to output the audio on the 2 channels I2S out device present on the 40 pins header instead. To switch to this output, you will need to change several alsa settings using the following commands:
+
+.. prompt:: bash $
+
+	amixer set -c mt8183mt6358 'ADDA_DL_CH1 DL1_CH1',0 off
+	amixer set -c mt8183mt6358 'ADDA_DL_CH2 DL1_CH2',0 off
+	amixer set -c mt8183mt6358 'I2S1_CH1 DL1_CH1',0 on
+	amixer set -c mt8183mt6358 'I2S1_CH2 DL1_CH2',0 on
+
+In order to move back to jack output, simply put back the original settings by using the following commands:
+
+.. prompt:: bash $
+
+	amixer set -c mt8183mt6358 'ADDA_DL_CH1 DL1_CH1',0 on
+	amixer set -c mt8183mt6358 'ADDA_DL_CH2 DL1_CH2',0 on
+	amixer set -c mt8183mt6358 'I2S1_CH1 DL1_CH1',0 off
+	amixer set -c mt8183mt6358 'I2S1_CH2 DL1_CH2',0 off
+
+Capture
+^^^^^^^
+
+By default, the i500 Pumpkin board captures audio using the jack microphone.
+
+The following command is an example that will start a mono record with a sampling rate of 48kHz and a signed 32bits bit format:
+
+.. prompt:: bash $
+
+	arecord -c 1 -r 48000 -f s32_le recorded_file.wav
+
+It is possible to record using the 4 channels I2S in device present on the 40 pins header instead.
+In this case, the 2ch I2S device will have to be specified as follows:
+
+.. prompt:: bash $
+
+	arecord -D 4ch_mic -c 4 -r 48000 -f s32_le recorded_file.wav
+
+Note that it is possible to record 1, 2 or 4 channels using this device.
+
+40 pins header configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here is the pin configuration to use the audio devices present on the 40 pins header:
+
++-------------+---------------+
+| Header pin  | Function      |
++=============+===============+
+| 32          | I2S2_MCK      |
++-------------+---------------+
+| 29          | I2S2_BCK      |
++-------------+---------------+
+| 33          | I2S2_LRCK     |
++-------------+---------------+
+| 38          | I2S2_DI       |
++-------------+---------------+
+| 31          | I2S2_DI2      |
++-------------+---------------+
+| 11          | I2S1_MCK      |
++-------------+---------------+
+| 12          | I2S1_BCK      |
++-------------+---------------+
+| 35          | I2S1_LRCK     |
++-------------+---------------+
+| 40          | I2S1_DO       |
++-------------+---------------+
+
+I2S devices can be connected to these pins and, provided they don't need any configuration and as a consequence don't need any codec, they will work without any additional modifications.
+Regarding the I2S 4 channels in device, we can imagine using 2 x 2 channels I2S devices. In that case, the devices will share the same MCK, LRCK and BCK but will have a different data line each (DI or DI2).
+
 MT7668 wireless chipset
 ------------------------
 
