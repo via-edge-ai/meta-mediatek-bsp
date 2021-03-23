@@ -20,3 +20,8 @@ EXTRA_OEMAKE_append = " \
 "
 
 S = "${WORKDIR}/git"
+
+SRC_URI_remove = " \
+    file://0002-pmf.h-made-PMF_STOTE_ENABLE-pass-Wtautological.patch  \
+    file://0003-xlat-tables-v2-remove-tautological-assert.patch \
+"
