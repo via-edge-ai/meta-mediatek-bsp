@@ -21,7 +21,7 @@ pages:
   image: python:latest
   script:
   - pip install -U sphinx sphinx-rtd-theme sphinx-prompt sphinxcontrib-mermaid six
-  - sphinx-build -b html docs public
+  - sphinx-build -W -n -b html docs public
   - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file public/objects.inv "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/intersphinx/1.0.0/objects.inv"'
   artifacts:
     paths:
