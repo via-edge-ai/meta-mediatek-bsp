@@ -51,8 +51,10 @@ do_install() {
 		INCLUDEDIR=${D}${includedir}
 }
 
-FILES_${PN} = "${libdir}/*.so* \
-               ${bindir}/*"
+PACKAGES =+ "${PN}-tests"
+
+FILES_${PN} = "${libdir}/*.so*"
+FILES_${PN}-tests = "${bindir}/*"
 FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc \
                    ${datadir}/pkgconfig/*.pc \
                    ${includedir}/EGL/* \
