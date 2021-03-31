@@ -6,9 +6,10 @@ LICENSE = "CLOSED"
 
 inherit features_check
 
-CONFLICT_DISTRO_FEATURES = "x11 vulkan"
+CONFLICT_DISTRO_FEATURES = "x11"
 
 DEPENDS += "libdrm wayland"
+DEPENDS += "${@bb.utils.contains("DISTRO_FEATURES", "vulkan", "vulkan-loader", "", d)}"
 
 PROVIDES = " \
 	virtual/egl \
@@ -29,13 +30,14 @@ RPROVIDES_${PN} = " \
 	libgles1 \
 	libgles2 \
 	mesa \
+	mesa-vulkan-drivers \
 	opencl \
 "
 
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/libmali.git;protocol=ssh"
-SRCREV = "618acf37d1acab4844be5af66071c1d2567153fc"
+SRCREV = "29eac170a4c77323110c9fd4b3b30694a4afad32"
 
 EXTRA_OEMAKE = ' \
 	SOC=${MALI_SOC} \
@@ -48,13 +50,17 @@ do_package_qa[noexec] = "1"
 
 do_install() {
 	oe_runmake install BINDIR=${D}${bindir} LIBDIR=${D}${libdir} \
-		INCLUDEDIR=${D}${includedir}
+		INCLUDEDIR=${D}${includedir} DATADIR=${D}${datadir}
 	chown -R root:root ${D}${libdir}/
+	sed -i "s,@LIBDIR@,${libdir},g" ${D}${datadir}/vulkan/icd.d/mali.json
 }
 
 PACKAGES =+ "${PN}-tests"
 
-FILES_${PN} = "${libdir}/*.so*"
+FILES_${PN} = " \
+	${libdir}/*.so* \
+    ${datadir}/vulkan/icd.d/mali.json \
+"
 FILES_${PN}-tests = "${bindir}/*"
 FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc \
                    ${datadir}/pkgconfig/*.pc \
