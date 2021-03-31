@@ -11,9 +11,10 @@ build_pages:
   - pip install -U sphinx sphinx-rtd-theme sphinx-prompt sphinxcontrib-mermaid six
   - sphinx-build -b html docs public
   only:
-  - branches
-  except:
-  - dunfell
+    refs:
+    - merge_requests
+    changes:
+    - docs/**/*
 
 pages:
   stage: deploy
@@ -26,4 +27,7 @@ pages:
     paths:
     - public
   only:
-  - dunfell
+    refs:
+    - dunfell
+    changes:
+    - docs/**/*
