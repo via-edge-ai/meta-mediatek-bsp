@@ -15,7 +15,7 @@ OPTEE_DRAM_SIZE = "0x80000000"
 LK_PROJECT = "mt8183-evb"
 
 DISTRO_FEATURES_append = " optee "
-DISTRO_FEATURES_remove = " x11 vulkan "
+DISTRO_FEATURES_remove = " x11 "
 
 # Mali
 MALI_SOC = "mt8183"
