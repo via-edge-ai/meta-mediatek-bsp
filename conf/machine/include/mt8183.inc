@@ -19,7 +19,7 @@ DISTRO_FEATURES_remove = " x11 vulkan "
 
 # Mali
 MALI_GEN = "bifrost"
-MALI_VERSION ??= "r20p0"
+MALI_VERSION ??= "r29p0"
 
 MACHINE_EXTRA_RRECOMMENDS_append = " \
 	libmali \
