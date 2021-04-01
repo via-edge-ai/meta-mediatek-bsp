@@ -33,3 +33,14 @@ The following DDR modules are currently supported by RITY for i300 based boards:
 +--------------+---------+--------+---------------------+
 | Micron       | 2 GB    | LPDDR3 | MT52L512M32D2PF-107 |
 +--------------+---------+--------+---------------------+
+
+Supported HDMI resolutions
+--------------------------
+
+The BSP supports the following resolutions on i300a:
+
+* 640x480p@60HZ
+* 720x480p@60HZ
+* 720x576p@50HZ
+* 1920x1080p@30HZ
+* 1920x1080p@60HZ
