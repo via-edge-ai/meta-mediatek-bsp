@@ -9,12 +9,12 @@ SRC_URI += " \
 "
 
 do_deploy_append() {
-	boot_conf=`echo "boot_conf=#conf@${KERNEL_DEVICETREE}" | tr '/' '_'`
+	boot_conf=`echo "boot_conf=#conf-${KERNEL_DEVICETREE}" | tr '/' '_'`
 	fastboot_entry=`echo "check_fastboot_entry=setenv fastboot_entry 0"`
 
 	for dtbo in ${KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD};
 	do
-		boot_conf="$boot_conf#conf@$dtbo"
+		boot_conf="$boot_conf#conf-$dtbo"
 	done
 
 	echo $fastboot_entry >> ${DEPLOYDIR}/u-boot-initial-env
