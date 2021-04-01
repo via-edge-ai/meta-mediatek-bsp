@@ -10,7 +10,7 @@ SRC_URI += " \
 
 do_deploy_append() {
 	boot_conf=`echo "boot_conf=#conf@${KERNEL_DEVICETREE}" | tr '/' '_'`
-	fastboot_entry=`echo "check_fastboot_entry=setenv fasbtoot_entry 0"`
+	fastboot_entry=`echo "check_fastboot_entry=setenv fastboot_entry 0"`
 
 	for dtbo in ${KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD};
 	do
