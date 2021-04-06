@@ -87,7 +87,9 @@ Currently, only the following combinations are supported:
 
 camera-ap1302-ar0330-single.dtbo : one AP1302 + one AR0330
 camera-ap1302-ar0144-single.dtbo : one AP1302 + one AR0144
+camera-ap1302-ar0144-dual.dtbo : one AP1302 + dual AR0144
 camera-ap1302-ar0330-single-ar0144-single.dtbo : one AP1302 + one AR0330 and one AP1302 + one AR0144
+camera-ap1302-ar0330-single-ar0144-dual.dtbo : one AP1302 + one AR0330 and one AP1302 + dual AR0144
 
 For example, for one AP1302 + one AR0330 combination:
 
@@ -190,8 +192,13 @@ The following Device-Tree Overlays are supported:
 
 * `panel-raspberrypi.dtbo`: Raspberry Pi touch display (see :ref:`boards/i500-pumpkin:Displays` section)
 * `panel-urt-umo-9465md.dtbo`: URT UMO display (see :ref:`boards/i500-pumpkin:Displays` section)
-* `camera-ar0330.dtbo`: AR0330CS camera (see :ref:`boards/i500-pumpkin:Cameras` section)
-* `camera-ap1303-ar0330.dtbo`: AR0330CS camera with AP1302 ISP (see :ref:`boards/i500-pumpkin:Cameras` section)
+* `camera-ar0330-single.dtbo`: single AR0330CS camera (see :ref:`boards/i500-pumpkin:Cameras` section)
+* `camera-ar0330-dual.dtbo`: dual AR0330CS cameras (see :ref:`boards/i500-pumpkin:Cameras` section)
+* `camera-ap1302-ar0330-single.dtbo`: single AR0330CS camera with AP1302 ISP (see :ref:`boards/i500-pumpkin:Cameras` section)
+* `camera-ap1302-ar0144-single.dtbo`: single AR0144 camera with AP1302 ISP (see :ref:`boards/i500-pumpkin:Cameras` section)
+* `camera-ap1302-ar0144-dual.dtbo`: dual AR0144 cameras with AP1302 ISP (see :ref:`boards/i500-pumpkin:Cameras` section)
+* `camera-ap1302-ar0330-single-ar0144-single.dtbo`: single AR0330CS and single AR0144 cameras with dual AP1302 ISPs (see :ref:`boards/i500-pumpkin:Cameras` section)
+* `camera-ap1302-ar0330-single-ar0144-dual.dtbo`: single AR0330CS and dual AR0144 cameras with dual AP1302 ISPs (see :ref:`boards/i500-pumpkin:Cameras` section)
 
 FTDI board control
 ------------------
