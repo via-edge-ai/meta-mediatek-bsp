@@ -101,6 +101,14 @@
 						vaa-supply = <&mt6358_vcama1_reg>;
 						vddio-supply = <&reg_1p8v_ext>;
 					};
+
+					sensor@1 {
+						reg = <1>;
+
+						vdd-supply = <&mt6358_vcamd_reg>;
+						vaa-supply = <&mt6358_vcama2_reg>;
+						vddio-supply = <&reg_1p8v_ext>;
+					};
 				};
 			};
 		};
@@ -146,6 +154,15 @@
 						vaa-supply = <&mt6358_vcama1_reg>;
 						vddio-supply = <&mt6358_vcamio_reg>;
 					};
+
+					sensor@1 {
+						reg = <1>;
+
+						vdd-supply = <&reg_1p8v_ext>;
+						vddpll-supply = <&mt6358_vldo28_reg>;
+						vaa-supply = <&mt6358_vcama2_reg>;
+						vddio-supply = <&mt6358_vcamio_reg>;
+					};
 				};
 			};
 		};
@@ -177,7 +194,14 @@
 	};
 
 	fragment@5 {
-		target = <&camsv0>;
+		target = <&camsv1>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@6 {
+		target = <&camsv2>;
 		__overlay__ {
 			status = "okay";
 		};
