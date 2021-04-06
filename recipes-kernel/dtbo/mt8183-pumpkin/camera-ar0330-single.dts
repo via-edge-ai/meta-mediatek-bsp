@@ -6,12 +6,19 @@
 #include "camera-ar0330-dual.dtsi"
 
 / {
-	fragment@6 {
+	fragment@7 {
 		target = <&i2c4>;
 		__overlay__ {
 			sensor@10 {
 				status = "disabled";
 			};
+		};
+	};
+
+	fragment@8 {
+		target = <&camsv1>;
+		__overlay__ {
+			status = "disabled";
 		};
 	};
 };

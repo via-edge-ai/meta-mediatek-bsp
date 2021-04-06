@@ -156,4 +156,11 @@
 			status = "okay";
 		};
 	};
+
+	fragment@6 {
+		target = <&camsv1>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
 };
