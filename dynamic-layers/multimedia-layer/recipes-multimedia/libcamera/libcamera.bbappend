@@ -1,5 +1,5 @@
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/libcamera.git;protocol=ssh;branch=mtk/camsv"
-SRCREV = "879d8dab2e19faca6cfe5df21fdaaebc5a38be36"
+SRCREV = "b57162f0079ead0c5e81920f36afe0a269869a2e"
 
 PV = "202011+git${SRCPV}"
 
