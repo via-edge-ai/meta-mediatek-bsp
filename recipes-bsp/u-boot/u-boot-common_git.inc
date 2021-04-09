@@ -10,10 +10,10 @@ LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025"
 PE = "1"
 
-SRCREV = "9e2d4efd05fc8a8ac333bc1b33d56558453d4fbd"
-SRC_URI = "git://git@gitlab.com/baylibre/pumpkin/u-boot.git;branch=mtk-v2021.01;protocol=ssh"
+SRCREV = "6d652f0bf978dd8d3c585991538d137a09142416"
+SRC_URI = "git://git@gitlab.com/baylibre/pumpkin/u-boot.git;branch=mtk-v2021.04;protocol=ssh"
 
-PV = "2021.01+git${SRCPV}"
+PV = "2021.04+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
