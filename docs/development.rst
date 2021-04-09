@@ -132,10 +132,10 @@ To install the generated yocto defconfig you can run the following commands:
 
 .. prompt:: bash $ auto
 
-	$cd linux
-	$$RITYDIR/src/meta-mediatek-bsp/scripts/copy_kernel_config.sh $RITYDIR $MACHINE $IMAGENAME
+	$ cd linux
+	$ $RITYDIR/src/meta-mediatek-bsp/scripts/copy_kernel_config.sh $RITYDIR $MACHINE $IMAGENAME
 	Copying kernel config to i500-pumpkin-config...
-	$mv i500-pumpkin-config .config
+	$ mv i500-pumpkin-config .config
 
 The commands above will retrieve the `.config` from the existing i500-pumpkin
 build and copy it at the root of your linux repository.
