@@ -10,4 +10,5 @@ SRC_URI_remove = " \
 	file://0001-host-xtest-Adjust-order-of-including-compiler.h.patch \
 	file://0002-make-remove-Wno-unsafe-loop-for-clang.patch \
 	file://0003-make-remove-Wmissing-noreturn-for-clang.patch \
+	file://run-ptest \
 "
