@@ -35,7 +35,7 @@ RPROVIDES_${PN} = " \
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/libmali.git;protocol=ssh"
-SRCREV = "41500935637a894f68705510f5ab62351e077981"
+SRCREV = "62754751b2c80e4ec5def7bbd43e9ee10b29a303"
 
 EXTRA_OEMAKE = ' \
 	MALI_GEN=${MALI_GEN} \
