@@ -64,15 +64,20 @@ Cameras
 
 The i500 Pumpkin board supports the following csi camera configs:
 
-* Config 1: Onsemi AR0330 (single or dual) raw sensors
-* Config 2: Onsemi AP1302 (single or dual) ISPs + AR0330 / AR0144 (single or dual) sensors
+* Onsemi AR0330 (single or dual) raw sensors
+* Onsemi AP1302 (single or dual) ISPs + AR0330 / AR0144 (single or dual) sensors
 
-For config 1, you need to use the following dtbo depending the number of AR0330 sensors you have:
+Onsemi AR0330 (single or dual) raw sensors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-camera-ar0330-single.dtbo : one AR0330
-camera-ar0330-dual.dtbo   : two AR0330
+You need to use the following dtbo depending the number of AR0330 sensors
+you have:
 
-For example, you need to add the following to your `local.conf` if you have only one AR0330:
+* camera-ar0330-single.dtbo : one AR0330
+* camera-ar0330-dual.dtbo   : two AR0330
+
+For example, you should add the following to your `local.conf` if you have
+only one AR0330:
 
 .. code::
 
@@ -80,16 +85,21 @@ For example, you need to add the following to your `local.conf` if you have only
 		camera-ar0330-single.dtbo \
 	"
 
-For config 2, we support up to two AP1302 ISPs, the first ISP can support up to two AR0330 sensors.
-The second ISP can support up to two AR0144 sensors,
+
+Onsemi AP1302 (single or dual) ISPs + AR0330 / AR0144 (single or dual) sensors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Two AP1302 ISPs is supported, the first ISP can support
+up to two AR0330 sensors, while the second ISP can support up to
+two AR0144 sensors.
 
 Currently, only the following combinations are supported:
 
-camera-ap1302-ar0330-single.dtbo : one AP1302 + one AR0330
-camera-ap1302-ar0144-single.dtbo : one AP1302 + one AR0144
-camera-ap1302-ar0144-dual.dtbo : one AP1302 + dual AR0144
-camera-ap1302-ar0330-single-ar0144-single.dtbo : one AP1302 + one AR0330 and one AP1302 + one AR0144
-camera-ap1302-ar0330-single-ar0144-dual.dtbo : one AP1302 + one AR0330 and one AP1302 + dual AR0144
+* camera-ap1302-ar0330-single.dtbo : one AP1302 + one AR0330
+* camera-ap1302-ar0144-single.dtbo : one AP1302 + one AR0144
+* camera-ap1302-ar0144-dual.dtbo : one AP1302 + dual AR0144
+* camera-ap1302-ar0330-single-ar0144-single.dtbo : one AP1302 + one AR0330 and one AP1302 + one AR0144
+* camera-ap1302-ar0330-single-ar0144-dual.dtbo : one AP1302 + one AR0330 and one AP1302 + dual AR0144
 
 For example, for one AP1302 + one AR0330 combination:
 
