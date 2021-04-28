@@ -35,10 +35,10 @@ RPROVIDES_${PN} = " \
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/libmali.git;protocol=ssh"
-SRCREV = "62754751b2c80e4ec5def7bbd43e9ee10b29a303"
+SRCREV = "618acf37d1acab4844be5af66071c1d2567153fc"
 
 EXTRA_OEMAKE = ' \
-	MALI_GEN=${MALI_GEN} \
+	SOC=${MALI_SOC} \
 	MALI_VERSION=${MALI_VERSION} \
 '
 
@@ -49,6 +49,7 @@ do_package_qa[noexec] = "1"
 do_install() {
 	oe_runmake install BINDIR=${D}${bindir} LIBDIR=${D}${libdir} \
 		INCLUDEDIR=${D}${includedir}
+	chown -R root:root ${D}${libdir}/
 }
 
 PACKAGES =+ "${PN}-tests"

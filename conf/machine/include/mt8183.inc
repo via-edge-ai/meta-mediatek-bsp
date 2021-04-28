@@ -18,7 +18,7 @@ DISTRO_FEATURES_append = " optee "
 DISTRO_FEATURES_remove = " x11 vulkan "
 
 # Mali
-MALI_GEN = "bifrost"
+MALI_SOC = "mt8183"
 MALI_VERSION ??= "r29p0"
 
 MACHINE_EXTRA_RRECOMMENDS_append = " \
