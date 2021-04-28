@@ -1,4 +1,4 @@
-From 97aab76d6037ac9b2e7cc91649070e5148e62c74 Mon Sep 17 00:00:00 2001
+From 9b83d3378c02d5606a74a3b160f8889301f92c62 Mon Sep 17 00:00:00 2001
 From: Fabien Parent <fparent@baylibre.com>
 Date: Mon, 4 May 2020 20:18:19 +0200
 Subject: [PATCH] gst: video: add MT21 video format
@@ -13,19 +13,19 @@ Signed-off-by: Fabien Parent <fparent@baylibre.com>
  3 files changed, 6 insertions(+)
 
 diff --git a/gst-libs/gst/video/video-format.c b/gst-libs/gst/video/video-format.c
-index d1b8bd4b8446..1722b0de192f 100644
+index 394ad9919548..c45a329745ce 100644
 --- a/gst-libs/gst/video/video-format.c
 +++ b/gst-libs/gst/video/video-format.c
-@@ -5670,6 +5670,8 @@ static const VideoFormat formats[] = {
-   MAKE_RGBA_LE_PACK_FORMAT (BGR10A2_LE, "raw video", DPTH10_10_10_2, PSTR4444,
-       PLANE0,
-       OFFS0, SUB4444, PACK_BGR10A2_LE),
+@@ -6643,6 +6643,8 @@ static const VideoFormat formats[] = {
+   MAKE_YUV_T_FORMAT (NV12_32L32, "raw video",
+       GST_MAKE_FOURCC ('S', 'T', '1', '2'), DPTH888, PSTR122, PLANE011,
+       OFFS001, SUB420, PACK_NV12_TILED, TILE_32x32 (LINEAR)),
 +  MAKE_YUV_FORMAT (MT21, "raw video", GST_MAKE_FOURCC ('M', 'M', '2', '1'),
 +      DPTH888, PSTR122, PLANE011, OFFS001, SUB420, PACK_NV12),
  };
  
  static GstVideoFormat
-@@ -5922,6 +5924,8 @@ gst_video_format_from_fourcc (guint32 fourcc)
+@@ -6898,6 +6900,8 @@ gst_video_format_from_fourcc (guint32 fourcc)
        return GST_VIDEO_FORMAT_VUYA;
      case GST_MAKE_FOURCC ('A', 'R', '3', '0'):
        return GST_VIDEO_FORMAT_BGR10A2_LE;
@@ -35,22 +35,22 @@ index d1b8bd4b8446..1722b0de192f 100644
      default:
        return GST_VIDEO_FORMAT_UNKNOWN;
 diff --git a/gst-libs/gst/video/video-format.h b/gst-libs/gst/video/video-format.h
-index 30189b277599..d88a30dea9e9 100644
+index bebfceaeb542..1fa9d2e34038 100644
 --- a/gst-libs/gst/video/video-format.h
 +++ b/gst-libs/gst/video/video-format.h
-@@ -211,6 +211,7 @@ typedef enum {
-   GST_VIDEO_FORMAT_Y410,
-   GST_VIDEO_FORMAT_VUYA,
-   GST_VIDEO_FORMAT_BGR10A2_LE,
+@@ -252,6 +252,7 @@ typedef enum {
+    */
+   GST_VIDEO_FORMAT_NV12_32L32,
+ 
 +  GST_VIDEO_FORMAT_MT21,
  } GstVideoFormat;
  
  #define GST_VIDEO_MAX_PLANES 4
 diff --git a/gst-libs/gst/video/video-info.c b/gst-libs/gst/video/video-info.c
-index 7aed05528f1a..d5e8ad17e3f1 100644
+index 1e8bce310149..da1d63e445a7 100644
 --- a/gst-libs/gst/video/video-info.c
 +++ b/gst-libs/gst/video/video-info.c
-@@ -912,6 +912,7 @@ fill_planes (GstVideoInfo * info)
+@@ -924,6 +924,7 @@ fill_planes (GstVideoInfo * info, gsize plane_size[GST_VIDEO_MAX_PLANES])
        break;
      case GST_VIDEO_FORMAT_NV12:
      case GST_VIDEO_FORMAT_NV21:
@@ -59,5 +59,5 @@ index 7aed05528f1a..d5e8ad17e3f1 100644
        info->stride[1] = info->stride[0];
        info->offset[0] = 0;
 -- 
-2.28.0
+2.31.1
 
