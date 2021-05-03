@@ -1,4 +1,7 @@
 {
+  "rity-tools": {
+    "min-version": "1.0.0"
+  },
   "partitions": {
     "mmc0": "MBR_EMMC",
     "mmc0boot0": "bl2.img",
