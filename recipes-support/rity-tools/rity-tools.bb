@@ -5,12 +5,12 @@ SUMMARY = "RITY tools"
 LICENSE = "CLOSED"
 
 SRC_URI = " \
-	file://partitions.json \
+	file://rity.json \
 "
 
 inherit deploy
 
 do_deploy() {
-	install -m 0644 ${WORKDIR}/partitions.json ${DEPLOYDIR}/
+	install -m 0644 ${WORKDIR}/rity.json ${DEPLOYDIR}/
 }
 addtask do_deploy after do_install
