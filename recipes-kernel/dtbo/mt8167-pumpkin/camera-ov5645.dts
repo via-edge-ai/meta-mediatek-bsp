@@ -51,9 +51,9 @@
 			pinctrl-0 = <&i2c1_pins_a>;
 			status = "okay";
 
-			ov5645: ov5645@3C {
+			ov5645: ov5645@3c {
 				compatible = "ovti,ov5645";
-				reg = <0x3C>;
+				reg = <0x3c>;
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,10,0))
 				power-domains = <&spm MT8167_POWER_DOMAIN_ISP>;
@@ -63,6 +63,9 @@
 
 				enable-gpios = <&tca6416 15 GPIO_ACTIVE_HIGH>;
 				reset-gpios = <&tca6416 14 GPIO_ACTIVE_LOW>;
+
+				orientation = <0>;
+				rotation = <0>;
 
 				vdddo-supply = <&mt6392_vcamio_reg>;
 				vdda-supply = <&mt6392_vcama_reg>;
@@ -75,9 +78,9 @@
 
 				port {
 					ov5645_endpoint: endpoint {
-						remote-endpoint = <&mipicsi0_endpoint>;
+						remote-endpoint = <&seninf0_endpoint>;
 						clock-lanes = <0>;
-						data-lanes = <1 2>;
+						data-lanes = <1 2 3 4>;
 					};
 				};
 			};
@@ -85,12 +88,16 @@
 	};
 
 	fragment@3 {
-		target = <&mipicsi0>;
+		target = <&seninf>;
 		__overlay__ {
 			status = "okay";
-			port {
-				mipicsi0_endpoint: endpoint {
-					remote-endpoint = <&ov5645_endpoint>;
+			ports {
+				port@0 {
+					seninf0_endpoint: endpoint {
+						remote-endpoint = <&ov5645_endpoint>;
+                                                clock-lanes = <1>;
+                                                data-lanes = <1 2 3 4>;
+					};
 				};
 			};
 		};
@@ -102,4 +109,11 @@
 			regulator-always-on;
 		};
 	};
+
+        fragment@5 {
+                target = <&cam>;
+                __overlay__ {
+                        status = "okay";
+                };
+        };
 };
