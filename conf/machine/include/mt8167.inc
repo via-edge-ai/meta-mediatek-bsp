@@ -6,6 +6,7 @@ SOC_FAMILY = "mt8167"
 
 # Trusted Firmware-A
 TFA_PLATFORM = "mt8516"
+TFA_USE_PREBUILT_BL2 = "yes"
 
 # OP-TEE
 OPTEE_TARGET = "mediatek-mt8516"

@@ -17,7 +17,10 @@ UBOOT_DTBO_LOADADDRESS = "0x44c00000"
 UBOOT_MACHINE = "mt8516_pumpkin_defconfig"
 
 # TF-A priv
-TFA_BOARD_NAME = "pumpkin"
+TFA_BOARD_NAME = "mt8516-pumpkin"
+
+# libdram
+LIBDRAM_BOARD_NAME = "mt8516-pumpkin"
 
 # LK
 LK_PROJECT = "pumpkin8516-emmc"

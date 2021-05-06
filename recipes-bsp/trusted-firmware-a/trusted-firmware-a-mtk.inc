@@ -1,14 +1,21 @@
+require recipes-bsp/trusted-firmware-a/trusted-firmware-a.inc
+
 inherit deploy
 
+DEPENDS = "libdram"
+
 COMPATIBLE_MACHINE = "mt*"
+
+# Use TF-A for version
+SRCREV_FORMAT = "tfa"
 
 TFA_UBOOT = "1"
 
 DEPENDS_append = " coreutils-native u-boot-tools-native"
 
-EXTRA_OEMAKE += "CFLAGS=-DBOARD_${TFA_BOARD_NAME}"
 EXTRA_OEMAKE += "E=0"
 EXTRA_OEMAKE += "NEED_BL33=yes"
+EXTRA_OEMAKE += "LIBDRAM=${STAGING_DIR_TARGET}/${libdir}/libdram.a"
 
 # OP-TEE
 DEPENDS_append = " ${@bb.utils.contains("DISTRO_FEATURES", "optee", "optee-os", "", d)}"
@@ -25,3 +32,60 @@ SRC_URI_remove = " \
     file://0002-pmf.h-made-PMF_STOTE_ENABLE-pass-Wtautological.patch  \
     file://0003-xlat-tables-v2-remove-tautological-assert.patch \
 "
+
+SRC_URI += "file://rot_key.pem"
+
+LIC_FILES_CHKSUM += "file://docs/license.rst;md5=713afe122abbe07f067f939ca3c480c5"
+
+SRC_URI_MBEDTLS = "git://github.com/ARMmbed/mbedtls.git;name=mbedtls;protocol=https;destsuffix=git/mbedtls;branch=master"
+SRCREV_mbedtls = "mbedtls-2.26.0"
+
+LIC_FILES_CHKSUM_MBEDTLS = "file://mbedtls/LICENSE;md5=713afe122abbe07f067f939ca3c480c5"
+
+TFA_BUILD_TARGET = "${@bb.utils.contains('TFA_USE_PREBUILT_BL2', 'yes', '', 'bl2', d)} bl31 fip"
+
+do_gen_bl2_img() {
+	cp ${B}/${TFA_PLATFORM}/release/bl2.bin ${B}/bl2.img.tmp
+	truncate -s%4 ${B}/bl2.img.tmp
+	uboot-mkimage -T mtk_image -a 0x201000 -e 0x201000 -n "media=emmc;arm64=1" \
+			-d ${B}/bl2.img.tmp ${B}/bl2.img
+}
+
+do_deploy_append() {
+	if [ "x${TFA_USE_PREBUILT_BL2}" = "xyes" ]; then
+		install -m 0644 ${S}/prebuilt/${TFA_BOARD_NAME}/release/bl2.img ${DEPLOYDIR}/
+	else
+		install -m 0644 ${B}/bl2.img ${DEPLOYDIR}/
+	fi
+}
+
+python() {
+    if d.getVar('TFA_USE_PREBUILT_BL2') != 'yes':
+        bb.build.addtask('do_gen_bl2_img', 'do_install', 'do_compile', d)
+}
+
+#
+# Secure Boot
+#
+TFA_SECURE_BOOT_OPTION = " \
+	TRUSTED_BOARD_BOOT=1 \
+	GENERATE_COT=1 \
+	ROT_KEY=${SECURE_BOOT_ROT_KEY} \
+"
+
+EXTRA_OEMAKE += " \
+	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "${TFA_SECURE_BOOT_OPTION}", "", d)} \
+"
+
+DEFAULT_ROT_KEY = "${WORKDIR}/rot_key.pem"
+SECURE_BOOT_ROT_KEY ?= "${DEFAULT_ROT_KEY}"
+
+do_compile_prepend() {
+	bbnote "Building private TF-A"
+
+	if [ "x${DEFAULT_ROT_KEY}" = "x${SECURE_BOOT_ROT_KEY}" ]; then
+		bbwarn "SECURE_BOOT_ROT_KEY is not defined in local.conf, using development key for secure boot"
+	fi
+
+	bbnote "Key used for secure boot: ${SECURE_BOOT_ROT_KEY}"
+}
