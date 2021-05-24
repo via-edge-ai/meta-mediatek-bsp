@@ -35,7 +35,6 @@ PREFERRED_PROVIDER_virtual/trusted-firmware-a ??= "trusted-firmware-a"
 EXTRA_IMAGEDEPENDS = " \
 	lk \
 	virtual/trusted-firmware-a \
-	mtk-flash-tools \
 	rity-tools \
 "
 
