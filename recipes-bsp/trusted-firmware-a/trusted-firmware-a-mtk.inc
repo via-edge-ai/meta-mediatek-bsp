@@ -87,6 +87,10 @@ EXTRA_OEMAKE += " \
 	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "${TFA_SECURE_BOOT_OPTION}", "", d)} \
 "
 
+TFA_MBEDTLS = " \
+	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "1", "", d)} \
+"
+
 DEFAULT_ROT_KEY = "${WORKDIR}/rot_key.pem"
 SECURE_BOOT_ROT_KEY ?= "${DEFAULT_ROT_KEY}"
 
