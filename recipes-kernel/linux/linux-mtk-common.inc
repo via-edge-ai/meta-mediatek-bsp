@@ -2,7 +2,6 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 require recipes-kernel/linux/linux-yocto.inc
-inherit kernel-fitimage-with-dtbo
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 
@@ -47,7 +46,7 @@ KERNEL_EXTRA_ARGS = "Image.gz dtbs"
 KCONFIG_MODE = "--alldefconfig"
 KBUILD_DEFCONFIG = "defconfig"
 
-export DTC_FLAGS = '${@bb.utils.contains("DISTRO_FEATURES", "dtbo", "-@", "", d)}'
+export DTC_FLAGS = '-@'
 
 SRC_URI = "${AIOT_BSP_URI}/linux.git;protocol=ssh;branch=${SRCBRANCH}"
 PV = "${LINUX_VERSION}+git${SRCPV}"

@@ -26,5 +26,3 @@ LIBDRAM_BOARD_NAME = "mt8516-pumpkin"
 LK_PROJECT = "pumpkin8516-emmc"
 
 MACHINE_FEATURES:append = " alsa bluetooth usbgadget usbhost wifi"
-
-DISTRO_FEATURES:append = " dtbo "

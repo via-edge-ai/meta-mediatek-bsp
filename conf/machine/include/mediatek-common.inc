@@ -39,6 +39,7 @@ do_image_wic[depends] += " \
 	virtual/kernel:do_deploy \
 "
 
+PREFERRED_PROVIDER_virtual/dtb = "dtbo"
 PREFERRED_PROVIDER_virtual/kernel ??= "linux-mtk"
 PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot"
 PREFERRED_PROVIDER_virtual/trusted-firmware-a ??= "trusted-firmware-a"
