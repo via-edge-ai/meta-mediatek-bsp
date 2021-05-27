@@ -6,6 +6,7 @@ DEPENDS += "bc-native dtc-native u-boot-tools-native"
 SRC_URI += " \
 	file://fw_env.config \
 	file://boot.script \
+	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "file://secure-boot.cfg", "", d)} \
 "
 
 do_deploy:append() {
