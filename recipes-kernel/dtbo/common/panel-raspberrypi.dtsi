@@ -46,6 +46,7 @@
 				power-supply = <&RPI_PANEL_POWER_SUPPLY>;
 			};
 
+#if !defined(RPI_DISABLE_TS)
 			touch: ft5x06@38 {
 				compatible = "focaltech,ft6236";
 				reg = <0x38>;
@@ -59,6 +60,7 @@
 				touchscreen-inverted-y = <1>;
 				touchscreen-inverted-x = <1>;
 			};
+#endif
 		};
 	};
 
