@@ -13,7 +13,7 @@ EXTRA_OEMESON_append = " -Dboard=${LIBDRAM_BOARD_NAME}"
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/mtk-libdram.git;protocol=ssh"
-SRCREV = "e82193cbaf02aa03bba206a3c8bcd94d7c998f3b"
+SRCREV = "12f5e48d3959b4ba16a794079cab02dc45e873c8"
 
 SECURITY_CFLAGS = ""
 
