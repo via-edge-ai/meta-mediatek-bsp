@@ -29,6 +29,7 @@ SRC_URI_append_i300-pumpkin = " \
 # SoC specific config fragments
 SRC_URI_append_mt8167 = " file://mt8167.cfg file://mt8516.cfg "
 SRC_URI_append_mt8183 = " file://mt8183.cfg "
+SRC_URI_append_mt8365 = " file://mt8365.cfg "
 SRC_URI_append_mt8516 = " file://mt8516.cfg "
 
 # Connectivity config fragments
