@@ -9,6 +9,8 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=ba5e70cccfd7c167a0ace6a1eb1d5457 \
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/mtk-lk.git;protocol=ssh"
 SRCREV = "ee41cfe2f4e18c7d0392e3bd3b55d42f61f357e2"
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 SRC_URI += "						\
 	file://blob.h				\
 "
