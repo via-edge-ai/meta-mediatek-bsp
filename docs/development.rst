@@ -13,7 +13,7 @@ of a TFTP server is not described in this document.
 Enabling TFTP boot
 ^^^^^^^^^^^^^^^^^^
 
-TFTP boot can be enabled from withing U-Boot shell or from Linux userspace.
+TFTP boot can be enabled from within U-Boot shell or from Linux userspace.
 
 Enabling in Linux
 ~~~~~~~~~~~~~~~~~
