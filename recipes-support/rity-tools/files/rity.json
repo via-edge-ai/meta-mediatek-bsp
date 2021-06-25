@@ -1,9 +1,9 @@
 {
   "rity-tools": {
-    "min-version": "1.0.0"
+    "min-version": "1.0.0.post0"
   },
   "partitions": {
-    "mmc0": "MBR_EMMC",
+    "mmc0": null,
     "mmc0boot0": "bl2.img",
     "mmc0boot1": "u-boot-env.bin",
     "bootloaders": "fip.bin",
@@ -13,7 +13,7 @@
   "groups": {
     "all": {
       "erase": ["mmc0", "mmc0boot0", "mmc0boot1"],
-      "flash": ["mmc0", "mmc0boot0", "mmc0boot1", "bootloaders", "kernel", "rootfs"]
+      "flash": ["mmc0", "mmc0boot0", "mmc0boot1"]
     },
 
     "system": {
