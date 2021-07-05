@@ -39,6 +39,8 @@ S = "${WORKDIR}/git"
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/libmali.git;protocol=ssh"
 SRCREV = "29eac170a4c77323110c9fd4b3b30694a4afad32"
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 EXTRA_OEMAKE = ' \
 	SOC=${MALI_SOC} \
 	MALI_VERSION=${MALI_VERSION} \
