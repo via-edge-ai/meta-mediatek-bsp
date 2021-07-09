@@ -37,7 +37,7 @@ RPROVIDES_${PN} = " \
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/libmali.git;protocol=ssh"
-SRCREV = "29eac170a4c77323110c9fd4b3b30694a4afad32"
+SRCREV = "0f428b58b1fc49e2f6c5c2076ce07cc0635b8d37"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -51,19 +51,16 @@ do_buildclean[noexec] = "1"
 do_package_qa[noexec] = "1"
 
 do_install() {
-	oe_runmake install BINDIR=${D}${bindir} LIBDIR=${D}${libdir} \
-		INCLUDEDIR=${D}${includedir} DATADIR=${D}${datadir}
+	oe_runmake install LIBDIR=${D}${libdir} INCLUDEDIR=${D}${includedir} \
+		DATADIR=${D}${datadir}
 	chown -R root:root ${D}${libdir}/
 	sed -i "s,@LIBDIR@,${libdir},g" ${D}${datadir}/vulkan/icd.d/mali.json
 }
-
-PACKAGES =+ "${PN}-tests"
 
 FILES_${PN} = " \
 	${libdir}/*.so* \
     ${datadir}/vulkan/icd.d/mali.json \
 "
-FILES_${PN}-tests = "${bindir}/*"
 FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc \
                    ${datadir}/pkgconfig/*.pc \
                    ${includedir}/EGL/* \
