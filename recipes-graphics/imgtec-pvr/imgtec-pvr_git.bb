@@ -31,7 +31,7 @@ RPROVIDES_${PN} = " \
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/imgtec-pvr.git;protocol=ssh"
-SRCREV = "682bfde7078d4346e05fd6fbebfc515bd04f68f3"
+SRCREV = "ac6e8132cc8ccf8a403e23e61836f55780c63651"
 
 EXTRA_OEMAKE = ' \
 	IMGTEC_VERSION=${IMGTEC_VERSION} \
@@ -46,7 +46,7 @@ do_package_qa[noexec] = "1"
 do_install() {
 	oe_runmake install EXEC_PREFIX=${D}${exec_prefix} LIBDIR=${D}${libdir} \
 			NONARCH_BASE_LIBDIR=${D}${nonarch_base_libdir} \
-			SYSCONFDIR=${D}${sysconfdir} BINDIR=${D}/${bindir}
+			SYSCONFDIR=${D}${sysconfdir}
 	rm -f ${D}${libdir}/libvulkan.so*
 
 	if [ ! -d ${D}${exec_prefix}/lib/dri ]; then \
@@ -55,8 +55,6 @@ do_install() {
 		cp -r ${D}${exec_prefix}/lib64/dri/*.so ${D}${exec_prefix}/lib/dri/; \
 	fi
 }
-
-PACKAGES =+ "${PN}-tests"
 
 FILES_${PN} = "${libdir}/*.so* \
                ${libdir}/dri/*.so \
@@ -67,8 +65,6 @@ FILES_${PN} = "${libdir}/*.so* \
                ${datadir}/mesa/* \
                ${datadir}/drirc.d/* \
                ${sysconfdir}/*"
-
-FILES_${PN}-tests = "${bindir}/*"
 
 FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc \
                    ${datadir}/pkgconfig/*.pc \
