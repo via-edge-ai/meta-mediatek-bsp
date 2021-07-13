@@ -3,6 +3,6 @@
 
 require linux-mtk-common.inc
 
-LINUX_VERSION ?= "4.19.196"
+LINUX_VERSION ?= "4.19.197"
 SRCBRANCH ?= "mtk-v4.19"
-SRCREV = "c5d83cd0c1a34ed2e01e0332b0b595d8d142f649"
+SRCREV = "10157bdc89a3379ecb37dbc756f1b8db0c85e106"
