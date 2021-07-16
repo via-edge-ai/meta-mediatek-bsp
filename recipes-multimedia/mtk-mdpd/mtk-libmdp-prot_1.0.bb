@@ -4,7 +4,7 @@
 SUMMARY = "MediaTek MDP's libmdp_prot libaries"
 LICENSE = "CLOSED"
 
-SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/mdp/libmdp-prot.git;protocol=ssh"
+SRC_URI = "${AIOT_URI}/device/mdp/libmdp-prot.git;protocol=ssh"
 SRCREV = "52c1ba640e58b925e7f7a5c04f5446f2d8aeb5d3"
 
 S = "${WORKDIR}/git"

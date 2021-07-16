@@ -14,7 +14,7 @@ inherit update-rc.d
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/git"
 
-SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/mdp/mtk-mdpd.git;protocol=ssh"
+SRC_URI = "${AIOT_URI}/device/mdp/mtk-mdpd.git;protocol=ssh"
 SRCREV = "cae5cff3af68651f4692adb093db0ff8aa5e7403"
 
 SRC_URI += " \

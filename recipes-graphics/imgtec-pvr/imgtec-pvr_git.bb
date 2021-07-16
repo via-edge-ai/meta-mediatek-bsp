@@ -30,7 +30,7 @@ RPROVIDES_${PN} = " \
 
 S = "${WORKDIR}/git"
 
-SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/imgtec-pvr.git;protocol=ssh"
+SRC_URI = "${AIOT_URI}/device/imgtec-pvr.git;protocol=ssh"
 SRCREV = "ac6e8132cc8ccf8a403e23e61836f55780c63651"
 
 EXTRA_OEMAKE = ' \

@@ -43,7 +43,7 @@ KBUILD_DEFCONFIG = "defconfig"
 
 export DTC_FLAGS = '${@bb.utils.contains("DISTRO_FEATURES", "dtbo", "-@", "", d)}'
 
-SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/linux.git;protocol=ssh;branch=${SRCBRANCH}"
+SRC_URI = "${AIOT_URI}/linux.git;protocol=ssh;branch=${SRCBRANCH}"
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
 uboot_prep_kimage() {

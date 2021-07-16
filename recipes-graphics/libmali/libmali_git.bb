@@ -36,7 +36,7 @@ RPROVIDES_${PN} = " \
 
 S = "${WORKDIR}/git"
 
-SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/device/libmali.git;protocol=ssh"
+SRC_URI = "${AIOT_URI}/device/libmali.git;protocol=ssh"
 SRCREV = "0f428b58b1fc49e2f6c5c2076ce07cc0635b8d37"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
