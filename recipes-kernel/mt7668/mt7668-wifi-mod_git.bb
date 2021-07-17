@@ -7,8 +7,8 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=90675d4b2a0ffc46ef9ff36dfe4063fe"
 
 inherit module
 
-SRC_URI = "${AIOT_URI}/mt7668-wifi-mod.git;protocol=ssh"
-SRCREV = "0c68ecc6e209e7ee9e9e22351ab4895c8179ddbe"
+SRC_URI = "${AIOT_NDA_URI}/mt7668-wifi-drv.git;protocol=ssh;branch=main"
+SRCREV = "d3af91b0fdf128a0f48b4c3a8b180ba2b159ba05"
 
 S = "${WORKDIR}/git"
 

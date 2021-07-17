@@ -30,8 +30,8 @@ RPROVIDES_${PN} = " \
 
 S = "${WORKDIR}/git"
 
-SRC_URI = "${AIOT_URI}/device/imgtec-pvr.git;protocol=ssh"
-SRCREV = "ac6e8132cc8ccf8a403e23e61836f55780c63651"
+SRC_URI = "${AIOT_RITY_URI}/libimgpvr.git;protocol=ssh;branch=main"
+SRCREV = "86ef1169a350c1aec6fe393e22dd62e323890ea8"
 
 EXTRA_OEMAKE = ' \
 	IMGTEC_VERSION=${IMGTEC_VERSION} \

@@ -4,7 +4,7 @@
 SUMMARY = "MediaTek MDP's libmdppq library"
 LICENSE = "CLOSED"
 
-SRC_URI = "${AIOT_URI}/device/mdp/libmdppq.git;protocol=ssh"
+SRC_URI = "${RICH_IOT_URI}/device/mdp/libmdppq.git;protocol=ssh"
 SRCREV = "8b250b2dfcfa9fd211f8894784f9c93cc46d5d67"
 
 S = "${WORKDIR}/git"

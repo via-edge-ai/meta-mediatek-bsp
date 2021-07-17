@@ -1,5 +1,5 @@
-SRC_URI = "${AIOT_URI}/device/libcamera.git;protocol=ssh;branch=mtk/camsv"
-SRCREV = "85cd4af7b112a7a2dd57c26d5e9f462fee509701"
+SRC_URI = "${AIOT_BSP_URI}/libcamera.git;protocol=ssh;branch=mtk-aiot"
+SRCREV = "7799466db6b7ea447afe987a30fd7883c09c3d9b"
 
 PV = "202104+git${SRCPV}"
 

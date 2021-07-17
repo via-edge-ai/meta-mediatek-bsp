@@ -12,7 +12,7 @@ EXTRA_OEMESON_append = " -Dboard=${LIBDRAM_BOARD_NAME}"
 
 S = "${WORKDIR}/git"
 
-SRC_URI = "${AIOT_URI}/device/mtk-libdram.git;protocol=ssh"
+SRC_URI = "${AIOT_NDA_URI}/libdram.git;protocol=ssh;branch=main"
 SRCREV = "12f5e48d3959b4ba16a794079cab02dc45e873c8"
 
 SECURITY_CFLAGS = ""

@@ -8,7 +8,7 @@ inherit allarch
 
 S = "${WORKDIR}/git"
 
-SRC_URI = "${AIOT_URI}/device/rity-firmware.git;protocol=ssh"
+SRC_URI = "${RICH_IOT_URI}/device/rity-firmware.git;protocol=ssh"
 SRCREV = "8e6f7a3b1d81f59221f4f2e3c861396ac7e9283e"
 
 do_configure[noexec] = "1"
