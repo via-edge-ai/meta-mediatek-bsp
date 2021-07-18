@@ -3,8 +3,8 @@
 
 SUMMARY = "MediaTek MDPD service"
 LICENSE = "CLOSED"
-RDEPENDS_${PN} += "mtk-libmdp-prot mtk-libmdppq"
-DEPENDS = "mtk-libmdp-prot mtk-libmdppq"
+RDEPENDS_${PN} += "libmdp-prot libmdppq"
+DEPENDS = "libmdp-prot libmdppq"
 
 RPROVIDES_${PN} += "libmdpd.so()(64bit)"
 
