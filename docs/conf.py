@@ -7,8 +7,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'RITY BSP'
-copyright = '2020, Fabien Parent <fparent@baylibre.com>'
-author = 'Fabien Parent <fparent@baylibre.com>'
+copyright = 'Copyright 2021 MediaTek Inc. Copyright 2020-2021 BayLibre, SAS'
+author = 'MediaTek Inc. and BayLibre, SAS'
 
 # The full version, including alpha/beta/rc tags
 release = 'rity-v20.2'
@@ -25,6 +25,11 @@ extensions = [
 ]
 
 # -- Options for HTML output -------------------------------------------------
+
+templates_path = ['_templates']
+
+# We use custom footer.html to show copyright instead.
+html_show_copyright = False
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
