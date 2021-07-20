@@ -9,7 +9,11 @@ SRC_URI_append = " \
 	file://0001-plugins-syslog-set-sysroot.patch \
 "
 
-SRCREV = "0607ed40746afe4cb8993149a6f275df648f7bad"
+SRC_URI_remove = " \
+	file://0001-make-Pass-ldflags-during-link.patch \
+"
+
+SRCREV = "e9c870525af8f7e7fccf575a0ca5394ce55adcec"
 COMPATIBLE_MACHINE = "mt*"
 
 INSANE_SKIP_${PN} += "ldflags"

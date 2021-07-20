@@ -3,7 +3,7 @@
 
 require recipes-security/optee/optee-test.inc
 
-SRCREV = "21b347a3d75fd52fd49130e75c962c5b56123d2f"
+SRCREV = "f2eb88affbb7f028561b4fd5cbd049d5d704f741"
 COMPATIBLE_MACHINE = "mt*"
 
 SRC_URI_remove = " \

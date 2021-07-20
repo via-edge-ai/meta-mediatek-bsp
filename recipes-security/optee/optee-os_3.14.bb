@@ -5,8 +5,8 @@ require recipes-security/optee/optee-os.inc
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-SRCREV = "1b79cb993a49acf754da22237e70f9e19708db1f"
-SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/optee-os.git;protocol=ssh;branch=mtk-v3.13"
+SRCREV = "80e2dcd817ff383480c0de91b75ead15d730c4c1"
+SRC_URI = "git://git@gitlab.com/baylibre/rich-iot/optee-os.git;protocol=ssh;branch=mtk-v3.14"
 
 SRC_URI_append = " \
 	file://0001-allow-setting-sysroot-for-libgcc-lookup.patch \
