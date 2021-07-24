@@ -44,9 +44,10 @@ Examples:
 MT7668 wireless chipset
 ------------------------
 
-The i500 EVB is integrating a :ref:`platforms/mt7668:MT7668 wireless chipset`.
+The i500 EVB is integrating
+a MT7668 wireless chipset.
 By default the chipset comes with no MAC or BD address. Please refer to the
-:ref:`platforms/mt7668:MT7668 wireless chipset` documentation to see how to
+MT7668 wireless chipset documentation to see how to
 program a MAC or BD address.
 
 Device-Tree Overlays (DTBO)
