@@ -11,10 +11,6 @@ SRCREV = "76006bde3b7d5c4541d0ebbd9ba271a4569d5a95"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-SRC_URI += "						\
-	file://blob.h				\
-"
-
 EXTRA_OEMAKE += "LIBDRAM=${STAGING_DIR_TARGET}/${libdir}/libdram-lk.a"
 
 do_compile () {
@@ -25,10 +21,6 @@ do_compile () {
 			   LIBGCC=""											\
 			   GLOBAL_CFLAGS="-mstrict-align -mno-outline-atomics"	\
 			   ${LK_PROJECT}
-}
-
-do_configure() {
-	cp ${WORKDIR}/blob.h ${S}/include/blob.h
 }
 
 do_buildclean() {
