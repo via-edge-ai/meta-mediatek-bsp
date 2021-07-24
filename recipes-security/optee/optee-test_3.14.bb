@@ -12,3 +12,17 @@ SRC_URI_remove = " \
 	file://0003-make-remove-Wmissing-noreturn-for-clang.patch \
 	file://run-ptest \
 "
+
+do_compile_append() {
+	oe_runmake test_plugin
+}
+
+do_install_append() {
+	mkdir -p ${D}${libdir}/tee-supplicant/plugins
+	install -D -p -m0444 ${B}/supp_plugin/*.plugin \
+		${D}${libdir}/tee-supplicant/plugins/
+}
+
+FILES_${PN} += " \
+	${libdir}/tee-supplicant/plugins/ \
+"
