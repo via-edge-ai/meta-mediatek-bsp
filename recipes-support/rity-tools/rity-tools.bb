@@ -12,6 +12,6 @@ inherit deploy
 
 do_deploy() {
 	install -m 0644 ${WORKDIR}/rity.json ${DEPLOYDIR}/
-	ln -s rity.json ${DEPLOYDIR}/partitions.json
+	ln -fs rity.json ${DEPLOYDIR}/partitions.json
 }
 addtask do_deploy after do_install
