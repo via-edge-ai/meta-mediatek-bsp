@@ -231,7 +231,7 @@ PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
 CONF_VERSION = "1"
 
 # Change the prefered kernel version.
-# PREFERRED_VERSION_linux-mtk = "4.19%"
+# PREFERRED_VERSION_linux-mtk = "5.4%"
 
 # Device-Tree overlays to autoload at boot. Device-Tree overlays are used to
 # customized features at build time. For instance not all the i500-evb

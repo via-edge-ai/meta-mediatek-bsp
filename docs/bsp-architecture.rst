@@ -140,8 +140,6 @@ The following versions of Linux are currently supported:
 +----------------+-------------+
 | Kernel version | Branch name |
 +================+=============+
-|      v4.19     |  mtk-v4.19  |
-+----------------+-------------+
 |      v5.4      |  mtk-v5.4   |
 +----------------+-------------+
 |      v5.10     |  mtk-v5.10  |
