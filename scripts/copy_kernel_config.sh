@@ -15,7 +15,7 @@ if [ $# -lt 3 ]; then
 	echo "For this script to work, a yocto image should have be built for"
 	echo "the targetted machine"
 	echo
-	echo "Example: $0 ~/rich-iot/ i500-pumpkin core-image-weston"
+	echo "Example: $0 ~/rity/ i500-pumpkin core-image-weston"
 	exit 1
 fi
 

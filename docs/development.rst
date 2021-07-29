@@ -99,7 +99,7 @@ the kernel.
 .. prompt:: bash $
 
 	MACHINE=i500-pumpkin
-	RITYDIR=/path/to/rich-iot
+	RITYDIR=/path/to/rity
 	IMAGENAME=core-image-weston
 	export ARCH=arm64
 	export CROSS_COMPILE=aarch64-linux-gnu-
@@ -113,15 +113,15 @@ Cloning Linux
 
 .. prompt:: bash $
 
-	git clone git@gitlab.com:baylibre/rich-iot/linux.git
+	git clone git@gitlab.com:mediatek/aiot/bsp/linux.git
 
 Alternatively if you already have a Linux repository cloned, you can add
-the `rich-iot` remote:
+the `rity` remote:
 
 .. prompt:: bash $
 
 	 cd /path/to/linux
-	 git remote add rich-iot git@gitlab.com:baylibre/rich-iot/linux.git
+	 git remote add rity git@gitlab.com:mediatek/aiot/bsp/linux.git
 
 Installing .config file
 ^^^^^^^^^^^^^^^^^^^^^^^

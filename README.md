@@ -4,6 +4,6 @@ This layer provides a minimal BSP and rootfs for booting the MediaTek boards.
 
 # Documentations:
 
-* [BSP documentation](https://baylibre.gitlab.io/rich-iot/meta-mediatek-bsp)
-* [RITY documentation](https://baylibre.gitlab.io/rich-iot/meta-rity)
+* [BSP documentation](https://mediatek.gitlab.io/aiot/rity/meta-mediatek-bsp)
+* [RITY documentation](https://mediatek.gitlab.io/aiot/rity/meta-rity)
 * [RITY tools documentation](https://baylibre.gitlab.io/rich-iot/tools/rity-tools)

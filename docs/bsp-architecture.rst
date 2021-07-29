@@ -95,7 +95,7 @@ in DDR until a power off or a reboot.
 
 Once BL31 is finished to initialize, it will jump back to BL2.
 
-Source code: https://gitlab.com/baylibre/rich-iot/arm-trusted-firmware
+Source code: https://gitlab.com/mediatek/aiot/bsp/trusted-firmware-a
 
 BL32 (OP-TEE)
 -------------
@@ -105,7 +105,7 @@ RITY BSP is using by default `OP-TEE <https://www.op-tee.org/>`_ trusted OS.
 
 Like BL31, OP-TEE OS stays in DDR until a power off or a reboot.
 
-Source code: https://gitlab.com/baylibre/rich-iot/optee-os
+Source code: https://gitlab.com/mediatek/aiot/bsp/optee-os
 
 BL33 (U-Boot)
 -------------
@@ -127,7 +127,7 @@ U-Boot can also be used to flash (via fastboot), or to boot the kernel and/or
 rootfs using an USB connection. Please refer to the boards documentation in
 order to know which features are supported for your specific board.
 
-Source code: https://gitlab.com/baylibre/rich-iot/u-boot/
+Source code: https://gitlab.com/mediatek/aiot/bsp/u-boot
 
 Linux
 -----
