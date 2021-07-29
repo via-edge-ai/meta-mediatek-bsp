@@ -81,8 +81,6 @@ DEFAULT_ROT_KEY = "${WORKDIR}/rot_key.pem"
 SECURE_BOOT_ROT_KEY ?= "${DEFAULT_ROT_KEY}"
 
 do_compile_prepend() {
-	bbnote "Building private TF-A"
-
 	if [ "x${DEFAULT_ROT_KEY}" = "x${SECURE_BOOT_ROT_KEY}" ]; then
 		bbwarn "SECURE_BOOT_ROT_KEY is not defined in local.conf, using development key for secure boot"
 	fi
