@@ -2,7 +2,7 @@ require recipes-bsp/trusted-firmware-a/trusted-firmware-a.inc
 
 inherit deploy
 
-DEPENDS = "libdram"
+DEPENDS = "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "libdram", "libdram-prebuilt", d)}"
 
 COMPATIBLE_MACHINE = "mt*"
 
