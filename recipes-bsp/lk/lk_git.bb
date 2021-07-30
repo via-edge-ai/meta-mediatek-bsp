@@ -1,4 +1,5 @@
 S = "${WORKDIR}/git"
+BUILD = "${WORKDIR}/git/build-${LK_PROJECT}"
 
 DEPENDS = "libdram-lk"
 
@@ -8,8 +9,6 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=ba5e70cccfd7c167a0ace6a1eb1d5457 \
 
 SRC_URI = "${AIOT_NDA_URI}/lk.git;protocol=ssh;branch=main"
 SRCREV = "76006bde3b7d5c4541d0ebbd9ba271a4569d5a95"
-
-PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 EXTRA_OEMAKE += "LIBDRAM=${STAGING_DIR_TARGET}/${libdir}/libdram-lk.a"
 
@@ -26,9 +25,4 @@ do_compile () {
 do_buildclean() {
 }
 
-inherit deploy
-
-do_deploy () {
-	install ${S}/build-${LK_PROJECT}/lk.bin ${DEPLOYDIR}/lk.bin
-}
-addtask do_deploy after do_install
+require lk.inc
