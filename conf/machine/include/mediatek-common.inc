@@ -31,9 +31,10 @@ do_image_wic[depends] += " \
 PREFERRED_PROVIDER_virtual/kernel ??= "linux-mtk"
 PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot"
 PREFERRED_PROVIDER_virtual/trusted-firmware-a ??= "trusted-firmware-a"
+PREFERRED_PROVIDER_virtual/lk ??= "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "lk", "lk-prebuilt", d)}"
 
 EXTRA_IMAGEDEPENDS = " \
-	lk \
+	virtual/lk \
 	virtual/trusted-firmware-a \
 	rity-tools \
 "
