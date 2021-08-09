@@ -19,7 +19,6 @@ PROVIDES = " \
 	virtual/libgles1 \
 	virtual/libgles2 \
 	virtual/mesa \
-	virtual/opencl \
 "
 
 RPROVIDES_${PN} = " \
@@ -31,13 +30,12 @@ RPROVIDES_${PN} = " \
 	libgles2 \
 	mesa \
 	mesa-vulkan-drivers \
-	opencl \
 "
 
 S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_RITY_URI}/libmali.git;protocol=ssh;branch=main"
-SRCREV = "242cce2a660709f1093113b2f18df34b39f94a52"
+SRCREV = "ad311e876fad68e8f27c199381160a910fffb7ac"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -52,7 +50,7 @@ do_package_qa[noexec] = "1"
 
 do_install() {
 	oe_runmake install LIBDIR=${D}${libdir} INCLUDEDIR=${D}${includedir} \
-		DATADIR=${D}${datadir}
+		DATADIR=${D}${datadir} SYSCONFDIR=${D}${sysconfdir}
 	chown -R root:root ${D}${libdir}/
 	sed -i "s,@LIBDIR@,${libdir},g" ${D}${datadir}/vulkan/icd.d/mali.json
 }
@@ -60,6 +58,7 @@ do_install() {
 FILES_${PN} = " \
 	${libdir}/*.so* \
     ${datadir}/vulkan/icd.d/mali.json \
+	${sysconfdir}/OpenCL/vendors/libmali.icd \
 "
 FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc \
                    ${datadir}/pkgconfig/*.pc \
