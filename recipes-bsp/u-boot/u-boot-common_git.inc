@@ -11,7 +11,7 @@ LIC_FILES_CHKSUM = "file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025"
 PE = "1"
 
 SRCREV = "fca8d4afad8216e473fc947f8ad4883269e0f0e5"
-SRC_URI = "git://git@gitlab.com/baylibre/pumpkin/u-boot.git;branch=mtk-v2021.07;protocol=ssh"
+SRC_URI = "${AIOT_BSP_URI}/u-boot.git;branch=mtk-v2021.07;protocol=ssh"
 
 PV = "2021.07+git${SRCPV}"
 
