@@ -2,7 +2,7 @@
 Description=Load MT7663 modules
 
 [Service]
-ExecStart=/etc/init.d/mt7663.sh
+ExecStart=/lib/systemd/mt7663.sh
 User=root
 
 [Install]

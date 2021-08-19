@@ -23,6 +23,7 @@ do_install_append() {
 	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}" = "systemd" ]; then
 		install -d ${D}${systemd_system_unitdir}
 		install -m 0644 ${WORKDIR}/mt7663.service ${D}${systemd_system_unitdir}
+		install -m 0755 ${WORKDIR}/mt7663.sh ${D}${systemd_unitdir}
 	fi
 }
 
@@ -33,7 +34,8 @@ INITSCRIPT_NAME = "mt7663.sh"
 INITSCRIPT_PARAMS = "start 00 5 2 3 ."
 
 FILES_${PN} += " \
-	${systemd_unitdir}/system/mt7663.service \
+	${systemd_system_unitdir}/mt7663.service \
+	${systemd_unitdir}/mt7663.sh \
 	${sysconfdir}/modprobe.d/mt7663.conf \
 	${sysconfdir}/init.d/mt7663.sh \
 "
