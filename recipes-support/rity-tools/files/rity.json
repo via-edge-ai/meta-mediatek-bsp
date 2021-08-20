@@ -1,6 +1,6 @@
 {
   "rity-tools": {
-    "min-version": "1.0.0.post0"
+    "min-version": "1.1.0"
   },
   "partitions": {
     "mmc0": null,
