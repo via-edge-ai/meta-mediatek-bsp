@@ -22,7 +22,7 @@ do_compile () {
 			   ${LK_PROJECT}
 }
 
-do_buildclean() {
-}
+do_configure[noexec] = "1"
+do_buildclean[noexec] = "1"
 
 require lk.inc
