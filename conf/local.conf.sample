@@ -17,6 +17,7 @@
 #MACHINE ??= "i300a-pumpkin"
 #MACHINE ??= "i300a-sb30"
 MACHINE ??= "i300b-pumpkin"
+#MACHINE ??= "i350-evk"
 #MACHINE ??= "i350-pumpkin"
 #MACHINE ??= "i350-sb35"
 #MACHINE ??= "i500-evb"
