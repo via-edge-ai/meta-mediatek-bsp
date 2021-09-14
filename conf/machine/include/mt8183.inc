@@ -1,4 +1,4 @@
-require conf/machine/include/tune-cortexa73-cortexa53.inc
+require conf/machine/include/arm/armv8a/tune-cortexa73-cortexa53.inc
 require conf/machine/include/soc-family.inc
 require mediatek-common.inc
 
