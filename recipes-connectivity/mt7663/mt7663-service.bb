@@ -13,7 +13,7 @@ SRC_URI = " \
 	file://mt7663.sh \
 "
 
-do_install_append() {
+do_install:append() {
 	install -d ${D}${sysconfdir}/init.d
 	install -m 0644 ${WORKDIR}/mt7663.sh ${D}${sysconfdir}/init.d
 
@@ -28,12 +28,12 @@ do_install_append() {
 }
 
 SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '${PN}', '', d)}"
-SYSTEMD_SERVICE_${PN} = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'mt7663.service', '', d)}"
+SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'mt7663.service', '', d)}"
 
 INITSCRIPT_NAME = "mt7663.sh"
 INITSCRIPT_PARAMS = "start 00 5 2 3 ."
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 	${systemd_system_unitdir}/mt7663.service \
 	${systemd_unitdir}/mt7663.sh \
 	${sysconfdir}/modprobe.d/mt7663.conf \

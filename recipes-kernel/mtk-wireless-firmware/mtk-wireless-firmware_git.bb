@@ -28,7 +28,7 @@ do_install() {
 
 PROVIDES = "mt7668-wifi-fw"
 PACKAGES =+ "mt7668-wifi-fw"
-FILES_mt7668-wifi-fw = " \
+FILES:mt7668-wifi-fw = " \
 	${nonarch_base_libdir}/firmware/wifi.cfg \
 	${nonarch_base_libdir}/firmware/EEPROM_MT7668.bin \
 	${nonarch_base_libdir}/firmware/mt7668_patch_e2_hdr.bin \

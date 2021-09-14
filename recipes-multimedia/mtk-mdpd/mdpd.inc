@@ -1,9 +1,9 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/mdpd:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/mdpd:"
 
-RDEPENDS_${PN} += "libmdp-prot libmdppq"
+RDEPENDS:${PN} += "libmdp-prot libmdppq"
 DEPENDS = "libmdp-prot libmdppq"
 
-RPROVIDES_${PN} = "virtual/mdpd"
+RPROVIDES:${PN} = "virtual/mdpd"
 
 inherit systemd
 inherit update-rc.d
@@ -13,7 +13,7 @@ SRC_URI += " \
 	file://mdpd.sh \
 "
 
-do_install_append() {
+do_install:append() {
 	install -d ${D}${bindir}
 	install -m 755 ${B}/mdpd ${D}${bindir}
 
@@ -32,11 +32,11 @@ do_install_append() {
 }
 
 SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '${PN}', '', d)}"
-SYSTEMD_SERVICE_${PN} = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'mdpd.service', '', d)}"
+SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'mdpd.service', '', d)}"
 
 INITSCRIPT_NAME = "mdpd"
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 	${bindir}/mdpd \
 	${libdir}/libmdpd.so \
 	${libdir}/libmdp.mt*.so \
@@ -45,7 +45,7 @@ FILES_${PN} += " \
 	${systemd_unitdir}/system/mdpd.service \
 "
 
-INSANE_SKIP_${PN}-dev +=" dev-elf "
+INSANE_SKIP:${PN}-dev +=" dev-elf "
 
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""

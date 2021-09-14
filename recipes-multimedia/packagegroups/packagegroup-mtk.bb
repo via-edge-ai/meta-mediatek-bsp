@@ -5,6 +5,6 @@ SUMMARY = "MediaTek userspace packages"
 
 inherit packagegroup
 
-RDEPENDS_${PN}_mt8167 = " \
+RDEPENDS:${PN}:mt8167 = " \
 	virtual/mdpd \
 "

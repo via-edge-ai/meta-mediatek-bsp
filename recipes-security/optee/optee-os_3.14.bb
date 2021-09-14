@@ -3,12 +3,12 @@
 
 require recipes-security/optee/optee-os.inc
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRCREV = "80e2dcd817ff383480c0de91b75ead15d730c4c1"
 SRC_URI = "${AIOT_BSP_URI}/optee-os.git;protocol=ssh;branch=mtk-v3.14"
 
-SRC_URI_append = " \
+SRC_URI:append = " \
 	file://0001-allow-setting-sysroot-for-libgcc-lookup.patch \
 	file://0002-allow-setting-sysroot-for-clang.patch \
 "

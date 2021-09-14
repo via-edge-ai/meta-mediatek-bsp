@@ -11,16 +11,16 @@ SRCREV_FORMAT = "tfa"
 
 TFA_UBOOT = "1"
 
-DEPENDS_append = " coreutils-native u-boot-tools-native"
+DEPENDS:append = " coreutils-native u-boot-tools-native"
 
 EXTRA_OEMAKE += "E=0"
 EXTRA_OEMAKE += "NEED_BL33=yes"
 EXTRA_OEMAKE += "LIBDRAM=${STAGING_DIR_TARGET}/${libdir}/libdram.a"
 
 # OP-TEE
-DEPENDS_append = " ${@bb.utils.contains("DISTRO_FEATURES", "optee", "optee-os", "", d)}"
+DEPENDS:append = " ${@bb.utils.contains("DISTRO_FEATURES", "optee", "optee-os", "", d)}"
 TFA_SPD = "${@bb.utils.contains("DISTRO_FEATURES", "optee", "opteed", "", d)}"
-EXTRA_OEMAKE_append = " \
+EXTRA_OEMAKE:append = " \
 	BL32=${STAGING_DIR_TARGET}/${nonarch_base_libdir}/firmware/tee.bin \
 	NEED_BL32=${@bb.utils.contains("DISTRO_FEATURES", "optee", "yes", "no", d)} \
 	CFLAGS+=${@bb.utils.contains("DISTRO_FEATURES", "optee", "-DNEED_BL32", "", d)} \
@@ -28,7 +28,7 @@ EXTRA_OEMAKE_append = " \
 
 S = "${WORKDIR}/git"
 
-SRC_URI_remove = " \
+SRC_URI:remove = " \
     file://0002-pmf.h-made-PMF_STOTE_ENABLE-pass-Wtautological.patch  \
     file://0003-xlat-tables-v2-remove-tautological-assert.patch \
 "
@@ -51,7 +51,7 @@ do_gen_bl2_img() {
 			-d ${B}/bl2.img.tmp ${B}/bl2.img
 }
 
-do_deploy_append() {
+do_deploy:append() {
 	if [ "x${TFA_USE_PREBUILT_BL2}" = "xyes" ]; then
 		install -m 0644 ${S}/prebuilt/${TFA_BOARD_NAME}/release/bl2.img ${DEPLOYDIR}/
 	else
@@ -80,7 +80,7 @@ EXTRA_OEMAKE += " \
 DEFAULT_ROT_KEY = "${WORKDIR}/rot_key.pem"
 SECURE_BOOT_ROT_KEY ?= "${DEFAULT_ROT_KEY}"
 
-do_compile_prepend() {
+do_compile:prepend() {
 	if [ "x${DEFAULT_ROT_KEY}" = "x${SECURE_BOOT_ROT_KEY}" ]; then
 		bbwarn "SECURE_BOOT_ROT_KEY is not defined in local.conf, using development key for secure boot"
 	fi

@@ -4,7 +4,7 @@
 SUMMARY = "MediaTek MDPD service"
 LICENSE = "CLOSED"
 
-RPROVIDES_${PN} += "libmdpd.so()(64bit)"
+RPROVIDES:${PN} += "libmdpd.so()(64bit)"
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/git"

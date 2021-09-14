@@ -14,14 +14,14 @@ OPTEE_DRAM_SIZE = "0x80000000"
 # LK
 LK_PROJECT = "mt8365-pumpkin"
 
-DISTRO_FEATURES_append = " optee "
-DISTRO_FEATURES_remove = " x11 "
+DISTRO_FEATURES:append = " optee "
+DISTRO_FEATURES:remove = " x11 "
 
 # Mali
 MALI_SOC = "mt8365"
 MALI_VERSION ??= "r29p0"
 
-MACHINE_EXTRA_RRECOMMENDS_append = " \
+MACHINE_EXTRA_RRECOMMENDS:append = " \
 	libmali \
 "
 

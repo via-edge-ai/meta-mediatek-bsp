@@ -8,7 +8,7 @@ SRC_URI += " \
 	file://boot.script \
 "
 
-do_deploy_append() {
+do_deploy:append() {
 	boot_conf=`echo "boot_conf=#conf-${KERNEL_DEVICETREE}" | tr '/' '_'`
 	fastboot_entry=`echo "check_fastboot_entry=setenv fastboot_entry 0"`
 
@@ -21,7 +21,7 @@ do_deploy_append() {
 	echo $boot_conf >> ${DEPLOYDIR}/u-boot-initial-env
 }
 
-do_deploy_append_i300-pumpkin() {
+do_deploy:append:i300-pumpkin() {
 	sed -i '/^check_fastboot_entry=.*/c\check_fastboot_entry=gpio input 42; if test $? -eq 0; then setenv fastboot_entry 1; else setenv fastboot_entry 0; fi' ${DEPLOYDIR}/u-boot-initial-env
 }
 
@@ -29,15 +29,15 @@ inherit deploy
 
 SYSROOT_DIRS += " /boot"
 
-do_compile_append() {
+do_compile:append() {
 	uboot-mkimage -A arm -T script -O linux -d ${WORKDIR}/boot.script \
 		${WORKDIR}/boot.scr
 }
 
 PACKAGE_BEFORE_PN += "${PN}-scr"
 
-FILES_${PN}-scr = " \
+FILES:${PN}-scr = " \
     /boot/boot*.scr \
 "
 
-RDEPENDS_${PN} += "${PN}-scr"
+RDEPENDS:${PN} += "${PN}-scr"

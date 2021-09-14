@@ -26,7 +26,7 @@ For instance you can add the following to your `local.conf` file:
 
 .. code::
 
-	IMAGE_INSTALL_append = " \
+	IMAGE_INSTALL:append = " \
 		u-boot-env \
 		u-boot-fw-utils \
 	"

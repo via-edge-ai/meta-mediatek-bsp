@@ -21,7 +21,7 @@ PROVIDES = " \
 	virtual/mesa \
 "
 
-RPROVIDES_${PN} = " \
+RPROVIDES:${PN} = " \
 	egl \
 	libegl \
 	libgbm \
@@ -55,12 +55,12 @@ do_install() {
 	sed -i "s,@LIBDIR@,${libdir},g" ${D}${datadir}/vulkan/icd.d/mali.json
 }
 
-FILES_${PN} = " \
+FILES:${PN} = " \
 	${libdir}/*.so* \
     ${datadir}/vulkan/icd.d/mali.json \
 	${sysconfdir}/OpenCL/vendors/libmali.icd \
 "
-FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc \
+FILES:${PN}-dev = "${libdir}/pkgconfig/*.pc \
                    ${datadir}/pkgconfig/*.pc \
                    ${includedir}/EGL/* \
                    ${includedir}/KHR/* \
@@ -75,4 +75,4 @@ FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc \
 INHIBIT_SYSROOT_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP_${PN} += "already-stripped"
+INSANE_SKIP:${PN} += "already-stripped"

@@ -15,14 +15,14 @@ OPTEE_DRAM_SIZE = "0x80000000"
 # LK
 LK_PROJECT = "pumpkin8516-emmc"
 
-DISTRO_FEATURES_append = " optee "
-DISTRO_FEATURES_remove = " x11 "
+DISTRO_FEATURES:append = " optee "
+DISTRO_FEATURES:remove = " x11 "
 
 IMGTEC_VERSION ??= "1.13@5776728"
 IMGTEC_FW ??= "rgx.fw.22.40.54.30"
 IMGTEC_SH ??= "rgx.sh.22.40.54.30"
 
-MACHINE_EXTRA_RRECOMMENDS_append = " \
+MACHINE_EXTRA_RRECOMMENDS:append = " \
 	imgtec-pvr \
 "
 

@@ -221,8 +221,8 @@ BB_DISKMON_DIRS ??= "\
 # seen. The two lines below enable the SDL backend too. By default libsdl-native will
 # be built, if you want to use your host's libSDL instead of the minimal libsdl built
 # by libsdl-native then uncomment the ASSUME_PROVIDED line below.
-PACKAGECONFIG_append_pn-qemu-native = " sdl"
-PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
+PACKAGECONFIG:append:pn-qemu-native = " sdl"
+PACKAGECONFIG:append:pn-nativesdk-qemu = " sdl"
 #ASSUME_PROVIDED += "libsdl-native"
 
 # CONF_VERSION is increased each time build/conf/ changes incompatibly and is used to
@@ -240,19 +240,19 @@ CONF_VERSION = "1"
 # Loading the wrong device-tree overlay for a specific hardware will result
 # in a non-working functionality.
 #
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-evb += "panel-tpv-otm1901a.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-evb += "panel-truly-r63350a.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "panel-urt-umo9465md.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "panel-raspberrypi.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "camera-ar0330-single.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "camera-ar0330-dual.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "camera-ap1302-ar0330-single.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "camera-ap1302-ar0144-single.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "camera-ap1302-ar0144-dual.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "camera-ap1302-ar0330-single-ar0144-single.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i500-pumpkin += "camera-ap1302-ar0330-single-ar0144-dual.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "panel-raspberrypi.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "panel-avd-tt70ws-cn-134-a.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-pumpkin += "camera-ov5645.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-sb30 += "panel-raspberrypi.dtbo"
-#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD_i300a-coral += "camera-ov5645.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-evb += "panel-tpv-otm1901a.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-evb += "panel-truly-r63350a.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-pumpkin += "panel-urt-umo9465md.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-pumpkin += "panel-raspberrypi.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-pumpkin += "camera-ar0330-single.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-pumpkin += "camera-ar0330-dual.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-pumpkin += "camera-ap1302-ar0330-single.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-pumpkin += "camera-ap1302-ar0144-single.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-pumpkin += "camera-ap1302-ar0144-dual.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-pumpkin += "camera-ap1302-ar0330-single-ar0144-single.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i500-pumpkin += "camera-ap1302-ar0330-single-ar0144-dual.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i300a-pumpkin += "panel-raspberrypi.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i300a-pumpkin += "panel-avd-tt70ws-cn-134-a.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i300a-pumpkin += "camera-ov5645.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i300a-sb30 += "panel-raspberrypi.dtbo"
+#KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i300a-coral += "camera-ov5645.dtbo"

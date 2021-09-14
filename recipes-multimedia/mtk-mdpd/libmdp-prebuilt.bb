@@ -18,8 +18,8 @@ do_install() {
 	install -m 0644 ${S}/libmdp-prot/libmdp_prot.mt*.so ${D}${libdir}
 }
 
-FILES_libmdppq += "${libdir}/libmdppq.so"
-FILES_libmdp-prot += "${libdir}/libmdp_prot.mt*.so"
+FILES:libmdppq += "${libdir}/libmdppq.so"
+FILES:libmdp-prot += "${libdir}/libmdp_prot.mt*.so"
 
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""

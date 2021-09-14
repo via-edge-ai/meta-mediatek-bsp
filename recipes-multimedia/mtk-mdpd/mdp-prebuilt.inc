@@ -9,5 +9,5 @@ SRCREV = "827bd4c1a2d9692d67e1c7952a6301faf8afba82"
 
 S = "${WORKDIR}/git"
 
-INSANE_SKIP_${PN} += " already-stripped "
-INSANE_SKIP_${PN}-dev += " dev-elf "
+INSANE_SKIP:${PN} += " already-stripped "
+INSANE_SKIP:${PN}-dev += " dev-elf "

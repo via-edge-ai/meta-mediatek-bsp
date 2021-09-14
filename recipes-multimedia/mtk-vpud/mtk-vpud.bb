@@ -3,9 +3,9 @@
 
 SUMMARY = "MediaTek VPUD daemon"
 LICENSE = "CLOSED"
-RDEPENDS_${PN} = " libgcc glibc "
+RDEPENDS:${PN} = " libgcc glibc "
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 inherit systemd
 inherit update-rc.d
@@ -29,15 +29,15 @@ EXTRA_OEMAKE = ' \
 	LIBDIR=${D}${libdir} \
 '
 
-EXTRA_OEMAKE_append_aarch64 += ' \
+EXTRA_OEMAKE:append:aarch64 += ' \
 	VPUD_ARCH=aarch64 \
 '
 
-EXTRA_OEMAKE_append_armv7a += ' \
+EXTRA_OEMAKE:append:armv7a += ' \
 	VPUD_ARCH=aarch32 \
 '
 
-EXTRA_OEMAKE_append_mt8183 += ' \
+EXTRA_OEMAKE:append:mt8183 += ' \
 	VPUD_SOC=mt8183 \
 '
 
@@ -54,11 +54,11 @@ do_install() {
 }
 
 SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '${PN}', '', d)}"
-SYSTEMD_SERVICE_${PN} = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'vpud.service', '', d)}"
+SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'vpud.service', '', d)}"
 
 INITSCRIPT_NAME = "vpud"
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 	${bindir}/vpud \
 	${libdir}/liblic_divx.so \
 	${libdir}/liblic_s263.so \
@@ -69,16 +69,16 @@ FILES_${PN} += " \
 	${systemd_unitdir}/system/vpud.service \
 "
 
-FILES_${PN}_append_armv7a = " \
+FILES:${PN}:append:armv7a = " \
 	${libdir}/libherope_sa.ca7.so \
 "
 
-INSANE_SKIP_${PN} += "already-stripped"
-INSANE_SKIP_${PN} += "file-rdeps"
-INSANE_SKIP_${PN} += "ldflags"
-INSANE_SKIP_${PN}-dev += "file-rdeps"
-INSANE_SKIP_${PN}-dev += "dev-elf"
-INSANE_SKIP_${PN}-dev += "ldflags"
+INSANE_SKIP:${PN} += "already-stripped"
+INSANE_SKIP:${PN} += "file-rdeps"
+INSANE_SKIP:${PN} += "ldflags"
+INSANE_SKIP:${PN}-dev += "file-rdeps"
+INSANE_SKIP:${PN}-dev += "dev-elf"
+INSANE_SKIP:${PN}-dev += "ldflags"
 EXCLUDE_FROM_SHLIBS = "1"
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"

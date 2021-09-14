@@ -14,6 +14,6 @@ OPTEE_DRAM_SIZE = "0x40000000"
 
 USE_VT = "0"
 
-DISTRO_FEATURES_append = " optee "
+DISTRO_FEATURES:append = " optee "
 
 MACHINEOVERRIDES =. "mt8362:mt8362b:i300:i300b:"

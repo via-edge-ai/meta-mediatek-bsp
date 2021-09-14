@@ -17,7 +17,7 @@ PROVIDES = " \
 	virtual/opencl \
 "
 
-RPROVIDES_${PN} = " \
+RPROVIDES:${PN} = " \
 	egl \
 	libegl \
 	libgbm \
@@ -56,7 +56,7 @@ do_install() {
 	fi
 }
 
-FILES_${PN} = "${libdir}/*.so* \
+FILES:${PN} = "${libdir}/*.so* \
                ${libdir}/dri/*.so \
                ${exec_prefix}/lib/dri/*.so \
                ${nonarch_base_libdir}/firmware/rgx.fw.22.40.54.30 \
@@ -66,7 +66,7 @@ FILES_${PN} = "${libdir}/*.so* \
                ${datadir}/drirc.d/* \
                ${sysconfdir}/*"
 
-FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc \
+FILES:${PN}-dev = "${libdir}/pkgconfig/*.pc \
                    ${datadir}/pkgconfig/*.pc \
                    ${includedir}/EGL/* \
                    ${includedir}/KHR/* \
@@ -81,4 +81,4 @@ FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc \
 INHIBIT_SYSROOT_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP_${PN} += "already-stripped"
+INSANE_SKIP:${PN} += "already-stripped"

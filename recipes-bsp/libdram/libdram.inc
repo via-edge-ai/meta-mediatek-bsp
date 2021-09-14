@@ -8,7 +8,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit meson
 
-EXTRA_OEMESON_append = " -Dboard=${LIBDRAM_BOARD_NAME}"
+EXTRA_OEMESON:append = " -Dboard=${LIBDRAM_BOARD_NAME}"
 
 S = "${WORKDIR}/git"
 
