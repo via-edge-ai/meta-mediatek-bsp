@@ -11,6 +11,7 @@ FILESEXTRAPATHS:prepend:mt8167-sb30 := "${THISDIR}/mt8167-sb30:"
 FILESEXTRAPATHS:prepend:mt8516-pumpkin:= "${THISDIR}/mt8516-pumpkin:"
 FILESEXTRAPATHS:prepend:mt8183-evb := "${THISDIR}/mt8183-evb:"
 FILESEXTRAPATHS:prepend:mt8183-pumpkin:= "${THISDIR}/mt8183-pumpkin:"
+FILESEXTRAPATHS:prepend:mt8365-evk := "${THISDIR}/mt8365-evk:"
 FILESEXTRAPATHS:prepend:mt8365-sb35:= "${THISDIR}/mt8365-sb35:"
 
 do_compile[depends] += "virtual/kernel:do_shared_workdir"
@@ -56,6 +57,10 @@ SRC_URI:append:mt8183-pumpkin = " \
 	file://camera-ap1302-ar0144-dual.dts \
 	file://camera-ap1302-ar0330-single-ar0144-single.dts \
 	file://camera-ap1302-ar0330-single-ar0144-dual.dts \
+"
+
+SRC_URI:append:mt8365-evk = " \
+	file://net-ethernet.dts \
 "
 
 SRC_URI:append:mt8365-sb35 = " \
