@@ -10,6 +10,12 @@ LIC_FILES_CHKSUM = "file://README.md;beginline=62;md5=5f24b33dfbaa5351a11e5491f7
 SRC_URI = "git://github.com/dlenski/PySIMG.git"
 SRCREV = "f6eae13209d44396161b5849680f247fdeb8e1f5"
 
+FILESEXTRAPATHS:prepend := "${THISDIR}/pysimg:"
+
+SRC_URI += " \
+	file://0001-Remove-unneeded-dependency-to-enum34.patch \
+"
+
 S = "${WORKDIR}/git"
 
 inherit setuptools3
