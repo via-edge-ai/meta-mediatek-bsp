@@ -228,7 +228,7 @@ power (PWRKEY), reset (SYSRST), and download (KPCOL0) lines.
 .. note::
 
 	By default the FTDI chip is not configured to use these 3 lines.
-	Please refer to the `RITY tools manual`_ to see how to `configure`_ and
+	Please refer to the `AIoT tools manual`_ to see how to `configure`_ and
 	`control`_ these 3 lines.
 
 Limitations
@@ -239,6 +239,6 @@ The software image has the following limitations:
 * The 2 USB Type-A port (CN3) and the Ethernet port (CN5) can be used only when no cable is connected to the USB Type-C CN2 port. This is a hardware limitation that prevents USB host and USB device to be usable at the same time.
 
 .. _7-inch Raspberry Pi touch display: https://www.raspberrypi.org/products/raspberry-pi-touch-display/
-.. _RITY tools manual: https://baylibre.gitlab.io/rich-iot/tools/rity-tools/
-.. _configure: https://baylibre.gitlab.io/rich-iot/tools/rity-tools/#configuration-of-the-ftdi-chip
-.. _control: https://baylibre.gitlab.io/rich-iot/tools/rity-tools/#rity-board
+.. _AIoT tools manual: https://mediatek.gitlab.io/aiot/bsp/aiot-tools/
+.. _configure: https://mediatek.gitlab.io/aiot/bsp/aiot-tools/#configuration-of-the-ftdi-chip
+.. _control: https://mediatek.gitlab.io/aiot/bsp/aiot-tools/#rity-board
