@@ -5,6 +5,6 @@ require linux-mtk-common.inc
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
-LINUX_VERSION ?= "5.10.56"
+LINUX_VERSION ?= "5.10.66"
 SRCBRANCH ?= "mtk-v5.10"
-SRCREV = "57fc86cc100e878207fd1fc278f13aa0b4f22631"
+SRCREV = "46ba441c677f87b3eab8ed2f4c9271f72a4c725e"
