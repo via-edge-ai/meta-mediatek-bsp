@@ -6,10 +6,10 @@ LICENSE = "CLOSED"
 
 inherit allarch
 
-S = "${WORKDIR}/git"
+S = "${WORKDIR}/git/${MTK_WIRELESS_RELEASE}"
 
 SRC_URI = "${AIOT_NDA_URI}/wireless-firmware.git;protocol=ssh;branch=main"
-SRCREV = "7a2cbc841898471020fbcda993693c719ca06756"
+SRCREV = "19388a401e99a5f0a03023486d8a5eeefaad89ef"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
@@ -18,12 +18,12 @@ do_package_qa[noexec] = "1"
 
 do_install() {
 	install -d ${D}${nonarch_base_libdir}/firmware/
-	install -m 0644 ${S}/wifi.cfg ${D}${nonarch_base_libdir}/firmware/
-	install -m 0644 ${S}/EEPROM_MT7668.bin ${D}${nonarch_base_libdir}/firmware/
-	install -m 0644 ${S}/mt7668_patch_e2_hdr.bin ${D}${nonarch_base_libdir}/firmware/
-	install -m 0644 ${S}/TxPwrLimit_MT76x8.dat ${D}${nonarch_base_libdir}/firmware/
-	install -m 0644 ${S}/WIFI_RAM_CODE_MT7668.bin ${D}${nonarch_base_libdir}/firmware/
-	install -m 0644 ${S}/WIFI_RAM_CODE2_SDIO_MT7668.bin ${D}${nonarch_base_libdir}/firmware/
+	install -m 0644 ${S}/../wifi.cfg ${D}${nonarch_base_libdir}/firmware/
+	install -m 0644 ${S}/../EEPROM_MT7668.bin ${D}${nonarch_base_libdir}/firmware/
+	install -m 0644 ${S}/../TxPwrLimit_MT76x8.dat ${D}${nonarch_base_libdir}/firmware/
+	install -m 0644 ${S}/mt7668/mt7668_patch_e2_hdr.bin ${D}${nonarch_base_libdir}/firmware/
+	install -m 0644 ${S}/mt7668/WIFI_RAM_CODE_MT7668.bin ${D}${nonarch_base_libdir}/firmware/
+	install -m 0644 ${S}/mt7668/WIFI_RAM_CODE2_SDIO_MT7668.bin ${D}${nonarch_base_libdir}/firmware/
 }
 
 PROVIDES = "mt7668-tk-wifi-fw"
