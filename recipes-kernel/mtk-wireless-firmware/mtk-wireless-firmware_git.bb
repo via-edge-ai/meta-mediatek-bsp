@@ -26,9 +26,9 @@ do_install() {
 	install -m 0644 ${S}/WIFI_RAM_CODE2_SDIO_MT7668.bin ${D}${nonarch_base_libdir}/firmware/
 }
 
-PROVIDES = "mt7668-wifi-fw"
-PACKAGES =+ "mt7668-wifi-fw"
-FILES:mt7668-wifi-fw = " \
+PROVIDES = "mt7668-tk-wifi-fw"
+PACKAGES =+ "mt7668-tk-wifi-fw"
+FILES:mt7668-tk-wifi-fw = " \
 	${nonarch_base_libdir}/firmware/wifi.cfg \
 	${nonarch_base_libdir}/firmware/EEPROM_MT7668.bin \
 	${nonarch_base_libdir}/firmware/mt7668_patch_e2_hdr.bin \

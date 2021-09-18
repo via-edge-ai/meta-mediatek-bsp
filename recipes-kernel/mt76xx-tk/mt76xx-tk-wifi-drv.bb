@@ -21,5 +21,5 @@ EXTRA_OEMAKE+=" \
 	WLAN_CHIP_ID=mt7668 \
 "
 
-RDEPENDS:${PN} += "mt7668-wifi-fw"
-RPROVIDES:${PN} += "kernel-module-mt7668-wifi"
+RDEPENDS:${PN} += "mt7668-tk-wifi-fw"
+RPROVIDES:${PN} += "kernel-module-mt7668-tk-wifi"
