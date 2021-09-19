@@ -2,24 +2,23 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 SUMMARY = "MediaTek MT7668 Wi-Fi driver"
-LICENSE = "Proprietary"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=90675d4b2a0ffc46ef9ff36dfe4063fe"
+LICENSE = "CLOSED"
 
 inherit module
 
-SRC_URI = "${AIOT_NDA_URI}/mt7668-wifi-drv.git;protocol=ssh;branch=main"
-SRCREV = "d3af91b0fdf128a0f48b4c3a8b180ba2b159ba05"
+SRC_URI = "${AIOT_NDA_URI}/mt7668-wifi-drv.git;protocol=ssh;branch=${MTK_WIRELESS_RELEASE}"
+SRCREV = "62b0a6236cfdcfe0e62ec4def67b3cf32d564299"
 
 S = "${WORKDIR}/git"
 
 EXTRA_OEMAKE+=" \
-	MTK_COMBO_CHIP=MT6632 \
-	CONFIG_MTK_WIFI_ONLY=m \
-	CONFIG_MTK_COMBO=m \
-	CONFIG_MTK_COMBO_WIFI=m \
-	CONFIG_MTK_COMBO_WIFI_HIF=sdio \
-	WLAN_CHIP_ID=mt7668 \
+	MTK_PLATFORM= \
+	WLAN_CHIP_ID=${MTK_WIRELESS_CHIP}\
 "
 
-RDEPENDS:${PN} += "mt7668-tk-wifi-fw"
-RPROVIDES:${PN} += "kernel-module-mt7668-tk-wifi"
+RDEPENDS:${PN}:mt7668 += "mt7668-tk-wifi-fw"
+RDEPENDS:${PN}:mt7663 += "mt7663-tk-wifi-fw"
+RPROVIDES:${PN} += " \
+	kernel-module-mt7663-tk-wifi \
+	kernel-module-mt7668-tk-wifi \
+"
