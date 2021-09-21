@@ -35,7 +35,9 @@ SRC_URI:append:mt8365 = " file://mt8365.cfg "
 SRC_URI:append:mt8516 = " file://mt8516.cfg "
 
 # Connectivity config fragments
-SRC_URI:append:mt7663 = " file://mt7663.cfg "
+SRC_URI:append:mt7663 = " \
+	${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "file://mt7668.cfg", "file://mt7663.cfg", d)} \
+"
 SRC_URI:append:mt7668 = " file://mt7668.cfg "
 
 KERNEL_EXTRA_ARGS = "Image.gz dtbs"
