@@ -3,7 +3,7 @@
 
 / {
 	fragment@0 {
-		target = <&dpi>;
+		target = <&dpi0>;
 		__overlay__ {
 			status = "disabled";
 		};
