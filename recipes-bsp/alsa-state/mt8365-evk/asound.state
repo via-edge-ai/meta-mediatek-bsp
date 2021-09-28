@@ -1311,7 +1311,7 @@ state.mtsndcard {
 	control.129 {
 		iface MIXER
 		name Speaker_Amp_Switch
-		value Off
+		value On
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -1323,7 +1323,7 @@ state.mtsndcard {
 	control.130 {
 		iface MIXER
 		name Headset_Speaker_Amp_Switch
-		value On
+		value Off
 		comment {
 			access 'read write'
 			type ENUMERATED
