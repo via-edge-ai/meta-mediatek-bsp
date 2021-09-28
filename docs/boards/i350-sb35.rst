@@ -43,3 +43,38 @@ The following Device-Tree Overlays are supported:
 * `panel-raspberrypi.dtbo`: Raspberry Pi touch display (see :ref:`boards/i350-sb35:Display` section)
 
 .. _7-inch Raspberry Pi touch display: https://www.raspberrypi.org/products/raspberry-pi-touch-display/
+
+Audio
+-----
+
+Playback
+^^^^^^^^
+
+By default, the i350 SB35 board ouputs audio on the jack connector (headset).
+
+It is possible to enable or disable this output. In order to do that, you will need to change several alsa settings using the following commands:
+
+In order to disable the headset output:
+
+.. prompt:: bash $
+
+	amixer sset -c mtsndcard 'Audio_Amp_L_Switch',0 Off
+	amixer sset -c mtsndcard 'Audio_Amp_R_Switch',0 Off
+
+Capture
+^^^^^^^
+
+By default, the i350 SB35 board captures audio using the jack microphone.
+
+The following command is an example that will start a mono record with a sampling rate of 48kHz and a signed 32bits bit format:
+
+.. prompt:: bash $
+
+	arecord -c 1 -r 48000 -f s32_le recorded_file.wav
+
+It is possible to record using the 2 PDM mics present on the board instead.
+In this case, the device will need to be specified explicitally as follows:
+
+.. prompt:: bash $
+
+	arecord -D dmic -c 2 -r 48000 -f s32_le recorded_file.wav

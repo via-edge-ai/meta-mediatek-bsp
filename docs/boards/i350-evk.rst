@@ -77,3 +77,63 @@ power (PWRKEY), reset (SYSRST), and download (KPCOL0) lines.
 +----------------+-------------------+
 | 2              | Download (KPCOL0) |
 +----------------+-------------------+
+
+Audio
+-----
+
+Playback
+^^^^^^^^
+
+By default, the i350 EVK board ouputs audio on the first jack connector (headset) and on the second jack (line out) at the same time.
+
+It is possible to enable or disable these 2 outputs independently. In order to do that, you will need to change several alsa settings using the following commands:
+
+In order to disable the headset output:
+
+.. prompt:: bash $
+
+	amixer sset -c mtsndcard 'Audio_Amp_L_Switch',0 Off
+	amixer sset -c mtsndcard 'Audio_Amp_R_Switch',0 Off
+
+In order to disable the line out:
+
+.. prompt:: bash $
+
+	amixer sset -c mtsndcard 'Speaker_Amp_Switch',0 Off
+
+Capture
+^^^^^^^
+
+By default, the i350 EVK board captures audio using the jack microphone.
+
+The following command is an example that will start a mono record with a sampling rate of 48kHz and a signed 32bits bit format:
+
+.. prompt:: bash $
+
+	arecord -c 1 -r 48000 -f s32_le recorded_file.wav
+
+It is possible to record using the 2 PDM mics present on the board instead.
+In this case, the device will need to be specified explicitally as follows:
+
+.. prompt:: bash $
+
+	arecord -D dmic -c 2 -r 48000 -f s32_le recorded_file.wav
+
+Another possibility is using the Analog mic also present on the board.
+In that case, you will need to switch from the jack mic to the analog mic using the following command:
+
+.. prompt:: bash $
+
+	amixer sset -c mtsndcard 'Audio_MicSource1_Setting',0 ADC1
+
+Then use a similar command as for jack mic:
+
+.. prompt:: bash $
+
+	arecord -c 1 -r 48000 -f s32_le recorded_file.wav
+
+In order to switch back to jack mic, use the following command:
+
+.. prompt:: bash $
+
+	amixer sset -c mtsndcard 'Audio_MicSource1_Setting',0 ADC2
