@@ -5,4 +5,4 @@ require linux-mtk-common.inc
 
 LINUX_VERSION ?= "5.4.147"
 SRCBRANCH ?= "mtk-v5.4"
-SRCREV = "88772c5eb23219b09f68f3bae5e9bc2f632d5ed4"
+SRCREV = "c8883e9b8b44665df0ce11b8c806ea1a66846334"

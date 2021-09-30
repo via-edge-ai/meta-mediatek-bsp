@@ -18,8 +18,9 @@ DISTRO_FEATURES:append = " optee "
 DISTRO_FEATURES:remove = " x11 "
 
 # Mali
+KERNEL_MODULE_AUTOLOAD += "dma-buf-test-exporter"
 MALI_SOC = "mt8365"
-MALI_VERSION ??= "r29p0"
+MALI_VERSION ??= "r32p0"
 
 MACHINE_EXTRA_RRECOMMENDS:append = " \
 	libmali \
