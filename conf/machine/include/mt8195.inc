@@ -17,4 +17,22 @@ LK_PROJECT = "mt8395-demo"
 DISTRO_FEATURES:append = " optee "
 DISTRO_FEATURES:remove = " x11 "
 
+# Mali
+KERNEL_MODULE_AUTOLOAD += "dma-buf-test-exporter"
+MALI_SOC = "mt8195"
+MALI_VERSION ??= "r31p0"
+
+MACHINE_EXTRA_RRECOMMENDS:append = " \
+	libmali \
+"
+
+PREFERRED_PROVIDER_virtual/egl ?= "libmali"
+PREFERRED_PROVIDER_virtual/libegl ?= "libmali"
+PREFERRED_PROVIDER_virtual/libgbm ?= "libmali"
+PREFERRED_PROVIDER_virtual/libgl ?= "libmali"
+PREFERRED_PROVIDER_virtual/libgles1 ?= "libmali"
+PREFERRED_PROVIDER_virtual/libgles2 ?= "libmali"
+PREFERRED_PROVIDER_virtual/mesa ?= "libmali"
+PREFERRED_PROVIDER_virtual/opencl ?= "libmali"
+
 MACHINEOVERRIDES =. "mt8395:i1200:"
