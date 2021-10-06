@@ -11,7 +11,7 @@ inherit systemd
 inherit update-rc.d
 
 SRC_URI = "${AIOT_RITY_URI}/vpud.git;protocol=ssh;branch=main"
-SRCREV = "a8086d17f0cc02278d5b540c4e9dfc85ea5f969c"
+SRCREV = "817e44cae15da45bcef8a5c03ff540e777f01a12"
 
 SRC_URI += " \
 	file://vpud.service \
@@ -39,6 +39,10 @@ EXTRA_OEMAKE:append:armv7a += ' \
 
 EXTRA_OEMAKE:append:mt8183 += ' \
 	VPUD_SOC=mt8183 \
+'
+
+EXTRA_OEMAKE:append:mt8365 += ' \
+	VPUD_SOC=mt8365 \
 '
 
 do_install() {
@@ -71,6 +75,10 @@ FILES:${PN} += " \
 
 FILES:${PN}:append:armv7a = " \
 	${libdir}/libherope_sa.ca7.so \
+"
+
+FILES:${PN}:remove:mt8365 = " \
+	${libdir}/libvcodec_oal.so \
 "
 
 INSANE_SKIP:${PN} += "already-stripped"
