@@ -5,4 +5,4 @@ require mdp-prebuilt.inc
 require mdpd.inc
 
 S = "${WORKDIR}/git/mdpd"
-B = "${WORKDIR}/git/mdpd"
+B = "${WORKDIR}/git/mdpd/${SOC_FAMILY}"
