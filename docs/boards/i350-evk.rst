@@ -84,22 +84,31 @@ Audio
 Playback
 ^^^^^^^^
 
-By default, the i350 EVK board ouputs audio on the first jack connector (headset) and on the second jack (line out) at the same time.
+By default, the i350 EVK board ouputs audio on the first jack connector (headset) and the second jack (line out) is disabled.
 
-It is possible to enable or disable these 2 outputs independently. In order to do that, you will need to change several alsa settings using the following commands:
+It is possible to switch to the second line. In order to do that, you will need to change several alsa settings using the following commands:
 
-In order to disable the headset output:
+In order to disable the headset output and enable the Line out:
 
 .. prompt:: bash $
 
 	amixer sset -c mtsndcard 'Audio_Amp_L_Switch',0 Off
 	amixer sset -c mtsndcard 'Audio_Amp_R_Switch',0 Off
+	amixer sset -c mtsndcard 'Speaker_Amp_Switch',0 On
 
-In order to disable the line out:
+In order to switch back to Headset out:
 
 .. prompt:: bash $
 
+	amixer sset -c mtsndcard 'Audio_Amp_L_Switch',0 On
+	amixer sset -c mtsndcard 'Audio_Amp_R_Switch',0 On
 	amixer sset -c mtsndcard 'Speaker_Amp_Switch',0 Off
+
+The following command is an example that will start a music playback of a wav file that is already on the device:
+
+.. prompt:: bash $
+
+	aplay playback_file.wav
 
 Capture
 ^^^^^^^
@@ -137,3 +146,30 @@ In order to switch back to jack mic, use the following command:
 .. prompt:: bash $
 
 	amixer sset -c mtsndcard 'Audio_MicSource1_Setting',0 ADC2
+
+USB audio
+^^^^^^^^^
+
+USB audio is supported on this board. Simply plug an USB audio device (an USB headset for example) and check its id or name before playing or recording something.
+
+In order to play a wav file:
+
+.. prompt:: bash $
+
+        # List the playback devices
+        aplay -l
+        # If USB card id is 1 and its playback device id is 0,
+        # using the following command (forcing the framerate
+        # to 48HHz)
+        aplay -D plughw:1,0 -r 48000 playback_file.wav
+
+In order to record a wav file:
+
+.. prompt:: bash $
+
+        # List the capture devices
+        arecord -l
+        # If USB card id is 1 and its capture device id is 0,
+        # using the following command (forcing the framerate
+        # to 48HHz)
+        arecord -D plughw:1,0 -r 48000 -c 1 -f s32_le recorded_file.wav
