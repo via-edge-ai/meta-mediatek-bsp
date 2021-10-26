@@ -8,3 +8,7 @@ inherit packagegroup
 RDEPENDS:${PN}:mt8167 = " \
 	virtual/mdpd \
 "
+
+RDEPENDS:${PN}:mt8365 = " \
+	virtual/mdpd \
+"
