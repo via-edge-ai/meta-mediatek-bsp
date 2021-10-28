@@ -10,10 +10,19 @@ S = "${WORKDIR}/git"
 B = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_NDA_URI}/mdpd.git;protocol=ssh;branch=main"
-SRCREV = "cae5cff3af68651f4692adb093db0ff8aa5e7403"
+SRCREV = "a341eaa8c08310acefae75ad002371bc3eb1858f"
 
 DEBUG_BUILD = "1"
 
-EXTRA_OEMAKE = "mdpd libmdp.mt8167.so"
+EXTRA_OEMAKE = " mdpd "
+
+EXTRA_OEMAKE:append:mt8167 += ' \
+	libmdp.mt8167.so \
+'
+
+EXTRA_OEMAKE:append:mt8365 += ' \
+	libmdp.mt8365.so \
+	V4l2MDPD_CFLAGS=-DMDP_KERNEL_IPI_COMPATIBLE \
+'
 
 require mdpd.inc
