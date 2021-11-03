@@ -10,7 +10,7 @@ S = "${WORKDIR}/git"
 B = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_NDA_URI}/mdpd.git;protocol=ssh;branch=main"
-SRCREV = "a341eaa8c08310acefae75ad002371bc3eb1858f"
+SRCREV = "3c5d6cdd25c2c00ea9f159e24d3156c2e5d00afb"
 
 DEBUG_BUILD = "1"
 
