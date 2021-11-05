@@ -24,6 +24,10 @@ IMAGE_CLASSES += "image_type_img"
 SERIAL_CONSOLES = "921600;ttyS0"
 
 WKS_FILE ?= "mediatek.wks"
+WIC_CREATE_EXTRA_ARGS += "-i direct-with-blksz"
+WIC_SECTOR_SIZE ?= "512"
+WIC_BLOCK_SIZE ?= "1024"
+WICVARS:append = " WIC_SECTOR_SIZE WIC_BLOCK_SIZE"
 do_image_wic[depends] += " \
 	virtual/trusted-firmware-a:do_deploy \
 	virtual/kernel:do_deploy \
