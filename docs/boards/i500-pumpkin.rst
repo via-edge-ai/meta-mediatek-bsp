@@ -66,6 +66,7 @@ The i500 Pumpkin board supports the following csi camera configs:
 
 * Onsemi AR0330 (single or dual) raw sensors
 * Onsemi AP1302 (single or dual) ISPs + AR0330 / AR0144 (single or dual) sensors
+* Onsemi AP1302 (single) ISP + AR1335 (single) sensor
 
 Onsemi AR0330 (single or dual) raw sensors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -108,6 +109,23 @@ For example, for one AP1302 + one AR0330 combination:
 	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
 		camera-ap1302-ar0330-single.dtbo \
 	"
+
+
+Onsemi AP1302 (single) ISP + AR1335 (single) sensor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The second ISP (which is capable of supporting AR0144 sensor) is capable
+of supporting AR1335 sensor too.
+
+To load the dtbo corresponding to AP1302 + AR1335 single, add the following
+to your `local.conf`:
+
+.. code::
+
+	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
+		camera-ap1302-ar1335-single.dtbo \
+	"
+
 
 Audio
 -----
