@@ -12,7 +12,7 @@ inherit allarch
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://github.com/ONSemiconductor/ap1302_binaries.git;branch=main"
-SRCREV = "ded0474674a7119e95d4ee8bafe21787425705e4"
+SRCREV = "c07907c3ee72db596ef4078b162678a11585d174"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
@@ -26,17 +26,24 @@ addtask do_license_rename after do_fetch before do_populate_lic
 
 do_install() {
 	install -d ${D}${nonarch_base_libdir}/firmware
-	install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar0330_single_fw.bin" \
-		${D}${nonarch_base_libdir}/firmware
-	install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar0144_single_fw.bin" \
-		${D}${nonarch_base_libdir}/firmware
-	install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar0144_dual_fw.bin" \
-		${D}${nonarch_base_libdir}/firmware
+	if [ "${ONSEMI_BOARD_NAME}" = "OLogic_Pumpkin_i500" ]; then
+		install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar0330_single_fw.bin" \
+			${D}${nonarch_base_libdir}/firmware
+		install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar0144_single_fw.bin" \
+			${D}${nonarch_base_libdir}/firmware
+		install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar0144_dual_fw.bin" \
+			${D}${nonarch_base_libdir}/firmware
+	elif [ "${ONSEMI_BOARD_NAME}" = "MediaTek_AIoT_i350_EVK" ]; then
+		install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar0430_single_fw.bin" \
+			${D}${nonarch_base_libdir}/firmware
+	fi
 }
 
 PACKAGES =+ "${PN}-ap1302-ar0330"
 PACKAGES =+ "${PN}-ap1302-ar0144"
 PACKAGES =+ "${PN}-ap1302-ar0144-dual"
+PACKAGES =+ "${PN}-ap1302-ar0430"
 FILES:${PN}-ap1302-ar0330 = "${nonarch_base_libdir}/firmware/ap1302_ar0330_single_fw.bin"
 FILES:${PN}-ap1302-ar0144 = "${nonarch_base_libdir}/firmware/ap1302_ar0144_single_fw.bin"
 FILES:${PN}-ap1302-ar0144-dual = "${nonarch_base_libdir}/firmware/ap1302_ar0144_dual_fw.bin"
+FILES:${PN}-ap1302-ar0430 = "${nonarch_base_libdir}/firmware/ap1302_ar0430_single_fw.bin"
