@@ -10,7 +10,7 @@
 	fragment@6 {
 		target = <&i2c3>;
 		__overlay__ {
-			camera@3c {
+			camera@3d {
 				status = "disabled";
 			};
 		};
