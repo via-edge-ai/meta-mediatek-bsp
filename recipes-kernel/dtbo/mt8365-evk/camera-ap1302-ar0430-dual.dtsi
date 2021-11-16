@@ -13,6 +13,31 @@
 
 / {
 	fragment@0 {
+		target-path = "/";
+		__overlay__ {
+			cam0_pdn: cam0-pdn-regulator {
+				compatible = "regulator-fixed";
+				regulator-name = "cam0_pdn";
+				regulator-min-microvolt = <1800000>;
+				regulator-max-microvolt = <1800000>;
+				gpio = <&pio 105 0>;
+				startup-delay-us = <18000>;
+				enable-active-high;
+			};
+
+			cam1_pdn: cam1-pdn-regulator {
+				compatible = "regulator-fixed";
+				regulator-name = "cam1_pdn";
+				regulator-min-microvolt = <1800000>;
+				regulator-max-microvolt = <1800000>;
+				gpio = <&pio 107 0>;
+				startup-delay-us = <18000>;
+				enable-active-high;
+			};
+		};
+	};
+
+	fragment@1 {
 		target = <&pio>;
 		__overlay__ {
 			cam0_pins_default: cam0_pins_default {
@@ -33,7 +58,7 @@
 		};
 	};
 
-	fragment@1 {
+	fragment@2 {
 		target = <&i2c2>;
 		__overlay__ {
 			clock-frequency = <400000>;
@@ -50,7 +75,8 @@
 				assigned-clock-parents = <&topckgen CLK_TOP_USB20_192M_D4>;
 
 				reset-gpios = <&pio 106 GPIO_ACTIVE_LOW>;
-				standby-gpios = <&pio 105 GPIO_ACTIVE_LOW>;
+
+				power-supply = <&cam0_pdn>;
 
 				orientation = <0>;
 				rotation = <0>;
@@ -76,7 +102,7 @@
 		};
 	};
 
-	fragment@2 {
+	fragment@3 {
 		target = <&i2c3>;
 		__overlay__ {
 			clock-frequency = <400000>;
@@ -93,7 +119,8 @@
 				assigned-clock-parents = <&topckgen CLK_TOP_USB20_192M_D4>;
 
 				reset-gpios = <&pio 108 GPIO_ACTIVE_LOW>;
-				standby-gpios = <&pio 107 GPIO_ACTIVE_LOW>;
+
+				power-supply = <&cam1_pdn>;
 
 				orientation = <0>;
 				rotation = <0>;
@@ -119,7 +146,7 @@
 		};
 	};
 
-	fragment@3 {
+	fragment@4 {
 		target = <&seninf>;
 		__overlay__ {
 			status = "okay";
@@ -144,14 +171,14 @@
 		};
 	};
 
-	fragment@4 {
+	fragment@5 {
 		target = <&camsv1>;
 		__overlay__ {
 			status = "okay";
 		};
 	};
 
-	fragment@5 {
+	fragment@6 {
 		target = <&camsv2>;
 		__overlay__ {
 			status = "okay";

@@ -7,7 +7,7 @@
 #include "camera-ap1302-ar0430-dual.dtsi"
 
 / {
-	fragment@6 {
+	fragment@7 {
 		target = <&i2c3>;
 		__overlay__ {
 			camera@3d {
@@ -16,7 +16,7 @@
 		};
 	};
 
-        fragment@7 {
+        fragment@8 {
                 target = <&camsv2>;
                 __overlay__ {
                         status = "disabled";
