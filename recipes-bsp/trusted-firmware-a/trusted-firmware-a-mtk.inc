@@ -16,6 +16,7 @@ DEPENDS:append = " coreutils-native u-boot-tools-native"
 EXTRA_OEMAKE += "E=0"
 EXTRA_OEMAKE += "NEED_BL33=yes"
 EXTRA_OEMAKE += "LIBDRAM=${STAGING_DIR_TARGET}/${libdir}/libdram.a"
+EXTRA_OEMAKE += "LIBBASE=${STAGING_DIR_TARGET}/${libdir}/libbase.a"
 
 # OP-TEE
 DEPENDS:append = " ${@bb.utils.contains("DISTRO_FEATURES", "optee", "optee-os", "", d)}"
