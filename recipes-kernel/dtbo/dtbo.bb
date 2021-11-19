@@ -62,9 +62,10 @@ SRC_URI:append:mt8183-pumpkin = " \
 
 SRC_URI:append:mt8365-evk = " \
 	file://net-ethernet.dts \
-        file://camera-ap1302-ar0430-dual.dtsi \
-        file://camera-ap1302-ar0430-single-csi0.dts \
-        file://camera-ap1302-ar0430-single-csi1.dts \
+	file://camera-ap1302-ar0430-dual.dtsi \
+	file://camera-ap1302-ar0430-single-csi0.dts \
+	file://camera-ap1302-ar0430-single-csi1.dts \
+	file://panel-startek-kd070fhfid015.dts \
 "
 
 SRC_URI:append:mt8365-sb35 = " \

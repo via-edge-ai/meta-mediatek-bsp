@@ -15,6 +15,26 @@ You can build an image for the Innocomm SB35 board by setting the
 
 For full build instructions, please refer to the top level `README.md`.
 
+DSI Display
+-----------
+
+The i350 EVK supports the Startek KD070FHFID015 DSI display.
+
+If you wish to use the DSI display, you need to add
+the following to your `local.conf`:
+
+.. code::
+
+	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
+		panel-startek-kd070fhfid015.dtbo \
+	"
+
+.. warning::
+
+	Adding the dtbo to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD requires you to
+	plug the DSI display to your board. Failing to connect it will
+	prevent HDMI from working. If you only want HDMI, you should not add
+	the dtbo to your `local.conf`.
 
 Ethernet and HDMI support
 -------------------------
