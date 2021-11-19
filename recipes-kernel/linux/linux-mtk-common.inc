@@ -15,6 +15,7 @@ SRC_URI:append = " \
 "
 
 # Board specific config fragments
+SRC_URI:append:mt8195-demo = " file://mt8195-demo.cfg "
 SRC_URI:append:mt8365-evk = " file://mt8365-evk.cfg "
 SRC_URI:append:mt8365-sb35 = " file://mt8365-sb35.cfg "
 SRC_URI:append:mt8365-pumpkin = " file://mt8365-pumpkin.cfg "
