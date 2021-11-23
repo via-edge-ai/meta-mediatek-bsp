@@ -1,6 +1,6 @@
 require libdram.inc
 
-DEPENDS = "${@bb.utils.contains("SOC_FAMILY", "mt8365", "libbase-lk-prebuilt", "", d)}"
+DEPENDS:mt8365 = "libbase-lk-prebuilt"
 
 EXTRA_OEMESON:append = " -Dlk=true"
 

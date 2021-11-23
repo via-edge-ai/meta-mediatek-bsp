@@ -10,8 +10,3 @@ S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_RITY_URI}/libbase-prebuilt.git;protocol=ssh;branch=main"
 SRCREV = "91f5d1dba3595d34c7a03764c85b9ae1a6678319"
-
-do_install() {
-	install -d ${D}${libdir}
-	install -m 644 ${S}/${SOC_FAMILY}/libbase.a ${D}${libdir}
-}

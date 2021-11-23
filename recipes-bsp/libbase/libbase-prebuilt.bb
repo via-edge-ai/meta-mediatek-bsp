@@ -2,3 +2,8 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 require libbase-prebuilt.inc
+
+do_install() {
+        install -d ${D}${libdir}
+        install -m 644 ${S}/${SOC_FAMILY}/libbase.a ${D}${libdir}
+}
