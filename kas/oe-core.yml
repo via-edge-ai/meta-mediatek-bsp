@@ -1,0 +1,26 @@
+header:
+  version: 10
+  includes:
+  - include/deps.yml
+  - include/base.yml
+
+repos:
+  core:
+    url: https://git.openembedded.org/openembedded-core
+    path: layers/oe-core
+    refspec: honister
+    layers:
+      meta:
+  bitbake:
+    url: https://git.openembedded.org/bitbake
+    path: layers/bitbake
+    refspec: '1.52'
+    layers:
+      conf: disabled
+
+distro: nodistro
+
+local_conf_header:
+  # Well, it is easier not to have this for the ci part
+  tclibcappend: |
+    TCLIBCAPPEND = ""
