@@ -5,7 +5,7 @@ SUMMARY = "MediaTek pre-built binaries for MDP"
 LICENSE = "CLOSED"
 
 SRC_URI = "${AIOT_RITY_URI}/mdp-prebuilt.git;protocol=ssh;branch=main"
-SRCREV = "ed711e39861632dcfa2c21ad561d05b8bd59483d"
+SRCREV = "bb57864b48a5f6eff60b401a5aca00f62d308e7f"
 
 S = "${WORKDIR}/git"
 
