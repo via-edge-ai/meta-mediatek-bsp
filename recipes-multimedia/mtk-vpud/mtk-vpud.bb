@@ -11,7 +11,7 @@ inherit systemd
 inherit update-rc.d
 
 SRC_URI = "${AIOT_RITY_URI}/vpud.git;protocol=ssh;branch=main"
-SRCREV = "817e44cae15da45bcef8a5c03ff540e777f01a12"
+SRCREV = "20afb7cb36eac2dcea7f13a07acfdc4bf3eb9441"
 
 SRC_URI += " \
 	file://vpud.service \
@@ -64,21 +64,15 @@ INITSCRIPT_NAME = "vpud"
 
 FILES:${PN} += " \
 	${bindir}/vpud \
-	${libdir}/liblic_divx.so \
-	${libdir}/liblic_s263.so \
 	${libdir}/libvpud_vcodec.so \
-	${libdir}/libvcodec_oal.so \
 	${sysconfdir}/init.d/vpud \
 	${sysconfdir}/systemd/system/multi-user.target.wants/vpud.service \
 	${systemd_unitdir}/system/vpud.service \
 "
 
 FILES:${PN}:append:armv7a = " \
-	${libdir}/libherope_sa.ca7.so \
-"
-
-FILES:${PN}:remove:mt8365 = " \
 	${libdir}/libvcodec_oal.so \
+	${libdir}/libherope_sa.ca7.so \
 "
 
 INSANE_SKIP:${PN} += "already-stripped"
