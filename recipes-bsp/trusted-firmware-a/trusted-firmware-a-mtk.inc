@@ -18,6 +18,10 @@ EXTRA_OEMAKE += "NEED_BL33=yes"
 EXTRA_OEMAKE += "LIBDRAM=${STAGING_DIR_TARGET}/${libdir}/libdram.a"
 EXTRA_OEMAKE += "LIBBASE=${STAGING_DIR_TARGET}/${libdir}/libbase.a"
 
+EXTRA_OEMAKE:append = " \
+	${@bb.utils.contains("MACHINE_FEATURES", "ufs-boot", "STORAGE_UFS=1", "", d)} \
+"
+
 # OP-TEE
 DEPENDS:append = " ${@bb.utils.contains("DISTRO_FEATURES", "optee", "optee-os", "", d)}"
 TFA_SPD = "${@bb.utils.contains("DISTRO_FEATURES", "optee", "opteed", "", d)}"
@@ -46,9 +50,14 @@ LIC_FILES_CHKSUM_MBEDTLS = "file://mbedtls/LICENSE;md5=713afe122abbe07f067f939ca
 TFA_BUILD_TARGET = "${@bb.utils.contains('TFA_USE_PREBUILT_BL2', 'yes', '', 'bl2', d)} bl31 fip"
 
 do_gen_bl2_img() {
+	media="emmc"
+	if [ "${@bb.utils.contains('MACHINE_FEATURES', 'ufs-boot', 'ufs-boot', '', d)}" = "ufs-boot" ]; then
+		media="ufs"
+	fi
+
 	cp ${B}/${TFA_PLATFORM}/release/bl2.bin ${B}/bl2.img.tmp
 	truncate -s%4 ${B}/bl2.img.tmp
-	uboot-mkimage -T mtk_image -a 0x201000 -e 0x201000 -n "media=emmc;arm64=1" \
+	uboot-mkimage -T mtk_image -a 0x201000 -e 0x201000 -n "media=$media;arm64=1" \
 			-d ${B}/bl2.img.tmp ${B}/bl2.img
 }
 
