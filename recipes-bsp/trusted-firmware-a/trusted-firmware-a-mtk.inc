@@ -40,7 +40,7 @@ SRC_URI:remove = " \
 
 SRC_URI += "file://rot_key.pem"
 
-LIC_FILES_CHKSUM += "file://docs/license.rst;md5=713afe122abbe07f067f939ca3c480c5"
+LIC_FILES_CHKSUM += "file://docs/license.rst;md5=b2c740efedc159745b9b31f88ff03dde"
 
 SRC_URI_MBEDTLS = "git://github.com/ARMmbed/mbedtls.git;name=mbedtls;protocol=https;destsuffix=git/mbedtls;branch=master"
 SRCREV_mbedtls = "mbedtls-2.26.0"
