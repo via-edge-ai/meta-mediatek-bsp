@@ -11,6 +11,13 @@ SRC_URI += " \
 do_deploy:append() {
 	boot_conf=`echo "boot_conf=#conf-${KERNEL_DEVICETREE}" | tr '/' '_'`
 	fastboot_entry=`echo "check_fastboot_entry=setenv fastboot_entry 0"`
+	storage=`echo "storage=mmc"`
+	storage_dev=`echo "storage_dev=0"`
+
+	if [ "${@bb.utils.contains('MACHINE_FEATURES', 'ufs-boot', 'ufs-boot', '', d)}" = "ufs-boot" ]; then
+		storage=`echo "storage=scsi"`
+		storage_dev=`echo "storage_dev=2"`
+	fi
 
 	for dtbo in ${KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD};
 	do
@@ -19,6 +26,8 @@ do_deploy:append() {
 
 	echo $fastboot_entry >> ${DEPLOYDIR}/u-boot-initial-env
 	echo $boot_conf >> ${DEPLOYDIR}/u-boot-initial-env
+	echo $storage >> ${DEPLOYDIR}/u-boot-initial-env
+	echo $storage_dev >> ${DEPLOYDIR}/u-boot-initial-env
 }
 
 do_deploy:append:i300-pumpkin() {
