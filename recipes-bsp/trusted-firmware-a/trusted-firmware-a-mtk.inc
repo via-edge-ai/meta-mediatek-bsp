@@ -91,9 +91,11 @@ DEFAULT_ROT_KEY = "${WORKDIR}/rot_key.pem"
 SECURE_BOOT_ROT_KEY ?= "${DEFAULT_ROT_KEY}"
 
 do_compile:prepend() {
-	if [ "x${DEFAULT_ROT_KEY}" = "x${SECURE_BOOT_ROT_KEY}" ]; then
-		bbwarn "SECURE_BOOT_ROT_KEY is not defined in local.conf, using development key for secure boot"
-	fi
+	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'secure-boot', 'secure-boot', '', d)}" = "secure-boot" ]; then
+		if [ "x${DEFAULT_ROT_KEY}" = "x${SECURE_BOOT_ROT_KEY}" ]; then
+			bbwarn "SECURE_BOOT_ROT_KEY is not defined in local.conf, using development key for secure boot"
+		fi
 
-	bbnote "Key used for secure boot: ${SECURE_BOOT_ROT_KEY}"
+		bbnote "Key used for secure boot: ${SECURE_BOOT_ROT_KEY}"
+	fi
 }
