@@ -11,6 +11,7 @@ PROVIDES =. " \
 	libmdppq \
 	libmdp-prot \
 "
+ALLOW_EMPTY:${PN} = "1"
 
 do_install() {
 	install -d ${D}${libdir}
