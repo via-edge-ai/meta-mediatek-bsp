@@ -7,8 +7,7 @@ LICENSE = "CLOSED"
 inherit module allarch
 
 SRC_URI = "${AIOT_NDA_URI}/neptune/bt_driver/turnkey_sdio;protocol=ssh;branch=main"
-#SRCREV = "2bd038c540ce535d102d88bafa71506f56fcc9e7"
-SRCREV = "${AUTOREV}"
+SRCREV = "90b50294b50506f53051ff8f7fe2a5831961e626"
 
 
 S = "${WORKDIR}/git"
@@ -17,9 +16,8 @@ EXTRA_OEMAKE+=" \
 	MTK_PLATFORM= \
 	WLAN_CHIP_ID=${MTK_WIRELESS_CHIP}\
 "
-do_compile[nostamp] = "1"
 
-do_install_append() {
+do_install:append() {
 	install -d ${D}${nonarch_base_libdir}/firmware/
 	install -m 0644 ${S}/cfg/bt.cfg ${D}${nonarch_base_libdir}/firmware/
 }
