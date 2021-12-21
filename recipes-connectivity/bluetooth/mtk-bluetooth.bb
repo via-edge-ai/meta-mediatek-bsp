@@ -1,15 +1,20 @@
 SUMMARY = "MediaTek Bluetooth Test Tool"
 LICENSE = "CLOSED"
 
-SRC_URI = "${AIOT_NDA_URI}/neptune/bt_others/vendor_lib.git;protocol=ssh;branch=main;destsuffix=git/bt_others/vendor_lib "
-SRC_URI_append = "${AIOT_NDA_URI}/neptune/bt_others/picus.git;protocol=ssh;branch=main;destsuffix=git/bt_others/picus "
-SRC_URI_append = "${AIOT_NDA_URI}/neptune/bt_others/bluetooth_mw.git;protocol=ssh;branch=main;destsuffix=git/bt_others/bluetooth_mw "
-SRC_URI_append = "${AIOT_NDA_URI}/neptune/bt_others/bluetooth_tool.git;protocol=ssh;branch=main;destsuffix=git/bt_others/bluetooth_tool "
-SRC_URI_append = "${AIOT_NDA_URI}/neptune/bt_stack/bluedroid_turnkey.git;protocol=ssh;branch=main;destsuffix=git/bt_stack/bluedroid_turnkey "
-SRC_URI_append = "${AIOT_NDA_URI}/neptune/bt_others/boots.git;protocol=ssh;branch=main;destsuffix=git/bt_others/boots "
+SRC_URI = "${AIOT_NDA_URI}/neptune/bt_others/vendor_lib.git;protocol=ssh;name=vendorlib;branch=main;destsuffix=git/bt_others/vendor_lib "
+SRC_URI_append = "${AIOT_NDA_URI}/neptune/bt_others/picus.git;protocol=ssh;name=picus;branch=main;destsuffix=git/bt_others/picus "
+SRC_URI_append = "${AIOT_NDA_URI}/neptune/bt_others/bluetooth_mw.git;protocol=ssh;name=btmw;branch=main;destsuffix=git/bt_others/bluetooth_mw "
+SRC_URI_append = "${AIOT_NDA_URI}/neptune/bt_others/bluetooth_tool.git;protocol=ssh;name=bttool;branch=main;destsuffix=git/bt_others/bluetooth_tool "
+SRC_URI_append = "${AIOT_NDA_URI}/neptune/bt_stack/bluedroid_turnkey.git;protocol=ssh;name=btstack;branch=main;destsuffix=git/bt_stack/bluedroid_turnkey "
+SRC_URI_append = "${AIOT_NDA_URI}/neptune/bt_others/boots.git;protocol=ssh;name=boots;branch=main;destsuffix=git/bt_others/boots "
 
-SRCREV = "${AUTOREV}"
-SRCREV_FORMAT = "default"
+SRCREV_vendorlib = "aff8e92004335da8a9d887243fa39d4da88bb2f7"
+SRCREV_picus = "c693c711ea21593fd0e6b7d8d1ab24d61ded2202"
+SRCREV_btmw = "0d51e468ae8fa216ff18866e734ea44e53198963"
+SRCREV_bttool = "d11eaa2fdcc8012cd54afed70f853b086c96e40f"
+SRCREV_btstack = "26dbb327da465c2d53a37314602f8b7d1ba1250e"
+SRCREV_boots = "7886d78ab18f5f2c7e0611a014ffe0e2b5db5570"
+SRCREV_FORMAT = "vendorlib_picus_btmw_bttool_btstack_boots_picus"
 
 #PV = "git${SRCPV}"
 
@@ -63,7 +68,7 @@ do_compile() {
         echo bluetooth end compile
 }
 
-do_install_append() {
+do_install:append() {
     install -d ${D}${libdir}
     install -m 755 ${WORKONSRC_bluetooth_tool}/prebuilts/lib/* ${D}${libdir}/
 
@@ -85,7 +90,7 @@ do_install_append() {
 	fi
 }
 
-do_uninstall_append() {
+do_uninstall:append() {
     /bin/bash ${WORKONSRC_bluetooth_tool}/script/yocto_clean_bluetooth.sh ${WORKONSRC_bluetooth_tool} ${COMBO_CHIP_ID}
 	/bin/bash ${WORKONSRC_bluetooth_tool}/script/yocto_clean_vendor.sh ${WORKONSRC_bluetooth_tool} ${COMBO_CHIP_ID}
 }
