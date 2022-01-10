@@ -1,5 +1,5 @@
 
-do_install_append () {
+do_install:append () {
 	if [ ${PREFERRED_PROVIDER_virtual/mesa} = "libmali" ]; then
 	  bbplain "remove provided libwayland-egl library in favour of the version in libmali"
 	  rm -f ${D}${libdir}/libwayland-egl*
