@@ -193,3 +193,131 @@ In order to record a wav file:
         # using the following command (forcing the framerate
         # to 48HHz)
         arecord -D plughw:1,0 -r 48000 -c 1 -f s32_le recorded_file.wav
+
+Cameras
+-------
+
+The i350_evk board supports the following csi camera configs:
+
+* Single Onsemi AP1302 ISP + AR0430 sensor on CSI0
+* Single Onsemi AP1302 ISP + AR0430 sensor on CSI1
+* Dual Onsemi AP1302 ISP + AR0430 sensor on CSI0 and CSI1
+
+Based on the necessary config, you need to use the following dtbo:
+
+* camera-ap1302-ar0430-single-csi0.dtbo
+* camera-ap1302-ar0430-single-csi1.dtbo
+* camera-ap1302-ar0430-dual.dtbo
+
+For example, you can add the following to your `local.conf` if you are using CSI0 only:
+
+.. code::
+
+        KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
+		camera-ap1302-ar0430-single-csi0.dtbo \
+	"
+
+or, when flashing the board:
+
+.. prompt:: bash $
+
+        aiot-flash -i rity-demo-image --load-dtbo camera-ap1302-ar0430-single-csi0.dtbo
+
+Hardware Setup
+^^^^^^^^^^^^^^
+
+To have the correct hardware setup to work with the AP1302 ISP and AR0430 sensor, please check:
+
+* The position of the jumpers on J501, J502, J401, J402, J403 and J404 should be the same as shown in the image
+
+* The sensor should be connected on CN602 (CAM+ISP) as shown in the image
+
+.. image:: images/ap1302.jpg
+   :width: 800
+
+Media Setup
+^^^^^^^^^^^
+
+To configure the media pipeline and access the ISP + sensor, you can use the `media-ctl` application from the v4l-utils package. 
+
+**media-ctl** can be used to print the hardware components that are available to interconnect:
+
+.. prompt:: bash $
+
+        media-ctl -p -d0
+
+You should be able to see the following entities:
+
+* mtk-mdp:m2m-source
+* mtk-mdp:m2m-proc
+* mtk-mdp:m2m-sink
+
+By running:
+
+.. prompt:: bash $
+
+        media-ctl -p -d1
+
+You should be able to see the following entities:
+
+* 15040000.seninf
+* 15050000.camsv
+* 15050000.camsv video stream
+* ap1302.2-003d
+* ar0430
+
+The interconnection of the components must ensure that the links between a source and a link pad have the same format (fmt). Also, the source from sensor AR0430 must have the format `SGRBG12_1X12/2316x1746` and, on camsv, the final sink must be of `UYVY8_1X16/2316x1746` format.
+
+If those rules are not being respected, you can use the command:
+
+.. prompt:: bash $ 
+
+        media-ctl -d /dev/media1 -V "42:2 [fmt:UYVY8_1X16/2316x1746]"
+
+to change the format of an entity:pad.
+
+In addition, all the connexions between the components must be enabled. If there is any which is not, you can use the command:
+
+.. prompt:: bash $
+
+        media-ctl -d /dev/media1 -l "42:2->1:1[1]"
+
+to enable the link between entity:pad_src and entity:pad_sink.
+
+After this setup, the topology for one sensor on CSI0 must be similiar to the one shown in the image:
+
+.. image:: images/topology.png
+   :width: 280
+
+Listing Cameras
+^^^^^^^^^^^^^^^
+
+With the previous setup ok, you can use **cam** command, from libcamera, to list all the cameras connected to the board. If you run the command:
+
+.. prompt:: bash $
+
+        cam -l
+
+the application should find a camera:
+
+.. code::
+
+        Available cameras:
+        1: Internal front camera (/base/soc/i2c@11009000/camera@3d)
+
+Previous result was an example with one sensor and one ISP at CSI0.
+
+Capture
+^^^^^^^
+
+With the media setup ok, you should also be able to capture some image frames.
+
+.. prompt:: bash $
+
+        v4l2-ctl --set-fmt-video=width=2316,height=1746,pixelformat=UYVY --stream-mmap=1 --stream-count=10 --stream-to=v4l2_out -d /dev/video3 --verbose
+
+Using the command above, a file named `v4l2_out` should have been created containing 10 frames 2316x1746 with format UYVY. You can then use another tool, such as ffmpeg, to be able to verify the frames. 
+
+.. prompt:: bash $
+
+        ffmpeg -f rawvideo -s 2316x1746 -pix_fmt uyvy422 -i v4l2_out image"%03d.png
