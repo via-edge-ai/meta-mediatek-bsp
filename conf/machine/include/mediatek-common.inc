@@ -1,3 +1,4 @@
+MACHINEOVERRIDES =. "mtk:"
 
 # Kernel
 KERNEL_IMAGETYPE = "fitImage"
