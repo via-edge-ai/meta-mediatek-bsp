@@ -3,6 +3,8 @@
 
 require recipes-kernel/linux/linux-yocto.inc
 
+do_assemble_fitimage[depends] += "virtual/bootloader:do_populate_sysroot"
+
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 
 LINUX_VERSION_EXTENSION = "-mtk"

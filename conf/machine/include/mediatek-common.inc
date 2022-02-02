@@ -1,13 +1,13 @@
 MACHINEOVERRIDES =. "mtk:"
 
 # Kernel
-KERNEL_CLASSES = "kernel-fitimage"
+KERNEL_CLASSES = "kernel-fitimage-mtk"
 KERNEL_IMAGETYPE = "fitImage"
 KERNEL_COMPRESSION = "gzip"
 
 # U-Boot
 UBOOT_SUFFIX = "bin"
-UBOOT_ENV_SUFFIX = "scr"
+UBOOT_ENV_SUFFIX = "script"
 UBOOT_ENV = "boot"
 UBOOT_ENTRYPOINT       = "0x40200000"
 UBOOT_LOADADDRESS      = "0x40200000"
@@ -20,7 +20,6 @@ OPTEE_TZDRAM_SIZE  ?= "0x00a00000"
 
 IMAGE_BOOT_FILES = " \
 	${KERNEL_IMAGETYPE} \
-	${UBOOT_ENV}.${UBOOT_ENV_SUFFIX} \
 "
 
 IMAGE_FSTYPES ?= "wic.img"
@@ -54,5 +53,4 @@ EXTRA_IMAGEDEPENDS = " \
 MACHINE_EXTRA_RRECOMMENDS += " \
 	kernel-modules \
 	packagegroup-mtk \
-	u-boot-scr \
 "

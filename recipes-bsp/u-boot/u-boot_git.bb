@@ -28,6 +28,7 @@ do_deploy:append() {
 	echo $boot_conf >> ${DEPLOYDIR}/u-boot-initial-env
 	echo $storage >> ${DEPLOYDIR}/u-boot-initial-env
 	echo $storage_dev >> ${DEPLOYDIR}/u-boot-initial-env
+	echo "boot_scripts=fitImage" >> ${DEPLOYDIR}/u-boot-initial-env
 }
 
 do_deploy:append:i300-pumpkin() {
@@ -37,16 +38,3 @@ do_deploy:append:i300-pumpkin() {
 inherit deploy
 
 SYSROOT_DIRS += " /boot"
-
-do_compile:append() {
-	uboot-mkimage -A arm -T script -O linux -d ${WORKDIR}/boot.script \
-		${WORKDIR}/boot.scr
-}
-
-PACKAGE_BEFORE_PN += "${PN}-scr"
-
-FILES:${PN}-scr = " \
-    /boot/boot*.scr \
-"
-
-RDEPENDS:${PN} += "${PN}-scr"
