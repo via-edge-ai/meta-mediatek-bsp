@@ -13,9 +13,7 @@ UBOOT_ENTRYPOINT       = "0x40200000"
 UBOOT_LOADADDRESS      = "0x40200000"
 UBOOT_DTB_LOADADDRESS  = "0x44000000"
 UBOOT_DTBO_LOADADDRESS = "0x44c00000"
-UBOOT_SIGN_ENABLE = " \
-	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "1", "", d)} \
-"
+UBOOT_SIGN_ENABLE = "1"
 
 # OP-TEE OS
 PREFERRED_PROVIDER_virtual/optee-os ?= "optee-os"
