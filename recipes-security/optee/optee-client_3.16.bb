@@ -3,7 +3,7 @@
 
 require recipes-security/optee/optee-client.inc
 
-SRCREV = "182874320395787a389e5b0f7df02b32f3c0a1b0"
+SRCREV = "06db73b3f3fdb8d23eceaedbc46c49c0b45fd1e2"
 COMPATIBLE_MACHINE = "mt*"
 
 EXTRA_OECMAKE:append = " -DCFG_TEE_PLUGIN_LOAD_PATH=${libdir}/tee-supplicant/plugins/"
