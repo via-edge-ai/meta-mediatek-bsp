@@ -8,7 +8,7 @@
 #define RPI_TS_INTERRUPT 189
 
 #include "panel-raspberrypi.dtsi"
-#include "mt8183-pinfunc.h"
+#include <dt-bindings/pinctrl/mt8183-pinfunc.h>
 
 / {
 	fragment@3 {

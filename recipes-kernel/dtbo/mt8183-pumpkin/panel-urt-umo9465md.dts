@@ -1,9 +1,9 @@
 /dts-v1/;
 /plugin/;
 
-#include "mt8183-pinfunc.h"
 #include "dt-bindings/interrupt-controller/irq.h"
 #include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/mt8183-pinfunc.h>
 
 / {
 	fragment@0 {
