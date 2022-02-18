@@ -4,7 +4,7 @@
 SUMMARY = "MediaTek MT7663 Bluetoth driver"
 LICENSE = "CLOSED"
 
-inherit module allarch
+inherit module
 
 SRC_URI = "${AIOT_NDA_URI}/neptune/bt_driver/turnkey_sdio;protocol=ssh;branch=main"
 SRCREV = "90b50294b50506f53051ff8f7fe2a5831961e626"
