@@ -2,7 +2,7 @@ SUMMARY = "MediaTek Bluetooth Test Tool"
 LICENSE = "CLOSED"
 
 SRC_URI = "${AIOT_NDA_URI}/neptune/bt_sw.git;protocol=ssh;branch=main;"
-SRCREV = "2e3e4071f767a3454ea5a5d70b7af83d16ff663c"
+SRCREV = "9ed98c42cfb9a35ed34a966da67bafb967e2bdad"
 
 #SRCREV_FORMAT = "default"
 
