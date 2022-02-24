@@ -2,12 +2,12 @@ require optee-os-mtk.inc
 
 DEPENDS += "${@bb.utils.contains("DISTRO_FEATURES", "optee-otp", "optee-otp", "", d)}"
 
-OPTEE_OTP_EXTRA_OEMAKE += " \
+OPTEE_OTP_EXTRA_OEMAKE += ' \
 	CFG_RPMB_FS=y \
 	CFG_RPMB_FS_DEV_ID=0 \
-	${@@oe.utils.conditional("OPTEE_RPMB_WRITE_KEY", "1", "CFG_RPMB_WRITE_KEY=y", "", d)} \
-	${@@oe.utils.conditional("OPTEE_RPMB_TEST_KEY", "1", "CFG_RPMB_TESTKEY=y", "", d)} \
-"
+	${@oe.utils.conditional("OPTEE_RPMB_WRITE_KEY", "1", "CFG_RPMB_WRITE_KEY=y", "", d)} \
+	${@oe.utils.conditional("OPTEE_RPMB_TEST_KEY", "1", "CFG_RPMB_TESTKEY=y", "", d)} \
+'
 
 do_compile:append() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'optee-otp', 'true', 'false', d)}; then
