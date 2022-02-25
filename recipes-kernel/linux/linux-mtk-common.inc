@@ -41,6 +41,7 @@ SRC_URI:append:mt7663 = " \
 	${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "file://mt7668.cfg", "file://mt7663.cfg", d)} \
 "
 SRC_URI:append:mt7668 = " file://mt7668.cfg "
+SRC_URI:append:mt7921 = " file://mt7921.cfg "
 
 KERNEL_EXTRA_ARGS = "Image.gz dtbs"
 KCONFIG_MODE = "--alldefconfig"
