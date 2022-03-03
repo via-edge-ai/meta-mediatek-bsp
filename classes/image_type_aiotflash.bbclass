@@ -11,7 +11,7 @@ TAR_IMAGE_ROOTFS:task-image-aiotflash = "${AIOTFLASH_SYSROOT}"
 IMAGE_TYPEDEP:aiotflash = "wic.img"
 do_image_aiotflash[depends] += "rity-tools:do_deploy \
                                 virtual/bootloader:do_deploy \
-                                virtual/trusted-firmware-a:do_deploy \
+                                trusted-firmware-a:do_deploy \
                                 virtual/lk:do_deploy \
                                 jq-native:do_populate_sysroot"
 IMAGE_CMD:aiotflash () {

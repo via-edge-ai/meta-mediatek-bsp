@@ -40,21 +40,20 @@ WIC_SECTOR_SIZE ?= "512"
 WIC_BLOCK_SIZE ?= "1024"
 WICVARS:append = " WIC_SECTOR_SIZE WIC_BLOCK_SIZE"
 do_image_wic[depends] += " \
-	virtual/trusted-firmware-a:do_deploy \
+	trusted-firmware-a:do_deploy \
 	virtual/kernel:do_deploy \
 "
 
 PREFERRED_PROVIDER_virtual/dtb = "dtbo"
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-mtk"
 PREFERRED_PROVIDER_virtual/bootloader ?= "u-boot"
-PREFERRED_PROVIDER_virtual/trusted-firmware-a ?= "trusted-firmware-a"
 PREFERRED_PROVIDER_virtual/lk ?= "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "lk", "lk-prebuilt", d)}"
 
 PREFERRED_VERSION_linux-mtk ??= "5.10%"
 
 EXTRA_IMAGEDEPENDS = " \
 	virtual/lk \
-	virtual/trusted-firmware-a \
+	trusted-firmware-a \
 	rity-tools \
 "
 
@@ -70,7 +69,7 @@ OPTEE_RPMB_WRITE_KEY ??= "0"
 OPTEE_RPMB_TEST_KEY ??= "0"
 
 # Allowed license for mtk device - overrideable if necessary
-MTK_EXTRA_LICENSE_FLAGS_WHITELIST ?= "commercial"
+MTK_EXTRA_LICENSE_FLAGS_ACCEPTED ?= "commercial"
 
 # Packages requiring extra licenses
-LICENSE_FLAGS_WHITELIST:append:pn-libmali = " ${MTK_EXTRA_LICENSE_FLAGS_WHITELIST}"
+LICENSE_FLAGS_ACCEPTED:append:pn-libmali = " ${MTK_EXTRA_LICENSE_FLAGS_ACCEPTED}"
