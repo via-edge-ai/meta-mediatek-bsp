@@ -9,7 +9,7 @@ DEPENDS += " libgcc"
 
 REQUIRED_DISTRO_FEATURES = "optee-otp"
 
-inherit deploy python3native
+inherit deploy python3native features_check
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
