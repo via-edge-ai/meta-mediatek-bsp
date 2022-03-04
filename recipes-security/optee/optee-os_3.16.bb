@@ -1,6 +1,7 @@
 require optee-os-mtk.inc
 
 DEPENDS += "${@bb.utils.contains("DISTRO_FEATURES", "optee-otp", "optee-otp", "", d)}"
+do_compile[depends] += '${@bb.utils.contains("DISTRO_FEATURES", "optee-otp", "optee-otp:do_deploy", "", d)}'
 
 OPTEE_OTP_EXTRA_OEMAKE += ' \
 	CFG_RPMB_FS=y \
