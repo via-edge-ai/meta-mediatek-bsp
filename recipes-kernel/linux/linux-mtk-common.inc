@@ -39,9 +39,10 @@ SRC_URI:append:mt8516 = " file://mt8516.cfg "
 
 # Connectivity config fragments
 SRC_URI:append:mt7663 = " \
-	${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "file://mt7668.cfg", "file://mt7663.cfg", d)} \
+	${@bb.utils.contains('MT76XX_WIFI_USE_UPSTREAM_DRV', '1', 'file://mt7663.cfg', 'file://mt76xx-tk-wifi.cfg', d)} \
+	${@bb.utils.contains('MT76XX_BT_USE_UPSTREAM_DRV', '1', 'file://btmtksdio.cfg', '', d)} \
 "
-SRC_URI:append:mt7668 = " file://mt7668.cfg "
+SRC_URI:append:mt7668 = " file://mt76xx-tk-wifi.cfg file://btmtksdio.cfg "
 SRC_URI:append:mt7921 = " file://mt7921.cfg "
 
 KERNEL_EXTRA_ARGS = "Image.gz dtbs"
