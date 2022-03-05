@@ -9,9 +9,9 @@ SRCREV = "3eefc3652f1309b652fc12bbc1a18230f52af227"
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} += "${libdir}"
-FILES_${PN}-dev = ""
-INSANE_SKIP_${PN} += "ldflags"
+FILES:${PN} += "${libdir}"
+FILES:${PN}-dev = ""
+INSANE_SKIP:${PN} += "ldflags"
 
 RPROVIDES:${PN} += " \
 	bt-vendor \

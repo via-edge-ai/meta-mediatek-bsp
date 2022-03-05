@@ -78,8 +78,8 @@ do_uninstall:append() {
 }
 
 
-FILES_${PN}-dev = ""
-INSANE_SKIP_${PN} += "ldflags"
+FILES:${PN}-dev = ""
+INSANE_SKIP:${PN} += "ldflags"
 
 
 SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '${PN}', '', d)}"

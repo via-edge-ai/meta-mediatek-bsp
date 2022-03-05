@@ -9,7 +9,7 @@ SRCREV = "7886d78ab18f5f2c7e0611a014ffe0e2b5db5570"
 
 S = "${WORKDIR}/git"
 
-INSANE_SKIP_${PN} = "ldflags"
+INSANE_SKIP:${PN} = "ldflags"
 
 do_install() {
     install -d ${D}${bindir}
