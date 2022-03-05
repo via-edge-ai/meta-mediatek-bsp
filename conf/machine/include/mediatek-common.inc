@@ -1,6 +1,7 @@
 MACHINEOVERRIDES =. "mtk:"
 
 # Kernel
+KERNEL_CLASSES = "kernel-fitimage"
 KERNEL_IMAGETYPE = "fitImage"
 KERNEL_COMPRESSION = "gzip"
 
