@@ -14,7 +14,7 @@ do_compile:append() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'optee-otp', 'true', 'false', d)}; then
 	    oe_runmake -C ${S} \
 		CFG_EARLY_TA=y ${OPTEE_OTP_EXTRA_OEMAKE} \
-		EARLY_TA_PATHS=${DEPLOY_DIR_IMAGE}/optee/3712bdda-569f-4940-b749-fb3b06a5fd86.stripped.elf \
+		EARLY_TA_PATHS=${STAGING_DIR_HOST}${nonarch_base_libdir}/optee_armtz/3712bdda-569f-4940-b749-fb3b06a5fd86.stripped.elf \
 		all
     fi
 }

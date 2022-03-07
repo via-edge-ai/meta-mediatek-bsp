@@ -8,7 +8,7 @@ DEPENDS = "optee-client optee-os-tadevkit python3-pycryptodome-native libgcc"
 
 REQUIRED_DISTRO_FEATURES = "optee-otp"
 
-inherit deploy python3native features_check
+inherit python3native features_check
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
@@ -41,15 +41,14 @@ do_compile() {
 
 do_install () {
     mkdir -p ${D}${bindir}
+    mkdir -p ${D}${nonarch_base_libdir}/optee_armtz
     install -D -p -m0755 ${S}/host/optee_otp ${D}${bindir}
+    install -D -p -m0444 ${S}/ta/*.stripped.elf ${D}${nonarch_base_libdir}/optee_armtz
+    install -D -p -m0444 ${S}/ta/*.ta ${D}${nonarch_base_libdir}/optee_armtz
 }
 
-do_deploy () {
-    install -d ${DEPLOYDIR}/optee
-    install -D -p -m0444 ${S}/ta/*.stripped.elf ${DEPLOYDIR}/optee/
-}
-
-addtask deploy before do_build after do_install
+FILES:${PN} += " ${nonarch_base_libdir}/optee_armtz/*.ta"
+FILES:${PN}-dev += " ${nonarch_base_libdir}/optee_armtz/*.elf"
 
 INSANE_SKIP:${PN} += "ldflags"
 
