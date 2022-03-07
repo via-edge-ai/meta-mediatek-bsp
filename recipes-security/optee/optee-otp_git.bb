@@ -53,3 +53,6 @@ do_deploy () {
 addtask deploy before do_build after do_install
 
 INSANE_SKIP:${PN} += "ldflags"
+
+# This is specific to the machine
+PACKAGE_ARCH = "${MACHINE_ARCH}"
