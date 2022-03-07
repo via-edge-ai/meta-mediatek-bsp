@@ -3,7 +3,8 @@ require recipes-bsp/trusted-firmware-a/trusted-firmware-a.inc
 inherit deploy
 
 DEPENDS = "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "libdram", "libdram-prebuilt", d)}"
-DEPENDS += " libdevinfo-prebuilt"
+DEPENDS:append = " libdevinfo-prebuilt"
+DEPENDS:append = " libbase-prebuilt"
 
 COMPATIBLE_MACHINE = "mt*"
 
