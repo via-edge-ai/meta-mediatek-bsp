@@ -1,8 +1,8 @@
 header:
   version: 10
   includes:
-  - include/deps.yml
-  - include/base.yml
+  - kas/include/deps.yml
+  - kas/include/base.yml
 
 # Split the provider of core away from the rest of the dependencies
 # so it is easier to switch to oe-core when necessary
