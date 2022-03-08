@@ -11,7 +11,7 @@ inherit allarch
 
 S = "${WORKDIR}/git"
 
-SRC_URI = "git://github.com/ONSemiconductor/ap1302_binaries.git;branch=main"
+SRC_URI = "git://github.com/ONSemiconductor/ap1302_binaries.git;protocol=https;branch=main"
 SRCREV = "72be5d2ad07d4d722f3ee236ccde19567e91b6c3"
 
 do_configure[noexec] = "1"
