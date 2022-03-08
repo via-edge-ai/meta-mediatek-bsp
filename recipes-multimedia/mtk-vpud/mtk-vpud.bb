@@ -29,19 +29,19 @@ EXTRA_OEMAKE = ' \
 	LIBDIR=${D}${libdir} \
 '
 
-EXTRA_OEMAKE:append:aarch64 += ' \
+EXTRA_OEMAKE:append:aarch64 = ' \
 	VPUD_ARCH=aarch64 \
 '
 
-EXTRA_OEMAKE:append:armv7a += ' \
+EXTRA_OEMAKE:append:armv7a = ' \
 	VPUD_ARCH=aarch32 \
 '
 
-EXTRA_OEMAKE:append:mt8183 += ' \
+EXTRA_OEMAKE:append:mt8183 = ' \
 	VPUD_SOC=mt8183 \
 '
 
-EXTRA_OEMAKE:append:mt8365 += ' \
+EXTRA_OEMAKE:append:mt8365 = ' \
 	VPUD_SOC=mt8365 \
 '
 
