@@ -3,8 +3,6 @@
 
 require recipes-security/optee/optee-os.inc
 
-DEPENDS:append = " python3-cryptography-native "
-
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRCREV = "916a72d4c0dd2d784125c60a7cec64c75aef8f4e"
