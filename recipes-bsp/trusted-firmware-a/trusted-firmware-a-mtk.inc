@@ -1,10 +1,11 @@
 require recipes-bsp/trusted-firmware-a/trusted-firmware-a.inc
 
 inherit deploy
+inherit python3native
 
 DEPENDS = "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "libdram", "libdram-prebuilt", d)}"
 DEPENDS:append = " libbase-prebuilt"
-
+DEPENDS:append = "${@oe.utils.conditional("BL2_SIGN_ENABLE", "1", " mtk-secure-boot-tools-native mtk-secure-boot-config", "", d)}"
 COMPATIBLE_MACHINE = "mt*"
 
 # Use TF-A for version
@@ -59,10 +60,20 @@ do_gen_bl2_img() {
 		media="ufs"
 	fi
 
-	cp ${B}/${TFA_PLATFORM}/release/bl2.bin ${B}/bl2.img.tmp
-	truncate -s%4 ${B}/bl2.img.tmp
-	uboot-mkimage -T mtk_image -a 0x201000 -e 0x201000 -n "media=$media;arm64=1" \
-			-d ${B}/bl2.img.tmp ${B}/bl2.img
+
+	if [ "${@oe.utils.conditional('BL2_SIGN_ENABLE', '1', '1', '', d)}" = "1" ]; then
+		cp ${B}/${TFA_PLATFORM}/release/bl2.bin ${B}/bl2.img
+		python3 -m sign-image_v2.pbp \
+				-i ${WORKDIR}/recipe-sysroot/${sysconfdir}/secure/key.ini \
+				-g ${WORKDIR}/recipe-sysroot/${sysconfdir}/secure/pl_gfh_config_pss.ini \
+				-func sign -o ${B}/bl2.img ${B}/bl2.img
+		python3 -m secure_chip_tools.dev-info-hdr-tool emmc ${B}/bl2.img ${B}/bl2.img
+	else
+		cp ${B}/${TFA_PLATFORM}/release/bl2.bin ${B}/bl2.img.tmp
+		truncate -s%4 ${B}/bl2.img.tmp
+		uboot-mkimage -T mtk_image -a 0x201000 -e 0x201000 -n "media=$media;arm64=1" \
+				-d ${B}/bl2.img.tmp ${B}/bl2.img
+	fi
 }
 
 do_deploy:append() {
