@@ -69,6 +69,12 @@ OPTEE_RPMB_WRITE_KEY ??= "0"
 # Set this only to use the RPMB test key instead of generating an unique one
 OPTEE_RPMB_TEST_KEY ??= "0"
 
+MACHINE_EXTRA_RRECOMMENDS:append = " ${@bb.utils.contains("DISTRO_FEATURES", "optee-otp", " optee-otp", "", d)}"
+
+# Set this to sign BL2 and support DAA
+BL2_SIGN_ENABLE ??= "0"
+DA_SIGN_ENABLE ??= "0"
+
 # Allowed license for mtk device - overrideable if necessary
 MTK_EXTRA_LICENSE_FLAGS_ACCEPTED ?= "commercial"
 
