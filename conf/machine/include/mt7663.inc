@@ -2,7 +2,7 @@ MTK_WIRELESS_RELEASE ?= "alps-release-r0.mp5-aiot"
 MTK_WIRELESS_CHIP = "MT7663"
 MACHINEOVERRIDES =. "mt7663:"
 
-MT76XX_WIFI_USE_UPSTREAM_DRV ??= "${@bb.utils.contains('DISTRO_FEATURES', 'nda-mtk', '0', '1', d)}"
+MT7663_WIFI_USE_UPSTREAM_DRV ??= "${@bb.utils.contains('DISTRO_FEATURES', 'nda-mtk', '0', '1', d)}"
 
 WIFI_OSS_PKGS = "kernel-module-mt7663s mt7663-service"
 WIFI_NDA_PKGS = "kernel-module-mt7663-tk-wifi wifitest"
