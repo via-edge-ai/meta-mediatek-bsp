@@ -13,6 +13,7 @@ SRC_URI = "${AIOT_BSP_URI}/optee-os.git;protocol=ssh;branch=mtk-v3.16"
 SRC_URI += " \
 	file://0001-allow-setting-sysroot-for-libgcc-lookup.patch \
 	file://0002-allow-setting-sysroot-for-clang.patch \
+	file://0003-core-add-support-for-EARLY_TA_DIR.patch \
 "
 
 COMPATIBLE_MACHINE = "mt*"
