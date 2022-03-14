@@ -4,7 +4,9 @@ DESCRIPTION = "An application to emulate an OTP storage"
 LICENSE = "BSD-2-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e06794dca4078e0008c8cd23edeea1dd"
 
-DEPENDS = "optee-client optee-os-tadevkit python3-pycryptodome-native libgcc"
+DEPENDS = "optee-client optee-os-tadevkit \
+           python3-cryptography-native \
+           libgcc"
 
 REQUIRED_DISTRO_FEATURES = "optee-otp"
 
