@@ -8,8 +8,6 @@ DEPENDS = "optee-client optee-os-tadevkit \
            python3-cryptography-native \
            libgcc"
 
-REQUIRED_DISTRO_FEATURES = "optee-otp"
-
 inherit python3native features_check
 
 S = "${WORKDIR}/git"
@@ -19,6 +17,8 @@ SRC_URI = "${AIOT_BSP_URI}/optee-otp.git;branch=main;;protocol=ssh"
 SRCREV = "2a7fd60f09825546c4342b0b1783d174388274d1"
 
 COMPATIBLE_MACHINE = "mt*"
+
+REQUIRED_MACHINE_FEATURES = "optee-rpmb"
 
 EXTRA_OEMAKE += '\
     TA_DEV_KIT_DIR=${STAGING_INCDIR}/optee/export-user_ta \

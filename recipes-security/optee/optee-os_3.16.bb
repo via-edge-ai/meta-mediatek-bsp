@@ -1,26 +1,20 @@
 require optee-os-mtk.inc
 
-DEPENDS += "${@bb.utils.contains("DISTRO_FEATURES", "optee-otp", "optee-otp", "", d)}"
-do_compile[depends] += '${@bb.utils.contains("DISTRO_FEATURES", "optee-otp", "optee-otp:do_deploy", "", d)}'
+# Add RPMB support if necessary
+OPTEE_RPMB_DEV_ID ??= "0"
+MACHINE_OPTEE_EARLY_TA ??= ""
 
-OPTEE_OTP_EXTRA_OEMAKE += ' \
-	CFG_RPMB_FS=y \
-	CFG_RPMB_FS_DEV_ID=0 \
-	${@oe.utils.conditional("OPTEE_RPMB_WRITE_KEY", "1", "CFG_RPMB_WRITE_KEY=y", "", d)} \
-	${@oe.utils.conditional("OPTEE_RPMB_TEST_KEY", "1", "CFG_RPMB_TESTKEY=y", "", d)} \
-'
+PACKAGECONFIG ??= " \
+    ${@bb.utils.contains('MACHINE_FEATURES', 'optee-rpmb', 'rpmb', '', d)} \
+    ${@oe.utils.conditional('MACHINE_OPTEE_EARLY_TA', '', '', 'early-ta', d)} \
+"
 
-do_compile:append() {
-    if ${@bb.utils.contains('DISTRO_FEATURES', 'optee-otp', 'true', 'false', d)}; then
-	    oe_runmake -C ${S} \
-		CFG_EARLY_TA=y ${OPTEE_OTP_EXTRA_OEMAKE} \
-		EARLY_TA_PATHS=${STAGING_DIR_HOST}${nonarch_base_libdir}/optee_armtz/3712bdda-569f-4940-b749-fb3b06a5fd86.stripped.elf \
-		all
-    fi
-}
+PACKAGECONFIG[rpmb] = "CFG_RPMB_FS=y·CFG_RPMB_FS_DEV_ID=${OPTEE_RPMB_DEV_ID}"
+PACKAGECONFIG[rpmb-write] = "CFG_RPMB_WRITE_KEY=y"
+PACKAGECONFIG[rpmb-test] = "CFG_RPMB_TESTKEY=y"
+PACKAGECONFIG[early-ta] = "CFG_EARLY_TA=y EARLY_TA_DIR=${STAGING_DIR_HOST}${nonarch_base_libdir}/optee_armtz, , ${MACHINE_OPTEE_EARLY_TA}"
 
+# This is provided by the TA devkit
 do_install:append() {
-	if ${@bb.utils.contains('DISTRO_FEATURES', 'optee-otp', 'true', 'false', d)}; then
-		rm -r -f ${D}${includedir}/optee/export-user_ta/
-	fi
+	rm -rf ${D}${includedir}/optee/export-user_ta/
 }
