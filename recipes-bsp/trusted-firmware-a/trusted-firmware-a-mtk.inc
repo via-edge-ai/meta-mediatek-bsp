@@ -3,7 +3,6 @@ require recipes-bsp/trusted-firmware-a/trusted-firmware-a.inc
 inherit deploy
 
 DEPENDS = "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "libdram", "libdram-prebuilt", d)}"
-DEPENDS:append = " libdevinfo-prebuilt"
 DEPENDS:append = " libbase-prebuilt"
 
 COMPATIBLE_MACHINE = "mt*"
@@ -19,7 +18,6 @@ EXTRA_OEMAKE += "E=0"
 EXTRA_OEMAKE += "NEED_BL33=yes"
 EXTRA_OEMAKE += "LIBDRAM=${STAGING_DIR_TARGET}/${libdir}/libdram.a"
 EXTRA_OEMAKE += "LIBBASE=${STAGING_DIR_TARGET}/${libdir}/libbase.a"
-EXTRA_OEMAKE += "LIBDEVINFO=${STAGING_DIR_TARGET}/${libdir}/libdevinfo.a"
 
 EXTRA_OEMAKE:append = " \
 	${@bb.utils.contains("MACHINE_FEATURES", "ufs-boot", "STORAGE_UFS=1", "", d)} \
