@@ -17,4 +17,4 @@ do_deploy() {
 	echo "Do not inherit do_deploy from optee-os."
 }
 
-FILES:${PN} = "${includedir}/optee/"
+FILES:${PN}-dev = "${includedir}/optee/"
