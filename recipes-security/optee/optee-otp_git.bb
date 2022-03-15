@@ -25,10 +25,6 @@ EXTRA_OEMAKE += '\
     CFLAGS="${CFLAGS} --sysroot=${STAGING_DIR_HOST} -I${WORKDIR}/optee-os -I${S}/ta/include" \
 '
 
-EXTRA_OEMAKE:append:aarch64 = "\
-    CFG_ARM64_ta_arm64=y \
-"
-
 do_compile() {
     oe_runmake -C ${S}/ta
     oe_runmake -C ${S}/host
