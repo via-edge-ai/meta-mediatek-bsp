@@ -2,7 +2,8 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 SUMMARY = "MediaTek Prebuilt Basic configuration library"
-LICENSE = "CLOSED"
+LICENSE = "LicenseRef-MediaTek-AIoT-SLA-1"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=6fcd7dfec853b4eca3b44877b51c0943"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 

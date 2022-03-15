@@ -6,12 +6,13 @@ DEPENDS = "libdram-lk"
 DEPENDS:append:mt8365 = " libbase-lk-prebuilt"
 DEPENDS:append:mt8195 = " libbase-lk-prebuilt"
 
-LICENSE = "MIT & BSD & Proprietary"
+LICENSE = "MIT & BSD & LicenseRef-MediaTek-AIoT-SLA-1"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=ba5e70cccfd7c167a0ace6a1eb1d5457 \
-                    file://lib/fdt/LICENSE;md5=abf7cd4d9c12ad07158318352d560fdb "
+                    file://lib/fdt/LICENSE;md5=abf7cd4d9c12ad07158318352d560fdb \
+                    file://LICENSE.aiot;md5=6fcd7dfec853b4eca3b44877b51c0943 "
 
 SRC_URI = "${AIOT_NDA_URI}/lk.git;protocol=ssh;branch=main"
-SRCREV = "02549117131d6cdc24a2f0a7efd9a40d7bd0bb3a"
+SRCREV = "ffdfede187a9d4c45729da35af7ccf7513b3fd05"
 
 EXTRA_OEMAKE += "LIBDRAM=${STAGING_DIR_TARGET}/${libdir}/libdram-lk.a"
 EXTRA_OEMAKE += "LIBBASE=${STAGING_DIR_TARGET}/${libdir}/libbase-lk.a"

@@ -2,10 +2,11 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 SUMMARY = "MediaTek pre-built binaries for MDP"
-LICENSE = "CLOSED"
+LICENSE = "LicenseRef-MediaTek-AIoT-SLA-1"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=6fcd7dfec853b4eca3b44877b51c0943"
 
 SRC_URI = "${AIOT_RITY_URI}/mdp-prebuilt.git;protocol=ssh;branch=main"
-SRCREV = "aa85007298181274925cae08dfcbc3fac132b34d"
+SRCREV = "bbf4f3664f85329ab53831e49c01c975eba06c79"
 
 S = "${WORKDIR}/git"
 

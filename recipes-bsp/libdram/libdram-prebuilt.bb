@@ -2,14 +2,15 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 SUMMARY = "MediaTek Prebuilt DDR configuration library"
-LICENSE = "CLOSED"
+LICENSE = "LicenseRef-MediaTek-AIoT-SLA-1"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=6fcd7dfec853b4eca3b44877b51c0943"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_RITY_URI}/libdram-prebuilt.git;protocol=ssh;branch=main"
-SRCREV = "353a5de95b8cdcfb47cc5b6bbeaf6ab0fb183d5d"
+SRCREV = "0d10c36f6be498c75a71b5018745d1d0b8921da5"
 
 do_install() {
 	install -d ${D}${libdir}

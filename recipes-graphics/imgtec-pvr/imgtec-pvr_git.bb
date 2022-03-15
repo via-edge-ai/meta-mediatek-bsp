@@ -2,8 +2,8 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 SUMMARY = "Imagination Technologies Binaries"
-LICENSE = "Proprietary"
-LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=a4f7801866fbc4b8713aadccdf4da58d"
+LICENSE = "LicenseRef-MediaTek-AIoT-SLA-1-AND-Imagination-Addendum"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=55a3d915da1ae514a4c274329d1a31c0"
 
 DEPENDS += "wayland libdrm"
 
@@ -31,7 +31,7 @@ RPROVIDES:${PN} = " \
 S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_RITY_URI}/libimgpvr.git;protocol=ssh;branch=main"
-SRCREV = "07f32aa4c1d6476f398f2fbe2704ec9f804d31d9"
+SRCREV = "8ca9c8d43ac857730dc1d03e7d79308013743695"
 
 EXTRA_OEMAKE = ' \
 	IMGTEC_VERSION=${IMGTEC_VERSION} \

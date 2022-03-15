@@ -3,6 +3,8 @@
 
 SUMMARY = "ARM libmali"
 LICENSE = "CLOSED"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=E1263579487EF4E8EA1FCF0D282A6531"
+LICENSE_FLAGS = "commercial"
 
 inherit features_check
 
