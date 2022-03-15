@@ -15,6 +15,12 @@ UBOOT_DTB_LOADADDRESS  = "0x44000000"
 UBOOT_DTBO_LOADADDRESS = "0x44c00000"
 
 # OP-TEE OS
+PREFERRED_PROVIDER:virtual/optee-os:mtk ?= "optee-os"
+PREFERRED_VERSION:optee-client:mtk ?= "3.16"
+PREFERRED_VERSION:optee-examples:mtk ?= "3.16"
+PREFERRED_VERSION:optee-os:mtk ?= "3.16"
+PREFERRED_VERSION:optee-os-tadevkit:mtk ?= "3.16"
+PREFERRED_VERSION:optee-test:mtk ?= "3.16"
 OPTEE_TZDRAM_START ?= "0x43200000"
 OPTEE_TZDRAM_SIZE  ?= "0x00a00000"
 
