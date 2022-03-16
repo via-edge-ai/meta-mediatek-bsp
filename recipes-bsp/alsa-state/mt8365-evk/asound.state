@@ -12,7 +12,7 @@ state.mtsndcard {
 	control.2 {
 		iface MIXER
 		name 'O00 I07 Switch'
-		value false
+		value true
 		comment {
 			access 'read write'
 			type BOOLEAN
@@ -32,7 +32,7 @@ state.mtsndcard {
 	control.4 {
 		iface MIXER
 		name 'O01 I08 Switch'
-		value false
+		value true
 		comment {
 			access 'read write'
 			type BOOLEAN
