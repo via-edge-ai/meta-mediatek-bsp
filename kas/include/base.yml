@@ -27,3 +27,5 @@ local_conf_header:
         ABORT,${DL_DIR},100M,1K \
         ABORT,${SSTATE_DIR},100M,1K \
         ABORT,/tmp,10M,1K"
+  aiotpack: |
+    IMAGE_CLASSES += "aiot-pack"
