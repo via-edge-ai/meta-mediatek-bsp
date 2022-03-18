@@ -71,7 +71,7 @@
 				assigned-clock-parents = <&topckgen CLK_TOP_USB20_192M_D4>;
 
 				reset-gpios = <&pio 119 GPIO_ACTIVE_LOW>;
-                                standby-gpios = <&tca6416 14 GPIO_ACTIVE_HIGH>;
+                                standby-gpios = <&tca6416 12 GPIO_ACTIVE_HIGH>;
 
 				orientation = <0>;
 				rotation = <0>;
