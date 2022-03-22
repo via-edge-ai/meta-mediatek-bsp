@@ -307,8 +307,8 @@ the application should find a camera:
 
 Previous result was an example with one sensor and one ISP at CSI0.
 
-Capture
-^^^^^^^
+Frames Capture
+^^^^^^^^^^^^^^
 
 With the media setup ok, you should also be able to capture some image frames.
 
