@@ -14,6 +14,7 @@ FILESEXTRAPATHS:prepend:mt8183-pumpkin:= "${THISDIR}/mt8183-pumpkin:"
 FILESEXTRAPATHS:prepend:mt8365-evk := "${THISDIR}/mt8365-evk:"
 FILESEXTRAPATHS:prepend:mt8365-pumpkin := "${THISDIR}/mt8365-pumpkin:"
 FILESEXTRAPATHS:prepend:mt8365-sb35:= "${THISDIR}/mt8365-sb35:"
+FILESEXTRAPATHS:prepend:mt8195-demo:= "${THISDIR}/mt8195-demo:"
 
 do_compile[depends] += "virtual/kernel:do_shared_workdir"
 KERNEL_INCLUDE:append = " \
@@ -88,6 +89,10 @@ SRC_URI:append:mt8365-sb35 = " \
 SRC_URI:append:mt8516-pumpkin = " \
 	file://vesper.dts \
 	file://audio-i2s.dts \
+"
+
+SRC_URI:append:mt8195-demo = " \
+	file://panel-boe-ne135fbm.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
