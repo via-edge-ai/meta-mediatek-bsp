@@ -30,7 +30,7 @@ IMAGE_BOOT_FILES = " \
 
 IMAGE_FSTYPES ?= "wic.img"
 IMAGE_ROOTFS_ALIGNMENT = "4"
-IMAGE_CLASSES += "image_type_img"
+IMAGE_CLASSES += "image_type_img image_type_aiotflash"
 
 SERIAL_CONSOLES = "921600;ttyS0"
 
