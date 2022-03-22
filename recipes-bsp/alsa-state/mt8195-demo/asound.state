@@ -3642,8 +3642,8 @@ state.mt8195demo {
 	control.343 {
 		iface MIXER
 		name 'Headset Volume'
-		value.0 31
-		value.1 31
+		value.0 15
+		value.1 15
 		comment {
 			access 'read write'
 			type INTEGER
