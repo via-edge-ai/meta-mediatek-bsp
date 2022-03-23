@@ -68,5 +68,3 @@ MACHINE_EXTRA_RRECOMMENDS += " \
 OPTEE_RPMB_WRITE_KEY ??= "0"
 # Set this only to use the RPMB test key instead of generating an unique one
 OPTEE_RPMB_TEST_KEY ??= "0"
-
-MACHINE_EXTRA_RRECOMMENDS:append = " ${@bb.utils.contains("DISTRO_FEATURES", "optee-otp", " optee-otp", "", d)}"
