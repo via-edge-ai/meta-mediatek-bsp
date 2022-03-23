@@ -14,7 +14,7 @@ OPTEE_DRAM_SIZE = "0x80000000"
 # LK
 LK_PROJECT = "mt8395-demo"
 
-DISTRO_FEATURES:append = " optee "
+MACHINE_FEATURES:append = " optee"
 DISTRO_FEATURES:remove = " x11 "
 
 # Mali

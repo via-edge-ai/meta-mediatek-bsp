@@ -24,12 +24,12 @@ EXTRA_OEMAKE:append = " \
 "
 
 # OP-TEE
-DEPENDS:append = " ${@bb.utils.contains("DISTRO_FEATURES", "optee", "optee-os", "", d)}"
-TFA_SPD = "${@bb.utils.contains("DISTRO_FEATURES", "optee", "opteed", "", d)}"
+DEPENDS:append = " ${@bb.utils.contains("MACHINE_FEATURES", "optee", "virtual/optee-os", "", d)}"
+TFA_SPD = "${@bb.utils.contains("MACHINE_FEATURES", "optee", "opteed", "", d)}"
 EXTRA_OEMAKE:append = " \
 	BL32=${STAGING_DIR_TARGET}/${nonarch_base_libdir}/firmware/tee.bin \
-	NEED_BL32=${@bb.utils.contains("DISTRO_FEATURES", "optee", "yes", "no", d)} \
-	CFLAGS+=${@bb.utils.contains("DISTRO_FEATURES", "optee", "-DNEED_BL32", "", d)} \
+	NEED_BL32=${@bb.utils.contains("MACHINE_FEATURES", "optee", "yes", "no", d)} \
+	CFLAGS+=${@bb.utils.contains("MACHINE_FEATURES", "optee", "-DNEED_BL32", "", d)} \
 "
 
 S = "${WORKDIR}/git"

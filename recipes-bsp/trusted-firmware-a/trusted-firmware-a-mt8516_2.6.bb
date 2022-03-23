@@ -6,4 +6,4 @@ SRCREV_tfa = "b7f5d91f6253bda5d38635a794585ddd56799d3d"
 TFA_USE_PREBUILT_BL2 = "no"
 
 inherit features_check
-REQUIRED_DISTRO_FEATURES = "optee"
+REQUIRED_MACHINE_FEATURES = "optee"

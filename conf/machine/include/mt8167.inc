@@ -15,7 +15,7 @@ OPTEE_DRAM_SIZE = "0x80000000"
 # LK
 LK_PROJECT = "pumpkin8516-emmc"
 
-DISTRO_FEATURES:append = " optee "
+MACHINE_FEATURES:append = " optee"
 DISTRO_FEATURES:remove = " x11 "
 
 IMGTEC_VERSION ??= "1.13@5776728"

@@ -12,7 +12,7 @@ LINUX_VERSION_EXTENSION = "-mtk"
 S = "${WORKDIR}/git"
 
 SRC_URI:append = " \
-	${@bb.utils.contains('DISTRO_FEATURES', 'optee', 'file://optee.cfg', '', d)} \
+	${@bb.utils.contains('MACHINE_FEATURES', 'optee', 'file://optee.cfg', '', d)} \
 "
 
 # Board specific config fragments
