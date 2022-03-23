@@ -14,7 +14,7 @@ S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
 SRC_URI = "${AIOT_BSP_URI}/optee-otp.git;branch=main;;protocol=ssh"
-SRCREV = "2a7fd60f09825546c4342b0b1783d174388274d1"
+SRCREV = "2e980a964a744275ea3532a8f6253d01f230d19c"
 
 COMPATIBLE_MACHINE = "mt*"
 
@@ -26,18 +26,19 @@ EXTRA_OEMAKE += '\
     CROSS_COMPILE=${TARGET_PREFIX} \
     CFLAGS="${CFLAGS} --sysroot=${STAGING_DIR_HOST} -I${WORKDIR}/optee-os -I${S}/ta/include" \
 '
+do_compile[cleandirs] = "${B}"
 
 do_compile() {
-    oe_runmake -C ${S}/ta
-    oe_runmake -C ${S}/host
+    oe_runmake -C ${S}/ta O=${B}/ta
+    oe_runmake -C ${S}/host OUTPUT_DIR=${B}/host
 }
 
 do_install () {
     mkdir -p ${D}${bindir}
     mkdir -p ${D}${nonarch_base_libdir}/optee_armtz
-    install -D -p -m0755 ${S}/host/optee_otp ${D}${bindir}
-    install -D -p -m0444 ${S}/ta/*.stripped.elf ${D}${nonarch_base_libdir}/optee_armtz
-    install -D -p -m0444 ${S}/ta/*.ta ${D}${nonarch_base_libdir}/optee_armtz
+    install -D -p -m0755 ${B}/host/optee_otp ${D}${bindir}
+    install -D -p -m0444 ${B}/ta/*.stripped.elf ${D}${nonarch_base_libdir}/optee_armtz
+    install -D -p -m0444 ${B}/ta/*.ta ${D}${nonarch_base_libdir}/optee_armtz
 }
 
 FILES:${PN} += " ${nonarch_base_libdir}/optee_armtz/*.ta"
