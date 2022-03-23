@@ -1,5 +1,7 @@
 require optee-os-mtk.inc
 
+PROVIDES:mtk += "virtual/optee-os"
+
 # Add RPMB support if necessary
 OPTEE_RPMB_DEV_ID ??= "0"
 MACHINE_OPTEE_EARLY_TA ??= ""
