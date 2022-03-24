@@ -1,8 +1,11 @@
-SRC_URI = "${AIOT_BSP_URI}/libcamera.git;protocol=ssh;branch=mtk-aiot"
-SRCREV = "7799466db6b7ea447afe987a30fd7883c09c3d9b"
+SRC_URI = "${AIOT_BSP_URI}/libcamera.git;protocol=ssh;branch=mtk-aiot-multi-stream"
+SRCREV = "5265f50e0b6ac08f12297059a95b980584db0e57"
 
-PV = "202104+git${SRCPV}"
+PV = "202111+git${SRCPV}"
 
+FILES:${PN}-dev += " /usr/lib64/libcamera*.so"
+
+PACKAGECONFIG[lc-compliance] = "-Dlc-compliance=enabled,-Dlc-compliance=disabled"
 PACKAGECONFIG:append = " gst"
 
 CXXFLAGS += "-Wno-error=deprecated-declarations"
