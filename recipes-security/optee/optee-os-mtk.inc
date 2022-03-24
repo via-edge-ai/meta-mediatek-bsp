@@ -4,6 +4,8 @@
 require recipes-security/optee/optee-os.inc
 
 DEPENDS:append = " python3-cryptography-native "
+DEPENDS:append = " ${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "libefuse-pta-prebuilt", "", d)}"
+DEPENDS:remove:i300 = "libefuse-pta-prebuilt"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
@@ -26,7 +28,10 @@ EXTRA_OEMAKE += " \
         CFG_DRAM_SIZE=${OPTEE_DRAM_SIZE} \
         CFG_TZDRAM_START=${OPTEE_TZDRAM_START} \
         CFG_TZDRAM_SIZE=${OPTEE_TZDRAM_SIZE} \
+        SOC_PLATFORM=${SOC_FAMILY} \
 "
-
 EXTRA_OEMAKE += "${@oe.utils.conditional("DEBUG", "1", "DEBUG=1 CFG_TEE_CORE_LOG_LEVEL=3 CFG_UART_ENABLE=y", \
                                                        "DEBUG=0 CFG_TEE_CORE_LOG_LEVEL=0 CFG_UART_ENABLE=n", d)}"
+
+EXTRA_OEMAKE += "${@bb.utils.contains('DISTRO_FEATURES', 'nda-mtk', 'CFG_EFUSE_ENABLE=y \
+                                       LIBDIR=${STAGING_DIR_TARGET}/${libdir}', '', d)}"

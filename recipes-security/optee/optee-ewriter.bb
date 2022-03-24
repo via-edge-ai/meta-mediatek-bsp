@@ -1,0 +1,38 @@
+# Copyright (C) 2022 Ryan Cho <ryan.cho@mediatek.com>
+# Released under BSD-2-Clause & MediatekPropritary license
+
+require recipes-security/optee/optee.inc
+
+SUMMARY = "Mediatek OP-TEE eFuse Writer"
+LICENSE = "BSD-2-Clause & MediatekPropritary"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=71cd0d8e7551828e714ab8e9c99ed74b"
+
+SRC_URI = "${AIOT_NDA_URI}/optee-ewriter.git;protocol=ssh;branch=main"
+SRCREV = "6b981d53db730c33b3dba6830e670a57e56cf584"
+COMPATIBLE_MACHINE = "mt*"
+DEPENDS:append = " optee-client"
+PROVIDES = " libtz_efuse"
+
+S = "${WORKDIR}/git"
+
+RPROVIDES_${PN} += " libtz_efuse.so()(64bit)"
+FILES_${PN} += "${nonarch_base_libdir}/optee_armtz/"
+
+SOLIBS = ".so"
+FILES_SOLIBSDEV = ""
+
+EXTRA_OEMAKE += "TA_DEV_KIT_DIR=${TA_DEV_KIT_DIR} \
+                 CROSS_COMPILE_HOST=${HOST_PREFIX} \
+                 CROSS_COMPILE_TA=${HOST_PREFIX} \
+                "
+
+do_compile() {
+    oe_runmake LIBDIR="${STAGING_DIR_TARGET}/${libdir}" INCDIR="${STAGING_DIR_TARGET}/${includedir}"
+}
+
+do_install () {
+    cd ${S}
+    install -d ${D}${libdir}
+    install -d ${D}${bindir}
+    oe_runmake install LIBDIR="${D}${libdir}" BINDIR="${D}${bindir}"
+}

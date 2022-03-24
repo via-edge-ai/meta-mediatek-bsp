@@ -24,6 +24,7 @@ MALI_VERSION ??= "r32p0"
 
 MACHINE_EXTRA_RRECOMMENDS:append = " \
 	${@bb.utils.contains_any('DISTRO_FEATURES', 'opengl vulkan', 'libmali', '', d)} \
+	${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "optee-ewriter", "", d)} \
 "
 
 PREFERRED_PROVIDER_virtual/egl ?= "libmali"
