@@ -28,7 +28,7 @@ IMAGE_BOOT_FILES = " \
 	${KERNEL_IMAGETYPE} \
 "
 
-IMAGE_FSTYPES ?= "wic.img"
+IMAGE_FSTYPES ?= "wic.img aiotflash.tar"
 IMAGE_ROOTFS_ALIGNMENT = "4"
 IMAGE_CLASSES += "image_type_img image_type_aiotflash"
 
