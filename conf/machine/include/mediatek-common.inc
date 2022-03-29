@@ -45,10 +45,10 @@ do_image_wic[depends] += " \
 "
 
 PREFERRED_PROVIDER_virtual/dtb = "dtbo"
-PREFERRED_PROVIDER_virtual/kernel ??= "linux-mtk"
-PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot"
-PREFERRED_PROVIDER_virtual/trusted-firmware-a ??= "trusted-firmware-a"
-PREFERRED_PROVIDER_virtual/lk ??= "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "lk", "lk-prebuilt", d)}"
+PREFERRED_PROVIDER_virtual/kernel ?= "linux-mtk"
+PREFERRED_PROVIDER_virtual/bootloader ?= "u-boot"
+PREFERRED_PROVIDER_virtual/trusted-firmware-a ?= "trusted-firmware-a"
+PREFERRED_PROVIDER_virtual/lk ?= "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "lk", "lk-prebuilt", d)}"
 
 PREFERRED_VERSION_linux-mtk ??= "5.10%"
 
