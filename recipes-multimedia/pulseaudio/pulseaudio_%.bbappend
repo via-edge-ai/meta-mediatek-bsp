@@ -8,7 +8,7 @@ SRC_URI:append = " \
 	file://default_${MYCONF}.pa \
 "
 
-do_install:append() {
+do_install:append:i300-pumpkin() {
 	install -d ${D}${sysconfdir}/pulse
 	install -m 0644 ${WORKDIR}/client_${MYCONF}.conf ${D}${sysconfdir}/pulse/client.conf
 	install -m 0644 ${WORKDIR}/default_${MYCONF}.pa ${D}${sysconfdir}/pulse/default.pa
