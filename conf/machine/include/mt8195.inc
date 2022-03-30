@@ -23,7 +23,7 @@ MALI_SOC = "mt8195"
 MALI_VERSION ??= "r31p0"
 
 MACHINE_EXTRA_RRECOMMENDS:append = " \
-	libmali \
+	${@bb.utils.contains_any('DISTRO_FEATURES', 'opengl vulkan', 'libmali', '', d)} \
 "
 
 PREFERRED_PROVIDER_virtual/egl ?= "libmali"

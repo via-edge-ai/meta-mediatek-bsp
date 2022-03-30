@@ -23,7 +23,7 @@ MALI_SOC = "mt8183"
 MALI_VERSION ??= "r32p0"
 
 MACHINE_EXTRA_RRECOMMENDS:append = " \
-	libmali \
+	${@bb.utils.contains_any('DISTRO_FEATURES', 'opengl vulkan', 'libmali', '', d)} \
 	linux-firmware-mt8183-scp \
 "
 
