@@ -68,3 +68,9 @@ MACHINE_EXTRA_RRECOMMENDS += " \
 OPTEE_RPMB_WRITE_KEY ??= "0"
 # Set this only to use the RPMB test key instead of generating an unique one
 OPTEE_RPMB_TEST_KEY ??= "0"
+
+# Allowed license for mtk device - overrideable if necessary
+MTK_EXTRA_LICENSE_FLAGS_WHITELIST ?= "commercial"
+
+# Packages requiring extra licenses
+LICENSE_FLAGS_WHITELIST:append:pn-libmali = " ${MTK_EXTRA_LICENSE_FLAGS_WHITELIST}"
