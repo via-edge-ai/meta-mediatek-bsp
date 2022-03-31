@@ -449,7 +449,7 @@ state.mt8195demo {
 	control.33 {
 		iface MIXER
 		name ETDM_OUT1_Clock_Source
-		value '26m'
+		value 'a1sys_a2sys'
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -463,7 +463,7 @@ state.mt8195demo {
 	control.34 {
 		iface MIXER
 		name ETDM_OUT2_Clock_Source
-		value '26m'
+		value 'a1sys_a2sys'
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -477,7 +477,7 @@ state.mt8195demo {
 	control.35 {
 		iface MIXER
 		name ETDM_OUT3_Clock_Source
-		value '26m'
+		value 'a1sys_a2sys'
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -491,7 +491,7 @@ state.mt8195demo {
 	control.36 {
 		iface MIXER
 		name ETDM_IN1_Clock_Source
-		value '26m'
+		value 'a1sys_a2sys'
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -505,7 +505,7 @@ state.mt8195demo {
 	control.37 {
 		iface MIXER
 		name ETDM_IN2_Clock_Source
-		value '26m'
+		value 'a1sys_a2sys'
 		comment {
 			access 'read write'
 			type ENUMERATED
