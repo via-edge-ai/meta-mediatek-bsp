@@ -75,6 +75,12 @@ MACHINE_EXTRA_RRECOMMENDS:append = " ${@bb.utils.contains("DISTRO_FEATURES", "op
 BL2_SIGN_ENABLE ??= "0"
 DA_SIGN_ENABLE ??= "0"
 
+# Set this to generate the secure package required to enable secure boot
+SECURE_ZIP_ENABLE ??= "0"
+
+IMAGE_CLASSES:append = "${@oe.utils.conditional('SECURE_ZIP_ENABLE', '1', ' image_type_secure_package', '', d)}"
+IMAGE_FSTYPES:append = "${@oe.utils.conditional('SECURE_ZIP_ENABLE', '1', ' secure.zip', '', d)}"
+
 # Allowed license for mtk device - overrideable if necessary
 MTK_EXTRA_LICENSE_FLAGS_ACCEPTED ?= "commercial"
 
