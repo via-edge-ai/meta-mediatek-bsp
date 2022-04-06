@@ -7,7 +7,7 @@ DEPENDS:append = " python3-cryptography-native "
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRCREV = "f8404fd7e8f21e523cdd6d7f1770c40a6dd04c6c"
+SRCREV = "916a72d4c0dd2d784125c60a7cec64c75aef8f4e"
 SRC_URI = "${AIOT_BSP_URI}/optee-os.git;protocol=ssh;branch=mtk-v3.16"
 
 SRC_URI += " \
