@@ -3,7 +3,7 @@
 
 SUMMARY = "MediaTek DDR configuration library"
 LICENSE = "LicenseRef-MediaTek-AIoT-SLA-1"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=6fcd7dfec853b4eca3b44877b51c0943"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=c25f59288708e3fd9961c9e6142aafee"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -14,7 +14,7 @@ EXTRA_OEMESON:append = " -Dboard=${LIBDRAM_BOARD_NAME}"
 S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_NDA_URI}/libdram.git;protocol=ssh;branch=main"
-SRCREV = "9f3d4c3c7992c01934a8c2d6204f817609cf5ba2"
+SRCREV = "9cb80591d49cae1e3e57ad1d9249027fade03cca"
 
 SECURITY_CFLAGS = ""
 

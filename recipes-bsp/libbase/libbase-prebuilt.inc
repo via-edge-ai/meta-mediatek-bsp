@@ -3,11 +3,11 @@
 
 SUMMARY = "MediaTek Prebuilt Basic configuration library"
 LICENSE = "LicenseRef-MediaTek-AIoT-SLA-1"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=6fcd7dfec853b4eca3b44877b51c0943"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=c25f59288708e3fd9961c9e6142aafee"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_BSP_URI}/libbase-prebuilt.git;protocol=ssh;branch=main"
-SRCREV = "eaaf98c9ea097101ce1cc8d684ecc527477c918f"
+SRCREV = "919c46c556855e537bcb4d3cc9bbdb613c53c828"

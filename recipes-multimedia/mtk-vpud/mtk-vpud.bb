@@ -3,7 +3,7 @@
 
 SUMMARY = "MediaTek VPUD daemon"
 LICENSE = "LicenseRef-MediaTek-AIoT-SLA-1"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=6fcd7dfec853b4eca3b44877b51c0943"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=c25f59288708e3fd9961c9e6142aafee"
 
 RDEPENDS:${PN} = " libgcc glibc "
 
@@ -13,7 +13,7 @@ inherit systemd
 inherit update-rc.d
 
 SRC_URI = "${AIOT_RITY_URI}/vpud.git;protocol=ssh;branch=main"
-SRCREV = "4829ae9ce3eb8239ff4c103515aa3321af5053c6"
+SRCREV = "166d84459e3000b1ee1f69bb0c351b26a04beaf8"
 
 SRC_URI += " \
 	file://vpud.service \

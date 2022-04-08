@@ -4,6 +4,6 @@
 require mdp-prebuilt.inc
 require mdpd.inc
 
-LIC_FILES_CHKSUM = "file://../LICENSE;md5=6fcd7dfec853b4eca3b44877b51c0943"
+LIC_FILES_CHKSUM = "file://../LICENSE;md5=c25f59288708e3fd9961c9e6142aafee"
 S = "${WORKDIR}/git/mdpd"
 B = "${WORKDIR}/git/mdpd/${SOC_FAMILY}"

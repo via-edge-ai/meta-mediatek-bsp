@@ -3,7 +3,7 @@
 
 SUMMARY = "Imagination Technologies Binaries"
 LICENSE = "LicenseRef-MediaTek-AIoT-SLA-1-AND-Imagination-Addendum"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=55a3d915da1ae514a4c274329d1a31c0"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=1a87c7e077421db2f375110a45688ac1"
 
 DEPENDS += "wayland libdrm"
 
@@ -31,7 +31,7 @@ RPROVIDES:${PN} = " \
 S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_RITY_URI}/libimgpvr.git;protocol=ssh;branch=main"
-SRCREV = "8ca9c8d43ac857730dc1d03e7d79308013743695"
+SRCREV = "39296daf9f35e33c85b2c69d5d364bb67db39996"
 
 EXTRA_OEMAKE = ' \
 	IMGTEC_VERSION=${IMGTEC_VERSION} \
