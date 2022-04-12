@@ -5,6 +5,10 @@ SUMMARY = "MediaTek Prebuilt eFuse library"
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=71cd0d8e7551828e714ab8e9c99ed74b"
 
+inherit features_check
+
+REQUIRED_DISTRO_FEATURES = "nda-mtk"
+
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 S = "${WORKDIR}/git"

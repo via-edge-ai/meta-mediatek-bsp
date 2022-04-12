@@ -3,6 +3,10 @@
 
 require recipes-security/optee/optee.inc
 
+inherit features_check
+
+REQUIRED_DISTRO_FEATURES = "nda-mtk"
+
 SUMMARY = "Mediatek OP-TEE eFuse Writer"
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=71cd0d8e7551828e714ab8e9c99ed74b"
