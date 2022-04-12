@@ -2,7 +2,7 @@
 # Released under MediatekPropritary license
 
 SUMMARY = "MediaTek Prebuilt eFuse library"
-LICENSE = "MediatekPropritary"
+LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=71cd0d8e7551828e714ab8e9c99ed74b"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
