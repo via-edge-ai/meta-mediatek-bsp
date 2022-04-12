@@ -23,6 +23,10 @@ IMAGE_CMD:aiotflash () {
     cp -a ${DEPLOY_DIR_IMAGE}/rity.json ${tmp_pack_dir}
     cp -a ${DEPLOY_DIR_IMAGE}/partitions.json ${tmp_pack_dir}
     cp -a ${DEPLOY_DIR_IMAGE}/lk.bin ${tmp_pack_dir}
+    if [ "${@oe.utils.conditional('DA_SIGN_ENABLE', '1', '1', '', d)}" = "1" ]; then
+        cp -a ${DEPLOY_DIR_IMAGE}/lk.sign ${tmp_pack_dir}
+        cp -a ${DEPLOY_DIR_IMAGE}/auth_sv5.auth ${tmp_pack_dir}
+    fi
 
     for f in `cat ${tmp_pack_dir}/rity.json | jq -r ".partitions[]|strings"`; do
         # When "u-boot-env.bin" is requested, we should pack "u-boot-initial-env"
