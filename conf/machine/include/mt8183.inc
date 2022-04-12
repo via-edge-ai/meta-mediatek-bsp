@@ -15,6 +15,8 @@ OPTEE_DRAM_SIZE = "0x80000000"
 LK_PROJECT = "mt8183-evb"
 
 MACHINE_FEATURES:append = " optee"
+MACHINE_FEATURES:append = " ${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "optee-efuse", "", d)}"
+
 DISTRO_FEATURES:remove = " x11 "
 
 # Mali
@@ -25,7 +27,7 @@ MALI_VERSION ??= "r32p0"
 MACHINE_EXTRA_RRECOMMENDS:append = " \
 	${@bb.utils.contains_any('DISTRO_FEATURES', 'opengl vulkan', 'libmali', '', d)} \
 	linux-firmware-mt8183-scp \
-	${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "optee-ewriter", "", d)} \
+	${@bb.utils.contains("MACHINE_FEATURES", "optee-efuse", "optee-ewriter", "", d)} \
 "
 
 PREFERRED_PROVIDER_virtual/egl ?= "libmali"

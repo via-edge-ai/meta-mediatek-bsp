@@ -7,10 +7,12 @@ OPTEE_RPMB_DEV_ID ??= "0"
 MACHINE_OPTEE_EARLY_TA ??= ""
 
 PACKAGECONFIG ??= " \
+    ${@bb.utils.contains('MACHINE_FEATURES', 'optee-efuse', 'efuse', '', d)} \
     ${@bb.utils.contains('MACHINE_FEATURES', 'optee-rpmb', 'rpmb', '', d)} \
     ${@oe.utils.conditional('MACHINE_OPTEE_EARLY_TA', '', '', 'early-ta', d)} \
 "
 
+PACKAGECONFIG[efuse] = "CFG_EFUSE_ENABLE=y LIBDIR=${STAGING_DIR_TARGET}/${libdir}, , libefuse-pta-prebuilt"
 PACKAGECONFIG[rpmb] = "CFG_RPMB_FS=y CFG_RPMB_FS_DEV_ID=${OPTEE_RPMB_DEV_ID}"
 PACKAGECONFIG[rpmb-write] = "CFG_RPMB_WRITE_KEY=y"
 PACKAGECONFIG[rpmb-test] = "CFG_RPMB_TESTKEY=y"
