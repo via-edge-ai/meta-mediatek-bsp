@@ -12,7 +12,7 @@ inherit allarch
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://github.com/ONSemiconductor/ap1302_binaries.git;protocol=https;branch=main"
-SRCREV = "72be5d2ad07d4d722f3ee236ccde19567e91b6c3"
+SRCREV = "c9b818574bdc5cb09679c95732bf1ebc505c533a"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
@@ -33,6 +33,10 @@ do_install() {
 			${D}${nonarch_base_libdir}/firmware
 		install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar0144_dual_fw.bin" \
 			${D}${nonarch_base_libdir}/firmware
+                install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar0430_single_fw.bin" \
+                        ${D}${nonarch_base_libdir}/firmware
+                install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar1335_single_fw.bin" \
+                        ${D}${nonarch_base_libdir}/firmware
 	elif [ "${ONSEMI_BOARD_NAME}" = "MediaTek_AIoT_i350_EVK" ]; then
 		install "${S}/${ONSEMI_BOARD_NAME}/ap1302_ar0430_single_fw.bin" \
 			${D}${nonarch_base_libdir}/firmware
@@ -43,8 +47,11 @@ PACKAGES =+ "${PN}-ap1302-ar0330"
 PACKAGES =+ "${PN}-ap1302-ar0144"
 PACKAGES =+ "${PN}-ap1302-ar0144-dual"
 PACKAGES =+ "${PN}-ap1302-ar0430"
+PACKAGES =+ "${PN}-ap1302-ar1335"
 ALLOW_EMPTY:${PN} = "1"
 FILES:${PN}-ap1302-ar0330 = "${nonarch_base_libdir}/firmware/ap1302_ar0330_single_fw.bin"
 FILES:${PN}-ap1302-ar0144 = "${nonarch_base_libdir}/firmware/ap1302_ar0144_single_fw.bin"
 FILES:${PN}-ap1302-ar0144-dual = "${nonarch_base_libdir}/firmware/ap1302_ar0144_dual_fw.bin"
 FILES:${PN}-ap1302-ar0430 = "${nonarch_base_libdir}/firmware/ap1302_ar0430_single_fw.bin"
+FILES:${PN}-ap1302-ar1335 = "${nonarch_base_libdir}/firmware/ap1302_ar1335_single_fw.bin"
+
