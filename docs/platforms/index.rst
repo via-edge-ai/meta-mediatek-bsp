@@ -9,4 +9,5 @@ The following platforms are supported by the BSP:
    i300
    i350
    i500
+   i1200
    mt7663
