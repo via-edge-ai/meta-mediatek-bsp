@@ -140,6 +140,12 @@ To install the generated yocto defconfig you can run the following commands:
 The commands above will retrieve the `.config` from the existing i500-pumpkin
 build and copy it at the root of your linux repository.
 
+.. note::
+
+   Usually, the `.config` copied will contain essential modules for the board to boot.
+   Since the modules are not part of the fitImage, it's often easier to just put everything in builtin
+   with ``sed -i s/=m/=y/ .config``.
+
 Generating the image-tree script
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -160,3 +166,20 @@ Building the kernel fitImage
 
 	make
 	mkimage -f $MACHINE.its fitImage
+
+Flashing the kernel fitImage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. prompt:: bash $
+
+        pushd $RITYDIR/build/tmp/deploy/images/$MACHINE
+        aiot-bootrom
+        # put board in download mode
+        popd
+        fastboot flash kernel fitImage && fastboot reboot
+
+.. note::
+
+   It's possible that the generated fitImage might not fit in the ``kernel`` partition.
+   In that case, run ``make defconfig`` and disable unused features such as different platforms
+   in the ``Platform selection`` menu.
