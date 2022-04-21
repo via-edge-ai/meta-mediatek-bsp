@@ -142,7 +142,7 @@ The following command is an example that will start a mono record with a samplin
 	arecord -c 1 -r 48000 -f s32_le recorded_file.wav
 
 It is possible to record using the 2 PDM mics present on the board instead.
-In this case, the device will need to be specified explicitally as follows:
+In this case, the device will need to be specified explicitly as follows:
 
 .. prompt:: bash $
 

@@ -69,7 +69,7 @@ The following command is an example that will start a music playback of a wav fi
 	aplay playback_file.wav
 
 It is possible to use TDM out instead provided you have the corresponding device connected on the 40 pins header.
-In this case, the device will need to be specified explicitally as follows:
+In this case, the device will need to be specified explicitly as follows:
 
 .. prompt:: bash $
 
