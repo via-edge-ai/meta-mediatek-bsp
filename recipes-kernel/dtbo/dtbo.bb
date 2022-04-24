@@ -83,6 +83,10 @@ SRC_URI:append:mt8365-pumpkin = " \
         file://camera-ap1302-ar0330-dual.dtsi \
         file://camera-ap1302-ar0330-dual.dts \
         file://camera-ap1302-ar0330-single.dts \
+        file://camera-ap1302-ar0330-dual-ar0144-dual.dtsi \
+        file://camera-ap1302-ar0330-dual-ar0144-dual.dts \
+        file://camera-ap1302-ar0330-single-ar0144-dual.dts \
+        file://camera-ap1302-ar0330-single-ar0144-single.dts \
 "
 
 SRC_URI:append:mt8365-sb35 = " \
