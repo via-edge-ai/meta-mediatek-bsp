@@ -8,7 +8,3 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 LINUX_VERSION ?= "5.10.104"
 SRCBRANCH ?= "mtk-v5.10"
 SRCREV = "9cb68a2a135b59cdad63d6df89cf80f78766282e"
-
-SRC_URI:append = " \
-	file://0001-WORKAROUND-drm-mediatek-mt8365-disable-OVL-for-DSI-p.patch \
-"
