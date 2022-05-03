@@ -137,20 +137,20 @@ load the root filesystem (rootfs) and starts running the `init` process.
 
 The following versions of Linux are currently supported:
 
-+----------------+-------------+
-| Kernel version | Branch name |
-+================+=============+
-|      v5.4      |  mtk-v5.4   |
-+----------------+-------------+
-|      v5.10     |  mtk-v5.10  |
-+----------------+-------------+
++----------------+---------------+
+| Kernel version | Branch name   |
++================+===============+
+|      v5.10     | mtk-v5.10     |
++----------------+---------------+
+|      v5.15     | mtk-v5.15-dev |
++----------------+---------------+
 
 By default the latest Linux release will be built, if you wan to use an older
 supported kernel you can set the `PREFERRED_VERSION_linux-mtk` variable
 in your `local.conf`.
 
-For example if you want to use the v5.4 branch you can set:
+For example if you want to use the v5.10 branch you can set:
 
 .. code-block::
 
-	PREFERRED_VERSION_linux-mtk = "5.4%"
+	PREFERRED_VERSION_linux-mtk = "5.10%"
