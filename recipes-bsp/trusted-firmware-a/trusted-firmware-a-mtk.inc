@@ -23,6 +23,9 @@ EXTRA_OEMAKE:append = " \
 	${@bb.utils.contains("MACHINE_FEATURES", "ufs-boot", "STORAGE_UFS=1", "", d)} \
 "
 
+PACKAGECONFIG[huk_efuse_hwid] = "HUK_EFUSE_HWID=1"
+EXTRA_OEMAKE += "${PACKAGECONFIG_CONFARGS}"
+
 # OP-TEE
 DEPENDS:append = " ${@bb.utils.contains("MACHINE_FEATURES", "optee", "virtual/optee-os", "", d)}"
 TFA_SPD = "${@bb.utils.contains("MACHINE_FEATURES", "optee", "opteed", "", d)}"
