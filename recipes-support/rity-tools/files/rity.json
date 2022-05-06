@@ -7,7 +7,6 @@
     "mmc0boot0": "bl2.img",
     "mmc0boot1": "u-boot-env.bin",
     "bootloaders": "fip.bin",
-    "kernel": "fitImage",
     "rootfs": null
   },
   "groups": {
@@ -17,7 +16,7 @@
     },
 
     "system": {
-      "flash": ["kernel", "rootfs"]
+      "flash": ["rootfs"]
     }
   }
 }

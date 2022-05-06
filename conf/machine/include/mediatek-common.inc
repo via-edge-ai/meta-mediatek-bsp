@@ -1,14 +1,12 @@
 MACHINEOVERRIDES =. "mtk:"
 
 # Kernel
-KERNEL_CLASSES = "kernel-fitimage-mtk"
+KERNEL_CLASSES = "kernel-fitimage"
 KERNEL_IMAGETYPE = "fitImage"
 KERNEL_COMPRESSION = "gzip"
 
 # U-Boot
 UBOOT_SUFFIX = "bin"
-UBOOT_ENV_SUFFIX = "script"
-UBOOT_ENV = "boot"
 UBOOT_ENTRYPOINT       = "0x40200000"
 UBOOT_LOADADDRESS      = "0x40200000"
 UBOOT_DTB_LOADADDRESS  = "0x44000000"
@@ -27,6 +25,7 @@ OPTEE_TZDRAM_SIZE  ?= "0x00a00000"
 
 IMAGE_BOOT_FILES = " \
 	${KERNEL_IMAGETYPE} \
+	${@bb.utils.contains('KERNEL_IMAGETYPE', 'fitImage', '', os.path.basename("${KERNEL_DEVICETREE}"), d)} \
 "
 
 IMAGE_FSTYPES ?= "wic.img aiotflash.tar"
@@ -35,7 +34,7 @@ IMAGE_CLASSES += "image_type_img image_type_aiotflash"
 
 SERIAL_CONSOLES = "921600;ttyS0"
 
-WKS_FILE ?= "mediatek.wks"
+WKS_FILE ?= "mediatek-bootimg.wks"
 WIC_CREATE_EXTRA_ARGS += "-i direct-with-blksz"
 WIC_SECTOR_SIZE ?= "512"
 WIC_BLOCK_SIZE ?= "1024"
