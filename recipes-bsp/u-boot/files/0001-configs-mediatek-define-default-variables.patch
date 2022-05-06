@@ -1,0 +1,82 @@
+From 9b680733ee106e2823c55a4e8b180a5b3322b775 Mon Sep 17 00:00:00 2001
+From: Jerome Brunet <jbrunet@baylibre.com>
+Date: Thu, 5 May 2022 23:34:46 +0200
+Subject: [PATCH 1/2] configs: mediatek: define default variables
+
+define some default addresses and variables to help distro boot
+
+Signed-off-by: Jerome Brunet <jbrunet@baylibre.com>
+---
+ include/configs/mt8183.h | 5 +++++
+ include/configs/mt8195.h | 5 +++++
+ include/configs/mt8365.h | 5 +++++
+ include/configs/mt8516.h | 5 +++++
+ 4 files changed, 20 insertions(+)
+
+diff --git a/include/configs/mt8183.h b/include/configs/mt8183.h
+index ebd2b326ade0..05259da0fbc5 100644
+--- a/include/configs/mt8183.h
++++ b/include/configs/mt8183.h
+@@ -33,6 +33,11 @@
+ 
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"scriptaddr=0x40000000\0" \
++	"fdt_addr_r=0x44000000\0" \
++	"fdtoverlay_addr_r=0x44c00000\0" \
++	"kernel_addr_r=0x45000000\0" \
++	"ramdisk_addr_r=0x46000000\0" \
++	"fdtfile=" CONFIG_DEFAULT_DEVICE_TREE ".dtb\0" \
+ 	BOOTENV
+ 
+ #endif
+diff --git a/include/configs/mt8195.h b/include/configs/mt8195.h
+index 961e7d57c0a0..794fa7a48ff9 100644
+--- a/include/configs/mt8195.h
++++ b/include/configs/mt8195.h
+@@ -47,6 +47,11 @@
+ #if !defined(CONFIG_EXTRA_ENV_SETTINGS)
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"scriptaddr=0x40000000\0" \
++	"fdt_addr_r=0x44000000\0" \
++	"fdtoverlay_addr_r=0x44c00000\0" \
++	"kernel_addr_r=0x45000000\0" \
++	"ramdisk_addr_r=0x46000000\0" \
++	"fdtfile=" CONFIG_DEFAULT_DEVICE_TREE ".dtb\0" \
+ 	BOOTENV
+ #endif
+ 
+diff --git a/include/configs/mt8365.h b/include/configs/mt8365.h
+index 97af934a4469..f55467fcdd57 100644
+--- a/include/configs/mt8365.h
++++ b/include/configs/mt8365.h
+@@ -33,6 +33,11 @@
+ 
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"scriptaddr=0x40000000\0" \
++	"fdt_addr_r=0x44000000\0" \
++	"fdtoverlay_addr_r=0x44c00000\0" \
++	"kernel_addr_r=0x45000000\0" \
++	"ramdisk_addr_r=0x46000000\0" \
++	"fdtfile=" CONFIG_DEFAULT_DEVICE_TREE ".dtb\0" \
+ 	BOOTENV
+ 
+ #endif
+diff --git a/include/configs/mt8516.h b/include/configs/mt8516.h
+index 12840b883dec..8987512d518b 100644
+--- a/include/configs/mt8516.h
++++ b/include/configs/mt8516.h
+@@ -33,6 +33,11 @@
+ 
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"scriptaddr=0x40000000\0" \
++	"fdt_addr_r=0x44000000\0" \
++	"fdtoverlay_addr_r=0x44c00000\0" \
++	"kernel_addr_r=0x45000000\0" \
++	"ramdisk_addr_r=0x46000000\0" \
++	"fdtfile=" CONFIG_DEFAULT_DEVICE_TREE ".dtb\0" \
+ 	BOOTENV
+ 
+ #endif
+-- 
+2.36.0
+

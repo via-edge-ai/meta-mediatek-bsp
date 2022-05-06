@@ -1,0 +1,97 @@
+From b909c5cf0303b81c5e15f94755413b3acc9ca3ab Mon Sep 17 00:00:00 2001
+From: Jerome Brunet <jbrunet@baylibre.com>
+Date: Thu, 5 May 2022 23:52:19 +0200
+Subject: [PATCH 2/2] configs: mediatek: enable boot via extlinux
+
+Enable FAT and SYSBOOT to use extlinux boot script
+
+Signed-off-by: Jerome Brunet <jbrunet@baylibre.com>
+---
+ configs/mt8183_pumpkin_defconfig | 3 +++
+ configs/mt8195_demo_defconfig    | 3 +++
+ configs/mt8195_evb_ufs_defconfig | 2 ++
+ configs/mt8365_pumpkin_defconfig | 3 +++
+ configs/mt8516_pumpkin_defconfig | 3 +++
+ 5 files changed, 14 insertions(+)
+
+diff --git a/configs/mt8183_pumpkin_defconfig b/configs/mt8183_pumpkin_defconfig
+index 08fc60394d62..553014d5a346 100644
+--- a/configs/mt8183_pumpkin_defconfig
++++ b/configs/mt8183_pumpkin_defconfig
+@@ -43,8 +43,11 @@ CONFIG_CMD_PART=y
+ # CONFIG_CMD_ITEST is not set
+ # CONFIG_CMD_SETEXPR is not set
+ # CONFIG_CMD_BLOCK_CACHE is not set
++CONFIG_CMD_SYSBOOT=y
+ CONFIG_CMD_EXT4=y
++CONFIG_CMD_FAT=y
+ CONFIG_CMD_FS_GENERIC=y
++# CONFIG_DOS_PARTITION is not set
+ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_SYS_MMC_ENV_PART=2
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
+diff --git a/configs/mt8195_demo_defconfig b/configs/mt8195_demo_defconfig
+index 4de7f0133c14..e42a6d9d2995 100644
+--- a/configs/mt8195_demo_defconfig
++++ b/configs/mt8195_demo_defconfig
+@@ -42,8 +42,11 @@ CONFIG_CMD_PART=y
+ # CONFIG_CMD_ITEST is not set
+ # CONFIG_CMD_SETEXPR is not set
+ # CONFIG_CMD_BLOCK_CACHE is not set
++CONFIG_CMD_SYSBOOT=y
+ CONFIG_CMD_EXT4=y
++CONFIG_CMD_FAT=y
+ CONFIG_CMD_FS_GENERIC=y
++# CONFIG_DOS_PARTITION is not set
+ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_SYS_MMC_ENV_PART=2
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
+diff --git a/configs/mt8195_evb_ufs_defconfig b/configs/mt8195_evb_ufs_defconfig
+index d777a88f7c64..c6883756b132 100644
+--- a/configs/mt8195_evb_ufs_defconfig
++++ b/configs/mt8195_evb_ufs_defconfig
+@@ -41,7 +41,9 @@ CONFIG_CMD_PART=y
+ CONFIG_CMD_UFS=y
+ # CONFIG_CMD_ITEST is not set
+ # CONFIG_CMD_SETEXPR is not set
++CONFIG_CMD_SYSBOOT=y
+ CONFIG_CMD_EXT4=y
++CONFIG_CMD_FAT=y
+ CONFIG_CMD_FS_GENERIC=y
+ CONFIG_ENV_IS_IN_SCSI=y
+ CONFIG_SYS_SCSI_ENV_DEV=1
+diff --git a/configs/mt8365_pumpkin_defconfig b/configs/mt8365_pumpkin_defconfig
+index 98f6748def35..a1180a4b5979 100644
+--- a/configs/mt8365_pumpkin_defconfig
++++ b/configs/mt8365_pumpkin_defconfig
+@@ -43,8 +43,11 @@ CONFIG_CMD_PART=y
+ # CONFIG_CMD_ITEST is not set
+ # CONFIG_CMD_SETEXPR is not set
+ # CONFIG_CMD_BLOCK_CACHE is not set
++CONFIG_CMD_SYSBOOT=y
+ CONFIG_CMD_EXT4=y
++CONFIG_CMD_FAT=y
+ CONFIG_CMD_FS_GENERIC=y
++# CONFIG_DOS_PARTITION is not set
+ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_SYS_MMC_ENV_PART=2
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
+diff --git a/configs/mt8516_pumpkin_defconfig b/configs/mt8516_pumpkin_defconfig
+index 269d15bf3ecb..a707ca33d190 100644
+--- a/configs/mt8516_pumpkin_defconfig
++++ b/configs/mt8516_pumpkin_defconfig
+@@ -44,8 +44,11 @@ CONFIG_CMD_PART=y
+ # CONFIG_CMD_SETEXPR is not set
+ # CONFIG_CMD_BLOCK_CACHE is not set
+ # CONFIG_CMD_SLEEP is not set
++CONFIG_CMD_SYSBOOT=y
+ CONFIG_CMD_EXT4=y
++CONFIG_CMD_FAT=y
+ CONFIG_CMD_FS_GENERIC=y
++# CONFIG_DOS_PARTITION is not set
+ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_SYS_MMC_ENV_PART=2
+-- 
+2.36.0
+
