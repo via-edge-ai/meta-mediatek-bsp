@@ -14,7 +14,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_NDA_URI}/libefuse-pta-prebuilt.git;protocol=ssh;branch=main"
-SRCREV = "43aacd39eb037f099427a7a363ed8669eadab32f"
+SRCREV = "637b9fed3addcbfd3a1104008df158eb316442f9"
 
 do_install() {
         install -d ${D}${libdir}
