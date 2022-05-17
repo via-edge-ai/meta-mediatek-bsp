@@ -58,6 +58,8 @@ EXTRA_IMAGEDEPENDS = " \
 	rity-tools \
 "
 
+MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "kernel-image"
+
 MACHINE_EXTRA_RRECOMMENDS += " \
 	kernel-modules \
 	packagegroup-mtk \
