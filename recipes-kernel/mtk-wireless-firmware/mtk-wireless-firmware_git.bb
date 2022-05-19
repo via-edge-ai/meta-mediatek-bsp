@@ -9,7 +9,7 @@ inherit allarch
 S = "${WORKDIR}/git/${MTK_WIRELESS_RELEASE}"
 
 SRC_URI = "${AIOT_NDA_URI}/wireless-firmware.git;protocol=ssh;branch=main"
-SRCREV = "19388a401e99a5f0a03023486d8a5eeefaad89ef"
+SRCREV = "af777f8979ff2f799a586f543d3add357d6ac330"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
