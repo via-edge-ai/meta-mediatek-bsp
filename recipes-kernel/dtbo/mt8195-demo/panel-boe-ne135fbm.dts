@@ -3,34 +3,20 @@
 
 / {
 	fragment@0 {
-		target = <&hdmi0>;
-		__overlay__ {
-			status = "okay";
-		};
-	};
-
-	fragment@1 {
-		target = <&hdmi_phy>;
-		__overlay__ {
-			status = "okay";
-		};
-	};
-
-	fragment@2 {
 		target = <&edp_tx>;
 		__overlay__ {
 			status = "okay";
 		};
 	};
 
-	fragment@3 {
+	fragment@1 {
 		target = <&dp_intf0>;
 		__overlay__ {
 			status = "okay";
 		};
 	};
 
-	fragment@4 {
+	fragment@2 {
 		target = <&edp_panel>;
 		__overlay__ {
 			status = "okay";
@@ -41,7 +27,7 @@
 		};
 	};
 
-	fragment@5 {
+	fragment@3 {
 		target = <&edp_panel_fixed_3v3>;
 		__overlay__ {
 			regulator-always-on;
@@ -52,7 +38,7 @@
 		};
 	};
 
-	fragment@6 {
+	fragment@4 {
 		target = <&backlight_lcd0>;
 		__overlay__ {
 			default-on;
