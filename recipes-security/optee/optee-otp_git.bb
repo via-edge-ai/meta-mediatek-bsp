@@ -10,6 +10,8 @@ DEPENDS = "optee-client optee-os-tadevkit \
 
 inherit python3native features_check
 
+require recipes-security/optee/optee.inc
+
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
