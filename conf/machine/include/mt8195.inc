@@ -26,6 +26,7 @@ MALI_VERSION ??= "r32p0"
 
 MACHINE_EXTRA_RRECOMMENDS:append = " \
 	${@bb.utils.contains_any('DISTRO_FEATURES', 'opengl vulkan', 'libmali', '', d)} \
+	linux-firmware-mt8195-scp \
 	${@bb.utils.contains("MACHINE_FEATURES", "optee-efuse", "optee-ewriter", "", d)} \
 "
 
