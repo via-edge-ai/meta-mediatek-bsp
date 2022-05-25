@@ -21,13 +21,7 @@ Display
 The i350 SB35 support the `7-inch Raspberry Pi touch display`_.
 
 If you wish to use the 7-inch Raspberry Pi touch display,
-you need to add the following to your `local.conf`:
-
-.. code::
-
-	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		panel-raspberrypi.dtbo \
-	"
+the related overlay is `recipes-kernel/dtbo/mt8365-sb35/panel-raspberrypi.dts`
 
 MT7663 wireless chipset
 ------------------------

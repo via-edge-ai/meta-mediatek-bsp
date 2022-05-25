@@ -26,20 +26,11 @@ The i500 Evaluation board supports three differents displays:
 
 The default display when building with `MACHINE=i500-evb` is `Sharp NT35532`.
 If your display on your evaluation board is different, you can add support to
-your display through device-tree overlays. In order to do so, you can add one
-of the following to the `KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD` in your
-`local.conf`:
+your display through device-tree overlays. In order to do so, the related
+overlay are located in `recipes-kernel/dtbo/mt8183-evb/`:
 
-* Green display: `panel-tpv-otm1901a.dtbo`
-* Yellow display: `panel-truly-r63350a.dtbo`
-
-Examples:
-
-.. code::
-
-	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		panel-tpv-otm1901a.dtbo \
-	"
+* Green display: `panel-tpv-otm1901a.dts`
+* Yellow display: `panel-truly-r63350a.dts`
 
 MT7668 wireless chipset
 ------------------------

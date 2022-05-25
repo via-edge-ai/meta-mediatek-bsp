@@ -34,28 +34,16 @@ Display
 
 The i300A Pumpkin support HDMI and the `7-inch Raspberry Pi touch display`_.
 
-HDMI is working by default if you set `MACHINE=i300a-pumpkin`. If you wish to use the 7-inch Raspberry Pi touch display, you need to add the following to your `local.conf`:
-
-.. code::
-
-	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		panel-raspberrypi.dtbo \
-	"
+HDMI is working by default if you set `MACHINE=i300a-pumpkin`. If you wish to use the 7-inch Raspberry Pi touch display, the related overlay is `recipes-kernel/dtbo/mt8167-pumpkin/panel-raspberrypi.dts`
 
 .. warning::
 
-	Adding `panel-raspberrypi.dtbo` to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD
-	requires you to plug the 7-inch Raspberry Pi touch display to the i300A
-	pumpkin board. Failing to connect it will prevent HDMI from working.
-	If you only want HDMI, you should not add `panel-raspberrypi.dtbo`.
+	Using `panel-raspberrypi.dtbo` requires you to plug the
+	7-inch Raspberry Pi touch display to the i300A pumpkin board.
+	Failing to connect it will prevent HDMI from working.
+	If you only want HDMI, you should not use this overlay.
 
-The i300A Pumpkin also supports the AVD-TT70WS-CN-134-A touch display. If you wish to use it, you need to add the following to your `local.conf`:
-
-.. code::
-
-	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		panel-avd-tt70ws-cn-134-a.dtbo \
-	"
+The i300A Pumpkin also supports the AVD-TT70WS-CN-134-A touch display. If you wish to use it, the related overlay is `recipes-kernel/dtbo/mt8167-pumpkin/panel-avd-tt70ws-cn-134-a.dts`
 
 Cameras
 -------
@@ -64,14 +52,7 @@ The i300A Pumpkin board supports the following csi camera sensor:
 
 * Omnivision ov5645
 
-If you wish to use the ov5645 camera, you need to add the following to your
-`local.conf`:
-
-.. code::
-
-	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		camera-ov5645.dtbo \
-	"
+If you wish to use the ov5645 camera, the related overlay is `recipes-kernel/dtbo/mt8167-pumpkin/camera-ov5645.dts`
 
 Audio
 -----

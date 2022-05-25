@@ -20,21 +20,15 @@ DSI Display
 
 The i350 EVK supports the Startek KD070FHFID015 DSI display.
 
-If you wish to use the DSI display, you need to add
-the following to your `local.conf`:
-
-.. code::
-
-	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		panel-startek-kd070fhfid015.dtbo \
-	"
+If you wish to use the DSI display, the related overlay is
+`recipes-kernel/dtbo/mt8365-evk/panel-startek-kd070fhfid015.dts`
 
 .. warning::
 
-	Adding the dtbo to KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD requires you to
+	Using `panel-startek-kd070fhfid015.dts` requires you to
 	plug the DSI display to your board. Failing to connect it will
-	prevent HDMI from working. If you only want HDMI, you should not add
-	the dtbo to your `local.conf`.
+	prevent HDMI from working. If you only want HDMI, you should
+	not use this overlay.
 
 Ethernet and HDMI support
 -------------------------
@@ -49,13 +43,8 @@ To use Ethernet, make sure you select the `LAN` feature on the `SW2101` switch.
 In addition because Ethernet is disabled by default in the kernel device-tree,
 you will also need to load an overlay to enable Ethernet.
 
-If you wish to use Ethernet, you need to add the following to your `local.conf`:
-
-.. code::
-
-	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD:i350-evk += " \
-		net-ethernet.dtbo \
-	"
+If you wish to use Ethernet, the related overlay is
+`recipes-kernel/dtbo/mt8365-evk/net-ethernet.dts`
 
 HDMI
 ^^^^
@@ -209,15 +198,10 @@ Based on the necessary config, you need to use the following dtbo:
 * camera-ap1302-ar0430-single-csi1.dtbo
 * camera-ap1302-ar0430-dual.dtbo
 
-For example, you can add the following to your `local.conf` if you are using CSI0 only:
+For example, if you are using CSI0 only, the related overlay is
+`recipes-kernel/dtbo/mt8365-evk/camera-ap1302-ar0430-single-csi0.dts`
 
-.. code::
-
-        KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		camera-ap1302-ar0430-single-csi0.dtbo \
-	"
-
-or, when flashing the board:
+When flashing the board:
 
 .. prompt:: bash $
 

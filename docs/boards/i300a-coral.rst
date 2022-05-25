@@ -31,14 +31,7 @@ The Google Coral Board supports the following csi camera sensor:
 
 * Omnivision ov5645
 
-If you wish to use the ov5645 camera, you need to add the following to your
-`local.conf`:
-
-.. code::
-
-	KERNEL_DEVICETREE_OVERLAYS_AUTOLOAD += " \
-		camera-ov5645.dtbo \
-	"
+If you wish to use the ov5645 camera, the related overlay is `recipes-kernel/dtbo/mt8167-coral/camera-ov5645.dts`
 
 Device-Tree Overlays (DTBO)
 ---------------------------
