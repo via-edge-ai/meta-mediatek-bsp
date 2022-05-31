@@ -14,7 +14,7 @@ repos:
   bitbake:
     url: https://git.openembedded.org/bitbake
     path: layers/bitbake
-    refspec: '1.52'
+    refspec: '2.0'
     layers:
       conf: disabled
 
