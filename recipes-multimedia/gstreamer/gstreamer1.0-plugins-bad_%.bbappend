@@ -1,8 +1,8 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
-	file://0001-v4l2videoenc-set-caps-with-prepend-header-flag.patch \
 	file://MM21-0003-Port-plugins-to-gst_video_format_info_extrapolate_stride.patch \
-	file://MM21-0004-video4linux2-Add-MM21-support.patch \
+	file://MM21-0007-v4l2codecs-Add-support-for-multi-planar-buffers.patch \
+	file://MM21-0008-v4l2codecs-Enable-MediaTek-MM21-NV12_16L32S.patch \
 	file://MM21-0010-doc-Add-NV12_16L32S-into-the-cache.patch \
 "
