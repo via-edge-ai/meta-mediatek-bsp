@@ -449,7 +449,7 @@ state.mt8195demo {
 	control.33 {
 		iface MIXER
 		name ETDM_OUT1_Clock_Source
-		value 'a1sys_a2sys'
+		value a1sys_a2sys
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -463,7 +463,7 @@ state.mt8195demo {
 	control.34 {
 		iface MIXER
 		name ETDM_OUT2_Clock_Source
-		value 'a1sys_a2sys'
+		value a1sys_a2sys
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -477,7 +477,7 @@ state.mt8195demo {
 	control.35 {
 		iface MIXER
 		name ETDM_OUT3_Clock_Source
-		value 'a1sys_a2sys'
+		value a1sys_a2sys
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -491,7 +491,7 @@ state.mt8195demo {
 	control.36 {
 		iface MIXER
 		name ETDM_IN1_Clock_Source
-		value 'a1sys_a2sys'
+		value a1sys_a2sys
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -505,7 +505,7 @@ state.mt8195demo {
 	control.37 {
 		iface MIXER
 		name ETDM_IN2_Clock_Source
-		value 'a1sys_a2sys'
+		value a1sys_a2sys
 		comment {
 			access 'read write'
 			type ENUMERATED
@@ -3651,15 +3651,15 @@ state.mt8195demo {
 			range '0 - 30'
 			dbmin -2200
 			dbmax 800
-			dbvalue.0 900
-			dbvalue.1 900
+			dbvalue.0 -700
+			dbvalue.1 -700
 		}
 	}
 	control.344 {
 		iface MIXER
 		name 'Lineout Volume'
-		value.0 31
-		value.1 31
+		value.0 0
+		value.1 0
 		comment {
 			access 'read write'
 			type INTEGER
@@ -3667,14 +3667,14 @@ state.mt8195demo {
 			range '0 - 18'
 			dbmin -1000
 			dbmax 800
-			dbvalue.0 2100
-			dbvalue.1 2100
+			dbvalue.0 -1000
+			dbvalue.1 -1000
 		}
 	}
 	control.345 {
 		iface MIXER
 		name 'Handset Volume'
-		value 31
+		value 0
 		comment {
 			access 'read write'
 			type INTEGER
@@ -3682,7 +3682,7 @@ state.mt8195demo {
 			range '0 - 18'
 			dbmin -1000
 			dbmax 800
-			dbvalue.0 2100
+			dbvalue.0 -1000
 		}
 	}
 	control.346 {
