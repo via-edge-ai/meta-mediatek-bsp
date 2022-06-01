@@ -15,8 +15,6 @@ local_conf_header:
     CONF_VERSION = "2"
     USER_CLASSES ?= "buildstats"
     PATCHRESOLVE = "noop"
-  package-class: |
-    PACKAGE_CLASSES ?= "package_rpm"
   diskmon: |
     BB_DISKMON_DIRS ??= "\
         STOPTASKS,${TMPDIR},1G,100K \
