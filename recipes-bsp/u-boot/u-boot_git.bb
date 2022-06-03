@@ -6,6 +6,7 @@ DEPENDS += "bc-native dtc-native u-boot-tools-native"
 SRC_URI += " \
 	file://0001-configs-mediatek-define-default-variables.patch \
 	file://0002-configs-mediatek-enable-boot-via-extlinux.patch \
+	file://0001-Revert-cmd-pxe_utils-Check-fdtcontroladdr-in-label_b.patch \
 	file://fw_env.config \
 	file://boot.script \
 	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "file://secure-boot.cfg", "", d)} \
