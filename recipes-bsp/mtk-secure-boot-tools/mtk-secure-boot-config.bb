@@ -17,6 +17,10 @@ do_deploy() {
         install -d ${DEPLOYDIR}/
         install ${WORKDIR}/secure/auth_sv5.auth ${DEPLOYDIR}/
     fi
+
+    if [ "${@oe.utils.conditional('BL2_SIGN_ENABLE', '1', '1', '', d)}" = "1" ]; then
+        install ${WORKDIR}/secure/efuse.cfg ${DEPLOYDIR}/
+    fi
 }
 
 addtask do_deploy after do_install
