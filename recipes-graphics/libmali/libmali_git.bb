@@ -37,7 +37,7 @@ RPROVIDES:${PN} = " \
 S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_RITY_URI}/libmali.git;protocol=ssh;branch=main"
-SRCREV = "11c92e03430a4346e3b8982a7a992441e570789e"
+SRCREV = "e0c12a2f3dcfed424b02d55f63ed318c472092f8"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
