@@ -128,7 +128,8 @@
 					 "CORE_MT_CG_CORE1_LARB1",
 					 "CORE_MT_CG_CORE1_VDEC";
 				assigned-clocks = <&topckgen CLK_TOP_VDEC>;
-				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
+				assigned-clock-parents = <&apmixedsys CLK_APMIXED_VDECPLL>;
+				assigned-clock-rates = <680000000>;
 				mediatek,vcu = <&vcu>;
 			};
 
