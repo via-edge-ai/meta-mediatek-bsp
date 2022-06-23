@@ -3374,7 +3374,7 @@ state.mt8195demo {
 	control.323 {
 		iface MIXER
 		name DPTX_OUT_MUX
-		value Disconnect
+		value Connect
 		comment {
 			access 'read write'
 			type ENUMERATED
