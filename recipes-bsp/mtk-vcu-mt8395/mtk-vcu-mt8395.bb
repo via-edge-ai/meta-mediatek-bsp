@@ -6,7 +6,7 @@ COMPATIBLE_MACHINE = "i1200-demo"
 
 inherit module
 
-SRCREV = "b0bc445ffc6da3ab3f59981ea90a0b1fd0b31b2d"
+SRCREV = "e6317eaf580d38c6519cb4eff4da33378e799a09"
 
 BRANCH = "mt8395"
 
