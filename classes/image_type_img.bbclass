@@ -7,4 +7,4 @@ CONVERSION_CMD:img = " \
              -o "${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.${type}.img" \
              "${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.${type}"; \
 "
-CONVERSION_DEPENDS_img = "python3-pysimg-native"
+CONVERSION_DEPENDS_img = "python3-pysimg-native coreutils-native"
