@@ -16,6 +16,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "${AIOT_NDA_URI}/libdram.git;protocol=ssh;branch=main"
 SRCREV = "fbd5596f10aab00f096ab853f6cb7cce4a34c3d3"
 
+FULL_OPTIMIZATION = "-Os"
 SECURITY_CFLAGS = ""
 
 CFLAGS[unexport] = "1"
