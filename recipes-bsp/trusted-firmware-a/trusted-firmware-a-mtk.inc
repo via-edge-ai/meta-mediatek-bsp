@@ -3,9 +3,11 @@ require recipes-bsp/trusted-firmware-a/trusted-firmware-a.inc
 inherit deploy
 inherit python3native
 
+# Make sure that bl2 is built and installed before we deploy the fip
+do_deploy[depends] += "virtual/bl2:do_deploy"
+
 DEPENDS = "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "libdram", "libdram-prebuilt", d)}"
 DEPENDS:append = " libbase-prebuilt"
-DEPENDS:append = "${@oe.utils.conditional("BL2_SIGN_ENABLE", "1", " mtk-secure-boot-tools-native mtk-secure-boot-config", "", d)}"
 COMPATIBLE_MACHINE = "mt*"
 
 # Use TF-A for version
@@ -52,44 +54,7 @@ SRCREV_mbedtls = "mbedtls-2.26.0"
 
 LIC_FILES_CHKSUM_MBEDTLS = "file://mbedtls/LICENSE;md5=3b83ef96387f14655fc854ddc3c6bd57"
 
-TFA_BUILD_TARGET = "${@bb.utils.contains('TFA_USE_PREBUILT_BL2', 'yes', '', 'bl2', d)} bl31 fip"
-
-do_gen_bl2_img() {
-	media="emmc"
-	if [ "${@bb.utils.contains('MACHINE_FEATURES', 'ufs-boot', 'ufs-boot', '', d)}" = "ufs-boot" ]; then
-		media="ufs"
-	fi
-
-
-	if [ "${@oe.utils.conditional('BL2_SIGN_ENABLE', '1', '1', '', d)}" = "1" ]; then
-		cp ${B}/${TFA_PLATFORM}/release/bl2.bin ${B}/bl2.img
-		python3 -m sign-image_v2.pbp \
-				-i ${WORKDIR}/recipe-sysroot/${sysconfdir}/secure/key.ini \
-				-g ${WORKDIR}/recipe-sysroot/${sysconfdir}/secure/pl_gfh_config_pss.ini \
-				-func sign -o ${B}/bl2.img ${B}/bl2.img
-		python3 -m secure_chip_tools.dev-info-hdr-tool emmc ${B}/bl2.img ${B}/bl2.img
-		python3 -m sign-image_v2.pbp \
-				-j ${EFUSE_KEY} -func keyhash_pss -o ${DEPLOYDIR}/secure/keyhash
-	else
-		cp ${B}/${TFA_PLATFORM}/release/bl2.bin ${B}/bl2.img.tmp
-		truncate -s%4 ${B}/bl2.img.tmp
-		uboot-mkimage -T mtk_image -a 0x201000 -e 0x201000 -n "media=$media;arm64=1" \
-				-d ${B}/bl2.img.tmp ${B}/bl2.img
-	fi
-}
-
-do_deploy:append() {
-	if [ "x${TFA_USE_PREBUILT_BL2}" = "xyes" ]; then
-		install -m 0644 ${S}/prebuilt/${TFA_BOARD_NAME}/release/bl2.img ${DEPLOYDIR}/
-	else
-		install -m 0644 ${B}/bl2.img ${DEPLOYDIR}/
-	fi
-}
-
-python() {
-    if d.getVar('TFA_USE_PREBUILT_BL2') != 'yes':
-        bb.build.addtask('do_gen_bl2_img', 'do_install', 'do_compile', d)
-}
+TFA_BUILD_TARGET = "bl31 fip"
 
 #
 # Secure Boot
