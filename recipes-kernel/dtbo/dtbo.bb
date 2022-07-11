@@ -105,6 +105,7 @@ SRC_URI:append:mt8516-pumpkin = " \
 SRC_URI:append:mt8195-demo = " \
 	file://panel-boe-ne135fbm.dts \
 	file://vcodec-vcu-mt8395.dts \
+	file://display-dp.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
