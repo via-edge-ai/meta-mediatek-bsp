@@ -15,11 +15,12 @@ EFUSE_KEY ?= "${DEFAULT_EFUSE_KEY}"
 DA_KEY ?= "${@oe.utils.conditional('DA_SIGN_ENABLE', '1', '${DEFAULT_DA_KEY}', '', d)}"
 
 EXTRA_OEMAKE = "OUTDIR=${WORKDIR} EFUSE_KEY=${EFUSE_KEY} DA_KEY=${DA_KEY}"
+EXTRA_OEMAKE:append = " EFUSE_KEY1=${EFUSE_KEY1} EFUSE_KEY2=${EFUSE_KEY2} EFUSE_KEY3=${EFUSE_KEY3}"
 EXTRA_OEMAKE:append:i500-pumpkin = " PLATFORM=i500_pumpkin"
 EXTRA_OEMAKE:append:i350-sb35 = " PLATFORM=i350_sb35"
 EXTRA_OEMAKE:append:i350-evk = " PLATFORM=i350_sb35"
 
-DEPENDS:append = " openssl-native"
+DEPENDS:append = " openssl-native util-linux-native"
 
 do_compile() {
     if [ "${@oe.utils.conditional('DA_SIGN_ENABLE', '1', '1', '', d)}" = "1" ]; then
