@@ -1,4 +1,4 @@
-# SHORT-description: Create an image for MediaTek SoC based boards
+# short-description: Create an image for MediaTek SoC based boards
 # long-description: Creates a partitioned image for MediaTek SoC based boards with extlinux
 
 bootloader --ptable gpt --timeout=0
