@@ -22,6 +22,7 @@ EXTRA_OEMAKE:append:i350-evk = " PLATFORM=i350_sb35"
 
 DEPENDS:append = " openssl-native util-linux-native"
 
+do_compile[nostamp] = "1"
 do_compile() {
     if [ "${@oe.utils.conditional('DA_SIGN_ENABLE', '1', '1', '', d)}" = "1" ]; then
         if [ "x${DEFAULT_DA_KEY}" = "x${DA_KEY}" ]; then
