@@ -21,7 +21,7 @@ do_gen_bl2_img() {
 				-func sign -o ${B}/bl2.img ${B}/bl2.img
 		python3 -m secure_chip_tools.dev-info-hdr-tool emmc ${B}/bl2.img ${B}/bl2.img
 		python3 -m sign-image_v2.pbp \
-				-j ${RECIPE_SYSROOT}/${sysconfdir}/secure/efuse.pem -func keyhash_pss -o ${DEPLOYDIR}/secure/keyhash
+				-j ${RECIPE_SYSROOT}/${sysconfdir}/secure/sbc.pem -func keyhash_pss -o ${DEPLOYDIR}/secure/keyhash
 	else
 		cp ${B}/${TFA_PLATFORM}/release/bl2.bin ${B}/bl2.img.tmp
 		truncate -s%4 ${B}/bl2.img.tmp
