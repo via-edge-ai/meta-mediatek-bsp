@@ -1,5 +1,5 @@
 S = "${WORKDIR}/git"
-BUILD = "${WORKDIR}/git/build-${LK_PROJECT}"
+BUILD ?= "build-${LK_PROJECT}"
 
 DEPENDS = "libdram-lk"
 
@@ -19,10 +19,10 @@ EXTRA_OEMAKE += "LIBBASE=${STAGING_DIR_TARGET}/${libdir}/libbase-lk.a"
 
 do_compile () {
 	oe_runmake ARCH_arm64_TOOLCHAIN_PREFIX=${TARGET_PREFIX}			\
-			   CFLAGS=""											\
-			   DEBUG=0												\
-			   SECURE_BOOT_ENABLE=no								\
-			   LIBGCC=""											\
+			   CFLAGS=""						\
+			   DEBUG=0						\
+			   SECURE_BOOT_ENABLE=no				\
+			   LIBGCC=""						\
 			   GLOBAL_CFLAGS="-mstrict-align -mno-outline-atomics"	\
 			   ${LK_PROJECT}
 }
