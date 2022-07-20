@@ -13,7 +13,7 @@ do_deploy () {
 			-out ${DEPLOYDIR}/lk.sign -pkeyopt digest:sha256 -pkeyopt \
 			rsa_padding_mode:pss -pkeyopt rsa_pss_saltlen:32
 		install ${BUILD}/lk.bin ${DEPLOYDIR}/lk.bin
-
+	        install ${RECIPE_SYSROOT}/${sysconfdir}/secure/auth_sv5.auth ${DEPLOYDIR}/
 	else
 		install ${BUILD}/lk.bin ${DEPLOYDIR}/lk.bin
 	fi
