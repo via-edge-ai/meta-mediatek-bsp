@@ -18,4 +18,15 @@ do_deploy () {
 		install ${BUILD}/lk.bin ${DEPLOYDIR}/lk.bin
 	fi
 }
+
+do_buildclean () {
+	oe_runmake ARCH_arm64_TOOLCHAIN_PREFIX=${TARGET_PREFIX}			\
+			   CFLAGS=""						\
+			   DEBUG=0						\
+			   SECURE_BOOT_ENABLE=no				\
+			   LIBGCC=""						\
+			   GLOBAL_CFLAGS="-mstrict-align -mno-outline-atomics"	\
+			   ${LK_PROJECT} clean
+}
+
 addtask do_deploy after do_install
