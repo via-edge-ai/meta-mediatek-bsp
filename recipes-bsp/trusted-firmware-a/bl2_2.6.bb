@@ -4,7 +4,7 @@ PROVIDES = "virtual/bl2"
 
 DEPENDS:append = "${@oe.utils.conditional("BL2_SIGN_ENABLE", "1", " mtk-secure-boot-tools-native mtk-secure-boot-config", "", d)}"
 
-TFA_BUILD_TARGET = "${@bb.utils.contains('TFA_USE_PREBUILT_BL2', 'yes', '', 'bl2', d)}"
+TFA_BUILD_TARGET = "bl2"
 
 do_gen_bl2_img() {
 	media="emmc"
@@ -31,17 +31,12 @@ do_gen_bl2_img() {
 }
 
 do_deploy() {
-	if [ "x${TFA_USE_PREBUILT_BL2}" = "xyes" ]; then
-		install -m 0644 ${S}/prebuilt/${TFA_BOARD_NAME}/release/bl2.img ${DEPLOYDIR}/
-	else
-		install -m 0644 ${B}/bl2.img ${DEPLOYDIR}/
-	fi
+	install -m 0644 ${B}/bl2.img ${DEPLOYDIR}/
 	if [ "${@oe.utils.conditional('BL2_SIGN_ENABLE', '1', '1', '', d)}" = "1" ]; then
 		install -m 0644 ${RECIPE_SYSROOT}/${sysconfdir}/secure/efuse.cfg ${DEPLOYDIR}/
 	fi
 }
 
 python() {
-    if d.getVar('TFA_USE_PREBUILT_BL2') != 'yes':
-        bb.build.addtask('do_gen_bl2_img', 'do_install', 'do_compile', d)
+    bb.build.addtask('do_gen_bl2_img', 'do_install', 'do_compile', d)
 }

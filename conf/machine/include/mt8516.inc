@@ -5,8 +5,7 @@ require mediatek-common.inc
 SOC_FAMILY = "mt8516"
 
 # Trusted Firmware-A
-TFA_PLATFORM = "mt8516"
-TFA_USE_PREBUILT_BL2 = "yes"
+PREFERRED_PROVIDER_virtual/bl2 = "bl2-prebuilt"
 
 # OP-TEE
 OPTEE_TARGET = "mediatek-mt8516"
