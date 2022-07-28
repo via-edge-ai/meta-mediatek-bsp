@@ -7,7 +7,9 @@ do_assemble_fitimage[depends] += "virtual/bootloader:do_populate_sysroot"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 
-LINUX_VERSION_EXTENSION = "-mtk"
+# Embed SRCREV into the version string;
+# Use "linux-mtk+modified" if using "devtool modify linux-mtk"
+LINUX_VERSION_EXTENSION = "-mtk+${@("modified" if d.getVar('EXTERNALSRC') else ("g" + d.getVar('SRCREV')[0:12]))}"
 
 S = "${WORKDIR}/git"
 
