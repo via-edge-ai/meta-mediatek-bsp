@@ -7,7 +7,7 @@ SRC_URI:append = " \
     file://da.pem \
 "
 
-COMPATIBLE_MACHINE = "i350-sb35|i350-evk|i500-pumpkin"
+COMPATIBLE_MACHINE = "i350-sb35|i350-evk|i500-pumpkin|i1200-demo"
 
 DEFAULT_EFUSE_KEY = "${WORKDIR}/efuse.pem"
 DEFAULT_DA_KEY = "${WORKDIR}/da.pem"
@@ -21,6 +21,7 @@ EXTRA_OEMAKE:append = " EFUSE_KEY=${EFUSE_KEY} EFUSE_KEY1=${EFUSE_KEY1} EFUSE_KE
 EXTRA_OEMAKE:append:i500-pumpkin = " PLATFORM=i500_pumpkin"
 EXTRA_OEMAKE:append:i350-sb35 = " PLATFORM=i350_sb35"
 EXTRA_OEMAKE:append:i350-evk = " PLATFORM=i350_sb35"
+EXTRA_OEMAKE:append:i1200-demo = " PLATFORM=i1200_demo"
 
 DEPENDS:append = " openssl-native util-linux-native"
 
