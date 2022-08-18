@@ -1,0 +1,133 @@
+From 169d127917a2d0c8a67ce223ad40be22c3a3225a Mon Sep 17 00:00:00 2001
+From: Macross Chen <macross.chen@mediatek.com>
+Date: Thu, 18 Aug 2022 15:56:38 +0800
+Subject: [PATCH] v4l2object: add colorimetry extensions for better
+ compatibility
+
+Gstreamer will generate a list of colorimetry, that contains
+one default colorimetry for each colorspace, to speed up the
+negotiation between source pad and sink pad.
+But if the device requests a colorimetry which not on the list,
+the pipeline will fail to establish the connection.
+
+We made a way to append some colorimetry (for that we care)
+via a predefined list.
+It will only be appended if the device allows it.
+
+Signed-off-by: Macross Chen <macross.chen@mediatek.com>
+---
+ sys/v4l2/gstv4l2object.c | 81 +++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 79 insertions(+), 2 deletions(-)
+
+diff --git a/sys/v4l2/gstv4l2object.c b/sys/v4l2/gstv4l2object.c
+index 399abab..a811f3a 100644
+--- a/sys/v4l2/gstv4l2object.c
++++ b/sys/v4l2/gstv4l2object.c
+@@ -2376,6 +2376,83 @@ gst_v4l2_object_fill_colorimetry_list (GValue * list,
+     g_value_unset (&colorimetry);
+ }
+ 
++/* colorimetry extensions, added for additional check with v4l2 device */
++static const GstVideoColorimetry gst_colorimetry_ext_list[] = {
++  {GST_VIDEO_COLOR_RANGE_16_235, GST_VIDEO_COLOR_MATRIX_BT601,
++   GST_VIDEO_TRANSFER_BT601, GST_VIDEO_COLOR_PRIMARIES_BT470BG},
++  {GST_VIDEO_COLOR_RANGE_0_255, GST_VIDEO_COLOR_MATRIX_BT709,
++   GST_VIDEO_TRANSFER_BT709, GST_VIDEO_COLOR_PRIMARIES_BT709},
++};
++
++/******************************************************
++ * gst_v4l2_object_get_colorspace_ext():
++ *   get supported/required colorimetry from predefined list (colorimetry_ext_list)
++ *   fill the info if device accepts the colorimetry.
++ * return value: TRUE on success, FALSE on error
++ ******************************************************/
++static gboolean
++gst_v4l2_object_get_colorspace_ext (GstV4l2Object * v4l2object, guint idx,
++    struct v4l2_format *fmt, GstVideoColorimetry * cinfo)
++{
++  enum v4l2_colorspace colorspace;
++  enum v4l2_quantization range;
++  enum v4l2_ycbcr_encoding matrix;
++  enum v4l2_xfer_func transfer;
++  GstVideoColorimetry *target_colorimetry;
++
++  if (V4L2_TYPE_IS_MULTIPLANAR (fmt->type)) {
++    colorspace = fmt->fmt.pix_mp.colorspace;
++    range = fmt->fmt.pix_mp.quantization;
++    matrix = fmt->fmt.pix_mp.ycbcr_enc;
++    transfer = fmt->fmt.pix_mp.xfer_func;
++  } else {
++    colorspace = fmt->fmt.pix.colorspace;
++    range = fmt->fmt.pix.quantization;
++    matrix = fmt->fmt.pix.ycbcr_enc;
++    transfer = fmt->fmt.pix.xfer_func;
++  }
++
++  target_colorimetry = &gst_colorimetry_ext_list[idx];
++  /* check if color_primary in extension list */
++  if (colorspace == gst_video_color_primaries_to_iso (target_colorimetry->primaries)) {
++    /* apply the colorimetry only if the device accepts all */
++    if ((range | matrix | transfer)) {
++        return FALSE;
++    }
++    cinfo->range = target_colorimetry->range;
++    cinfo->matrix = target_colorimetry->matrix;
++    cinfo->transfer = target_colorimetry->transfer;
++    cinfo->primaries = target_colorimetry->primaries;
++    GST_LOG_OBJECT (v4l2object->dbg_obj, "add colorimetry_ext[%d] %d:%d:%d:%d to list",
++        idx, cinfo->range, cinfo->matrix, cinfo->transfer, cinfo->primaries);
++    return TRUE;
++  }
++
++  return FALSE;
++}
++
++#ifndef ARRAY_SIZE
++#define ARRAY_SIZE(arr) (sizeof(arr)/sizeof((arr)[0]))
++#endif
++
++
++/******************************************************
++ * gst_v4l2_object_add_colorimetry_ext():
++ *   check if there is any required colorimetry of current pixelformat
++ *   if get any, add it into colorimetry list.
++ ******************************************************/
++static void
++gst_v4l2_object_add_colorimetry_ext (GstV4l2Object * v4l2object,
++    struct v4l2_format *fmt, GstVideoColorimetry * cinfo, GValue * list)
++{
++  guint idx;
++  for (idx = 0; idx < ARRAY_SIZE(gst_colorimetry_ext_list); idx++){
++    if (gst_v4l2_object_get_colorspace_ext (v4l2object, idx, fmt, cinfo)) {
++      gst_v4l2_object_fill_colorimetry_list (list, cinfo);
++    }
++  }
++}
++
+ static void
+ gst_v4l2_object_add_colorspace (GstV4l2Object * v4l2object, GstStructure * s,
+     guint32 width, guint32 height, guint32 pixelformat)
+@@ -2414,7 +2491,6 @@ gst_v4l2_object_add_colorspace (GstV4l2Object * v4l2object, GstStructure * s,
+       fmt.fmt.pix_mp.colorspace = req_cspace;
+     else
+       fmt.fmt.pix.colorspace = req_cspace;
+-
+     if (gst_v4l2_object_try_fmt (v4l2object, &fmt) == 0) {
+       enum v4l2_colorspace colorspace;
+ 
+@@ -2422,10 +2498,11 @@ gst_v4l2_object_add_colorspace (GstV4l2Object * v4l2object, GstStructure * s,
+         colorspace = fmt.fmt.pix_mp.colorspace;
+       else
+         colorspace = fmt.fmt.pix.colorspace;
+-
+       if (colorspace == req_cspace) {
+         if (gst_v4l2_object_get_colorspace (v4l2object, &fmt, &cinfo))
+           gst_v4l2_object_fill_colorimetry_list (&list, &cinfo);
++
++        gst_v4l2_object_add_colorimetry_ext(v4l2object, &fmt, &cinfo, &list);
+       }
+     }
+   }
+-- 
+2.18.0
+
