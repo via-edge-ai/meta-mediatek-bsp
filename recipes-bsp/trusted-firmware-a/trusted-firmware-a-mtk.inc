@@ -10,6 +10,8 @@ DEPENDS = "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "libdram", "libdra
 DEPENDS:append = " libbase-prebuilt"
 COMPATIBLE_MACHINE = "mt*"
 
+OVERRIDES:append = "${@bb.utils.contains("TFA_BUILD_TARGET", "bl31", ":bl31", "", d)}"
+
 # Use TF-A for version
 SRCREV_FORMAT = "tfa"
 
@@ -85,4 +87,8 @@ do_compile:prepend() {
 
 		bbnote "Key used for secure boot: ${SECURE_BOOT_ROT_KEY}"
 	fi
+}
+
+do_deploy:append:bl31() {
+	cp ${B}/${TFA_PLATFORM}/release/bl31/bl31.ld ${DEPLOY_DIR_IMAGE}/
 }
