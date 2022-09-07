@@ -16,7 +16,7 @@ S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
 SRC_URI = "${AIOT_BSP_URI}/optee-otp.git;branch=main;;protocol=ssh"
-SRCREV = "2e980a964a744275ea3532a8f6253d01f230d19c"
+SRCREV = "2cb95732bb3aa775e3b0ee05aadaec7c922ac227"
 
 COMPATIBLE_MACHINE = "mt*"
 
