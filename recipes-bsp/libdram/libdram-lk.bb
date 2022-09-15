@@ -1,6 +1,7 @@
 require libdram.inc
 
 DEPENDS:mt8365 = "libbase-lk-prebuilt"
+DEPENDS:mt8188 = "libbase-lk-prebuilt"
 DEPENDS:mt8195 = "libbase-lk-prebuilt"
 
 EXTRA_OEMESON:append = " -Dlk=true"

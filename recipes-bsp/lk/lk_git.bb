@@ -4,6 +4,7 @@ BUILD ?= "build-${LK_PROJECT}"
 DEPENDS = "libdram-lk"
 
 DEPENDS:append:mt8365 = " libbase-lk-prebuilt"
+DEPENDS:append:mt8188 = " libbase-lk-prebuilt"
 DEPENDS:append:mt8195 = " libbase-lk-prebuilt"
 
 LICENSE = "MIT & BSD-2-Clause & LicenseRef-MediaTek-AIoT-SLA-1"
