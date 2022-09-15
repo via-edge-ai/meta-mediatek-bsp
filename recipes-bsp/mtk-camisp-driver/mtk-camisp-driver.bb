@@ -19,3 +19,12 @@ S = "${WORKDIR}/git"
 # "kernel-module-" prefix as required by the oe-core build environment.
 
 RPROVIDES_${PN} += "kernel-module-mtk-camisp-driver"
+
+do_install:append() {
+    install -d ${D}${nonarch_base_libdir}/firmware/
+    dd if=/dev/zero of=${D}${nonarch_base_libdir}/firmware/remoteproc_scp bs=1 count=100
+}
+
+FILES:${PN} += " \
+    ${nonarch_base_libdir}/firmware/remoteproc_scp \
+"
