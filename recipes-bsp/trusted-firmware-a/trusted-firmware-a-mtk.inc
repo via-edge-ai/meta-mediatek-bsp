@@ -3,6 +3,8 @@ require recipes-bsp/trusted-firmware-a/trusted-firmware-a.inc
 inherit deploy
 inherit python3native
 
+do_deploy[nostamp] = "1"
+
 # Make sure that bl2 is built and installed before we deploy the fip
 do_deploy[depends] += "virtual/bl2:do_deploy"
 
