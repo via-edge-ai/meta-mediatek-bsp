@@ -16,6 +16,7 @@ SRC_URI:append = " \
 "
 
 # Board specific config fragments
+SRC_URI:append:mt8390-evk = " file://mt8390-evk.cfg "
 SRC_URI:append:mt8195-demo = " file://mt8195-demo.cfg "
 SRC_URI:append:mt8365-evk = " file://mt8365-evk.cfg "
 SRC_URI:append:mt8365-sb35 = " file://mt8365-sb35.cfg "
@@ -39,6 +40,7 @@ SRC_URI:append:mt8195 = " \
 "
 SRC_URI:append:mt8365 = " file://mt8365.cfg "
 SRC_URI:append:mt8516 = " file://mt8516.cfg "
+SRC_URI:append:mt8188 = " file://mt8188.cfg "
 
 # Connectivity config fragments
 SRC_URI:append:mt7663 = " \
