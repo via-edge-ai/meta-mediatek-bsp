@@ -71,6 +71,7 @@ SRC_URI:append:mt8365-evk = " \
 	file://camera-ap1302-ar0430-single-csi0.dts \
 	file://camera-ap1302-ar0430-single-csi1.dts \
 	file://panel-startek-kd070fhfid015.dts \
+	file://video.dts \
 "
 
 SRC_URI:append:mt8365-pumpkin = " \
@@ -104,7 +105,7 @@ SRC_URI:append:mt8516-pumpkin = " \
 
 SRC_URI:append:mt8195-demo = " \
 	file://panel-boe-ne135fbm.dts \
-	file://vcodec-vcu-mt8395.dts \
+	file://video.dts \
 	file://display-dp.dts \
 	file://display-dsi.dts \
 "
