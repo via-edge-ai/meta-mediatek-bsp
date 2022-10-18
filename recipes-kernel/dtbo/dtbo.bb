@@ -108,6 +108,7 @@ SRC_URI:append:mt8195-demo = " \
 	file://video.dts \
 	file://display-dp.dts \
 	file://display-dsi.dts \
+	file://gpu-mali.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
