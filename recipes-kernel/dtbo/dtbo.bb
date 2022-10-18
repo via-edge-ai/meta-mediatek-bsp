@@ -15,6 +15,7 @@ FILESEXTRAPATHS:prepend:mt8365-evk := "${THISDIR}/mt8365-evk:"
 FILESEXTRAPATHS:prepend:mt8365-pumpkin := "${THISDIR}/mt8365-pumpkin:"
 FILESEXTRAPATHS:prepend:mt8365-sb35:= "${THISDIR}/mt8365-sb35:"
 FILESEXTRAPATHS:prepend:mt8195-demo:= "${THISDIR}/mt8195-demo:"
+FILESEXTRAPATHS:prepend:mt8188-evk:= "${THISDIR}/mt8188-evk:"
 
 do_compile[depends] += "virtual/kernel:do_shared_workdir"
 KERNEL_INCLUDE:append = " \
@@ -111,6 +112,9 @@ SRC_URI:append:mt8195-demo = " \
 	file://video.dts \
 	file://display-dp.dts \
 	file://display-dsi.dts \
+	file://gpu-mali.dts \
+"
+SRC_URI:append:mt8188-evk = " \
 	file://gpu-mali.dts \
 "
 
