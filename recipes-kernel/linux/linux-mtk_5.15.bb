@@ -13,9 +13,4 @@ DEPENDS += "rsync-native"
 
 do_install:append() {
 	oe_runmake headers_install INSTALL_HDR_PATH=${STAGING_KERNEL_BUILDDIR}${exec_prefix}
-	# Kernel should not be exporting this header
-	rm -f ${STAGING_KERNEL_BUILDDIR}${exec_prefix}/include/scsi/scsi.h
-
-	# The ..install.cmd conflicts between various configure runs
-	find ${STAGING_KERNEL_BUILDDIR}${includedir} -name ..install.cmd | xargs rm -f
 }
