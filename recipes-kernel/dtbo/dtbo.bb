@@ -112,6 +112,7 @@ SRC_URI:append:mt8195-demo = " \
 	file://video.dts \
 	file://display-dp.dts \
 	file://display-dsi.dts \
+	file://display-edp4k.dts \
 	file://gpu-mali.dts \
 "
 SRC_URI:append:genio-700-evk = " \
