@@ -42,7 +42,10 @@ SRC_URI:append:mt8195 = " \
 "
 SRC_URI:append:mt8365 = " file://mt8365.cfg "
 SRC_URI:append:mt8516 = " file://mt8516.cfg "
-SRC_URI:append:mt8188 = " file://mt8188.cfg "
+SRC_URI:append:mt8188 = " \
+	file://mt8188.cfg \
+	${@bb.utils.contains('MACHINE_FEATURES', 'tsn', 'file://tsn.cfg', '', d)} \
+"
 
 # Connectivity config fragments
 SRC_URI:append:mt7663 = " \
