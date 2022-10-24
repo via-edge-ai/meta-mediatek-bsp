@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: (GPL-2.0 OR MIT)
 /*
  * Copyright (c) 2021 MediaTek Inc.
- * Author: Macross Chen <macross.chen@mediatek.com>
+ * Author: kidd-kw.chen <kidd-kw.chen@mediatek.com>
  */
 
 /dts-v1/;
@@ -13,7 +13,7 @@
 #include <dt-bindings/memory/mediatek,mt8188-memory-port.h>
 
 / {
-	compatible = "mediatek,mt8195";
+	compatible = "mediatek,mt8188";
 
 	fragment@0 {
 		target-path = "/soc";
