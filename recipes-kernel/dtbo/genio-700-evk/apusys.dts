@@ -90,7 +90,7 @@
 				apu_iommu1 = <&apu_iommu1>;
 
 				dma-ranges = <0x0 0x40000000 0x0 0x40000000 0x0 0xc0000000>;
-				/*iommus = <&apu_iommu0 M4U_PORT_L0_APU_CODE>;*/
+				iommus = <&apu_iommu0 M4U_PORT_L0_APU_CODE>;
 
 				interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH 0>,
 						<GIC_SPI 412 IRQ_TYPE_LEVEL_HIGH 0>;
@@ -168,7 +168,7 @@
 				default-dram = <0x0>;
 				dma-ranges = <0x0 0x40000000 0x0 0x40000000 0x0 0xc0000000>;
 				boundary = <0x0>;
-				/*iommus = <&apu_iommu0 M4U_PORT_L0_APU_CODE>;*/
+				iommus = <&apu_iommu0 M4U_PORT_L0_APU_CODE>;
 			};
 
 			apu_top_3: apu_top_3@190f0000 {
@@ -245,7 +245,7 @@
 				kernel-lib = <0x7de00000 0x00500000 0xffffffff>;
 				work-buf = <0x0 0x12000 0xffffffff>;
 				dma-ranges = <0x0 0x70000000 0x0 0x40000000 0x0 0x12600000>;
-				/*iommus = <&apu_iommu0 M4U_PORT_L0_APU_VLM>;*/
+				iommus = <&apu_iommu0 M4U_PORT_L0_APU_VLM>;
 				//#cooling-cells = <2>;
 			};
 			
@@ -254,7 +254,7 @@
 				core_num = <1>;
 				version = <0x81360350>;
 				dma-ranges = <0x0 0x40000000 0x0 0x40000000 0x0 0xc0000000>;
-				/*iommus = <&apu_iommu0 M4U_PORT_L0_APU_CODE>;*/
+				iommus = <&apu_iommu0 M4U_PORT_L0_APU_CODE>;
 			};
 
 			mtk_apu_mem_code: mtk_apu_mem_code {
@@ -262,7 +262,7 @@
 				type = <1>;
 				mask = /bits/ 64 <0x00000003ffffffff>;
 				dma-ranges = <0x0 0x40000000 0x0 0x40000000 0x0 0xc0000000>;
-				/*iommus = <&apu_iommu0 M4U_PORT_L0_APU_CODE>;*/
+				iommus = <&apu_iommu0 M4U_PORT_L0_APU_CODE>;
 			};
 
 			mtk_apu_mem_data: mtk_apu_mem_data {
@@ -270,7 +270,7 @@
 				type = <2>;
 				mask = /bits/ 64 <0x00000003ffffffff>;
 				dma-ranges = <0x1 0x0 0x0 0x40000000 0x3 0x0>;
-				/*iommus = <&apu_iommu0 M4U_PORT_L0_APU_DATA>;*/
+				iommus = <&apu_iommu0 M4U_PORT_L0_APU_DATA>;
 			};
 			
 			opp_table_apu_conn: opp-table-apu-conn {
