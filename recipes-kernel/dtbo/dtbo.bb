@@ -15,7 +15,7 @@ FILESEXTRAPATHS:prepend:mt8365-evk := "${THISDIR}/mt8365-evk:"
 FILESEXTRAPATHS:prepend:mt8365-pumpkin := "${THISDIR}/mt8365-pumpkin:"
 FILESEXTRAPATHS:prepend:mt8365-sb35:= "${THISDIR}/mt8365-sb35:"
 FILESEXTRAPATHS:prepend:mt8195-demo:= "${THISDIR}/mt8195-demo:"
-FILESEXTRAPATHS:prepend:mt8188-evk:= "${THISDIR}/mt8188-evk:"
+FILESEXTRAPATHS:prepend:genio-700-evk:= "${THISDIR}/genio-700-evk:"
 
 do_compile[depends] += "virtual/kernel:do_shared_workdir"
 KERNEL_INCLUDE:append = " \
@@ -114,7 +114,7 @@ SRC_URI:append:mt8195-demo = " \
 	file://display-dsi.dts \
 	file://gpu-mali.dts \
 "
-SRC_URI:append:mt8188-evk = " \
+SRC_URI:append:genio-700-evk = " \
 	file://gpu-mali.dts \
 "
 
