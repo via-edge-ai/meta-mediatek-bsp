@@ -40,4 +40,4 @@ PREFERRED_PROVIDER_virtual/opencl ?= "libmali"
 
 PREFERRED_RPROVIDER_virtual/mdpd ??= "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "mtk-mdpd", "mdp-prebuilt", d)}"
 
-MACHINEOVERRIDES =. "i350:"
+MACHINEOVERRIDES =. "i350:genio-350:"

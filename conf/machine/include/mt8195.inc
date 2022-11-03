@@ -41,4 +41,4 @@ PREFERRED_PROVIDER_virtual/opencl ?= "libmali"
 
 PREFERRED_VERSION_linux-mtk ?= "5.15%"
 
-MACHINEOVERRIDES =. "mt8395:i1200:"
+MACHINEOVERRIDES =. "mt8395:i1200:genio-1200:"
