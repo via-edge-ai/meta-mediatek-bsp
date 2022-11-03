@@ -7,13 +7,13 @@ SECTION = "bootloaders"
 DEPENDS += "flex-native bison-native"
 
 LICENSE = "GPL-2.0-or-later"
-LIC_FILES_CHKSUM = "file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025"
+LIC_FILES_CHKSUM = "file://Licenses/README;md5=2ca5f2c35c8cc335f0a19756634782f1"
 PE = "1"
 
-SRCREV = "9b6d7971a4a404347890e711b17b68f459e88e2e"
-SRC_URI = "${AIOT_BSP_URI}/u-boot.git;branch=mtk-v2022.04;protocol=ssh"
+SRCREV = "f752f8e4f340737030686542e15b5ccce88e4fb2"
+SRC_URI = "${AIOT_BSP_URI}/u-boot.git;branch=mtk-v2022.10;protocol=ssh"
 
-PV = "2022.04+git${SRCPV}"
+PV = "2022.10+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
