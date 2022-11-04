@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 LINUX_VERSION ?= "5.15.37"
 SRCBRANCH ?= "mtk-v5.15-dev"
-SRCREV = "2d1a75fc9aa617a60fd74cc5065261e9fcec67bf"
+SRCREV = "fff4cb7852a5662272158f8635bea51b91fcabba"
 
 DEPENDS += "rsync-native"
 
