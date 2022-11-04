@@ -11,6 +11,11 @@ SRCREV = "2d1a75fc9aa617a60fd74cc5065261e9fcec67bf"
 
 DEPENDS += "rsync-native"
 
+SRC_URI:append:mt8195 = " \
+	file://0001-GENIO-media-i2c-modify-imx214-to-support-extra-exten.patch \
+	file://0002-HACK-GENIO-media-i2c-Replace-mbus_code-to-mtk_mbus_c.patch \
+"
+
 do_install:append() {
 	oe_runmake headers_install INSTALL_HDR_PATH=${STAGING_KERNEL_BUILDDIR}${exec_prefix}
 }
