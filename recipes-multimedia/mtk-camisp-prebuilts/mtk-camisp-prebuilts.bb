@@ -41,6 +41,12 @@ FILES:${PN} += " ${bindir} ${datadir} ${libdir}/*.so "
 FILES:${PN} += " ${systemd_unitdir}/system/camd.service "
 FILES_SOLIBSDEV = ""
 
+RDEPENDS:${PN} = " \
+    gflags \
+    glog \
+    jpeg \
+"
+
 INSANE_SKIP:${PN} += "already-stripped"
 INSANE_SKIP:${PN} += "file-rdeps"
 INSANE_SKIP:${PN} += "ldflags"
