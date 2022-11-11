@@ -110,11 +110,11 @@ SRC_URI:append:mt8195-demo = " \
 	file://display-dp.dts \
 	file://display-dsi.dts \
 	file://display-edp4k.dts \
-	file://gpu-mali.dts \
 	file://isp70.dtsi \
 	file://camera-imx214-csi0.dts \
 	file://mtk-camera.dtsi \
 "
+
 SRC_URI:append:genio-700-evk = " \
 	file://gpu-mali.dts \
 	file://apusys.dts \
