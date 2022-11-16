@@ -221,9 +221,9 @@
 					"apu_acx0",
 					"apu_acx0_rpc_lite";
 				apusys,thermal-zones = "apu";
-				
-				//	vapu-supply = <&mt6359p_vmodem_reg>;
-				//	vsram-supply = <&mt6359p_vsram_md_reg>;
+
+				vapu-supply = <&mt6359_vmodem_buck_reg>;
+				vsram-supply = <&mt6359_vsram_md_ldo_reg>;
 
 				operating-points-v2 = <&opp_table_apu_conn>,
 							  <&opp_table_apu_rv>,
