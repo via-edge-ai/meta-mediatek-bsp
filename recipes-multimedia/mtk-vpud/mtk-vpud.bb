@@ -13,7 +13,7 @@ inherit systemd
 inherit update-rc.d
 
 SRC_URI = "${AIOT_RITY_URI}/vpud.git;protocol=ssh;branch=main"
-SRCREV = "4801474ade40c35b36bb5f64b7ae540161c0105b"
+SRCREV = "fe23b47a3b612d4376c8125fd50c6b9e703b770c"
 
 SRC_URI += " \
 	file://vpud.service \
