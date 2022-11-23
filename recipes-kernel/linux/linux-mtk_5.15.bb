@@ -9,13 +9,7 @@ LINUX_VERSION ?= "5.15.37"
 SRCBRANCH ?= "mtk-v5.15-dev"
 SRCREV = "795e5ed5d350dd5acc0d12ee7c4c7eb9c49c7d53"
 
-DEPENDS += "rsync-native"
-
 SRC_URI:append:mt8195 = " \
 	file://0001-GENIO-media-i2c-modify-imx214-to-support-extra-exten.patch \
 	file://0002-HACK-GENIO-media-i2c-Replace-mbus_code-to-mtk_mbus_c.patch \
 "
-
-do_install:append() {
-	oe_runmake headers_install INSTALL_HDR_PATH=${STAGING_KERNEL_BUILDDIR}${exec_prefix}
-}
