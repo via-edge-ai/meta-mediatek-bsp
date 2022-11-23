@@ -39,6 +39,4 @@ PREFERRED_PROVIDER_virtual/libgles2 ?= "libmali"
 PREFERRED_PROVIDER_virtual/mesa ?= "libmali"
 PREFERRED_PROVIDER_virtual/opencl ?= "libmali"
 
-PREFERRED_VERSION_linux-mtk ?= "5.15%"
-
 MACHINEOVERRIDES =. "mt8390:genio-700:"

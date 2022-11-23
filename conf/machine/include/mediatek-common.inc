@@ -50,7 +50,7 @@ PREFERRED_PROVIDER_virtual/bootloader ?= "u-boot"
 PREFERRED_PROVIDER_virtual/lk ?= "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "lk", "lk-prebuilt", d)}"
 PREFERRED_PROVIDER_virtual/bl2 ?= "bl2"
 
-PREFERRED_VERSION_linux-mtk ??= "5.10%"
+PREFERRED_VERSION_linux-mtk ??= "5.15%"
 
 EXTRA_IMAGEDEPENDS = " \
 	virtual/lk \
