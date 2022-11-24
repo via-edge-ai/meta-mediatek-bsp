@@ -5,4 +5,4 @@ EXTRA_OEMAKE:append:i350-pumpkin = " \
 "
 
 SRC_URI = "${AIOT_BSP_URI}/trusted-firmware-a.git;name=tfa;branch=mtk-v2.6;protocol=ssh"
-SRCREV_tfa = "0a342042617ecfd04c5d8c809461b0e574608fef"
+SRCREV_tfa = "e6c4e0325214f3ff96b568162169605cbe2bb3d3"
