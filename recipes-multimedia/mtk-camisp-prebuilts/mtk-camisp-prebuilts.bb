@@ -9,7 +9,7 @@ inherit update-rc.d
 REQUIRED_DISTRO_FEATURES = "nda-mtk"
 COMPATIBLE_MACHINE = "i1200-demo"
 
-SRCREV = "cae59939ce109a03a529b1e1de6b126f4e83d35e"
+SRCREV = "de492c583d2221b5a3092bc4cbf506e1a1a9c5f2"
 BRANCH = "${DISTRO_CODENAME}"
 
 SRC_URI += "${AIOT_NDA_URI}/mtk-camisp-prebuilts.git;protocol=ssh;branch=${BRANCH} \
