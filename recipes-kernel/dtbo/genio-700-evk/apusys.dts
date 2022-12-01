@@ -248,13 +248,26 @@
 				iommus = <&apu_iommu0 M4U_PORT_L0_APU_VLM>;
 				//#cooling-cells = <2>;
 			};
-			
+
 			mdla: mdla {
 				compatible = "mediatek, mdla-rv";
 				core_num = <1>;
 				version = <0x81360350>;
 				dma-ranges = <0x0 0x40000000 0x0 0x40000000 0x0 0xc0000000>;
 				iommus = <&apu_iommu0 M4U_PORT_L0_APU_CODE>;
+			};
+
+			mdla_devfreq: mdla_devfreq {
+				compatible = "mediatek,mt8188-mdla-devfreq";
+				#cooling-cells = <2>;
+				dynamic-power-coefficient = <1233>;
+				power_table = <667>,
+					      <583>,
+					      <423>,
+					      <296>,
+					      <189>,
+					      <145>,
+					      <92>;
 			};
 
 			mtk_apu_mem_code: mtk_apu_mem_code {
@@ -403,6 +416,35 @@
 					opp-hz = /bits/ 64 <190000000>;
 					opp-microvolt = <550000>;
 				};
+			};
+
+			vpu_devfreq: vpu_devfreq {
+				compatible = "mediatek,mt8188-vpu-devfreq";
+				#cooling-cells = <2>;
+				dynamic-power-coefficient = <808>;
+				power_table = <404>,
+					      <333>,
+					      <248>,
+					      <178>,
+					      <104>,
+					      <73>,
+					      <47>;
+			};
+		};
+	};
+
+	fragment@1 {
+		target-path = "/soc/thermal-zones/soc-max/cooling-maps";
+		__overlay__ {
+			map2 {
+				trip = <&target>;
+				cooling-device = <&mdla_devfreq
+					THERMAL_NO_LIMIT
+					THERMAL_NO_LIMIT>,
+						<&vpu_devfreq
+					THERMAL_NO_LIMIT
+					THERMAL_NO_LIMIT>;
+				contribution = <1024>;
 			};
 		};
 	};
