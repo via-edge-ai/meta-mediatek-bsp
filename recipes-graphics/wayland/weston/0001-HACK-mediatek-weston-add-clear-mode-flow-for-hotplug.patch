@@ -49,7 +49,7 @@ index 4278770..abc2550 100644
 +			if (!head->base.connected) {
 +				struct weston_head *w_head = &head->base;
 +				struct drm_output *output = to_drm_output(w_head->output);
-+				if (!atomic_clear_mode(output))
++				if (output && !atomic_clear_mode(output))
 +					weston_log("atomic_clear_mode ok\n");
 +			}
 +		}
