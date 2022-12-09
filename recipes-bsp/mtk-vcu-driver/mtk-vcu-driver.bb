@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=16de935ebcebe2420535844d4f6faefc"
 
 inherit module
 
-SRCREV:mt8195 = "e6678256b3fed8a0b227c8c27514aae46ef8c34b"
+SRCREV:mt8195 = "e0aa125741bbc61a4027081e6f948c8ff34044fd"
 BRANCH:mt8195 = "mt8395"
 TAR_PLATFORM:mt8195 = "mt8395"
 REF_SYMBOLS_PATH:mt8195 = "${B}/mtk-vcodec-driver/Module.symvers"
