@@ -20,12 +20,12 @@ MACHINE_FEATURES:append = " ${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "
 DISTRO_FEATURES:remove = " x11 "
 
 # Mali
-KERNEL_MODULE_AUTOLOAD += "dma-buf-test-exporter"
 MALI_SOC = "mt8195"
-MALI_VERSION ??= "r32p0"
+MALI_VERSION ??= "41"
 
 MACHINE_EXTRA_RRECOMMENDS:append = " \
 	${@bb.utils.contains_any('DISTRO_FEATURES', 'opengl vulkan', 'libmali', '', d)} \
+	mali-gpu-driver \
 	linux-firmware-mt8195-scp \
 	${@bb.utils.contains("MACHINE_FEATURES", "optee-efuse", "optee-ewriter", "", d)} \
 "
