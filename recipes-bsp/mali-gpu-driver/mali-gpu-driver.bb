@@ -5,15 +5,15 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=16de935ebcebe2420535844d4f6faefc"
 
 inherit module
 
-SRCREV = "9a60908c3832c23320ec109fb1f2d76477d76a0d"
+SRCREV = "1bc38d13e250507f22ce1b1928fb01c9b50ed779"
 
-BRANCH = "master"
-
+BRANCH = "r${MALI_VERSION}p0"
 SRC_URI += "${AIOT_BSP_URI}/mtk-mali-gpu-driver.git;protocol=https;branch=${BRANCH} \
 "
 
-
 S = "${WORKDIR}/git"
+
+MODULES_MODULE_SYMVERS_LOCATION = "drivers/gpu/arm/midgard"
 
 # The inherit of module.bbclass will automatically name module packages with
 # "kernel-module-" prefix as required by the oe-core build environment.
