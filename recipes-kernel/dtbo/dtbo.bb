@@ -73,6 +73,7 @@ SRC_URI:append:mt8365-evk = " \
 	file://camera-ap1302-ar0430-single-csi1.dts \
 	file://panel-startek-kd070fhfid015.dts \
 	file://video.dts \
+	file://gpu-mali.dts \
 "
 
 SRC_URI:append:mt8365-pumpkin = " \
@@ -93,10 +94,12 @@ SRC_URI:append:mt8365-pumpkin = " \
         file://camera-ap1302-ar0330-dual-ar0430-dual.dts \
         file://camera-ap1302-ar0330-single-ar0430-dual.dts \
         file://camera-ap1302-ar0330-single-ar0430-single.dts \
+        file://gpu-mali.dts \
 "
 
 SRC_URI:append:mt8365-sb35 = " \
 	file://panel-raspberrypi.dts \
+	file://gpu-mali.dts \
 "
 
 SRC_URI:append:mt8516-pumpkin = " \
