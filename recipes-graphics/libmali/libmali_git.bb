@@ -38,17 +38,25 @@ S = "${WORKDIR}/git"
 
 BRANCH = "${DISTRO_CODENAME}"
 SRC_URI = "${AIOT_RITY_URI}/libmali.git;protocol=ssh;branch=${BRANCH}"
-SRCREV = "ee316b896962eb2c317e4b043b2b862b389646e6"
+SRCREV = "a28c9f6ddd98334748ac44b299bff9c9b9240476"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-# default GPU don't need firmware. Handle firmware installation for specific platforms.
-FIRMWARE_REQUIRE = "${@bb.utils.contains_any('MALI_SOC', 'mt8188', '1', '0', d)}"
+# Additional install firmware: not all GPU have firmware, only install firmware in specific GPU
+REQUIRE_FIRMWARE:mt8188 = "1"
+REQUIRE_FIRMWARE:mt8195 = "0"
+REQUIRE_FIRMWARE:mt8365 = "0"
+REQUIRE_FIRMWARE:mt8183 = "0"
+
+# Additional install vulkan override layer: only support it after version r41
+REQUIRE_VKLAYER = "${@bb.utils.vercmp_string('${MALI_VERSION}', '41')}"
+
 
 EXTRA_OEMAKE = ' \
 	SOC=${MALI_SOC} \
-	MALI_VERSION=${MALI_VERSION} \
-	FIRMWARE_INSTALL=${FIRMWARE_REQUIRE} \
+	MALI_VERSION="r${MALI_VERSION}p0" \
+	INSTALL_FIRMWARE=${REQUIRE_FIRMWARE} \
+	INSTALL_VKLAYER=${REQUIRE_VKLAYER} \
 '
 
 do_configure[noexec] = "1"
@@ -56,7 +64,7 @@ do_buildclean[noexec] = "1"
 do_package_qa[noexec] = "1"
 
 do_install() {
-	if [ ${FIRMWARE_REQUIRE} = 1 ]; then
+	if [ ${REQUIRE_FIRMWARE} = 1 ]; then
 		bbplain "${MALI_SOC} requires gpu firmware"
 		install -d ${D}/${nonarch_base_libdir}
 		install -d ${D}/${nonarch_base_libdir}/firmware
@@ -74,9 +82,11 @@ do_install() {
 
 FILES:${PN} = " \
 	${libdir}/*.so* \
-    ${datadir}/vulkan/icd.d/mali.json \
 	${sysconfdir}/OpenCL/vendors/libmali.icd \
-	${@bb.utils.contains('FIRMWARE_REQUIRE', '1', '${nonarch_base_libdir}/firmware/*', '', d)} \
+    ${datadir}/vulkan/icd.d/mali.json \
+	${@bb.utils.contains_any('REQUIRE_VKLAYER',  '1 0', '${datadir}/vulkan/implicit_layer.d/VkLayer_window_system_integration.json', '', d)} \
+	${@bb.utils.contains_any('REQUIRE_VKLAYER',  '1 0', '${datadir}/vulkan/implicit_layer.d/libVkLayer_window_system_integration.so', '', d)} \
+	${@bb.utils.contains_any('REQUIRE_FIRMWARE', '1 0', '${nonarch_base_libdir}/firmware/*', '', d)} \
 "
 FILES:${PN}-dev = "${libdir}/pkgconfig/*.pc \
                    ${datadir}/pkgconfig/*.pc \
