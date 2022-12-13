@@ -14,7 +14,7 @@ EXTRA_OEMESON:append = " -Dboard=${LIBDRAM_BOARD_NAME}"
 S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_NDA_URI}/libdram.git;protocol=ssh;branch=main"
-SRCREV = "06b2ceb8291465d6ceb0c445e973d5caf7fe43fd"
+SRCREV = "544881849e507e91c55ab760b99b589989d6a305"
 
 FULL_OPTIMIZATION = "-Os"
 SECURITY_CFLAGS = ""
