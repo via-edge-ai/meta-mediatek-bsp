@@ -116,6 +116,7 @@ SRC_URI:append:mt8195-demo = " \
 "
 
 SRC_URI:append:genio-700-evk = " \
+	file://apusys.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
