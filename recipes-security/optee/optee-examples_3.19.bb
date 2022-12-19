@@ -3,5 +3,7 @@
 
 require recipes-security/optee/optee-examples.inc
 
-SRCREV = "65fc74309e12189ad5b6ce3ffec37c8011088a5a"
+SRC_URI = "git://github.com/linaro-swg/optee_examples.git;branch=master;protocol=https"
+SRCREV = "f301ee9df2129c0db683e726c91dc2cefe4cdb65"
+
 COMPATIBLE_MACHINE = "mt*"

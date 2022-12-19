@@ -3,5 +3,5 @@
 
 require recipes-security/optee/optee-test.inc
 
-SRCREV = "1cf0e6d2bdd1145370033d4e182634458528579d"
+SRCREV = "ab9863cc187724e54c032b738c28bd6e9460a4db"
 COMPATIBLE_MACHINE = "mt*"

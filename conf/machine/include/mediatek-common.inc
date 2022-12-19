@@ -15,11 +15,11 @@ UBOOT_SIGN_ENABLE = "1"
 
 # OP-TEE OS
 PREFERRED_PROVIDER_virtual/optee-os ?= "optee-os"
-PREFERRED_VERSION_optee-client ?= "3.16"
-PREFERRED_VERSION_optee-examples ?= "3.16"
-PREFERRED_VERSION_optee-os ?= "3.16"
-PREFERRED_VERSION_optee-os-tadevkit ?= "3.16"
-PREFERRED_VERSION_optee-test ?= "3.16"
+PREFERRED_VERSION_optee-client ?= "3.19"
+PREFERRED_VERSION_optee-examples ?= "3.19"
+PREFERRED_VERSION_optee-os ?= "3.19"
+PREFERRED_VERSION_optee-os-tadevkit ?= "3.19"
+PREFERRED_VERSION_optee-test ?= "3.19"
 OPTEE_TZDRAM_START ?= "0x43200000"
 OPTEE_TZDRAM_SIZE  ?= "0x00a00000"
 

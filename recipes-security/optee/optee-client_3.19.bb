@@ -3,8 +3,14 @@
 
 require recipes-security/optee/optee-client.inc
 
-SRCREV = "06db73b3f3fdb8d23eceaedbc46c49c0b45fd1e2"
+SRCREV = "140bf463046071d3ca5ebbde3fb21ee0854e1951"
 COMPATIBLE_MACHINE = "mt*"
+
+SRC_URI += " \
+    file://0001-libteeacl-condition-libteeacl-with-WITH_TEEACL.patch \
+"
+
+OPTEE_WITH_TEEACL ??= "0"
 
 EXTRA_OECMAKE:append = " -DCFG_TEE_PLUGIN_LOAD_PATH=${libdir}/tee-supplicant/plugins/"
 
@@ -13,3 +19,7 @@ PACKAGECONFIG ??= " \
 "
 
 PACKAGECONFIG[rpmb] = "-DRPMB_EMU=0, -DRPMB_EMU=1"
+
+EXTRA_OECMAKE += " \
+    -DWITH_TEEACL=${OPTEE_WITH_TEEACL} \
+"
