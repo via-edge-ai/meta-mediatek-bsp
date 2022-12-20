@@ -123,6 +123,7 @@ SRC_URI:append:genio-700-evk = " \
 	file://apusys.dts \
 	file://gpu-mali.dts \
 	file://display-edp.dts \
+	file://display-dp.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
