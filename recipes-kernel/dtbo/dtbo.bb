@@ -132,6 +132,7 @@ SRC_URI:append:mt8395 = " \
 
 SRC_URI:append:mt8390 = " \
 	file://gpu-mali.dts \
+	file://video.dts \
 "
 
 SRC_URI:append:mt8365 = " \
