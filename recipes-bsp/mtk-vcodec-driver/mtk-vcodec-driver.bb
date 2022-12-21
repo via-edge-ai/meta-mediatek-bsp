@@ -4,11 +4,19 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=16de935ebcebe2420535844d4f6faefc"
 
 inherit module
 
+# MT8195: co-branch with mt8395
 SRCREV:mt8195 = "4b7e9dbfb7555f07c08071c1b146d5a33dff68c5"
 BRANCH:mt8195 = "mt8395"
 TAR_PLATFORM:mt8195 = "mt8395"
 REF_SYMBOLS_PATH:mt8195 = ""
 
+# MT8188: co-branch with mt8395
+SRCREV:mt8188 = "4b7e9dbfb7555f07c08071c1b146d5a33dff68c5"
+BRANCH:mt8188 = "mt8395"
+TAR_PLATFORM:mt8188 = "mt8188"
+REF_SYMBOLS_PATH:mt8188 = ""
+
+# MT8365: co-branch with mt8167
 SRCREV:mt8365 = "6bb78027fbcae6d38bebbf5b885faa88a28728d5"
 BRANCH:mt8365 = "mt8167"
 TAR_PLATFORM:mt8365 = "mt8167"
