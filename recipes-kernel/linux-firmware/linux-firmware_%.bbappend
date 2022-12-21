@@ -1,3 +1,16 @@
+# scp image for FROMLIST MDP3 driver
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+
+SRC_URI += " \
+	file://mt8195/scp.img \
+"
+
+do_install:append() {
+	install -d ${D}/${nonarch_base_libdir}/firmware/mediatek/mt8195
+	install -m 0644 ${WORKDIR}/mt8195/scp.img ${D}/${nonarch_base_libdir}/firmware/mediatek/mt8195
+}
+
+# packages for image installation
 FILES:${PN}-mt8183-scp = "${nonarch_base_libdir}/firmware/mediatek/mt8183/scp.img"
 FILES:${PN}-mt8195-scp = "${nonarch_base_libdir}/firmware/mediatek/mt8195/scp.img"
 FILES:${PN}-mt7668 = "${nonarch_base_libdir}/firmware/mediatek/mt7668pr2h.bin"
