@@ -1,4 +1,4 @@
-state.mtsndcard {
+state.mt8365evk {
 	control.1 {
 		iface MIXER
 		name 'O00 I05 Switch'
