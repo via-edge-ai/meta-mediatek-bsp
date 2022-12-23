@@ -16,11 +16,23 @@
 		};
 	};
 
-
 	fragment@2 {
 		target = <&dp_tx>;
 		__overlay__ {
 			status = "okay";
+		};
+	};
+
+	fragment@3 {
+		target = <&sound>;
+		__overlay__ {
+			dai-link-1 {
+				dai-link-name = "DPTX_BE";
+
+				codec-0 {
+					sound-dai = <&dp_tx>;
+				};
+			};
 		};
 	};
 };
