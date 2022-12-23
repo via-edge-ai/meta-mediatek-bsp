@@ -124,6 +124,8 @@ SRC_URI:append:genio-700-evk = " \
 	file://gpu-mali.dts \
 	file://display-edp.dts \
 	file://display-dp.dts \
+	file://display-hdmidp.dts \
+	file://display-dsiedp.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
