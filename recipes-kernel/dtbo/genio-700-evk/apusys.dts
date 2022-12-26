@@ -19,30 +19,10 @@
 
 / {
 	compatible = "mediatek,MT8188";
- 
+
 	fragment@0 {
 		target-path = "/soc";
 		__overlay__ {
-			reserved_memory: reserved-memory {
-				#address-cells = <2>;
-				#size-cells = <2>;
-				ranges;
-
-				apu_reserve_memory: apu_reserve_memory{
-					compatible = "mediatek,apu-reserve-memory";
-					size = <0 0x1400000>; //20 MB
-					alignment = <0 0x10000>;
-					reg = <0 0x50000000 0 0x1400000>;
-				};
-
-				vpu_reserve_memory: vpu_reserve_memory {
-					compatible = "mediatek,vpu_reserve_memory";
-					size = <0 0x1400000>; //20 MB
-					alignment = <0 0x10000>;
-					reg = <0 0x52000000 0 0x1400000>;
-				};
-			};
-			
 			apu_iommu0: apu_iommu@19010000 {
 				compatible = "mediatek,mt8188-iommu-apu";
 				reg = <0 0x19010000 0 0x1000>;
