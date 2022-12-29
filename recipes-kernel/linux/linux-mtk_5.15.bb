@@ -9,7 +9,3 @@ LINUX_VERSION ?= "5.15.37"
 SRCBRANCH ?= "mtk-v5.15-dev"
 SRCREV = "c2d9469f85bfe6db180ba067e5362d2e72473f83"
 
-SRC_URI:append:mt8195 = " \
-	file://0001-GENIO-media-i2c-modify-imx214-to-support-extra-exten.patch \
-	file://0002-HACK-GENIO-media-i2c-Replace-mbus_code-to-mtk_mbus_c.patch \
-"
