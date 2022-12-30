@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 LINUX_VERSION ?= "5.15.37"
 SRCBRANCH ?= "mtk-v5.15-dev"
-SRCREV = "b36df68bfc41a4180b9a0b620c8d7b64b6ce2d4e"
+SRCREV = "a08e04fd1c2fb3aff01c459809dc17871bcf6a17"
 
 SRC_URI:append:mt8195 = " \
 	file://0001-GENIO-media-i2c-modify-imx214-to-support-extra-exten.patch \
