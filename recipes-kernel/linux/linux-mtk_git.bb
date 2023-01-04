@@ -15,6 +15,6 @@ SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;prot
 LINUX_VERSION ?= "6.0.0"
 SRCBRANCH ?= "master"
 
-# 6.0
-SRCREV ?= "4fe89d07dcc2804c8b562f6c7896a45643d34b2f"
+# 6.2-rc1
+SRCREV ?= "1b929c02afd37871d5afb9d498426f83432e71c2"
 KERNEL_VERSION_SANITY_SKIP="1"
