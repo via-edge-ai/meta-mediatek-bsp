@@ -12,9 +12,9 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 SRC_URI:remove = "${AIOT_BSP_URI}/linux.git;protocol=ssh;branch=${SRCBRANCH}"
 SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;protocol=https;branch=${SRCBRANCH}"
 
-LINUX_VERSION ?= "6.0.0"
+LINUX_VERSION ?= "6.2.0"
 SRCBRANCH ?= "master"
 
-# 6.2-rc1
-SRCREV ?= "1b929c02afd37871d5afb9d498426f83432e71c2"
+# 6.2-rc2
+SRCREV ?= "e4ef62bcce9737cf3a2bb1b797b64dc25cbbfbb4"
 KERNEL_VERSION_SANITY_SKIP="1"
