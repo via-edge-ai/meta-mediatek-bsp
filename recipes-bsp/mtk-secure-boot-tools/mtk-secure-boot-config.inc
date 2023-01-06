@@ -7,7 +7,7 @@ SRC_URI:append = " \
     file://da.pem \
 "
 
-COMPATIBLE_MACHINE = "i350-sb35|i350-evk|i500-pumpkin|i1200-demo|genio-700-evk"
+COMPATIBLE_MACHINE = "mt8365|mt8183|mt8395|mt8390"
 
 DEFAULT_EFUSE_KEY = "${WORKDIR}/efuse.pem"
 DEFAULT_DA_KEY = "${WORKDIR}/da.pem"
@@ -18,11 +18,10 @@ DA_KEY ?= "${@oe.utils.conditional('DA_SIGN_ENABLE', '1', '${DEFAULT_DA_KEY}', '
 
 EXTRA_OEMAKE = "OUTDIR=${WORKDIR}/ SBC_KEY=${SBC_KEY} DA_KEY=${DA_KEY}"
 EXTRA_OEMAKE:append = " EFUSE_KEY=${EFUSE_KEY} EFUSE_KEY1=${EFUSE_KEY1} EFUSE_KEY2=${EFUSE_KEY2} EFUSE_KEY3=${EFUSE_KEY3}"
-EXTRA_OEMAKE:append:i500-pumpkin = " PLATFORM=i500_pumpkin"
-EXTRA_OEMAKE:append:i350-sb35 = " PLATFORM=i350_sb35"
-EXTRA_OEMAKE:append:i350-evk = " PLATFORM=i350_sb35"
-EXTRA_OEMAKE:append:i1200-demo = " PLATFORM=i1200_demo"
-EXTRA_OEMAKE:append:genio-700-evk = " PLATFORM=genio_700_evk"
+EXTRA_OEMAKE:append:mt8183 = " PLATFORM=mt8183"
+EXTRA_OEMAKE:append:mt8365 = " PLATFORM=mt8365"
+EXTRA_OEMAKE:append:mt8395 = " PLATFORM=mt8395"
+EXTRA_OEMAKE:append:mt8390 = " PLATFORM=mt8390"
 
 DEPENDS:append = " openssl-native util-linux-native"
 

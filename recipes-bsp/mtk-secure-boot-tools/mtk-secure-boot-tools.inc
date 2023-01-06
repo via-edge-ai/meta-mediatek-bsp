@@ -1,6 +1,6 @@
 LICENSE="CLOSED"
 
 SRC_URI = "${AIOT_NDA_URI}/mtk-secure-boot-tools.git;branch=python3;protocol=ssh"
-SRCREV = "3c6d17554f7ae445a9709597bf010759d75edabe"
+SRCREV = "d9b53ef6b36ceeb7189ef41c72352a2dbdb1ee78"
 
 S = "${WORKDIR}/git"
