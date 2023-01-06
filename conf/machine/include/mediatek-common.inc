@@ -78,7 +78,12 @@ BL2_SIGN_ENABLE ??= "0"
 DA_SIGN_ENABLE ??= "0"
 
 # Set this to generate the secure package required to enable secure boot
-SECURE_ZIP_ENABLE ??= "0"
+SECURE_ZIP_ENABLE ?= "${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "1", "0", d)}"
+FIT_SIGN_INDIVIDUAL ?= "${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "1", "0", d)}"
+FIT_GENERATE_KEYS ?= "${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "1", "0", d)}"
+UBOOT_SIGN_KEYDIR ?= "${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "${DEPLOY_DIR_IMAGE}/secure", "", d)}"
+UBOOT_SIGN_KEYNAME ?= "${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "u-boot", "", d)}"
+UBOOT_SIGN_IMG_KEYNAME ?= "${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "u-boot-img", "", d)}"
 
 IMAGE_CLASSES:append = "${@oe.utils.conditional('SECURE_ZIP_ENABLE', '1', ' image_type_secure_package', '', d)}"
 IMAGE_FSTYPES:append = "${@oe.utils.conditional('SECURE_ZIP_ENABLE', '1', ' secure.zip', '', d)}"
