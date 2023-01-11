@@ -109,7 +109,6 @@ SRC_URI:append:mt8516-pumpkin = " \
 
 SRC_URI:append:mt8195-demo = " \
 	file://panel-boe-ne135fbm.dts \
-	file://video.dts \
 	file://display-dp.dts \
 	file://display-dsi.dts \
 	file://display-edp4k.dts \
@@ -128,6 +127,7 @@ SRC_URI:append:genio-700-evk = " \
 
 SRC_URI:append:mt8395 = " \
 	file://gpu-mali.dts \
+	file://video.dts \
 "
 
 SRC_URI:append:mt8390 = " \
