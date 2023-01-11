@@ -16,6 +16,7 @@ FILESEXTRAPATHS:prepend:mt8365-pumpkin := "${THISDIR}/mt8365-pumpkin:"
 FILESEXTRAPATHS:prepend:mt8365-sb35:= "${THISDIR}/mt8365-sb35:"
 FILESEXTRAPATHS:prepend:mt8365:= "${THISDIR}/mt8365:"
 FILESEXTRAPATHS:prepend:mt8195-demo:= "${THISDIR}/mt8195-demo:"
+FILESEXTRAPATHS:prepend:mt8395:= "${THISDIR}/mt8395:"
 FILESEXTRAPATHS:prepend:genio-700-evk:= "${THISDIR}/genio-700-evk:"
 FILESEXTRAPATHS:prepend:mt8390:= "${THISDIR}/mt8390:"
 
@@ -115,7 +116,6 @@ SRC_URI:append:mt8195-demo = " \
 	file://isp70.dtsi \
 	file://camera-imx214-csi0.dts \
 	file://mtk-camera.dtsi \
-	file://gpu-mali.dts \
 "
 
 SRC_URI:append:genio-700-evk = " \
@@ -124,6 +124,10 @@ SRC_URI:append:genio-700-evk = " \
 	file://display-dp.dts \
 	file://display-hdmidp.dts \
 	file://display-dsiedp.dts \
+"
+
+SRC_URI:append:mt8395 = " \
+	file://gpu-mali.dts \
 "
 
 SRC_URI:append:mt8390 = " \
