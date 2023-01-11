@@ -144,6 +144,7 @@ SRC_URI:append:genio-1200-evk = " \
 	file://display-edp2lvds.dts \
 	file://display-dp.dts \
 	file://display-hdmidp.dts \
+	file://display-dsilvds.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
