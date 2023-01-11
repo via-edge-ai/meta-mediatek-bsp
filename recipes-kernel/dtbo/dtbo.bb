@@ -143,6 +143,7 @@ SRC_URI:append:mt8365 = " \
 SRC_URI:append:genio-1200-evk = " \
 	file://display-edp2lvds.dts \
 	file://display-dp.dts \
+	file://display-hdmidp.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
