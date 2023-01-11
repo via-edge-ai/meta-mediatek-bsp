@@ -49,8 +49,8 @@ REQUIRE_FIRMWARE:mt8195 = "0"
 REQUIRE_FIRMWARE:mt8365 = "0"
 REQUIRE_FIRMWARE:mt8183 = "0"
 
-# Additional install vulkan override layer: only support it after version r41
-REQUIRE_VKLAYER = "${@bb.utils.vercmp_string('${MALI_VERSION}', '41')}"
+# Additional install vulkan override layer: only support it since version r36
+REQUIRE_VKLAYER = "${@bb.utils.vercmp_string('${MALI_VERSION}', '35')}"
 
 
 EXTRA_OEMAKE = ' \
@@ -85,9 +85,9 @@ FILES:${PN} = " \
 	${libdir}/*.so* \
 	${sysconfdir}/OpenCL/vendors/libmali.icd \
     ${datadir}/vulkan/icd.d/mali.json \
-	${@bb.utils.contains_any('REQUIRE_VKLAYER',  '1 0', '${datadir}/vulkan/implicit_layer.d/VkLayer_window_system_integration.json', '', d)} \
-	${@bb.utils.contains_any('REQUIRE_VKLAYER',  '1 0', '${datadir}/vulkan/implicit_layer.d/libVkLayer_window_system_integration.so', '', d)} \
-	${@bb.utils.contains_any('REQUIRE_FIRMWARE', '1 0', '${nonarch_base_libdir}/firmware/*', '', d)} \
+	${@bb.utils.contains('REQUIRE_VKLAYER',  '1', '${datadir}/vulkan/implicit_layer.d/VkLayer_window_system_integration.json', '', d)} \
+	${@bb.utils.contains('REQUIRE_VKLAYER',  '1', '${datadir}/vulkan/implicit_layer.d/libVkLayer_window_system_integration.so', '', d)} \
+	${@bb.utils.contains('REQUIRE_FIRMWARE', '1', '${nonarch_base_libdir}/firmware/*', '', d)} \
 "
 FILES:${PN}-dev = "${libdir}/pkgconfig/*.pc \
                    ${datadir}/pkgconfig/*.pc \
