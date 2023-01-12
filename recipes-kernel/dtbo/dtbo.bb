@@ -75,7 +75,6 @@ SRC_URI:append:mt8365-evk = " \
 	file://camera-ap1302-ar0430-single-csi0.dts \
 	file://camera-ap1302-ar0430-single-csi1.dts \
 	file://panel-startek-kd070fhfid015.dts \
-	file://video.dts \
 "
 
 SRC_URI:append:mt8365-pumpkin = " \
@@ -137,6 +136,7 @@ SRC_URI:append:mt8390 = " \
 
 SRC_URI:append:mt8365 = " \
 	file://gpu-mali.dts \
+	file://video.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
