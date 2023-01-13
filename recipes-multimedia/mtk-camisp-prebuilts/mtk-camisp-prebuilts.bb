@@ -9,7 +9,7 @@ inherit update-rc.d
 REQUIRED_DISTRO_FEATURES = "nda-mtk"
 COMPATIBLE_MACHINE = "mt8395"
 
-SRCREV = "f01f15bc61fbb59370a4d100329309232a4c0388"
+SRCREV = "da5d6273d1c8a1f53a7c604602152403c4152bd1"
 BRANCH = "${DISTRO_CODENAME}"
 
 SRC_URI += "${AIOT_NDA_URI}/mtk-camisp-prebuilts.git;protocol=ssh;branch=${BRANCH} \
