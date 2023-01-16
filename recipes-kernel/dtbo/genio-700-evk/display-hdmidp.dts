@@ -22,5 +22,19 @@
 			status = "okay";
 		};
 	};
+
+	fragment@3 {
+		target = <&sound>;
+		__overlay__ {
+			dai-link-2 {
+				sound-dai = <&afe>;
+				dai-link-name = "DPTX_BE";
+
+				codec-0 {
+					sound-dai = <&dp_tx>;
+				};
+			};
+		};
+	};
 };
 
