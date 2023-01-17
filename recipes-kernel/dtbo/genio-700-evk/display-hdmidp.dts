@@ -26,13 +26,12 @@
 	fragment@3 {
 		target = <&sound>;
 		__overlay__ {
-			dai-link-2 {
-				sound-dai = <&afe>;
-				dai-link-name = "DPTX_BE";
+			dai-link-1 { /* HDMI */
+				status = "okay";
+			};
 
-				codec-0 {
-					sound-dai = <&dp_tx>;
-				};
+			dai-link-2 { /* DPTX */
+				status = "okay";
 			};
 		};
 	};
