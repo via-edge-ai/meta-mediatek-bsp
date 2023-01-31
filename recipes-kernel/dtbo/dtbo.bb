@@ -127,6 +127,7 @@ SRC_URI:append:genio-700-evk = " \
 SRC_URI:append:mt8395 = " \
 	file://gpu-mali.dts \
 	file://video.dts \
+	file://apusys.dts \
 "
 
 SRC_URI:append:mt8390 = " \
