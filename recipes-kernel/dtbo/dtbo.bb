@@ -148,6 +148,8 @@ SRC_URI:append:genio-1200-evk = " \
 	file://isp70.dtsi \
 	file://mtk-camera.dtsi \
 	file://camera-imx214-csi0.dts \
+	file://camera-imx214-csi1.dts \
+	file://camera-imx214-csi2.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
