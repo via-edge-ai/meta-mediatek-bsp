@@ -12,6 +12,7 @@ B = "${WORKDIR}/git"
 SRC_URI = "${AIOT_NDA_URI}/mdpd.git;protocol=ssh;branch=main"
 SRCREV = "fccfeca906ec2c37577cebdb5b434e702736004b"
 
+DEBUG_BUILD = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 
 EXTRA_OEMAKE = " mdpd "
