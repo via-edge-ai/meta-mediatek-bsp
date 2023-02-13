@@ -145,6 +145,8 @@ SRC_URI:append:genio-1200-evk = " \
 	file://display-dp.dts \
 	file://display-hdmidp.dts \
 	file://display-dsilvds.dts \
+	file://display-edp.dts \
+	file://display-dsiedp.dts \
 	file://isp70.dtsi \
 	file://mtk-camera.dtsi \
 	file://camera-imx214-csi0.dts \
