@@ -13,7 +13,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=ba5e70cccfd7c167a0ace6a1eb1d5457 \
                     file://LICENSE.aiot;md5=6fcd7dfec853b4eca3b44877b51c0943 "
 
 SRC_URI = "${AIOT_NDA_URI}/lk.git;protocol=ssh;branch=main"
-SRCREV = "25f7fe7ba82e577562e756497051eee80eee3ea2"
+SRCREV = "83fb36de38b2f47a5e360c1dab41eeb84fe26a27"
 
 EXTRA_OEMAKE += "LIBDRAM=${STAGING_DIR_TARGET}/${libdir}/libdram-lk.a"
 EXTRA_OEMAKE += "LIBBASE=${STAGING_DIR_TARGET}/${libdir}/libbase-lk.a"
