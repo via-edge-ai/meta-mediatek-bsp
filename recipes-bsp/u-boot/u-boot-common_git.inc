@@ -10,7 +10,7 @@ LICENSE = "GPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://Licenses/README;md5=2ca5f2c35c8cc335f0a19756634782f1"
 PE = "1"
 
-SRCREV = "c7473667f98822fa7b8e9b696190ac13307959f5"
+SRCREV = "c1cc59967d0132043664fd685eccb96095e04b33"
 SRC_URI = "${AIOT_BSP_URI}/u-boot.git;branch=mtk-v2022.10;protocol=ssh"
 
 PV = "2022.10+git${SRCPV}"
