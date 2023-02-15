@@ -7,7 +7,7 @@ inherit systemd
 inherit update-rc.d
 
 REQUIRED_DISTRO_FEATURES = "nda-mtk"
-COMPATIBLE_MACHINE = "mt8395"
+COMPATIBLE_MACHINE = "mt8395|mt8390"
 
 SRCREV = "6589efde84c4ca9968a0b563ec615fc7f997fbe3"
 BRANCH = "${DISTRO_CODENAME}"
