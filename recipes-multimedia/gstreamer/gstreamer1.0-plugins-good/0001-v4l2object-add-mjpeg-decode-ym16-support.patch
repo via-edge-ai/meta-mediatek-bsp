@@ -1,14 +1,15 @@
-From 81148f3cf78c7cf37b1bb2369dee16330f3e3b12 Mon Sep 17 00:00:00 2001
+From 79738989907c493ecb0028be41ce667349665f3c Mon Sep 17 00:00:00 2001
 From: "Wanli.Zhang" <wanli.zhang@mediatek.com>
 Date: Mon, 9 Jan 2023 17:50:17 +0800
-Subject: [PATCH] v4l2object-add-mjpeg-decode-ym16-support
+Subject: [PATCH 1/2] v4l2object-add-mjpeg-decode-ym16-support
 
+%% original patch: 0002-v4l2object-add-mjpeg-decode-ym16-support.patch
 ---
  sys/v4l2/gstv4l2object.c | 9 +++++++++
  1 file changed, 9 insertions(+)
 
 diff --git a/sys/v4l2/gstv4l2object.c b/sys/v4l2/gstv4l2object.c
-index 4d0d0a4..14edb74 100644
+index d9f8061..5aa8820 100644
 --- a/sys/v4l2/gstv4l2object.c
 +++ b/sys/v4l2/gstv4l2object.c
 @@ -143,6 +143,7 @@ static const GstV4L2FormatDesc gst_v4l2_formats[] = {
