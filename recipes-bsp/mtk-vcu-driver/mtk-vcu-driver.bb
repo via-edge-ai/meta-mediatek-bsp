@@ -17,7 +17,7 @@ TAR_PLATFORM:mt8188 = "mt8188"
 REF_SYMBOLS_PATH:mt8188 = "${B}/mtk-vcodec-driver/Module.symvers"
 
 # MT8365: co-branch with mt8167
-SRCREV:mt8365 = "b538fdffefeb19e8ee238cc75e6704e2ec2de5ad"
+SRCREV:mt8365 = "737b2f4a50f6d9ddf6e74e2527f98624e6b9f600"
 BRANCH:mt8365 = "mt8167"
 TAR_PLATFORM:mt8365 = "mt8167"
 REF_SYMBOLS_PATH:mt8365 = ""
