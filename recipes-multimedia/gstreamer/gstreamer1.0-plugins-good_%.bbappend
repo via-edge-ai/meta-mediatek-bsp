@@ -7,4 +7,5 @@ SRC_URI += " \
 	file://MM21-0010-doc-Add-NV12_16L32S-into-the-cache.patch \
 	file://0001-v4l2object-add-mjpeg-decode-ym16-support.patch \
 	file://0001-v4l2object-add-colorimetry-extensions-for-better-com.patch \
+	file://0001-v4l2object-Adjust-ENCODED_BUFFER_SIZE-for-4K-video.patch \
 "
