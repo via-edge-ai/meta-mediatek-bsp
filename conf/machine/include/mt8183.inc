@@ -22,7 +22,7 @@ DISTRO_FEATURES:remove = " x11 "
 # Mali
 KERNEL_MODULE_AUTOLOAD += "dma-buf-test-exporter"
 MALI_SOC = "mt8183"
-MALI_VERSION ??= "r32p0"
+MALI_VERSION ??= "32"
 
 MACHINE_EXTRA_RRECOMMENDS:append = " \
 	${@bb.utils.contains_any('DISTRO_FEATURES', 'opengl vulkan', 'libmali', '', d)} \
