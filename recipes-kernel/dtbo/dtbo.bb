@@ -123,6 +123,7 @@ SRC_URI:append:genio-700-evk = " \
 	file://display-hdmidp.dts \
 	file://display-dsiedp.dts \
 	file://isp71.dtsi \
+	file://mtk-camera.dtsi \
 "
 
 SRC_URI:append:mt8395 = " \
