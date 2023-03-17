@@ -51,7 +51,7 @@ SRC_URI:append:mt8188 = " \
 # Connectivity config fragments
 SRC_URI:append:mt7663 = " \
 	${@bb.utils.contains('MT7663_WIFI_USE_UPSTREAM_DRV', '1', 'file://mt7663.cfg', 'file://mt76xx-tk-wifi.cfg', d)} \
-	file://btmtksdio.cfg \
+	${@bb.utils.contains('MT7663_BT_USE_UPSTREAM_DRV', '1', 'file://btmtksdio.cfg', 'file://mt76xx-tk-bt.cfg', d)} \
 "
 SRC_URI:append:mt7668 = " file://mt76xx-tk-wifi.cfg file://btmtksdio.cfg "
 SRC_URI:append:mt7921 = " file://mt7921.cfg "
