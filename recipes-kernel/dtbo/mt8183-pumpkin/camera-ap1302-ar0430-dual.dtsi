@@ -31,11 +31,6 @@
 	fragment@1 {
 		target = <&mt6358regulator>;
 		__overlay__ {
-			mt6358_vldo28_reg: ldo_vldo28 {
-				regulator-min-microvolt = <2800000>;
-				regulator-max-microvolt = <2800000>;
-			};
-
 			mt6358_vcama1_reg: ldo_vcama1 {
 				regulator-min-microvolt = <2800000>;
 				regulator-max-microvolt = <2800000>;
@@ -49,11 +44,6 @@
 			mt6358_vcamd_reg: ldo_vcamd {
 				regulator-min-microvolt = <1000000>;
 				regulator-max-microvolt = <1000000>;
-			};
-
-			mt6358_vcamio_reg: ldo_vcamio {
-				regulator-min-microvolt = <1800000>;
-				regulator-max-microvolt = <1800000>;
 			};
 		};
 	};
