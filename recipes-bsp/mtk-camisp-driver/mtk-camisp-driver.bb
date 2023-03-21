@@ -20,6 +20,8 @@ S = "${WORKDIR}/git"
 
 RPROVIDES_${PN} += "kernel-module-mtk-camisp-driver"
 
+EXTRA_OEMAKE:append = " PLATFORM=${SOC_FAMILY} "
+
 do_install:append() {
     install -d ${D}${nonarch_base_libdir}/firmware/
     dd if=/dev/zero of=${D}${nonarch_base_libdir}/firmware/remoteproc_scp bs=1 count=100
