@@ -53,7 +53,6 @@
 					  <0 0x1903c000 0 0x8000>,
 					  <0 0x19050000 0 0x10000>,
 					  <0 0x190f2000 0 0x1000>,
-					  <0 0x1d000000 0 0x20000>,
 					  <0 0x0d298000 0 0x10000>;
 
 				reg-names = "apu_mbox",
@@ -62,7 +61,6 @@
 						"apu_sctrl_reviser",
 						"md32_cache_dump",
 						"apu_ao_ctl",
-						"md32_tcm",
 						"md32_debug_apb";
 
 				mediatek,apusys_power = <&apu_top_3>;
