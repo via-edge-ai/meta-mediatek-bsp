@@ -6,6 +6,13 @@ DEPENDS:append = "${@oe.utils.conditional("BL2_SIGN_ENABLE", "1", " mtk-secure-b
 
 TFA_BUILD_TARGET = "bl2"
 
+FWUPDATE_TFA = "bl2.cap"
+
+FWUPDATE_TFA_ARGS = " \
+	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "--private-key ${DEPLOY_DIR_IMAGE}/u-boot-cap.key --certificate ${DEPLOY_DIR_IMAGE}/u-boot-cap.crt", "", d)} \
+	--monotonic-count 1 --instance 0 --index 1 --guid ${FWUPDATE_TFA_ID} ${B}/bl2.img ${DEPLOYDIR}/${FWUPDATE_TFA} \
+"
+
 do_gen_bl2_img() {
 	media="emmc"
 	if [ "${@bb.utils.contains('MACHINE_FEATURES', 'ufs-boot', 'ufs-boot', '', d)}" = "ufs-boot" ]; then
@@ -34,6 +41,34 @@ do_deploy() {
 	install -m 0644 ${B}/bl2.img ${DEPLOYDIR}/
 	if [ "${@oe.utils.conditional('BL2_SIGN_ENABLE', '1', '1', '', d)}" = "1" ]; then
 		install -m 0644 ${RECIPE_SYSROOT}/${sysconfdir}/secure/efuse.cfg ${DEPLOYDIR}/
+	fi
+
+	if [ "${@bb.utils.contains("DISTRO_FEATURES", "fwupdate", "1", "0", d)}" = "1" ]; then
+		if [ "${@oe.utils.conditional("MACHINE", "i1200-demo", "1", "", d)}" = "1" ]; then
+			FWUPDATE_TFA_ID="ac11d376-fdd4-419f-8897-8493dd1b6460"
+		fi
+
+		if [ "${@oe.utils.conditional("MACHINE", "genio-1200-evk", "1", "", d)}" = "1" ]; then
+			FWUPDATE_TFA_ID="a4a60c91-ffa3-4cb8-9b2a-4ff813620d22"
+		fi
+
+		if [ "${@oe.utils.conditional("MACHINE", "genio-1200-evk-ufs", "1", "", d)}" = "1" ]; then
+			FWUPDATE_TFA_ID="dcae4ff5-53f2-4664-b059-83eb33abf06d"
+		fi
+
+		if [ "${@oe.utils.conditional("MACHINE", "genio-700-evk", "1", "", d)}" = "1" ]; then
+			FWUPDATE_TFA_ID="a2c34f52-9452-4f6b-83db-fde21853e2a5"
+		fi
+
+		if [ "${@oe.utils.conditional("MACHINE", "i350-evk", "1", "", d)}" = "1" ]; then
+			FWUPDATE_TFA_ID="221ccce5-f62a-4962-b941-ef74f306362e"
+		fi
+
+		if [ -z "${FWUPDATE_TFA_ID}" ]; then
+			bberror "FWUPDATE_TFA_ID is not defined, it can not support fwupdate."
+		else
+			mkeficapsule ${FWUPDATE_TFA_ARGS}
+		fi
 	fi
 }
 

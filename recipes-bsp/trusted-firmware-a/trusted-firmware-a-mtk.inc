@@ -81,6 +81,13 @@ TFA_MBEDTLS = " \
 DEFAULT_ROT_KEY = "${WORKDIR}/rot_key.pem"
 SECURE_BOOT_ROT_KEY ?= "${DEFAULT_ROT_KEY}"
 
+FWUPDATE_FIP = "fip.cap"
+
+FWUPDATE_FIP_ARGS = " \
+	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "--private-key ${DEPLOY_DIR_IMAGE}/u-boot-cap.key --certificate ${DEPLOY_DIR_IMAGE}/u-boot-cap.crt", "", d)} \
+	--monotonic-count 1 --instance 0 --index 2 --guid ${FWUPDATE_FIP_ID} ${B}/${TFA_PLATFORM}/release/fip.bin ${DEPLOYDIR}/${FWUPDATE_FIP} \
+"
+
 do_compile:prepend() {
 	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'secure-boot', 'secure-boot', '', d)}" = "secure-boot" ]; then
 		if [ "x${DEFAULT_ROT_KEY}" = "x${SECURE_BOOT_ROT_KEY}" ]; then
@@ -93,4 +100,32 @@ do_compile:prepend() {
 
 do_deploy:append:bl31() {
 	cp ${B}/${TFA_PLATFORM}/release/bl31/bl31.ld ${DEPLOY_DIR_IMAGE}/
+
+	if [ "${@bb.utils.contains("DISTRO_FEATURES", "fwupdate", "1", "0", d)}" = "1" ]; then
+		if [ "${@oe.utils.conditional("MACHINE", "i1200-demo", "1", "", d)}" = "1" ]; then
+			FWUPDATE_FIP_ID="f65ec70e-45ab-40fb-9952-e5bc3070da5c"
+		fi
+
+		if [ "${@oe.utils.conditional("MACHINE", "genio-1200-evk", "1", "", d)}" = "1" ]; then
+			FWUPDATE_FIP_ID="39961e72-5a8e-445a-90fe-ed68330744ec"
+		fi
+
+		if [ "${@oe.utils.conditional("MACHINE", "genio-1200-evk-ufs", "1", "", d)}" = "1" ]; then
+			FWUPDATE_FIP_ID="0c1603a7-7f3d-427c-9ecc-f9b02d2fc729"
+		fi
+
+		if [ "${@oe.utils.conditional("MACHINE", "genio-700-evk", "1", "", d)}" = "1" ]; then
+			FWUPDATE_FIP_ID="551cc92d-9a22-4dc8-8872-db1bb8dcafa0"
+		fi
+
+		if [ "${@oe.utils.conditional("MACHINE", "i350-evk", "1", "", d)}" = "1" ]; then
+			FWUPDATE_FIP_ID="82175ae7-f97e-44e0-8298-dcf223c94e8f"
+		fi
+
+		if [ -z "${FWUPDATE_FIP_ID}" ]; then
+			bberror "FWUPDATE_FIP_ID is not defined, it can not support fwupdate."
+		else
+			mkeficapsule ${FWUPDATE_FIP_ARGS}
+		fi
+	fi
 }
