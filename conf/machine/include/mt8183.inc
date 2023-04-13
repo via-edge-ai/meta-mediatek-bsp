@@ -40,4 +40,4 @@ PREFERRED_PROVIDER_virtual/libgles2 ?= "libmali"
 PREFERRED_PROVIDER_virtual/mesa ?= "libmali"
 PREFERRED_PROVIDER_virtual/opencl ?= "libmali"
 
-MACHINEOVERRIDES =. "mt8385:i500:"
+MACHINEOVERRIDES =. "mt8385:i500:genio-500:"
