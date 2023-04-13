@@ -8,6 +8,11 @@ inherit module
 SRCREV = "1bc38d13e250507f22ce1b1928fb01c9b50ed779"
 
 BRANCH = "r${MALI_VERSION}p0"
+
+# mt8183 is not official supported by IoT, keep kernel driver in version r32
+SRCREV:mt8183 = "4b2e33a50d049b51b84083b502ae3d3ad45c0cc1"
+BRANCH:mt8183 = "r32p0"
+
 SRC_URI += "${AIOT_BSP_URI}/mtk-mali-gpu-driver.git;protocol=https;branch=${BRANCH} \
 "
 
