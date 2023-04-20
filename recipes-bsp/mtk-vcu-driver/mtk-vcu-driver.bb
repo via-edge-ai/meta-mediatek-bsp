@@ -5,13 +5,13 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=16de935ebcebe2420535844d4f6faefc"
 inherit module
 
 # MT8195: co-branch with mt8395
-SRCREV:mt8195 = "524e491d04656a1826defc6ddb27d67d47f4f261"
+SRCREV:mt8195 = "db9a4b9c132ff64573ff07b9ba13993648a3ff4a"
 BRANCH:mt8195 = "mt8395"
 TAR_PLATFORM:mt8195 = "mt8395"
 REF_SYMBOLS_PATH:mt8195 = "${B}/mtk-vcodec-driver/Module.symvers"
 
 # MT8188: co-branch with mt8395
-SRCREV:mt8188 = "524e491d04656a1826defc6ddb27d67d47f4f261"
+SRCREV:mt8188 = "db9a4b9c132ff64573ff07b9ba13993648a3ff4a"
 BRANCH:mt8188 = "mt8395"
 TAR_PLATFORM:mt8188 = "mt8188"
 REF_SYMBOLS_PATH:mt8188 = "${B}/mtk-vcodec-driver/Module.symvers"
