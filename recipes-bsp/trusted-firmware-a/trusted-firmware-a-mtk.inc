@@ -29,6 +29,8 @@ EXTRA_OEMAKE += "LIBBASE=${STAGING_DIR_TARGET}/${libdir}/libbase.a"
 EXTRA_OEMAKE:append = " \
 	${@bb.utils.contains("MACHINE_FEATURES", "ufs-boot", "STORAGE_UFS=1", "", d)} \
 "
+EXTRA_OEMAKE:append:mt8390 = " PLAT_HW_CRYPTO=1"
+EXTRA_OEMAKE:append:mt8395 = " PLAT_HW_CRYPTO=1"
 
 PACKAGECONFIG[huk_efuse_hwid] = "HUK_EFUSE_HWID=1"
 EXTRA_OEMAKE += "${PACKAGECONFIG_CONFARGS}"
