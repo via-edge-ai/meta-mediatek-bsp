@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=16de935ebcebe2420535844d4f6faefc"
 
 inherit module
 
-SRCREV:mt8365 = "60b40a746e1eedeabb960318721e3276701f3ac0"
+SRCREV:mt8365 = "391e89524a92c64d6dd35be4fdd3c0222ffa7ed4"
 BRANCH:mt8365 = "mt8167"
 TAR_PLATFORM:mt8365 = "mt8167"
 REF_SYMBOLS_PATH:mt8365 = "${B}/mtk-vcu-driver/Module.symvers"
