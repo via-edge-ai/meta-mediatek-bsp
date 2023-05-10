@@ -39,7 +39,7 @@ S = "${WORKDIR}/git"
 
 BRANCH = "${DISTRO_CODENAME}"
 SRC_URI = "${AIOT_RITY_URI}/libmali.git;protocol=ssh;branch=${BRANCH}"
-SRCREV = "53bfb1a58fb77e2b6a14edc4926e34660ab20187"
+SRCREV = "4ba4c4079a990546884ab47cdb09433469c364bd"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
