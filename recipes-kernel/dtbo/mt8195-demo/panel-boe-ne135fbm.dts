@@ -109,4 +109,11 @@
 			};
 		};
 	};
+
+	fragment@7 {
+		target = <&ovl1>;
+		__overlay__ {
+			mediatek,enable-dualpipe;
+		};
+	};
 };
