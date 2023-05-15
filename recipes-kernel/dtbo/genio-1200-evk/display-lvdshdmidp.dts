@@ -36,6 +36,7 @@
 		target = <&dp_intf0>;
 		__overlay__ {
 			status = "okay";
+			mediatek,indicated-display-path = <2>;
 			ports {
 				port {
 					dp_intf0_out: endpoint {
@@ -111,14 +112,36 @@
 	};
 
 	fragment@7 {
+		target = <&dp_tx>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@8 {
+		target = <&dp_intf1>;
+		__overlay__ {
+			status = "okay";
+			mediatek,indicated-display-path = <1>;
+		};
+	};
+
+	fragment@9 {
 		target = <&disp_dpi1>;
+		__overlay__ {
+			mediatek,indicated-display-path = <0>;
+		};
+	};
+
+	fragment@10 {
+		target = <&dsi0>;
 		__overlay__ {
 			status = "disabled";
 		};
 	};
 
-	fragment@8 {
-		target = <&hdmi0>;
+	fragment@11 {
+		target = <&mipi_tx0>;
 		__overlay__ {
 			status = "disabled";
 		};

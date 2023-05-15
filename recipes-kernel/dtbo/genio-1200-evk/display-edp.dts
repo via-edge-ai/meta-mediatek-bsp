@@ -115,12 +115,19 @@
 	fragment@7 {
 		target = <&ovl1>;
 		__overlay__ {
-			status = "disabled";
+			mediatek,enable-dualpipe;
 		};
 	};
 
 	fragment@8 {
 		target = <&dsi0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@9 {
+		target = <&mipi_tx0>;
 		__overlay__ {
 			status = "disabled";
 		};

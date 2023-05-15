@@ -113,14 +113,14 @@
 	};
 
 	fragment@7 {
-		target = <&ovl1>;
+		target = <&disp_dpi1>;
 		__overlay__ {
 			status = "disabled";
 		};
 	};
 
 	fragment@8 {
-		target = <&disp_dpi1>;
+		target = <&hdmi0>;
 		__overlay__ {
 			status = "disabled";
 		};
