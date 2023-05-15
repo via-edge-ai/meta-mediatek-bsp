@@ -9,6 +9,7 @@ MACHINE_OPTEE_EARLY_TA ??= ""
 PACKAGECONFIG ??= " \
     ${@bb.utils.contains('MACHINE_FEATURES', 'optee-efuse', 'efuse', '', d)} \
     ${@bb.utils.contains('MACHINE_FEATURES', 'optee-rpmb', 'rpmb', '', d)} \
+    ${@bb.utils.contains('MACHINE_FEATURES', 'optee-rpmb-write', 'rpmb-write', '', d)} \
     ${@oe.utils.conditional('MACHINE_OPTEE_EARLY_TA', '', '', 'early-ta', d)} \
 "
 
