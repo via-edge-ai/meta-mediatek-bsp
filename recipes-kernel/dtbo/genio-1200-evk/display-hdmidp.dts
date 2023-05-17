@@ -53,4 +53,16 @@
 		};
 	};
 
+	fragment@7 {
+		target = <&sound>;
+		__overlay__ {
+			dai-link-3 { /* HDMI */
+				status = "okay";
+			};
+
+			dai-link-4 { /* DPTX */
+				status = "okay";
+			};
+		};
+	};
 };
