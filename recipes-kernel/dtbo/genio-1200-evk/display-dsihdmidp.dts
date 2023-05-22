@@ -32,4 +32,17 @@
 			mediatek,indicated-display-path = <1>;
 		};
 	};
+
+	fragment@4 {
+		target = <&sound>;
+		__overlay__ {
+			dai-link-3 { /* HDMI */
+				status = "okay";
+			};
+
+			dai-link-4 { /* DPTX */
+				status = "okay";
+			};
+		};
+	};
 };

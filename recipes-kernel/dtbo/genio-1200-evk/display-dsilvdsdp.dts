@@ -146,4 +146,17 @@
 			status = "disabled";
 		};
 	};
+
+	fragment@12 {
+		target = <&sound>;
+		__overlay__ {
+			dai-link-3 { /* HDMI */
+				status = "disabled";
+			};
+
+			dai-link-4 { /* DPTX */
+				status = "okay";
+			};
+		};
+	};
 };
