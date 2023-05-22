@@ -22,6 +22,7 @@ FILESEXTRAPATHS:prepend:mt8390:= "${THISDIR}/mt8390:"
 FILESEXTRAPATHS:prepend:genio-1200-evk:= "${THISDIR}/genio-1200-evk:"
 FILESEXTRAPATHS:prepend:genio-1200-evk-p1v1:= "${THISDIR}/genio-1200-evk-p1v1:"
 FILESEXTRAPATHS:prepend:mt8370:= "${THISDIR}/mt8370:"
+FILESEXTRAPATHS:prepend:genio-510-evk:= "${THISDIR}/genio-510-evk:"
 
 do_compile[depends] += "virtual/kernel:do_shared_workdir"
 KERNEL_INCLUDE:append = " \
@@ -228,6 +229,19 @@ SRC_URI:append:genio-1200-evk-p1v1 = " \
 	file://camera-ar0830-ap1302-csi1.dts \
 	file://camera-ar0830-ap1302-csi2.dts \
 	file://camera-ar0830-ap1302-2lanes-csi0.dts \
+"
+
+SRC_URI:append:genio-510-evk = " \
+	file://apusys.dts \
+	file://display-edp.dts \
+	file://display-dp.dts \
+	file://display-hdmidp.dts \
+	file://display-dsiedp.dts \
+	file://display-headless.dts \
+	file://isp71.dtsi \
+	file://mtk-camera.dtsi \
+	file://camera-ar0430-ap1302-csi0.dts \
+	file://camera-ar0430-ap1302-csi1.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
