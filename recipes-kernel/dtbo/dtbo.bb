@@ -188,6 +188,10 @@ SRC_URI:append:genio-1200-evk = " \
 	file://camera-ar0430-ap1302-csi0.dts \
 	file://camera-ar0430-ap1302-csi1.dts \
 	file://camera-ar0430-ap1302-csi2.dts \
+	file://camera-ar0830-ap1302-csi0.dts \
+	file://camera-ar0830-ap1302-csi1.dts \
+	file://camera-ar0830-ap1302-csi2.dts \
+	file://camera-ar0830-ap1302-2lanes-csi0.dts \
 "
 
 SRC_URI:append:genio-1200-evk-p1v1 = " \
