@@ -13,6 +13,7 @@
 		target = <&dp_intf1>;
 		__overlay__ {
 			status = "okay";
+			mediatek,indicated-display-path = <1>;
 		};
 	};
 
@@ -31,10 +32,9 @@
 	};
 
 	fragment@4 {
-		target = <&dp_intf1>;
+		target = <&hdmi_phy>;
 		__overlay__ {
-			status = "okay";
-			mediatek,indicated-display-path = <1>;
+			status = "disabled";
 		};
 	};
 
