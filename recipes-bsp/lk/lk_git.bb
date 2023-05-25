@@ -6,6 +6,7 @@ DEPENDS = "libdram-lk"
 DEPENDS:append:mt8365 = " libbase-lk-prebuilt"
 DEPENDS:append:mt8188 = " libbase-lk-prebuilt"
 DEPENDS:append:mt8195 = " libbase-lk-prebuilt"
+DEPENDS:append:mt8370 = " libbase-lk-prebuilt"
 
 LICENSE = "MIT & BSD-2-Clause & LicenseRef-MediaTek-AIoT-SLA-1"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=ba5e70cccfd7c167a0ace6a1eb1d5457 \
