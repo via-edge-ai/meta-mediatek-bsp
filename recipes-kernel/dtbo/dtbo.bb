@@ -122,6 +122,7 @@ SRC_URI:append:genio-700-evk = " \
 	file://display-dp.dts \
 	file://display-hdmidp.dts \
 	file://display-dsiedp.dts \
+	file://display-headless.dts \
 	file://isp71.dtsi \
 	file://mtk-camera.dtsi \
 	file://camera-ar0430-ap1302-csi0.dts \
