@@ -652,7 +652,7 @@ state.mt8395evk {
 	control.51 {
 		iface MIXER
 		name 'O003 I005 Switch'
-		value false
+		value true
 		comment {
 			access 'read write'
 			type BOOLEAN
@@ -662,7 +662,7 @@ state.mt8395evk {
 	control.52 {
 		iface MIXER
 		name 'O003 I010 Switch'
-		value true
+		value false
 		comment {
 			access 'read write'
 			type BOOLEAN
