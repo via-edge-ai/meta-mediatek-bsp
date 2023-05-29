@@ -20,6 +20,7 @@ FILESEXTRAPATHS:prepend:mt8395:= "${THISDIR}/mt8395:"
 FILESEXTRAPATHS:prepend:genio-700-evk:= "${THISDIR}/genio-700-evk:"
 FILESEXTRAPATHS:prepend:mt8390:= "${THISDIR}/mt8390:"
 FILESEXTRAPATHS:prepend:genio-1200-evk:= "${THISDIR}/genio-1200-evk:"
+FILESEXTRAPATHS:prepend:genio-1200-evk-p1v1:= "${THISDIR}/genio-1200-evk-p1v1:"
 
 do_compile[depends] += "virtual/kernel:do_shared_workdir"
 KERNEL_INCLUDE:append = " \
@@ -154,6 +155,32 @@ SRC_URI:append:mt8365 = " \
 "
 
 SRC_URI:append:genio-1200-evk = " \
+	file://display-edp2lvds.dts \
+	file://display-dp.dts \
+	file://display-hdmidp.dts \
+	file://display-dsilvds.dts \
+	file://display-edp.dts \
+	file://display-dsiedp.dts \
+	file://display-dsiedpdp.dts \
+	file://display-dsiedphdmi.dts \
+	file://display-dsihdmidp.dts \
+	file://display-dsilvdsdp.dts \
+	file://display-dsilvdshdmi.dts \
+	file://display-edphdmidp.dts \
+	file://display-lvdshdmidp.dts \
+	file://display-headless.dts \
+	file://isp70.dtsi \
+	file://mtk-camera.dtsi \
+	file://camera-imx214-csi0.dts \
+	file://camera-imx214-csi1.dts \
+	file://camera-imx214-csi2.dts \
+	file://camera-imx214-2lanes-csi0.dts \
+	file://camera-ar0430-ap1302-csi0.dts \
+	file://camera-ar0430-ap1302-csi1.dts \
+	file://camera-ar0430-ap1302-csi2.dts \
+"
+
+SRC_URI:append:genio-1200-evk-p1v1 = " \
 	file://display-edp2lvds.dts \
 	file://display-dp.dts \
 	file://display-hdmidp.dts \
