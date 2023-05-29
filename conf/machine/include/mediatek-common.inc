@@ -73,6 +73,8 @@ OPTEE_RPMB_TEST_KEY ??= "0"
 
 MACHINE_EXTRA_RRECOMMENDS:append = " ${@bb.utils.contains("DISTRO_FEATURES", "optee-otp", " optee-otp", "", d)}"
 
+# Set this to enable AB boot on fwupdate supported
+AB_FWUPDATE_ENABLE ??= "0"
 # Set this to sign BL2 and support DAA
 BL2_SIGN_ENABLE ??= "0"
 DA_SIGN_ENABLE ??= "0"
