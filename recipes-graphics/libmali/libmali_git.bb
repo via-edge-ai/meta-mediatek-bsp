@@ -47,6 +47,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 # Additional install firmware: not all GPU have firmware, only install firmware in specific GPU
 REQUIRE_FIRMWARE:mt8188 = "1"
+REQUIRE_FIRMWARE:mt8370 = "1"
 REQUIRE_FIRMWARE:mt8195 = "0"
 REQUIRE_FIRMWARE:mt8365 = "0"
 REQUIRE_FIRMWARE:mt8183 = "0"
