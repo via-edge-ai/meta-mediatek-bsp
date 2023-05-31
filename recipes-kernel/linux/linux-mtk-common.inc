@@ -18,6 +18,7 @@ SRC_URI:append = " \
 "
 
 # Board specific config fragments
+SRC_URI:append:mt8370-evk = " file://mt8370-evk.cfg "
 SRC_URI:append:mt8390-evk = " file://mt8390-evk.cfg "
 SRC_URI:append:mt8395-evk = " file://mt8395-evk.cfg "
 SRC_URI:append:mt8395-evk-p1v1 = " file://mt8395-evk-p1v1.cfg "
@@ -46,6 +47,11 @@ SRC_URI:append:mt8365 = " file://mt8365.cfg "
 SRC_URI:append:mt8516 = " file://mt8516.cfg "
 SRC_URI:append:mt8188 = " \
 	file://mt8188.cfg \
+	${@bb.utils.contains('MACHINE_FEATURES', 'tsn', 'file://tsn.cfg', '', d)} \
+"
+
+SRC_URI:append:mt8370 = " \
+	file://mt8370.cfg \
 	${@bb.utils.contains('MACHINE_FEATURES', 'tsn', 'file://tsn.cfg', '', d)} \
 "
 
