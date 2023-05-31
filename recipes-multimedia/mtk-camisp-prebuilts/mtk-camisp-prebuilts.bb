@@ -7,7 +7,7 @@ inherit systemd
 inherit update-rc.d
 
 REQUIRED_DISTRO_FEATURES = "nda-mtk"
-COMPATIBLE_MACHINE = "mt8395|mt8390"
+COMPATIBLE_MACHINE = "mt8395|mt8390|mt8370"
 
 SRCREV = "6db5d47fc0374dada42d3f477ac12d78193c5028"
 BRANCH = "${DISTRO_CODENAME}"
@@ -20,15 +20,23 @@ S = "${WORKDIR}/git"
 do_configure[noexec] = "1"
 do_buildclean[noexec] = "1"
 
+python() {
+    plat = d.getVar('SOC_FAMILY', True)
+    soc_dir = plat
+    if plat == 'mt8370':
+        soc_dir = 'mt8188'
+    d.setVar('SOC_DIR', soc_dir)
+}
+
 do_install() {
-	oe_runmake install PWD=${S}/${SOC_FAMILY} LIBDIR=${D}${libdir} INCLUDEDIR=${D}${includedir} DATADIR=${D}${datadir} BINDIR=${D}${bindir}
+	oe_runmake install PWD=${S}/${SOC_DIR} LIBDIR=${D}${libdir} INCLUDEDIR=${D}${includedir} DATADIR=${D}${datadir} BINDIR=${D}${bindir}
 	chown -R root:root ${D}${libdir}/
 	chown -R root:root ${D}${bindir}/
 	chown -R root:root ${D}${datadir}/
 
 	if [ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}" = "systemd" ]; then
 		install -d ${D}${systemd_unitdir}/system
-		install -m 644 ${S}/${SOC_FAMILY}/lib/systemd/system/camd.service ${D}${systemd_unitdir}/system/
+		install -m 644 ${S}/${SOC_DIR}/lib/systemd/system/camd.service ${D}${systemd_unitdir}/system/
 	fi
 }
 
