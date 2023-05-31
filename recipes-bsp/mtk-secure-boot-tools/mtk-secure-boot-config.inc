@@ -7,7 +7,7 @@ SRC_URI:append = " \
     file://da.pem \
 "
 
-COMPATIBLE_MACHINE = "mt8365|mt8183|mt8395|mt8390"
+COMPATIBLE_MACHINE = "mt8365|mt8183|mt8395|mt8390|mt8370"
 
 DEFAULT_EFUSE_KEY = "${WORKDIR}/efuse.pem"
 DEFAULT_DA_KEY = "${WORKDIR}/da.pem"
@@ -22,6 +22,7 @@ EXTRA_OEMAKE:append:mt8183 = " PLATFORM=mt8183"
 EXTRA_OEMAKE:append:mt8365 = " PLATFORM=mt8365"
 EXTRA_OEMAKE:append:mt8395 = " PLATFORM=mt8395"
 EXTRA_OEMAKE:append:mt8390 = " PLATFORM=mt8390"
+EXTRA_OEMAKE:append:mt8370 = " PLATFORM=mt8390"
 
 DEPENDS:append = " openssl-native util-linux-native"
 
