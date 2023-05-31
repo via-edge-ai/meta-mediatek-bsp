@@ -55,6 +55,10 @@ EXTRA_OEMAKE:append:mt8188 = ' \
 	VPUD_SOC=mt8188 \
 '
 
+EXTRA_OEMAKE:append:mt8370 = ' \
+	VPUD_SOC=mt8188 \
+'
+
 do_install() {
 	oe_runmake install
 
