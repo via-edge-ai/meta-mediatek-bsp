@@ -2,7 +2,7 @@ DESCRIPTION = "Mediatek CAMISP-MT8395 Out-of-tree kernel driver"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=16de935ebcebe2420535844d4f6faefc"
 
-COMPATIBLE_MACHINE = "mt8395|mt8390"
+COMPATIBLE_MACHINE = "mt8395|mt8390|mt8370"
 
 inherit module
 
@@ -20,7 +20,14 @@ S = "${WORKDIR}/git"
 
 RPROVIDES_${PN} += "kernel-module-mtk-camisp-driver"
 
-EXTRA_OEMAKE:append = " PLATFORM=${SOC_FAMILY} "
+python() {
+    plat = d.getVar('SOC_FAMILY', True)
+    if plat == 'mt8370':
+        plat = 'mt8188'
+    d.setVar('PLATFORM', plat)
+}
+
+EXTRA_OEMAKE:append = " PLATFORM=${PLATFORM} "
 
 do_install:append() {
     install -d ${D}${nonarch_base_libdir}/firmware/
