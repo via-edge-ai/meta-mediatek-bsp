@@ -7,7 +7,7 @@ LICENSE = "CLOSED"
 inherit module
 
 SRC_URI = "${AIOT_NDA_URI}/mt7668-wifi-drv.git;protocol=ssh;branch=${MTK_WIRELESS_RELEASE}"
-SRCREV = "82aaf5b2df94e040d88941c2fd04ee48b8f00997"
+SRCREV = "5879bf60ad1614d22035986635ae696614207338"
 
 S = "${WORKDIR}/git"
 
