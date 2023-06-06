@@ -53,7 +53,7 @@
 			edp_panel: panel {
 				compatible = "innolux,hk173vb-01b";
 				power-supply = <&edp_panel_fixed_3v3>;
-				backlight = <&backlight_lcd0>;
+				backlight = <&backlight_lcd1>;
 				width-mm = <279>;
 				height-mm = <174>;
 				status = "okay";
@@ -77,7 +77,7 @@
 	};
 
 	fragment@4 {
-		target = <&backlight_lcd0>;
+		target = <&backlight_lcd1>;
 		__overlay__ {
 			default-on;
 			power-supply = <&edp_panel_fixed_12v>;
@@ -128,6 +128,20 @@
 
 	fragment@9 {
 		target = <&mipi_tx0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@10 {
+		target = <&backlight_lcd0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@11 {
+		target = <&disp_pwm0>;
 		__overlay__ {
 			status = "disabled";
 		};

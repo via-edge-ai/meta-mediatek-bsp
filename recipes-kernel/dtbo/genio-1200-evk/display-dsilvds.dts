@@ -52,7 +52,7 @@
 			edp_panel: panel {
 				compatible = "koe,tx18d204vm0baa";
 				power-supply = <&edp_panel_fixed_3v3>;
-				backlight = <&backlight_lcd0>;
+				backlight = <&backlight_lcd1>;
 				label = "KOE TX18D204VM0BAA";
 				width-mm = <155>;
 				height-mm = <87>;
@@ -77,7 +77,7 @@
 	};
 
 	fragment@4 {
-		target = <&backlight_lcd0>;
+		target = <&backlight_lcd1>;
 		__overlay__ {
 			default-on;
 		};

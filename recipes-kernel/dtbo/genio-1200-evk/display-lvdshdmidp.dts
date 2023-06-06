@@ -53,7 +53,7 @@
 			edp_panel: panel {
 				compatible = "koe,tx18d204vm0baa";
 				power-supply = <&edp_panel_fixed_3v3>;
-				backlight = <&backlight_lcd0>;
+				backlight = <&backlight_lcd1>;
 				label = "KOE TX18D204VM0BAA";
 				width-mm = <155>;
 				height-mm = <87>;
@@ -78,7 +78,7 @@
 	};
 
 	fragment@4 {
-		target = <&backlight_lcd0>;
+		target = <&backlight_lcd1>;
 		__overlay__ {
 			default-on;
 		};
@@ -148,6 +148,20 @@
 	};
 
 	fragment@12 {
+		target = <&backlight_lcd0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@13 {
+		target = <&disp_pwm0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@14 {
 		target = <&sound>;
 		__overlay__ {
 			dai-link-3 { /* HDMI */
@@ -160,7 +174,7 @@
 		};
 	};
 
-	fragment@13 {
+	fragment@15 {
 		target = <&mt6359_vcn33_2_bt_ldo_reg>;
 		__overlay__ {
 			regulator-always-on;
