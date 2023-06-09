@@ -54,7 +54,7 @@ PREFERRED_VERSION_linux-mtk ??= "5.15%"
 
 EXTRA_IMAGEDEPENDS = " \
 	virtual/lk \
-	trusted-firmware-a \
+	${@bb.utils.contains("DISTRO_FEATURES", "security", "", "trusted-firmware-a", d)} \
 	rity-tools \
 "
 
