@@ -119,10 +119,15 @@ SRC_URI:append:mt8195-demo = " \
 "
 
 SRC_URI:append:genio-700-evk = " \
+	file://display-dsi.dts \
 	file://display-edp.dts \
+	file://display-hdmi.dts \
 	file://display-dp.dts \
-	file://display-hdmidp.dts \
 	file://display-dsiedp.dts \
+	file://display-dsidp.dts \
+	file://display-edpdp.dts \
+	file://display-edphdmi.dts \
+	file://display-hdmidp.dts \
 	file://display-headless.dts \
 	file://isp71.dtsi \
 	file://mtk-camera.dtsi \
