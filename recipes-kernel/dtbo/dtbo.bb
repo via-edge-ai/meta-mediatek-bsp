@@ -157,6 +157,7 @@ SRC_URI:append:mt8390 = " \
 SRC_URI:append:mt8370 = " \
 	file://gpu-mali.dts \
 	file://video.dts \
+	file://apusys.dts \
 "
 
 SRC_URI:append:mt8365 = " \
@@ -232,7 +233,6 @@ SRC_URI:append:genio-1200-evk-p1v1 = " \
 "
 
 SRC_URI:append:genio-510-evk = " \
-	file://apusys.dts \
 	file://display-edp.dts \
 	file://display-dp.dts \
 	file://display-hdmidp.dts \
