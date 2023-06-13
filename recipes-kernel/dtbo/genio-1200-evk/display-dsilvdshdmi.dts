@@ -124,4 +124,14 @@
 			mediatek,indicated-display-path = <1>;
 		};
 	};
+
+	fragment@9 {
+		target = <&mt6359_vcn33_2_bt_ldo_reg>;
+		__overlay__ {
+			regulator-always-on;
+			regulator-state-mem {
+				regulator-on-in-suspend;
+			};
+		};
+	};
 };
