@@ -71,4 +71,10 @@ uboot_prep_kimage() {
 	echo ${linux_com}
 }
 
+do_bundle_initramfs:prepend() {
+	if [ x"${@bb.utils.contains("DISTRO_FEATURES", "security", "1", "0", d)}" = x1 -a x"${INITRAMFS_IMAGE_BUNDLE}" = x1 ]; then
+		echo "CONFIG_INITRAMFS_SOURCE=\"${B}/usr/${INITRAMFS_IMAGE_NAME}.cpio\" CONFIG_INITRAMFS_COMPRESSION_GZIP=y" >> ${B}/.config
+	fi
+}
+
 COMPATIBLE_MACHINE_mediatek-bsp = "mediatek-bsp"
