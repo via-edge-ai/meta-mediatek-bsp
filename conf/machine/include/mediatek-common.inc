@@ -90,6 +90,10 @@ UBOOT_SIGN_IMG_KEYNAME ?= "${@bb.utils.contains("DISTRO_FEATURES", "secure-boot"
 IMAGE_CLASSES:append = "${@oe.utils.conditional('SECURE_ZIP_ENABLE', '1', ' image_type_secure_package', '', d)}"
 IMAGE_FSTYPES:append = "${@oe.utils.conditional('SECURE_ZIP_ENABLE', '1', ' secure.zip', '', d)}"
 
+# Set this to enable rootfs security for verity image
+DM_VERITY_IMAGE ?= "${IMAGE_BASENAME}"
+DM_VERITY_IMAGE_TYPE ?= "ext4"
+
 # Allowed license for mtk device - overrideable if necessary
 MTK_EXTRA_LICENSE_FLAGS_ACCEPTED ?= "commercial"
 
