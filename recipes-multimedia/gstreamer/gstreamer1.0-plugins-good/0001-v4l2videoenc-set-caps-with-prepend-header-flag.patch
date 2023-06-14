@@ -1,17 +1,19 @@
-From 64aaf17e26edff748ea8560773ea9a177cddce50 Mon Sep 17 00:00:00 2001
+From ecc64b05ef57e5d30e1f38c8c1d8cf42db30224b Mon Sep 17 00:00:00 2001
 From: Macross Chen <macross.chen@mediatek.com>
 Date: Tue, 28 Dec 2021 16:21:33 +0800
-Subject: [PATCH] v4l2videoenc: set caps with prepend header flag
+Subject: [PATCH 1/6] v4l2videoenc: set caps with prepend header flag
 
 query prepend header from driver and set to output caps.
 
 Signed-off-by: Macross Chen <macross.chen@mediatek.com>
+
+%% original patch: 0001-v4l2videoenc-set-caps-with-prepend-header-flag.patch
 ---
  sys/v4l2/gstv4l2videoenc.c | 26 ++++++++++++++++++++++++++
  1 file changed, 26 insertions(+)
 
 diff --git a/sys/v4l2/gstv4l2videoenc.c b/sys/v4l2/gstv4l2videoenc.c
-index d43f649..11505a8 100644
+index c52def0..049a5cd 100644
 --- a/sys/v4l2/gstv4l2videoenc.c
 +++ b/sys/v4l2/gstv4l2videoenc.c
 @@ -301,6 +301,29 @@ done:
@@ -54,3 +56,6 @@ index d43f649..11505a8 100644
    outcaps = gst_pad_get_pad_template_caps (encoder->srcpad);
    outcaps = gst_caps_make_writable (outcaps);
    output = gst_video_encoder_set_output_state (encoder, outcaps, state);
+-- 
+2.18.0
+

@@ -1,7 +1,7 @@
-From 91d1d0cbbb082387c1b523a4b595a7360b6ba853 Mon Sep 17 00:00:00 2001
+From 88eb83610c7f950f2e8ce6af3a27fd98d4ee35c7 Mon Sep 17 00:00:00 2001
 From: Macross Chen <macross.chen@mediatek.com>
 Date: Thu, 18 Aug 2022 15:56:38 +0800
-Subject: [PATCH] v4l2object: add colorimetry extensions for better
+Subject: [PATCH 6/6] v4l2object: add colorimetry extensions for better
  compatibility
 
 Gstreamer will generate a list of colorimetry, that contains
@@ -15,15 +15,17 @@ via a predefined list.
 It will only be appended if the device allows it.
 
 Signed-off-by: Macross Chen <macross.chen@mediatek.com>
+
+%% original patch: 0004-v4l2object-add-colorimetry-extensions-for-better-com.patch
 ---
- sys/v4l2/gstv4l2object.c | 116 ++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 115 insertions(+), 1 deletion(-)
+ sys/v4l2/gstv4l2object.c | 119 ++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 118 insertions(+), 1 deletion(-)
 
 diff --git a/sys/v4l2/gstv4l2object.c b/sys/v4l2/gstv4l2object.c
-index e8aee30..58676dd 100644
+index e92934c..aa8eeb0 100644
 --- a/sys/v4l2/gstv4l2object.c
 +++ b/sys/v4l2/gstv4l2object.c
-@@ -2385,6 +2385,118 @@ gst_v4l2_object_fill_colorimetry_list (GValue * list,
+@@ -2392,6 +2392,121 @@ gst_v4l2_object_fill_colorimetry_list (GValue * list,
      g_value_unset (&colorimetry);
  }
  
@@ -67,6 +69,9 @@ index e8aee30..58676dd 100644
 +   GST_VIDEO_TRANSFER_UNKNOWN, GST_VIDEO_COLOR_PRIMARIES_UNKNOWN},
 +  /* 2: 1: 5: 1 */
 +  {GST_VIDEO_COLOR_RANGE_16_235, GST_VIDEO_COLOR_MATRIX_RGB,
++   GST_VIDEO_TRANSFER_BT709, GST_VIDEO_COLOR_PRIMARIES_BT709},
++  /* 1: 1: 5: 1, for SRGB + BT709 */
++  {GST_VIDEO_COLOR_RANGE_0_255, GST_VIDEO_COLOR_MATRIX_RGB,
 +   GST_VIDEO_TRANSFER_BT709, GST_VIDEO_COLOR_PRIMARIES_BT709},
 +};
 +
@@ -142,7 +147,7 @@ index e8aee30..58676dd 100644
  static void
  gst_v4l2_object_add_colorspace (GstV4l2Object * v4l2object, GstStructure * s,
      guint32 width, guint32 height, guint32 pixelformat)
-@@ -2423,7 +2535,6 @@ gst_v4l2_object_add_colorspace (GstV4l2Object * v4l2object, GstStructure * s,
+@@ -2430,7 +2545,6 @@ gst_v4l2_object_add_colorspace (GstV4l2Object * v4l2object, GstStructure * s,
        fmt.fmt.pix_mp.colorspace = req_cspace;
      else
        fmt.fmt.pix.colorspace = req_cspace;
@@ -150,7 +155,7 @@ index e8aee30..58676dd 100644
      if (gst_v4l2_object_try_fmt (v4l2object, &fmt) == 0) {
        enum v4l2_colorspace colorspace;
  
-@@ -2449,6 +2560,9 @@ gst_v4l2_object_add_colorspace (GstV4l2Object * v4l2object, GstStructure * s,
+@@ -2456,6 +2570,9 @@ gst_v4l2_object_add_colorspace (GstV4l2Object * v4l2object, GstStructure * s,
            if (gst_v4l2_object_get_colorspace (v4l2object, &alt_fmt, &cinfo))
              gst_v4l2_object_fill_colorimetry_list (&list, &cinfo);
          }

@@ -1,7 +1,9 @@
-From 79738989907c493ecb0028be41ce667349665f3c Mon Sep 17 00:00:00 2001
+From 5ee0edb4f87506a3196d93394c47a508d280fd8b Mon Sep 17 00:00:00 2001
 From: "Wanli.Zhang" <wanli.zhang@mediatek.com>
 Date: Mon, 9 Jan 2023 17:50:17 +0800
-Subject: [PATCH 1/2] v4l2object-add-mjpeg-decode-ym16-support
+Subject: [PATCH 2/6] v4l2object-add-mjpeg-decode-ym16-support
+
+%% original patch: 0002-v4l2object-add-mjpeg-decode-ym16-support.patch
 
 %% original patch: 0002-v4l2object-add-mjpeg-decode-ym16-support.patch
 ---

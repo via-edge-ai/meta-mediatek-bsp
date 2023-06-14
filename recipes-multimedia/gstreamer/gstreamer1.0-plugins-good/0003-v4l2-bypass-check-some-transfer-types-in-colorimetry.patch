@@ -1,21 +1,23 @@
-From 63ff99ca8e9332dab33dc4a157eb357fe0fee82a Mon Sep 17 00:00:00 2001
+From 21997fead65afd2a7871199931bdced9280ff3d9 Mon Sep 17 00:00:00 2001
 From: Elliot Chen <elliot.chen@nxp.com>
 Date: Mon, 21 Nov 2022 15:35:58 +0800
-Subject: [PATCH] v4l2: bypass check some transfer types in colorimetry
+Subject: [PATCH 3/6] v4l2: bypass check some transfer types in colorimetry
 
 v4l2 will report fail for some streams whose colorimetry value such as 2:4:8:3.
 Can bypass check these transfer types in colorimetry to avoid error.
 
 Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/3440>
+
+%% original patch: 0003-v4l2-bypass-check-some-transfer-types-in-colorimetry.patch
 ---
- .../sys/v4l2/gstv4l2object.c        | 12 ++++++++++++
+ sys/v4l2/gstv4l2object.c | 12 ++++++++++++
  1 file changed, 12 insertions(+)
 
 diff --git a/sys/v4l2/gstv4l2object.c b/sys/v4l2/gstv4l2object.c
-index 8899d1f1a29..ecaaaad1605 100644
+index 5aa8820..e8aee30 100644
 --- a/sys/v4l2/gstv4l2object.c
 +++ b/sys/v4l2/gstv4l2object.c
-@@ -3494,6 +3494,18 @@ gst_v4l2_video_colorimetry_matches (const GstVideoColorimetry * cinfo,
+@@ -3468,6 +3468,18 @@ gst_v4l2_video_colorimetry_matches (const GstVideoColorimetry * cinfo,
        && gst_video_colorimetry_is_equal (cinfo, &ci_jpeg))
      return TRUE;
  
@@ -35,5 +37,5 @@ index 8899d1f1a29..ecaaaad1605 100644
  }
  
 -- 
-GitLab
+2.18.0
 

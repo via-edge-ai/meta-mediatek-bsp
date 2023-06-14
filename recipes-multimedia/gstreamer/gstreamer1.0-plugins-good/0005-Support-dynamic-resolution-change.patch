@@ -1,7 +1,7 @@
-From a79b1ec0d04176a3d204681bd34eed532c25861a Mon Sep 17 00:00:00 2001
+From 108ff2cae5d60b5554b54e7f619f66fa69a8b30d Mon Sep 17 00:00:00 2001
 From: Shengqi Yu <shengqi.yu@mediatek.com>
 Date: Mon, 11 Jul 2022 20:13:51 +0800
-Subject: [PATCH] Support dynamic resolution change
+Subject: [PATCH 5/6] Support dynamic resolution change
 
 Add support dynamic resolution change
 
@@ -10,6 +10,8 @@ CR-Id: AUTO00204932
 
 Signed-off-by: Shengqi Yu <shengqi.yu@mediatek.com>
 Signed-off-by: Macross Chen <macross.chen@mediatek.com>
+
+%% original patch: 0006-Support-dynamic-resolution-change.patch
 ---
  sys/v4l2/gstv4l2bufferpool.c |  63 +++++++-
  sys/v4l2/gstv4l2object.c     | 116 ++++++++++++++
@@ -20,7 +22,7 @@ Signed-off-by: Macross Chen <macross.chen@mediatek.com>
  6 files changed, 499 insertions(+), 11 deletions(-)
 
 diff --git a/sys/v4l2/gstv4l2bufferpool.c b/sys/v4l2/gstv4l2bufferpool.c
-index a0a2189e..e4af67c0 100644
+index a0a2189..e4af67c 100644
 --- a/sys/v4l2/gstv4l2bufferpool.c
 +++ b/sys/v4l2/gstv4l2bufferpool.c
 @@ -29,10 +29,15 @@
@@ -171,7 +173,7 @@ index a0a2189e..e4af67c0 100644
 +  }
 +}
 diff --git a/sys/v4l2/gstv4l2object.c b/sys/v4l2/gstv4l2object.c
-index ec5e032f..1dc0c2d5 100644
+index 1f72202..e92934c 100644
 --- a/sys/v4l2/gstv4l2object.c
 +++ b/sys/v4l2/gstv4l2object.c
 @@ -25,6 +25,7 @@
@@ -195,7 +197,7 @@ index ec5e032f..1dc0c2d5 100644
  #include "gst/gst-i18n-plugin.h"
  
  #include <gst/video/video.h>
-@@ -4349,12 +4356,15 @@ gst_v4l2_object_acquire_format (GstV4l2Object * v4l2object, GstVideoInfo * info)
+@@ -4238,12 +4245,15 @@ gst_v4l2_object_acquire_format (GstV4l2Object * v4l2object, GstVideoInfo * info)
    sel.target = V4L2_SEL_TGT_COMPOSE_DEFAULT;
    if (v4l2object->ioctl (v4l2object->video_fd, VIDIOC_G_SELECTION, &sel) >= 0) {
      r = &sel.r;
@@ -211,7 +213,7 @@ index ec5e032f..1dc0c2d5 100644
    }
    if (r) {
      align.padding_left = r->left;
-@@ -4363,6 +4373,8 @@ gst_v4l2_object_acquire_format (GstV4l2Object * v4l2object, GstVideoInfo * info)
+@@ -4252,6 +4262,8 @@ gst_v4l2_object_acquire_format (GstV4l2Object * v4l2object, GstVideoInfo * info)
      align.padding_bottom = height - r->height - r->top;
      width = r->width;
      height = r->height;
@@ -220,7 +222,7 @@ index ec5e032f..1dc0c2d5 100644
    }
  
    switch (fmt.fmt.pix.field) {
-@@ -4433,6 +4445,110 @@ unsupported_format:
+@@ -4322,6 +4334,110 @@ unsupported_format:
    }
  }
  
@@ -332,7 +334,7 @@ index ec5e032f..1dc0c2d5 100644
   * gst_v4l2_object_set_crop:
   * @obj: the object
 diff --git a/sys/v4l2/gstv4l2object.h b/sys/v4l2/gstv4l2object.h
-index de0722d5..481b23f8 100644
+index de0722d..481b23f 100644
 --- a/sys/v4l2/gstv4l2object.h
 +++ b/sys/v4l2/gstv4l2object.h
 @@ -72,6 +72,17 @@ typedef gboolean  (*GstV4l2GetInOutFunction)  (GstV4l2Object * v4l2object, guint
@@ -366,7 +368,7 @@ index de0722d5..481b23f8 100644
  
  #endif /* __GST_V4L2_OBJECT_H__ */
 diff --git a/sys/v4l2/gstv4l2transform.c b/sys/v4l2/gstv4l2transform.c
-index c80c0286..77b5ad0f 100644
+index c80c028..77b5ad0 100644
 --- a/sys/v4l2/gstv4l2transform.c
 +++ b/sys/v4l2/gstv4l2transform.c
 @@ -248,6 +248,11 @@ outcaps_failed:
@@ -382,7 +384,7 @@ index c80c0286..77b5ad0f 100644
    return FALSE;
  }
 diff --git a/sys/v4l2/gstv4l2videodec.c b/sys/v4l2/gstv4l2videodec.c
-index 3042995e..09af7e7e 100644
+index 3042995..09af7e7 100644
 --- a/sys/v4l2/gstv4l2videodec.c
 +++ b/sys/v4l2/gstv4l2videodec.c
 @@ -1,3 +1,5 @@
@@ -809,7 +811,7 @@ index 3042995e..09af7e7e 100644
        GST_OBJECT (GST_VIDEO_DECODER_SINK_PAD (self)),
        V4L2_BUF_TYPE_VIDEO_OUTPUT, klass->default_device,
 diff --git a/sys/v4l2/gstv4l2videodec.h b/sys/v4l2/gstv4l2videodec.h
-index 6696fcb3..331b2cb1 100644
+index 6696fcb..331b2cb 100644
 --- a/sys/v4l2/gstv4l2videodec.h
 +++ b/sys/v4l2/gstv4l2videodec.h
 @@ -1,3 +1,5 @@
