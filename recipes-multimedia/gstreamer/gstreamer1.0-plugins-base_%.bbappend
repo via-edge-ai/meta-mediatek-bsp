@@ -7,5 +7,5 @@ SRC_URI += " \
 	file://MM21-0010-doc-Add-NV12_16L32S-into-the-cache.patch \
 	file://MM21-0011-video-Fix-NV12_16L32-size-calculation.patch \
 	file://MM21-0012-gstrawvideoparse-Fix-frame-size-calculation.patch \
-	file://0001-video-format-add-mjpeg-decode-ym16-support.patch \
+	file://0001-video-format-Add-YM16-support-for-MJPEG-decode.patch \
 "
