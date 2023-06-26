@@ -125,6 +125,10 @@ do_deploy:append:bl31() {
 			FWUPDATE_FIP_ID="82175ae7-f97e-44e0-8298-dcf223c94e8f"
 		fi
 
+		if [ "${@oe.utils.conditional("MACHINE", "genio-350-evk", "1", "", d)}" = "1" ]; then
+			FWUPDATE_FIP_ID="82175ae7-f97e-44e0-8298-dcf223c94e8f"
+		fi
+
 		if [ -z "${FWUPDATE_FIP_ID}" ]; then
 			bberror "FWUPDATE_FIP_ID is not defined, it can not support fwupdate."
 		else
