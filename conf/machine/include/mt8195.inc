@@ -36,6 +36,7 @@ PREFERRED_PROVIDER_virtual/libgbm ?= "libmali"
 PREFERRED_PROVIDER_virtual/libgl ?= "libmali"
 PREFERRED_PROVIDER_virtual/libgles1 ?= "libmali"
 PREFERRED_PROVIDER_virtual/libgles2 ?= "libmali"
+PREFERRED_PROVIDER_virtual/libgles3 ?= "libmali"
 PREFERRED_PROVIDER_virtual/mesa ?= "libmali"
 PREFERRED_PROVIDER_virtual/opencl ?= "libmali"
 
