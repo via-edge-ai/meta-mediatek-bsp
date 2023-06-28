@@ -146,4 +146,38 @@
 			status = "disabled";
 		};
 	};
+
+	fragment@12 {
+		target = <&disp_dpi1>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@13 {
+		target = <&hdmi0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@14 {
+		target = <&hdmi_phy>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@15 {
+		target = <&sound>;
+		__overlay__ {
+			dai-link-3 { /* HDMI */
+				status = "disabled";
+			};
+
+			dai-link-4 { /* DPTX */
+				status = "disabled";
+			};
+		};
+	};
 };

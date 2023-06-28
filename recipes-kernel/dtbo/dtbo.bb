@@ -155,17 +155,24 @@ SRC_URI:append:mt8365 = " \
 "
 
 SRC_URI:append:genio-1200-evk = " \
-	file://display-edp2lvds.dts \
-	file://display-dp.dts \
-	file://display-hdmidp.dts \
-	file://display-dsilvds.dts \
+	file://display-dsi.dts \
 	file://display-edp.dts \
+	file://display-edp2lvds.dts \
+	file://display-hdmi.dts \
+	file://display-dp.dts \
 	file://display-dsiedp.dts \
-	file://display-dsiedpdp.dts \
+	file://display-dsilvds.dts \
+	file://display-dsidp.dts \
+	file://display-edphdmi.dts \
+	file://display-edpdp.dts \
+	file://display-lvdshdmi.dts \
+	file://display-lvdsdp.dts \
+	file://display-hdmidp.dts \
 	file://display-dsiedphdmi.dts \
-	file://display-dsihdmidp.dts \
-	file://display-dsilvdsdp.dts \
+	file://display-dsiedpdp.dts \
 	file://display-dsilvdshdmi.dts \
+	file://display-dsilvdsdp.dts \
+	file://display-dsihdmidp.dts \
 	file://display-edphdmidp.dts \
 	file://display-lvdshdmidp.dts \
 	file://display-headless.dts \
