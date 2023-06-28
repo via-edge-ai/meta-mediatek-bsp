@@ -9,7 +9,7 @@ TFA_BUILD_TARGET = "bl2"
 FWUPDATE_TFA = "bl2.cap"
 
 FWUPDATE_TFA_ARGS = " \
-	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "--private-key ${DEPLOY_DIR_IMAGE}/u-boot-cap.key --certificate ${DEPLOY_DIR_IMAGE}/u-boot-cap.crt", "", d)} \
+	--private-key ${DEPLOY_DIR_IMAGE}/u-boot-cap.key --certificate ${DEPLOY_DIR_IMAGE}/u-boot-cap.crt \
 	--monotonic-count 1 --instance 0 --index 1 --guid ${FWUPDATE_TFA_ID} ${B}/bl2.img ${DEPLOYDIR}/${FWUPDATE_TFA} \
 "
 

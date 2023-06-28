@@ -87,7 +87,7 @@ SECURE_BOOT_ROT_KEY ?= "${DEFAULT_ROT_KEY}"
 FWUPDATE_FIP = "fip.cap"
 
 FWUPDATE_FIP_ARGS = " \
-	${@bb.utils.contains("DISTRO_FEATURES", "secure-boot", "--private-key ${DEPLOY_DIR_IMAGE}/u-boot-cap.key --certificate ${DEPLOY_DIR_IMAGE}/u-boot-cap.crt", "", d)} \
+	--private-key ${DEPLOY_DIR_IMAGE}/u-boot-cap.key --certificate ${DEPLOY_DIR_IMAGE}/u-boot-cap.crt \
 	--monotonic-count 1 --instance 0 --index 2 --guid ${FWUPDATE_FIP_ID} ${B}/${TFA_PLATFORM}/release/fip.bin ${DEPLOYDIR}/${FWUPDATE_FIP} \
 "
 
