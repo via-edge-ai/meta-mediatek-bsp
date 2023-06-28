@@ -60,16 +60,12 @@ do_deploy() {
 			FWUPDATE_TFA_ID="a2c34f52-9452-4f6b-83db-fde21853e2a5"
 		fi
 
-		if [ "${@oe.utils.conditional("MACHINE", "i350-evk", "1", "", d)}" = "1" ]; then
-			FWUPDATE_TFA_ID="221ccce5-f62a-4962-b941-ef74f306362e"
-		fi
-
 		if [ "${@oe.utils.conditional("MACHINE", "genio-350-evk", "1", "", d)}" = "1" ]; then
 			FWUPDATE_TFA_ID="221ccce5-f62a-4962-b941-ef74f306362e"
 		fi
 
 		if [ -z "${FWUPDATE_TFA_ID}" ]; then
-			bberror "FWUPDATE_TFA_ID is not defined, it can not support fwupdate."
+			bbwarn "FWUPDATE_TFA_ID is not defined, it can not support fwupdate."
 		else
 			mkeficapsule ${FWUPDATE_TFA_ARGS}
 		fi
