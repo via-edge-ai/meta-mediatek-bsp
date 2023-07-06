@@ -21,6 +21,7 @@ PROVIDES = " \
 	virtual/libgl \
 	virtual/libgles1 \
 	virtual/libgles2 \
+	virtual/libgles3 \
 	virtual/mesa \
 "
 
@@ -31,6 +32,7 @@ RPROVIDES:${PN} = " \
 	libgl \
 	libgles1 \
 	libgles2 \
+	libgles3 \
 	mesa \
 	mesa-vulkan-drivers \
 "
