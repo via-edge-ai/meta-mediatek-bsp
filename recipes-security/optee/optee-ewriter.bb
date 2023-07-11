@@ -13,7 +13,7 @@ LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=71cd0d8e7551828e714ab8e9c99ed74b"
 
 SRC_URI = "${AIOT_NDA_URI}/optee-ewriter.git;protocol=ssh;branch=main"
-SRCREV = "34b63652f612566c38d820f6cb0677a22407df4e"
+SRCREV = "fa66a0a64f45d1bb6c5e0942bdb10f382aaf2b22"
 COMPATIBLE_MACHINE = "mt*"
 DEPENDS:append = " optee-client"
 PROVIDES = " libtz_efuse"
