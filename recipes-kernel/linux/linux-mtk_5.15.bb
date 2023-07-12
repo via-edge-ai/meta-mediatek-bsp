@@ -7,5 +7,5 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 LINUX_VERSION ?= "5.15.42"
 SRCBRANCH ?= "mtk-v5.15-dev"
-SRCREV = "8ddb43dcc2d01ba4da0afa1cecd7f8ba094b6880"
+SRCREV = "d15016d1b0caa92e4e206f85bc184041f1213bf1"
 
