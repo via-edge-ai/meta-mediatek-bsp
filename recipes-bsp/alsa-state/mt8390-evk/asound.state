@@ -3173,7 +3173,7 @@ state.mt8390evk {
 	control.294 {
 		iface MIXER
 		name DPTX_OUT_MUX
-		value Connect
+		value Disconnect
 		comment {
 			access 'read write'
 			type ENUMERATED
