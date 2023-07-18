@@ -21,6 +21,7 @@ FILESEXTRAPATHS:prepend:genio-700-evk:= "${THISDIR}/genio-700-evk:"
 FILESEXTRAPATHS:prepend:mt8390:= "${THISDIR}/mt8390:"
 FILESEXTRAPATHS:prepend:genio-1200-evk:= "${THISDIR}/genio-1200-evk:"
 FILESEXTRAPATHS:prepend:genio-1200-evk-p1v1:= "${THISDIR}/genio-1200-evk-p1v1:"
+FILESEXTRAPATHS:prepend:mt8370:= "${THISDIR}/mt8370:"
 
 do_compile[depends] += "virtual/kernel:do_shared_workdir"
 KERNEL_INCLUDE:append = " \
@@ -150,6 +151,11 @@ SRC_URI:append:mt8390 = " \
 	file://gpu-mali.dts \
 	file://video.dts \
 	file://apusys.dts \
+"
+
+SRC_URI:append:mt8370 = " \
+	file://gpu-mali.dts \
+	file://video.dts \
 "
 
 SRC_URI:append:mt8365 = " \
