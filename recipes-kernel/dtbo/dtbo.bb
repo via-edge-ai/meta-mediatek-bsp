@@ -264,6 +264,9 @@ SRC_URI:append:genio-510-evk = " \
 	file://mtk-camera.dtsi \
 	file://camera-ar0430-ap1302-csi0.dts \
 	file://camera-ar0430-ap1302-csi1.dts \
+	file://camera-ar0830-ap1302-csi0.dts \
+	file://camera-ar0830-ap1302-csi1.dts \
+	file://camera-ar0830-ap1302-2lanes-csi0.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
