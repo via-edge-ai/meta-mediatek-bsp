@@ -11,9 +11,13 @@ SRCREV = "5f57d9c66080ed83df07425e237840edd2efe133"
 
 S = "${WORKDIR}/git"
 
+DEPENDS += "mt76xx-tk-wifi-drv"
+
 EXTRA_OEMAKE+=" \
 	MTK_PLATFORM= \
 	WLAN_CHIP_ID=${MTK_WIRELESS_CHIP}\
+	WLAN_RESET_KO_INCLUDE+="-I${STAGING_INCDIR}" \
+	WLAN_RESET_KO_SYMBOL+="-I${STAGING_INCDIR}/mt76xx-tk-wifi-drv/Module.symvers" \
 "
 
 do_install:append() {

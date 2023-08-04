@@ -16,6 +16,11 @@ EXTRA_OEMAKE+=" \
 	WLAN_CHIP_ID=${MTK_WIRELESS_CHIP}\
 "
 
+do_install:append() {
+	install -d ${D}/${includedir}
+	install -m 0644 ${S}/reset/include/*.h ${D}/${includedir}
+}
+
 RDEPENDS:${PN}:mt7668 += "mt7668-tk-wifi-fw"
 RDEPENDS:${PN}:mt7663 += "mt7663-tk-wifi-fw"
 RPROVIDES:${PN} += " \
