@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=16de935ebcebe2420535844d4f6faefc"
 S = "${WORKDIR}/git"
 
 BRANCH = "main"
-SRCREV = "534d915c441ea39eac30c4e74d399acc82aa4b97"
+SRCREV = "762642709a81a6856e99a3780c9fcae6618d48dc"
 SRC_URI = "git://gitlab.com/mediatek/aiot/bsp/mtk-hdmirx-tool.git;protocol=https;branch=${BRANCH}"
 
 do_install() {
