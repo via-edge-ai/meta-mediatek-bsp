@@ -9,3 +9,6 @@ LINUX_VERSION ?= "5.15.42"
 SRCBRANCH ?= "mtk-v5.15-dev"
 SRCREV = "4f1ae6c7cd65a3bcf0a607eaee95b0905a541410"
 
+SRC_URI:append = " \
+	file://0001-GENIO-media-i2c-Add-ite-it6510-driver.patch \
+"
