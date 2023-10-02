@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=16de935ebcebe2420535844d4f6faefc"
 
 inherit module
 
-SRCREV = "cd8c3a926b8c63f64e1d89e4eb6ce04cb9dcd0bb"
+SRCREV = "901ae62c653394977497662d8ff190dd34bb00d5"
 
 BRANCH = "r${MALI_VERSION}p0"
 
