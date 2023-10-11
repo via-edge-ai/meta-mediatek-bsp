@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 LINUX_VERSION ?= "5.15.42"
 SRCBRANCH ?= "mtk-v5.15-dev"
-SRCREV = "4f1ae6c7cd65a3bcf0a607eaee95b0905a541410"
+SRCREV = "16b532dc393d8d7415247f7f6fc23b68c69c9517"
 
 SRC_URI:append = " \
 	file://0001-GENIO-media-i2c-Add-ite-it6510-driver.patch \
