@@ -6,7 +6,7 @@ COMPATIBLE_MACHINE = "mt8395|mt8390|mt8370"
 
 inherit module
 
-SRCREV = "457e1fab69cc977c3539609bea42b72e86a6ece9"
+SRCREV = "8710f405fae85d88f360b23efa9b6fbc555787d0"
 
 BRANCH = "master"
 
