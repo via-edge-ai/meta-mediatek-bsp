@@ -60,6 +60,10 @@ do_deploy() {
 			FWUPDATE_TFA_ID="a2c34f52-9452-4f6b-83db-fde21853e2a5"
 		fi
 
+		if [ "${@oe.utils.conditional("MACHINE", "genio-510-evk", "1", "", d)}" = "1" ]; then
+			FWUPDATE_TFA_ID="546af9d8-91e7-4de0-a8a3-351bf1569d64"
+		fi
+
 		if [ "${@oe.utils.conditional("MACHINE", "genio-350-evk", "1", "", d)}" = "1" ]; then
 			FWUPDATE_TFA_ID="221ccce5-f62a-4962-b941-ef74f306362e"
 		fi
