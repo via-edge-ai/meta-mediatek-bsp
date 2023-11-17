@@ -10,7 +10,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 S = "${WORKDIR}/git"
 
 SRC_URI = "${AIOT_RITY_URI}/libdram-prebuilt.git;protocol=ssh;branch=main"
-SRCREV = "df294e73ab8064cbb8da3f3987f4d8829dd9fa73"
+SRCREV = "a2115f0f6ae397633cb71719e4b1e0e944e85e42"
 
 do_install() {
 	install -d ${D}${libdir}
