@@ -3,7 +3,7 @@
 require mtk-vcu-driver-common.inc
 
 # MT8365: co-branch with mt8167
-SRCREV = "420316b52f282f1b357dbde5539d099a9df4be47"
+SRCREV = "aee03138d90e7706beaac989e36ec0cc11514dbd"
 BRANCH = "mt8167"
 TAR_PLATFORM = "mt8365"
 REF_SYMBOLS_PATH = ""
