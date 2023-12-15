@@ -3,7 +3,7 @@
 require mtk-vcodec-driver-common.inc
 
 # MT8365: co-branch with mt8167
-SRCREV = "7f9b9fe7cedad4018bc9e602e72705811ea01ecf"
+SRCREV = "6683388bfba7fd187cf6905fa859db9cf49b8a7b"
 BRANCH = "mt8167"
 TAR_PLATFORM = "mt8365"
 REF_SYMBOLS_PATH = "${B}/mtk-vcu-driver-mt8365/Module.symvers"
