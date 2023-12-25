@@ -5,7 +5,7 @@ EXTRA_OEMAKE:append:i350-pumpkin = " \
 "
 
 SRC_URI = "${AIOT_BSP_URI}/trusted-firmware-a.git;name=tfa;branch=mtk-v2.6;protocol=ssh"
-SRCREV_tfa = "fe896879289bee2d0b28a19d928f93597e73cc47"
+SRCREV_tfa = "8f34d053e0b59a4f7619e2e4e776be3d1440c4f1"
 
 SRC_URI:append:mt8370 = " file://0001-tf-a-auth-add-support-for-HW-crypto.patch "
 SRC_URI:append:mt8390 = " file://0001-tf-a-auth-add-support-for-HW-crypto.patch "
