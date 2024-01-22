@@ -210,6 +210,7 @@ SRC_URI:append:genio-1200-evk = " \
 	file://display-headless.dts \
 	file://isp70.dtsi \
 	file://mtk-camera.dtsi \
+	file://camera-common.dtsi \
 	file://camera-imx214-csi0.dts \
 	file://camera-imx214-csi1.dts \
 	file://camera-imx214-csi2.dts \
@@ -221,6 +222,12 @@ SRC_URI:append:genio-1200-evk = " \
 	file://camera-ar0830-ap1302-csi1.dts \
 	file://camera-ar0830-ap1302-csi2.dts \
 	file://camera-ar0830-ap1302-2lanes-csi0.dts \
+	file://camera-imx214-csi0-ar0830-ap1302-csi1.dts \
+	file://camera-imx214-csi0-ar0830-ap1302-csi2.dts \
+	file://camera-imx214-csi0-ar0830-ap1302-csi1-imx214-csi2.dts \
+	file://camera-imx214-csi0-ar0830-ap1302-csi1-ar0830-ap1302-csi2.dts \
+	file://camera-imx214-csi0-imx214-csi2.dts \
+	file://camera-ar0830-ap1302-csi0-ar0830-ap1302-csi2.dts \
 	file://camera-ar0430-ap1302-csi0-std.dts\
 	file://camera-ar0830-ap1302-csi0-std.dts\
 	file://camera-it6510-csi0-std.dts \
@@ -243,6 +250,7 @@ SRC_URI:append:genio-1200-evk-p1v1 = " \
 	file://display-headless.dts \
 	file://isp70.dtsi \
 	file://mtk-camera.dtsi \
+	file://camera-common.dtsi \
 	file://camera-imx214-csi0.dts \
 	file://camera-imx214-csi1.dts \
 	file://camera-imx214-csi2.dts \
@@ -254,6 +262,10 @@ SRC_URI:append:genio-1200-evk-p1v1 = " \
 	file://camera-ar0830-ap1302-csi1.dts \
 	file://camera-ar0830-ap1302-csi2.dts \
 	file://camera-ar0830-ap1302-2lanes-csi0.dts \
+	file://camera-imx214-csi0-imx214-csi2.dts \
+	file://camera-imx214-csi0-ar0830-ap1302-csi1.dts \
+	file://camera-imx214-csi0-ar0830-ap1302-csi1-imx214-csi2.dts \
+	file://camera-imx214-csi0-ar0830-ap1302-csi1-ar0830-ap1302-csi2.dts \
 "
 
 SRC_URI:append:genio-510-evk = " \
