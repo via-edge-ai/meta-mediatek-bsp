@@ -15,7 +15,7 @@ require recipes-security/optee/optee.inc
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
-SRC_URI = "${AIOT_BSP_URI}/optee-otp.git;branch=main;;protocol=ssh"
+SRC_URI = "${AIOT_BSP_URI}/optee-otp.git;branch=main;;protocol=https"
 SRCREV = "59aa96d2183353bdadb6a50f07e68597261268c2"
 
 COMPATIBLE_MACHINE = "mt*"

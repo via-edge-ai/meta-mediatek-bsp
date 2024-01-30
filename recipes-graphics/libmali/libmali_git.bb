@@ -40,7 +40,7 @@ RPROVIDES:${PN} = " \
 S = "${WORKDIR}/git"
 
 BRANCH = "${DISTRO_CODENAME}"
-SRC_URI = "${AIOT_RITY_URI}/libmali.git;protocol=ssh;branch=${BRANCH}"
+SRC_URI = "${AIOT_RITY_URI}/libmali.git;protocol=https;branch=${BRANCH}"
 SRCREV = "4ba4c4079a990546884ab47cdb09433469c364bd"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"

@@ -30,7 +30,7 @@ RPROVIDES:${PN} = " \
 
 S = "${WORKDIR}/git"
 
-SRC_URI = "${AIOT_RITY_URI}/libimgpvr.git;protocol=ssh;branch=main"
+SRC_URI = "${AIOT_RITY_URI}/libimgpvr.git;protocol=https;branch=main"
 SRCREV = "39296daf9f35e33c85b2c69d5d364bb67db39996"
 
 EXTRA_OEMAKE = ' \

@@ -12,7 +12,7 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 inherit systemd
 inherit update-rc.d
 
-SRC_URI = "${AIOT_RITY_URI}/vpud.git;protocol=ssh;branch=main"
+SRC_URI = "${AIOT_RITY_URI}/vpud.git;protocol=https;branch=main"
 SRCREV = "149b96e8b06a1b09ca774498cde9ee1335f28efb"
 
 SRC_URI += " \
