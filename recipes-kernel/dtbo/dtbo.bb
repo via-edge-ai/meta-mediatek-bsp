@@ -270,6 +270,9 @@ SRC_URI:append:genio-510-evk = " \
 	file://display-headless.dts \
 	file://isp71.dtsi \
 	file://mtk-camera.dtsi \
+	file://camera-imx214-csi0.dts \
+	file://camera-imx214-csi1.dts \
+	file://camera-imx214-2lanes-csi0.dts \
 	file://camera-ar0430-ap1302-csi0.dts \
 	file://camera-ar0430-ap1302-csi1.dts \
 	file://camera-ar0830-ap1302-csi0.dts \
