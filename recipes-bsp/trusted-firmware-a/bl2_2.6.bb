@@ -19,6 +19,9 @@ do_gen_bl2_img() {
 		media="ufs"
 	fi
 
+	if [ "${@bb.utils.contains('MACHINE_FEATURES', 'nor-boot', 'nor-boot', '', d)}" = "nor-boot" ]; then
+		media="nor"
+	fi
 
 	if [ "${@oe.utils.conditional('BL2_SIGN_ENABLE', '1', '1', '', d)}" = "1" ]; then
 		cp ${B}/${TFA_PLATFORM}/release/bl2.bin ${B}/bl2.img
