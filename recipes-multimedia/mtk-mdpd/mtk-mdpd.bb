@@ -9,8 +9,8 @@ RPROVIDES:${PN} += "libmdpd.so()(64bit)"
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/git"
 
-SRC_URI = "${AIOT_NDA_URI}/mdpd.git;protocol=ssh;branch=main"
-SRCREV = "4e035e1fbe5c41a8ea9b41974e5cd0c4ed32a57f"
+SRC_URI = "${AIOT_NDA_URI}/mdpd.git;protocol=https;branch=main"
+SRCREV = "9aff1fb4470ac808b4f548c4c7d27d2f49fdb0a9"
 
 DEBUG_BUILD = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
