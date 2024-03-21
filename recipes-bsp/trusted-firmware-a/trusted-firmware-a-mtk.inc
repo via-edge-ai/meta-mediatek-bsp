@@ -102,6 +102,16 @@ do_compile:prepend() {
 	fi
 }
 
+do_install:append() {
+	# The trusted-firmware-a.inc file modifies the Makefile by appending
+	# compilation flags each time it is compiled, causing the Makefile
+	# to become longer and longer.
+	# Remove the appended flags during the installation stage to fix this issue.
+	sed -i '/^LDLIBS/ s# \${BUILD_LDFLAGS\}##g' ${S}/tools/fiptool/Makefile
+	sed -i '/^INCLUDE_PATHS/ s# \${BUILD_CFLAGS\}##g' ${S}/tools/fiptool/Makefile
+	sed -i '/^LIB/ s# \${BUILD_LDFLAGS\}##g' ${S}/tools/cert_create/Makefile
+}
+
 do_deploy:append:bl31() {
 	cp ${B}/${TFA_PLATFORM}/release/bl31/bl31.ld ${DEPLOY_DIR_IMAGE}/
 
