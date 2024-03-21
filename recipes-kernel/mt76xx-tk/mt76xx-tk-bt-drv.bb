@@ -7,7 +7,7 @@ LICENSE = "CLOSED"
 inherit module
 
 SRC_URI = "${AIOT_NDA_URI}/neptune/bt_driver/turnkey_sdio;protocol=ssh;branch=main"
-SRCREV = "3efbe77b298553170ad1c721cbccca0d2df35114"
+SRCREV = "6142d995b8389c2c8edb4c38bd28e4290675edde"
 
 S = "${WORKDIR}/git"
 
