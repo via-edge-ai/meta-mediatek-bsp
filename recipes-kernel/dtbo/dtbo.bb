@@ -106,6 +106,9 @@ SRC_URI:append:mt8365-pumpkin = " \
         file://camera-ar0330-single-csi0.dts \
         file://camera-ar0330-single-csi1.dts \
         file://panel-urt-umo9465md.dts \
+        file://camera-thp7312-imx258-dual.dtsi \
+        file://camera-thp7312-imx258-single-csi0.dts \
+        file://camera-thp7312-imx258-single-csi1.dts \
 "
 
 SRC_URI:append:mt8365-sb35 = " \
