@@ -40,17 +40,20 @@ SRC_URI:append:i300-pumpkin = " \
 SRC_URI:append:mt8167 = " file://mt8167.cfg file://mt8516.cfg "
 SRC_URI:append:mt8183 = " file://mt8183.cfg "
 SRC_URI:append:mt8195 = " \
+	file://sof.cfg \
 	file://mt8195.cfg \
 	${@bb.utils.contains('MACHINE_FEATURES', 'tsn', 'file://tsn.cfg', '', d)} \
 "
 SRC_URI:append:mt8365 = " file://mt8365.cfg "
 SRC_URI:append:mt8516 = " file://mt8516.cfg "
 SRC_URI:append:mt8188 = " \
+	file://sof.cfg \
 	file://mt8188.cfg \
 	${@bb.utils.contains('MACHINE_FEATURES', 'tsn', 'file://tsn.cfg', '', d)} \
 "
 
 SRC_URI:append:mt8370 = " \
+	file://sof.cfg \
 	file://mt8370.cfg \
 	${@bb.utils.contains('MACHINE_FEATURES', 'tsn', 'file://tsn.cfg', '', d)} \
 "
