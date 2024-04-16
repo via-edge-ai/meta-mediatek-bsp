@@ -168,6 +168,7 @@ SRC_URI:append:genio-700-evk = " \
 	file://camera-ar0830-ap1302-csi0-it6510-csi1-std.dts \
 	file://camera-lt6911uxe-csi0-std.dts \
 	file://camera-lt6911uxe-dual-std.dts \
+	file://audio-sof.dts \
 "
 
 SRC_URI:append:mt8395 = " \
