@@ -322,6 +322,7 @@ SRC_URI:append:genio-510-evk = " \
 	file://camera-ar0830-ap1302-csi0-it6510-csi1-std.dts \
 	file://camera-lt6911uxe-csi0-std.dts \
 	file://camera-lt6911uxe-dual-std.dts \
+	file://audio-sof.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"
