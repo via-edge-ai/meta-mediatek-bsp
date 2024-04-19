@@ -8,9 +8,6 @@
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h>
 
-/dts-v1/;
-/plugin/;
-
 #include "isp71.dtsi"
 #include "mtk-camera.dtsi"
 
