@@ -8,9 +8,6 @@
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
 
-/dts-v1/;
-/plugin/;
-
 #include "isp70.dtsi"
 #include "mtk-camera.dtsi"
 
