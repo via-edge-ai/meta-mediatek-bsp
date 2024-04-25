@@ -43,6 +43,7 @@ BRANCH = "${DISTRO_CODENAME}"
 SRC_URI = "${AIOT_RITY_URI}/libmali.git;protocol=https;branch=${BRANCH}"
 SRCREV = "ed897d33a3d4d6e84c2cea516d5d1fd39bd000f3"
 
+PV = "0.${MALI_VERSION}"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 # Additional install firmware: not all GPU have firmware, only install firmware in specific GPU
