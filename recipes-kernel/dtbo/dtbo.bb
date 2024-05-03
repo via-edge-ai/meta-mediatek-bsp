@@ -285,6 +285,7 @@ SRC_URI:append:genio-1200-evk-p1v1 = " \
 	file://camera-ar0830-ap1302-csi0-std.dts\
 	file://camera-it6510-csi0-std.dts \
 	file://camera-lt6911uxe-csi0-std.dts \
+	file://camera-ag190c-max9286-csi0-std.dts \
 "
 
 SRC_URI:append:genio-510-evk = " \
