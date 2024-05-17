@@ -17,6 +17,7 @@ SRC_URI += "${AIOT_BSP_URI}/mtk-mali-gpu-driver.git;protocol=https;branch=${BRAN
 "
 
 S = "${WORKDIR}/git"
+PV = "${BRANCH}+git${SRCPV}"
 
 MODULES_MODULE_SYMVERS_LOCATION = "drivers/gpu/arm/midgard"
 
