@@ -1,0 +1,45 @@
+From 646970f8f51f10db4786cb05049e6956f5fad6dc Mon Sep 17 00:00:00 2001
+From: Tommy Chen <tommyyl.chen@mediatek.com>
+Date: Thu, 23 May 2024 12:17:19 +0800
+Subject: [PATCH] v4l-utils: cec-ctl: resend standby in init_power_cycle_test
+
+In the power cycle test, the first standby transmit must always succeed.
+The issue arises from the code flow, which sends only one standby message
+and then enters a loop to poll the power status. If this initial standby
+message transmission fails, the first standby will therefore fail.
+
+Modifying based on the latest cec-ctl.cpp on Github [1], the standby
+message is resent if it fails. This involves sending one standby message
+and one polling power status message in a loop, consequently improving
+the success rate of the first standby.
+
+Signed-off-by: tommyyl.chen <tommyyl.chen@mediatek.com>
+CR-Id: AUTO00311036
+[1]: https://github.com/gjasny/v4l-utils/blob/master/utils/cec-ctl/cec-ctl.cpp#L1386
+---
+ utils/cec-ctl/cec-ctl.cpp | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/utils/cec-ctl/cec-ctl.cpp b/utils/cec-ctl/cec-ctl.cpp
+index 4bed81a..101de43 100644
+--- a/utils/cec-ctl/cec-ctl.cpp
++++ b/utils/cec-ctl/cec-ctl.cpp
+@@ -1230,15 +1230,12 @@ static int init_power_cycle_test(const struct node &node, unsigned repeats, unsi
+ 			printf("Transmit Standby to TV: ");
+ 			fflush(stdout);
+ 			cec_msg_init(&msg, from, CEC_LOG_ADDR_TV);
+-			static bool sent;
+ 			cec_msg_standby(&msg);
+ 
+ 			tries = 0;
+ 			unsigned hpd_is_low_cnt = 0;
+ 			for (;;) {
+-			if (!sent) { sent=true;
+ 				ret = transmit_msg_retry(node, msg);
+-			} else ret = 0;
+ 				// The first standby transmit must always succeed,
+ 				// later standbys may fail with ENONET
+ 				if (ret && (ret != ENONET || !tries)) {
+-- 
+2.18.0
+
