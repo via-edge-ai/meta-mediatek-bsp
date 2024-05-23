@@ -3,7 +3,7 @@
 require mtk-vcodec-driver-common.inc
 
 # MT8195/MT8188: co-branch with mt8395
-SRCREV = "72a39645bc068c371e14e6a3d61a0661de87d38b"
+SRCREV = "b31b67539db2dd41eee1caf694078dbb5a36b702"
 BRANCH = "mt8395"
 TAR_PLATFORM = "mt8395"
 REF_SYMBOLS_PATH = ""
