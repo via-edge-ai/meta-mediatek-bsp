@@ -1,0 +1,50 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	fragment@0 {
+		target-path="/";
+		__overlay__ {
+			wm8960_mclk: wm8960_mclk {
+				compatible = "fixed-clock";
+				#clock-cells = <0>;
+				clock-frequency = <12288000>;
+			};
+		};
+	};
+
+	fragment@1 {
+		target = <&i2c2>;
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <&i2c2_pin>;
+			clock-frequency = <400000>;
+			status = "okay";
+			wm8960: codec@1a {
+				compatible = "wlf,wm8960";
+				reg = <0x1a>;
+				wlf,shared-lrclk;
+				wlf,gpio-cfg = <0 001>;
+				wlf,hp-cfg = <0 0 0>;
+				#sound-dai-cells = <0>;
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&sound>;
+		__overlay__ {
+			dai-link-4 {
+				sound-dai = <&afe>;
+				dai-link-name = "PCM1_BE";
+				status = "okay";
+
+				codec-0 {
+					sound-dai = <&wm8960>;
+					clocks = <&wm8960_mclk>;
+					clock-names = "mclk";
+				};
+			};
+		};
+	};
+};

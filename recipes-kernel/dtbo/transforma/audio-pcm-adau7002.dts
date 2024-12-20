@@ -1,0 +1,30 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	fragment@0 {
+		target-path="/";
+		__overlay__ {
+			adau7002_codec: adau7002-codec {
+				#sound-dai-cells = <0>;
+				compatible = "adi,adau7002";
+				status = "okay";
+			};
+		};
+	};
+
+	fragment@1 {
+		target = <&sound>;
+		__overlay__ {
+			dai-link-4 {
+				sound-dai = <&afe>;
+				dai-link-name = "PCM1_BE";
+				status = "okay";
+
+				codec-0 {
+					sound-dai = <&adau7002_codec>;
+				};
+			};
+		};
+	};
+};

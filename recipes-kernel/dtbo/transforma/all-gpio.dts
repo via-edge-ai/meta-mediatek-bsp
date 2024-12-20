@@ -1,0 +1,85 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * Copyright (c) 2024 VIA Technologies, Inc.
+ *
+ */
+
+#include <dt-bindings/clock/mediatek,mt8188-clk.h>
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h>
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	fragment@0 {
+		target = <&i2c2>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+	fragment@1 {
+		target = <&spi2>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+	fragment@2 {
+		target = <&i2c0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+	fragment@3 {
+		target = <&sound>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+	fragment@4 {
+		target = <&uart2>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@5 {
+		target = <&pio>;
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <&all_gpio>;
+			all_gpio: all-gpio-pins {
+			mux {
+				pinmux = <PINMUX_GPIO60__FUNC_B_GPIO60>,
+					 <PINMUX_GPIO59__FUNC_B_GPIO59>,
+					 <PINMUX_GPIO39__FUNC_B_GPIO39>,
+					 <PINMUX_GPIO0__FUNC_B_GPIO0>,
+					 <PINMUX_GPIO37__FUNC_B_GPIO37>,
+					 <PINMUX_GPIO41__FUNC_B_GPIO41>,
+					 <PINMUX_GPIO82__FUNC_B_GPIO82>,
+					 <PINMUX_GPIO81__FUNC_B_GPIO81>,
+					 <PINMUX_GPIO80__FUNC_B_GPIO80>,
+					 <PINMUX_GPIO56__FUNC_B_GPIO56>,
+					 <PINMUX_GPIO1__FUNC_B_GPIO1>,
+					 <PINMUX_GPIO26__FUNC_B_GPIO26>,
+					 <PINMUX_GPIO30__FUNC_B_GPIO30>,
+					 <PINMUX_GPIO122__FUNC_B_GPIO122>,
+					 <PINMUX_GPIO111__FUNC_B_GPIO111>,
+					 <PINMUX_GPIO35__FUNC_B_GPIO35>,
+					 <PINMUX_GPIO36__FUNC_B_GPIO36>,
+					 <PINMUX_GPIO121__FUNC_B_GPIO121>,
+					 <PINMUX_GPIO75__FUNC_B_GPIO75>,
+					 <PINMUX_GPIO40__FUNC_B_GPIO40>,
+					 <PINMUX_GPIO38__FUNC_B_GPIO38>,
+					 <PINMUX_GPIO79__FUNC_B_GPIO79>,
+					 <PINMUX_GPIO90__FUNC_B_GPIO90>,
+					 <PINMUX_GPIO55__FUNC_B_GPIO55>,
+					 <PINMUX_GPIO28__FUNC_B_GPIO28>,
+					 <PINMUX_GPIO76__FUNC_B_GPIO76>,
+					 <PINMUX_GPIO124__FUNC_B_GPIO124>,
+					 <PINMUX_GPIO123__FUNC_B_GPIO123>;
+				};
+			};
+		};
+	};
+};

@@ -1,4 +1,0 @@
-MT7663 wireless chipset
-=======================
-
-The MT7663 platform is a Wi-Fi and Bluetooth chip.

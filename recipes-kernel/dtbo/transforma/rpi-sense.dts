@@ -1,0 +1,59 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * Copyright (c) 2024 VIA Technologies, Inc.
+ *
+ */
+
+// rpi-sense HAT
+
+#include <dt-bindings/clock/mediatek,mt8188-clk.h>
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h>
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "mediatek,mt8188";
+
+	fragment@0 {
+		target = <&i2c2>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			clock-frequency = <100000>; /* 100kHz */
+			status = "okay";
+
+			rpi-sense@46 {
+				compatible = "rpi,rpi-sense";
+				reg = <0x46>;
+				keys-int-gpios = <&pio 111 GPIO_ACTIVE_LOW>;
+				status = "okay";
+			};
+
+			lsm9ds1-magn@1c {
+				compatible = "st,lsm9ds1-magn";
+				reg = <0x1c>;
+				status = "okay";
+			};
+
+			lps25h-press@5c {
+				compatible = "st,lps25h-press";
+				reg = <0x5c>;
+				status = "okay";
+			};
+
+			hts221-humid@5f {
+				compatible = "st,hts221-humid", "st,hts221";
+				reg = <0x5f>;
+				status = "okay";
+			};
+
+			lsm9ds1-accel@6a {
+				compatible = "st,lsm9ds1-accel";
+				reg = <0x6a>;
+				status = "okay";
+			};
+		};
+	};
+};

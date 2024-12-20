@@ -133,6 +133,10 @@ do_deploy:append:bl31() {
 			FWUPDATE_FIP_ID="551cc92d-9a22-4dc8-8872-db1bb8dcafa0"
 		fi
 
+		if [ "${@oe.utils.conditional("MACHINE", "transforma", "1", "", d)}" = "1" ]; then
+			FWUPDATE_FIP_ID="551cc92d-9a22-4dc8-8872-db1bb8dcafa0"
+		fi
+
 		if [ "${@oe.utils.conditional("MACHINE", "genio-510-evk", "1", "", d)}" = "1" ]; then
 			FWUPDATE_FIP_ID="0cb9a4dd-8692-425d-a1dc-a33bcf52ad05"
 		fi

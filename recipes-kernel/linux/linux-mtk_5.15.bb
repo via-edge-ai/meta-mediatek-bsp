@@ -6,6 +6,6 @@ require linux-mtk-common.inc
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 LINUX_VERSION ?= "5.15.47"
-SRCBRANCH ?= "mtk-v5.15-dev"
-SRCREV = "87e4e4a45d60549a363fb1be87e5693b25ae6d67"
+SRCBRANCH ?= "transforma_debian"
+SRCREV = "38cc9df4016e61957aa57bb362ee62c0a01c3bbb"
 
