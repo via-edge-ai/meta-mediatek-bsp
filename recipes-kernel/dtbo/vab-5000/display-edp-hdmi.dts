@@ -1,0 +1,52 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	fragment@0 {
+		target = <&edp_panel>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@1 {
+		target = <&dp_intf0>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@2 {
+		target = <&edp_tx>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@3 {
+		target = <&disp_pwm0>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@4 {
+		target = <&backlight_lcd0>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@5 {
+		target = <&sound>;
+		__overlay__ {
+			dai-link-1 { /* HDMI */
+			status = "okay";
+		};
+
+			dai-link-2 { /* DPTX */
+				status = "disabled";
+			};
+		};
+	};
+};
