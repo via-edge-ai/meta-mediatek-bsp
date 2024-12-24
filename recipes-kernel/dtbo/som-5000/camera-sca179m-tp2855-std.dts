@@ -1,0 +1,155 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * Copyright (c) 2024 MediaTek Inc.
+ *
+ */
+
+#include <dt-bindings/clock/mediatek,mt8188-clk.h>
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h>
+
+/dts-v1/;
+/plugin/;
+
+#include "isp71.dtsi"
+
+/ {
+	fragment@4 {
+		target-path = "/";
+		__overlay__ {
+			cam_vcam_3v3_en: cam-vcam-3v3-en-regulator {
+				compatible = "regulator-fixed";
+				regulator-name = "cam_vcam_3v3_en";
+				regulator-min-microvolt = <1800000>;
+				regulator-max-microvolt = <1800000>;
+				vin-supply = <&mt6359_vcamio_ldo_reg>;
+				enable-active-high;
+				regulator-always-on;
+			};
+		};
+	};
+	
+	fragment@5 {
+		target = <&i2c5>;
+		__overlay__ {
+			clock-frequency = <400000>;
+
+			tp2855_c0: tp2855_c0@44 {
+				compatible = "tp,tp2855";
+				reg = <0x44>;
+				
+				ports {
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					port@0 {
+						reg = <0>;
+
+						tp2855_c0_in0: endpoint {
+							remote-endpoint = <&sca179m_c0_out0>;
+						};
+					};
+
+					port@1 {
+						reg = <1>;
+
+						tp2855_c0_in1: endpoint {
+							remote-endpoint = <&sca179m_c0_out1>;
+						};
+					};
+
+					port@2 {
+						reg = <2>;
+
+						tp2855_c0_in2: endpoint {
+							remote-endpoint = <&sca179m_c0_out2>;
+						};
+					};
+
+					port@3 {
+						reg = <3>;
+
+						tp2855_c0_in3: endpoint {
+							remote-endpoint = <&sca179m_c0_out3>;
+						};
+					};
+
+					port@4 {
+						reg = <4>;
+
+						tp2855_c0_out: endpoint {
+							data-lanes = <1 2 3 4>;
+							remote-endpoint = <&seninf_csi_port_1_in>;
+						};
+					};
+				};
+			};
+			
+			camera@4 {
+				compatible = "osa,sca179m";
+				reg = <4>;
+
+				port {
+					sca179m_c0_out0: endpoint {
+						remote-endpoint = <&tp2855_c0_in0>;
+					};
+				};
+			};
+
+			camera@1 {
+				compatible = "osa,sca179m";
+				reg = <1>;
+
+				port {
+					sca179m_c0_out1: endpoint {
+						remote-endpoint = <&tp2855_c0_in1>;
+					};
+				};
+			};
+	
+			camera@2 {
+				compatible = "osa,sca179m";
+				reg = <2>;
+
+				port {
+					sca179m_c0_out2: endpoint {
+						remote-endpoint = <&tp2855_c0_in2>;
+					};
+				};
+			};
+
+			camera@3 {
+				compatible = "osa,sca179m";
+				reg = <3>;
+
+				port {
+					sca179m_c0_out3: endpoint {
+						remote-endpoint = <&tp2855_c0_in3>;
+					};
+				};
+			};
+		};
+	};
+
+	fragment@6 {
+		target = <&seninf_top>;
+		__overlay__ {
+			seninf_csi_port_1: seninf_csi_port_1 {
+				compatible = "mediatek,seninf";
+				csi-port = "1";
+				settle_delay_ck = <0x00>;
+				dphy_settle_delay_dt = <0x10>;
+				hs_trail_parameter = <0x08>;
+
+				ports {
+					port@1 {
+						seninf_csi_port_1_in: endpoint {
+							remote-endpoint = <&tp2855_c0_out>;
+							data-lanes = <1 2 3 4>;
+						};
+					};
+				};
+			};
+		};
+	};
+};

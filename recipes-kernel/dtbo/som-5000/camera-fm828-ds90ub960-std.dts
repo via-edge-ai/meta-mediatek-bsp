@@ -1,0 +1,229 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * Copyright (c) 2024 MediaTek Inc.
+ *
+ */
+
+#include <dt-bindings/clock/mediatek,mt8188-clk.h>
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h>
+
+/dts-v1/;
+/plugin/;
+
+#include "isp71.dtsi"
+
+/ {
+	fragment@4 {
+		target-path = "/";
+		__overlay__ {
+			fxl6408_dovdd_1v8_en: fxl6408_dovdd_1v8_en-regulator {
+				compatible = "regulator-fixed";
+				regulator-name = "fxl6408_dovdd_1v8_en";
+				regulator-min-microvolt = <1800000>;
+				regulator-max-microvolt = <1800000>;
+				vin-supply = <&mt6359_vcamio_ldo_reg>;
+				enable-active-high;
+				//regulator-always-on;
+			};
+			cam_afvdd_2v8_en: cam_afvdd_2v8_en-regulator {
+				compatible = "regulator-fixed";
+				regulator-name = "cam_afvdd_2v8_en";
+				regulator-min-microvolt = <2800000>;
+				regulator-max-microvolt = <2800000>;
+				vin-supply = <&mt6359_vio28_ldo_reg>;
+				//regulator-always-on;
+			};
+			cam_avdd_2v8_en: cam_avdd_2v8_en-regulator {
+				compatible = "regulator-fixed";
+				regulator-name = "cam_avdd_2v8_en";
+				regulator-min-microvolt = <2800000>;
+				regulator-max-microvolt = <2800000>;
+				vin-supply = <&mt6359_vfe28_ldo_reg>;
+				//regulator-always-on;
+			};
+			cam_vcam_3v3_en: cam-vcam-3v3-en-regulator {
+				compatible = "regulator-fixed";
+				regulator-name = "cam_vcam_3v3_en";
+				regulator-min-microvolt = <1800000>;
+				regulator-max-microvolt = <1800000>;
+				vin-supply = <&mt6359_vcamio_ldo_reg>;
+				enable-active-high;
+				//regulator-always-on;
+			};
+		};
+	};
+
+	fragment@5 {
+		target = <&i2c5>;
+		__overlay__ {
+			clock-frequency = <400000>;
+
+			gpio_expander_c0: gpio_expander_c0@43 { 
+				gpio-controller; 
+				#gpio-cells = <2>; 
+
+				reg = <0x43>; 
+				compatible = "fcs,fxl6408"; 
+			};
+
+			ds90ub960_c0: ds90ub960_c0@30 {
+				compatible = "ti,ds90ub960";
+				reg = <0x30>;
+				
+				power-supply = <&cam_vcam_3v3_en>;
+
+				rx0-gpios				= <&gpio_expander_c0 0 GPIO_ACTIVE_HIGH>;
+				rx1-gpios				= <&gpio_expander_c0 1 GPIO_ACTIVE_HIGH>;
+				rx2-gpios				= <&gpio_expander_c0 2 GPIO_ACTIVE_HIGH>;
+				rx3-gpios				= <&gpio_expander_c0 3 GPIO_ACTIVE_HIGH>;
+				pnd-gpios				= <&gpio_expander_c0 5 GPIO_ACTIVE_HIGH>;
+
+				gpio-controller;
+				#gpio-cells = <2>;
+
+				ports {
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					port@0 {
+						reg = <0>;
+
+						ds90ub960_c0_in0: endpoint {
+							remote-endpoint = <&fm828_c0_out0>;
+						};
+					};
+
+					port@1 {
+						reg = <1>;
+
+						ds90ub960_c0_in1: endpoint {
+							remote-endpoint = <&fm828_c0_out1>;
+						};
+					};
+
+					port@2 {
+						reg = <2>;
+
+						ds90ub960_c0_in2: endpoint {
+							remote-endpoint = <&fm828_c0_out2>;
+						};
+					};
+
+					port@3 {
+						reg = <3>;
+
+						ds90ub960_c0_in3: endpoint {
+							remote-endpoint = <&fm828_c0_out3>;
+						};
+					};
+
+					port@4 {
+						reg = <4>;
+
+						ds90ub960_c0_out: endpoint {
+							data-lanes = <1 2 3 4>;
+							remote-endpoint = <&seninf_csi_port_1_in>;
+						};
+					};
+				};
+
+				i2c-mux {
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					i2c@0 {
+						#address-cells = <1>;
+						#size-cells = <0>;
+						reg = <0>;
+
+						camera@51 {
+							compatible = "rec,fm828";
+							reg = <0x51>, <0x61>;
+
+							port {
+								fm828_c0_out0: endpoint {
+									remote-endpoint = <&ds90ub960_c0_in0>;
+								};
+							};
+
+						};
+					};
+
+					i2c@1 {
+						#address-cells = <1>;
+						#size-cells = <0>;
+						reg = <1>;
+
+						camera@52 {
+							compatible = "rec,fm828";
+							reg = <0x52>, <0x62>;
+
+							port {
+								fm828_c0_out1: endpoint {
+									remote-endpoint = <&ds90ub960_c0_in1>;
+								};
+							};
+						};
+					};
+
+					i2c@2 {
+						#address-cells = <1>;
+						#size-cells = <0>;
+						reg = <2>;
+
+						camera@53 {
+							compatible = "rec,fm828";
+							reg = <0x53>, <0x63>;
+
+							port {
+								fm828_c0_out2: endpoint {
+									remote-endpoint = <&ds90ub960_c0_in2>;
+								};
+							};
+						};
+					};
+
+					i2c@3 {
+						#address-cells = <1>;
+						#size-cells = <0>;
+						reg = <3>;
+
+						camera@54 {
+							compatible = "rec,fm828";
+							reg = <0x54>, <0x64>;
+
+							port {
+								fm828_c0_out3: endpoint {
+									remote-endpoint = <&ds90ub960_c0_in3>;
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+
+	fragment@6 {
+		target = <&seninf_top>;
+		__overlay__ {
+			seninf_csi_port_1: seninf_csi_port_1 {
+				compatible = "mediatek,seninf";
+				csi-port = "1";
+				settle_delay_ck = <0x00>;
+				dphy_settle_delay_dt = <0x10>;
+				hs_trail_parameter = <0x08>;
+
+				ports {
+					port@2 {
+						seninf_csi_port_1_in: endpoint {
+							remote-endpoint = <&ds90ub960_c0_out>;
+							data-lanes = <1 2 3 4>;
+						};
+					};
+				};
+			};
+		};
+	};
+};

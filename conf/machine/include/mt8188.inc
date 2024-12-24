@@ -24,11 +24,7 @@ MALI_SOC = "mt8188"
 MALI_VERSION ??= "48"
 
 MACHINE_EXTRA_RRECOMMENDS:append = " \
-	${@bb.utils.contains_any('DISTRO_FEATURES', 'opengl vulkan', 'libmali', '', d)} \
 	mali-gpu-driver \
-	linux-firmware-mt8188-scp \
-	linux-firmware-mt8188-sof \
-	${@bb.utils.contains("MACHINE_FEATURES", "optee-efuse", "optee-ewriter", "", d)} \
 "
 
 PREFERRED_PROVIDER_virtual/egl ?= "libmali"
