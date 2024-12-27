@@ -1,0 +1,89 @@
+From 45f5d705fe82f1543442239542c909e8d8d6fc57 Mon Sep 17 00:00:00 2001
+From: JasonLin <JasonLin@via.com.tw>
+Date: Wed, 13 Nov 2024 02:01:50 +0000
+Subject: [PATCH] Support waylandsink to set position
+
+---
+ desktop-shell/shell.c                         | 21 +++++++++++++++++--
+ include/libweston-desktop/libweston-desktop.h |  2 ++
+ libweston-desktop/surface.c                   |  6 ++++++
+ 3 files changed, 27 insertions(+), 2 deletions(-)
+
+diff --git a/desktop-shell/shell.c b/desktop-shell/shell.c
+index 63e1431..c065735 100644
+--- a/desktop-shell/shell.c
++++ b/desktop-shell/shell.c
+@@ -1967,8 +1967,14 @@ unset_fullscreen(struct shell_surface *shsurf)
+ 	if (shsurf->saved_position_valid)
+ 		weston_view_set_position(shsurf->view,
+ 					 shsurf->saved_x, shsurf->saved_y);
+-	else
++	else {
+ 		weston_view_set_initial_position(shsurf->view, shsurf->shell);
++		if (weston_desktop_surface_has_geometry(shsurf->desktop_surface)) {
++			struct weston_geometry geometry =
++				weston_desktop_surface_get_geometry(shsurf->desktop_surface);
++			weston_view_set_position(shsurf->view, geometry.x, geometry.y);
++		}
++	}
+ 	shsurf->saved_position_valid = false;
+ 
+ 	if (shsurf->saved_rotation_valid) {
+@@ -1990,8 +1996,14 @@ unset_maximized(struct shell_surface *shsurf)
+ 	if (shsurf->saved_position_valid)
+ 		weston_view_set_position(shsurf->view,
+ 					 shsurf->saved_x, shsurf->saved_y);
+-	else
++	else {
+ 		weston_view_set_initial_position(shsurf->view, shsurf->shell);
++		if (weston_desktop_surface_has_geometry(shsurf->desktop_surface)) {
++			struct weston_geometry geometry =
++				weston_desktop_surface_get_geometry(shsurf->desktop_surface);
++			weston_view_set_position(shsurf->view, geometry.x, geometry.y);
++		}
++	}
+ 	shsurf->saved_position_valid = false;
+ 
+ 	if (shsurf->saved_rotation_valid) {
+@@ -2462,6 +2474,11 @@ map(struct desktop_shell *shell, struct shell_surface *shsurf,
+ 		set_position_from_xwayland(shsurf);
+ 	} else {
+ 		weston_view_set_initial_position(shsurf->view, shell);
++		if (weston_desktop_surface_has_geometry(shsurf->desktop_surface)) {
++			struct weston_geometry geometry =
++				weston_desktop_surface_get_geometry(shsurf->desktop_surface);
++			weston_view_set_position(shsurf->view, geometry.x, geometry.y);
++		}
+ 	}
+ 
+ 	/* Surface stacking order, see also activate(). */
+diff --git a/include/libweston-desktop/libweston-desktop.h b/include/libweston-desktop/libweston-desktop.h
+index 3e7ac73..6f6d8a8 100644
+--- a/include/libweston-desktop/libweston-desktop.h
++++ b/include/libweston-desktop/libweston-desktop.h
+@@ -188,6 +188,8 @@ bool
+ weston_desktop_surface_get_fullscreen(struct weston_desktop_surface *surface);
+ bool
+ weston_desktop_surface_get_resizing(struct weston_desktop_surface *surface);
++bool
++weston_desktop_surface_has_geometry(struct weston_desktop_surface *surface);
+ struct weston_geometry
+ weston_desktop_surface_get_geometry(struct weston_desktop_surface *surface);
+ struct weston_size
+diff --git a/libweston-desktop/surface.c b/libweston-desktop/surface.c
+index 433f08a..d1024e0 100644
+--- a/libweston-desktop/surface.c
++++ b/libweston-desktop/surface.c
+@@ -655,6 +655,12 @@ weston_desktop_surface_get_fullscreen(struct weston_desktop_surface *surface)
+ 						       surface->implementation_data);
+ }
+ 
++WL_EXPORT bool
++weston_desktop_surface_has_geometry(struct weston_desktop_surface *surface)
++{
++	return surface->has_geometry;
++}
++
+ WL_EXPORT struct weston_geometry
+ weston_desktop_surface_get_geometry(struct weston_desktop_surface *surface)
+ {

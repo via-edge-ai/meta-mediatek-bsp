@@ -1,0 +1,44 @@
+From 829446cf78d397b020eb26b8fdf7439b984d0646 Mon Sep 17 00:00:00 2001
+From: JasonLin <JasonLin@via.com.tw>
+Date: Tue, 3 Dec 2024 06:27:35 +0000
+Subject: [PATCH] Waive set position to 0,0 for QT compatible
+
+---
+ ext/wayland/gstwaylandsink.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/ext/wayland/gstwaylandsink.c b/ext/wayland/gstwaylandsink.c
+index 248b5f3..106ac49 100644
+--- a/ext/wayland/gstwaylandsink.c
++++ b/ext/wayland/gstwaylandsink.c
+@@ -215,7 +215,7 @@ gst_wayland_sink_class_init (GstWaylandSinkClass * klass)
+           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+ 
+   g_object_class_install_property (gobject_class, PROP_POSITION,
+-      g_param_spec_string ("pos", "Position", "Set window position",
++      g_param_spec_string ("pos", "Position", "Set window position (x > 0, y > 0)",
+           NULL, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+ 
+   gst_type_mark_as_plugin_api (GST_TYPE_WAYLAND_VIDEO, 0);
+@@ -293,7 +293,11 @@ gst_wayland_sink_set_property (GObject * object,
+       gchar *varstr = g_value_dup_string (value);
+       GST_OBJECT_LOCK (sink);
+       sscanf (varstr, "%d,%d", &sink->pos_x, &sink->pos_y);
+-      GST_INFO ("set position(%s) %dx%d", varstr, sink->pos_x, sink->pos_y);
++      if (sink->pos_x == 0 && sink->pos_y == 0) {
++        GST_WARNING ("position(%s) can't be %dx%d", varstr, sink->pos_x, sink->pos_y);
++        sink->pos_x = sink->pos_y = G_MAXINT;
++      } else
++        GST_INFO ("set position(%s) %dx%d", varstr, sink->pos_x, sink->pos_y);
+       g_free (varstr);
+       GST_OBJECT_UNLOCK (sink);
+       break;
+@@ -745,7 +749,7 @@ gst_wayland_sink_show_frame (GstVideoSink * vsink, GstBuffer * buffer)
+           &sink->video_info, sink->fullscreen, &sink->render_lock);
+       g_signal_connect_object (sink->window, "closed",
+           G_CALLBACK (on_window_closed), sink, 0);
+-      if (sink->pos_x != G_MAXINT && sink->pos_x != G_MAXINT)
++      if (sink->pos_x != G_MAXINT && sink->pos_y != G_MAXINT)
+           gst_wl_window_set_view_position (sink->window, sink->pos_x, sink->pos_y);
+     }
+   }

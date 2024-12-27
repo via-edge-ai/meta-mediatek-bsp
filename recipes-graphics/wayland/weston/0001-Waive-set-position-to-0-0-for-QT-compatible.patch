@@ -1,0 +1,54 @@
+From 1199ff4f7ce460eeff208bcc2bb9daec4048387f Mon Sep 17 00:00:00 2001
+From: JasonLin <JasonLin@via.com.tw>
+Date: Tue, 3 Dec 2024 06:27:25 +0000
+Subject: [PATCH] Waive set position to 0,0 for QT compatible
+
+---
+ desktop-shell/shell.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/desktop-shell/shell.c b/desktop-shell/shell.c
+index c065735..fd0636a 100644
+--- a/desktop-shell/shell.c
++++ b/desktop-shell/shell.c
+@@ -45,6 +45,10 @@
+ #include "shared/timespec-util.h"
+ #include <libweston-desktop/libweston-desktop.h>
+ 
++#ifndef WM_DEBUG
++#define WM_DEBUG
++#endif
++
+ #define DEFAULT_NUM_WORKSPACES 1
+ #define DEFAULT_WORKSPACE_CHANGE_ANIMATION_LENGTH 200
+ 
+@@ -1972,7 +1976,8 @@ unset_fullscreen(struct shell_surface *shsurf)
+ 		if (weston_desktop_surface_has_geometry(shsurf->desktop_surface)) {
+ 			struct weston_geometry geometry =
+ 				weston_desktop_surface_get_geometry(shsurf->desktop_surface);
+-			weston_view_set_position(shsurf->view, geometry.x, geometry.y);
++			if (geometry.x > 0 || geometry.y > 0)
++				weston_view_set_position(shsurf->view, geometry.x, geometry.y);
+ 		}
+ 	}
+ 	shsurf->saved_position_valid = false;
+@@ -2001,7 +2006,8 @@ unset_maximized(struct shell_surface *shsurf)
+ 		if (weston_desktop_surface_has_geometry(shsurf->desktop_surface)) {
+ 			struct weston_geometry geometry =
+ 				weston_desktop_surface_get_geometry(shsurf->desktop_surface);
+-			weston_view_set_position(shsurf->view, geometry.x, geometry.y);
++			if (geometry.x > 0 || geometry.y > 0)
++				weston_view_set_position(shsurf->view, geometry.x, geometry.y);
+ 		}
+ 	}
+ 	shsurf->saved_position_valid = false;
+@@ -2477,7 +2483,8 @@ map(struct desktop_shell *shell, struct shell_surface *shsurf,
+ 		if (weston_desktop_surface_has_geometry(shsurf->desktop_surface)) {
+ 			struct weston_geometry geometry =
+ 				weston_desktop_surface_get_geometry(shsurf->desktop_surface);
+-			weston_view_set_position(shsurf->view, geometry.x, geometry.y);
++			if (geometry.x > 0 || geometry.y > 0)
++				weston_view_set_position(shsurf->view, geometry.x, geometry.y);
+ 		}
+ 	}
+ 

@@ -6,6 +6,8 @@ SRC_URI += " \
 	file://MM21-0008-v4l2codecs-Enable-MediaTek-MM21-NV12_16L32S.patch \
 	file://MM21-0010-doc-Add-NV12_16L32S-into-the-cache.patch \
 	file://kmssink-0001-Add-mediatek-into-default-driver-list.patch \
+	file://0001-Support-set-inital-view-position.patch \
+	file://0001-Waive-set-position-to-0-0-for-QT-compatible.patch \
 "
 
 PACKAGECONFIG:append = " kms"

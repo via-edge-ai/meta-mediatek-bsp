@@ -1,0 +1,28 @@
+From 5a09e40d9a3897c334ac5f03cce83b7c92eb31f7 Mon Sep 17 00:00:00 2001
+From: Ginny Chen <ginny.chen@mediatek.com>
+Date: Wed, 24 Apr 2019 16:20:13 +0800
+Subject: [PATCH] libcutils:fix-buildfail-in-atomic
+
+Signed-off-by: Ginny Chen <ginny.chen@mediatek.com>
+---
+ libcutils/include/cutils/atomic.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libcutils/include/cutils/atomic.h b/libcutils/include/cutils/atomic.h
+index 0c88bfedd3..b3471a5e1d 100644
+--- a/libcutils/include/cutils/atomic.h
++++ b/libcutils/include/cutils/atomic.h
+@@ -19,7 +19,9 @@
+ 
+ #include <stdint.h>
+ #include <sys/types.h>
+-#include <stdatomic.h>
++#include <atomic>
++
++using namespace std;
+ 
+ #ifndef ANDROID_ATOMIC_INLINE
+ #define ANDROID_ATOMIC_INLINE static inline
+-- 
+2.18.0
+

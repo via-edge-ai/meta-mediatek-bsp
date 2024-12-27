@@ -1,0 +1,177 @@
+From a44654f4bca4e65962a766c4d7af6ee90bedc5a2 Mon Sep 17 00:00:00 2001
+From: JasonLin <JasonLin@via.com.tw>
+Date: Wed, 13 Nov 2024 02:01:34 +0000
+Subject: [PATCH] Support "set inital view position"
+
+---
+ ext/wayland/gstwaylandsink.c | 28 +++++++++++++++++++++++++++-
+ ext/wayland/gstwaylandsink.h |  1 +
+ ext/wayland/wlwindow.c       | 29 ++++++++++++++++++++++++++++-
+ ext/wayland/wlwindow.h       |  2 ++
+ 4 files changed, 58 insertions(+), 2 deletions(-)
+
+diff --git a/ext/wayland/gstwaylandsink.c b/ext/wayland/gstwaylandsink.c
+index 0761304..248b5f3 100644
+--- a/ext/wayland/gstwaylandsink.c
++++ b/ext/wayland/gstwaylandsink.c
+@@ -48,6 +48,7 @@
+ #include "wlshmallocator.h"
+ #include "wllinuxdmabuf.h"
+ 
++#include <stdio.h>
+ #include <gst/wayland/wayland.h>
+ #include <gst/video/videooverlay.h>
+ 
+@@ -63,7 +64,8 @@ enum
+ {
+   PROP_0,
+   PROP_DISPLAY,
+-  PROP_FULLSCREEN
++  PROP_FULLSCREEN,
++  PROP_POSITION
+ };
+ 
+ GST_DEBUG_CATEGORY (gstwayland_debug);
+@@ -212,6 +214,10 @@ gst_wayland_sink_class_init (GstWaylandSinkClass * klass)
+           "Whether the surface should be made fullscreen ", FALSE,
+           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+ 
++  g_object_class_install_property (gobject_class, PROP_POSITION,
++      g_param_spec_string ("pos", "Position", "Set window position",
++          NULL, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
++
+   gst_type_mark_as_plugin_api (GST_TYPE_WAYLAND_VIDEO, 0);
+ }
+ 
+@@ -220,6 +226,7 @@ gst_wayland_sink_init (GstWaylandSink * sink)
+ {
+   g_mutex_init (&sink->display_lock);
+   g_mutex_init (&sink->render_lock);
++  sink->pos_x = sink->pos_y = G_MAXINT;
+ }
+ 
+ static void
+@@ -251,6 +258,14 @@ gst_wayland_sink_get_property (GObject * object,
+       g_value_set_boolean (value, sink->fullscreen);
+       GST_OBJECT_UNLOCK (sink);
+       break;
++    case PROP_POSITION: {
++      gchar buf[64];
++      g_snprintf (buf, sizeof(buf), "%d,%d", sink->pos_x, sink->pos_y);
++      GST_OBJECT_LOCK (sink);
++      g_value_set_string (value, buf);
++      GST_OBJECT_UNLOCK (sink);
++      break;
++    }
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+       break;
+@@ -274,6 +289,15 @@ gst_wayland_sink_set_property (GObject * object,
+       gst_wayland_sink_set_fullscreen (sink, g_value_get_boolean (value));
+       GST_OBJECT_UNLOCK (sink);
+       break;
++    case PROP_POSITION: {
++      gchar *varstr = g_value_dup_string (value);
++      GST_OBJECT_LOCK (sink);
++      sscanf (varstr, "%d,%d", &sink->pos_x, &sink->pos_y);
++      GST_INFO ("set position(%s) %dx%d", varstr, sink->pos_x, sink->pos_y);
++      g_free (varstr);
++      GST_OBJECT_UNLOCK (sink);
++      break;
++    }
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+       break;
+@@ -721,6 +745,8 @@ gst_wayland_sink_show_frame (GstVideoSink * vsink, GstBuffer * buffer)
+           &sink->video_info, sink->fullscreen, &sink->render_lock);
+       g_signal_connect_object (sink->window, "closed",
+           G_CALLBACK (on_window_closed), sink, 0);
++      if (sink->pos_x != G_MAXINT && sink->pos_x != G_MAXINT)
++          gst_wl_window_set_view_position (sink->window, sink->pos_x, sink->pos_y);
+     }
+   }
+ 
+diff --git a/ext/wayland/gstwaylandsink.h b/ext/wayland/gstwaylandsink.h
+index 7aabb6f..55a78d7 100644
+--- a/ext/wayland/gstwaylandsink.h
++++ b/ext/wayland/gstwaylandsink.h
+@@ -61,6 +61,7 @@ struct _GstWaylandSink
+   gboolean video_info_changed;
+   GstVideoInfo video_info;
+   gboolean fullscreen;
++  gint pos_x, pos_y;
+ 
+   gchar *display_name;
+ 
+diff --git a/ext/wayland/wlwindow.c b/ext/wayland/wlwindow.c
+index 66df0fc..64e414f 100644
+--- a/ext/wayland/wlwindow.c
++++ b/ext/wayland/wlwindow.c
+@@ -152,6 +152,7 @@ gst_wl_window_init (GstWlWindow * self)
+   self->configured = TRUE;
+   g_cond_init (&self->configure_cond);
+   g_mutex_init (&self->configure_mutex);
++  self->pos_x = self->pos_y = G_MAXINT;
+ }
+ 
+ static void
+@@ -247,8 +248,12 @@ gst_wl_window_ensure_fullscreen (GstWlWindow * window, gboolean fullscreen)
+     if (fullscreen)
+       wl_shell_surface_set_fullscreen (window->wl_shell_surface,
+           WL_SHELL_SURFACE_FULLSCREEN_METHOD_SCALE, 0, NULL);
+-    else
++    else{
++      if (window->pos_x != G_MAXINT && window->pos_y != G_MAXINT)
++        wl_shell_surface_set_transient (window->wl_shell_surface,
++          window->area_surface, window->pos_x, window->pos_y, 0);
+       wl_shell_surface_set_toplevel (window->wl_shell_surface);
++    }
+   }
+ }
+ 
+@@ -572,3 +577,25 @@ gst_wl_window_set_render_rectangle (GstWlWindow * window, gint x, gint y,
+   if (window->video_width != 0)
+     wl_subsurface_set_desync (window->video_subsurface);
+ }
++
++void
++gst_wl_window_set_view_position (GstWlWindow * window, gint x, gint y)
++{
++  g_return_if_fail (window != NULL);
++
++  if (x == G_MAXINT || y == G_MAXINT)
++    return;
++
++  window->pos_x = x;
++  window->pos_y = y;
++  if (window->display->xdg_wm_base) {
++    gint width, height;
++    width = window->render_rectangle.w;
++    height = window->render_rectangle.h;
++    xdg_surface_set_window_geometry (window->xdg_surface, x, y, width, height);
++  } else {
++    wl_shell_surface_set_transient (window->wl_shell_surface,
++      window->area_surface, window->pos_x, window->pos_y, 0);
++    wl_shell_surface_set_toplevel (window->wl_shell_surface);
++  }
++}
+diff --git a/ext/wayland/wlwindow.h b/ext/wayland/wlwindow.h
+index 303c336..9e06473 100644
+--- a/ext/wayland/wlwindow.h
++++ b/ext/wayland/wlwindow.h
+@@ -71,6 +71,7 @@ struct _GstWlWindow
+   /* when this is not set both the area_surface and the video_surface are not
+    * visible and certain steps should be skipped */
+   gboolean is_area_surface_mapped;
++  gint pos_x, pos_y;
+ };
+ 
+ struct _GstWlWindowClass
+@@ -95,6 +96,7 @@ void gst_wl_window_render (GstWlWindow * window, GstWlBuffer * buffer,
+         const GstVideoInfo * info);
+ void gst_wl_window_set_render_rectangle (GstWlWindow * window, gint x, gint y,
+         gint w, gint h);
++void gst_wl_window_set_view_position (GstWlWindow * window, gint x, gint y);
+ 
+ G_END_DECLS
+ 
