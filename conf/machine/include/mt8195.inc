@@ -28,7 +28,6 @@ MACHINE_EXTRA_RRECOMMENDS:append = " \
 	mali-gpu-driver \
 	linux-firmware-mt8195-scp \
 	linux-firmware-mt8195-sof \
-	${@bb.utils.contains("MACHINE_FEATURES", "optee-efuse", "optee-ewriter", "", d)} \
 "
 
 PREFERRED_PROVIDER_virtual/egl ?= "libmali"

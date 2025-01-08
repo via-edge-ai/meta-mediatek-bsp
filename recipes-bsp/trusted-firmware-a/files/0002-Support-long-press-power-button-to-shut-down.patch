@@ -1,0 +1,66 @@
+From 25c8c637091de5105d0b1096501dedeebc4fbc21 Mon Sep 17 00:00:00 2001
+From: Bass Huang <basshuang@via.com.tw>
+Date: Wed, 10 Jul 2024 12:14:30 +0800
+Subject: [PATCH] Support long press power button to shut down
+
+---
+ .../drivers/pmic_wrap_bl2/pmic_wrap_init.c    | 46 +++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+
+diff --git a/plat/mediatek/mt8188/drivers/pmic_wrap_bl2/pmic_wrap_init.c b/plat/mediatek/mt8188/drivers/pmic_wrap_bl2/pmic_wrap_init.c
+index 971ea6ca7..622e7fe7f 100644
+--- a/plat/mediatek/mt8188/drivers/pmic_wrap_bl2/pmic_wrap_init.c
++++ b/plat/mediatek/mt8188/drivers/pmic_wrap_bl2/pmic_wrap_init.c
+@@ -1507,6 +1507,52 @@ signed int pwrap_init(void)
+ 	PWRAPLOG("PMIF_SPI_PMIF_MONITOR_TARGET_WDATA_0 = 0x%x\n", WRAP_RD32(PMIF_SPI_PMIF_MONITOR_TARGET_WDATA_0));
+ #endif
+ 
++	// Support long press to shut down
++	pwrap_read_nochk(PMIC_RG_CPS_W_KEY_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_CPS_W_KEY_MASK<< PMIC_RG_CPS_W_KEY_SHIFT);
++	rdata |= (0x4729 << PMIC_RG_CPS_W_KEY_SHIFT);
++	pwrap_write_nochk(PMIC_RG_CPS_W_KEY_ADDR, rdata);
++	pwrap_read_nochk(PMIC_RG_PWRKEY_KEY_MODE_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_PWRKEY_KEY_MODE_MASK<< PMIC_RG_PWRKEY_KEY_MODE_SHIFT);
++	rdata |= (0x00 << PMIC_RG_PWRKEY_KEY_MODE_SHIFT);
++	pwrap_write_nochk(PMIC_RG_PWRKEY_KEY_MODE_ADDR, rdata);
++	pwrap_read_nochk(PMIC_RG_PWRKEY_RST_EN_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_PWRKEY_RST_EN_MASK<< PMIC_RG_PWRKEY_RST_EN_SHIFT);
++	rdata |= (0x01 << PMIC_RG_PWRKEY_RST_EN_SHIFT);
++	pwrap_write_nochk(PMIC_RG_PWRKEY_RST_EN_ADDR, rdata);
++	pwrap_read_nochk(PMIC_RG_PWRKEY_RST_TD_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_PWRKEY_RST_TD_MASK<< PMIC_RG_PWRKEY_RST_TD_SHIFT);
++	rdata |= (0x03 << PMIC_RG_PWRKEY_RST_TD_SHIFT);
++	pwrap_write_nochk(PMIC_RG_PWRKEY_RST_TD_ADDR, rdata);
++	pwrap_read_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_EN_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_STRUP_LONG_PRESS_EXT_EN_MASK<< PMIC_RG_STRUP_LONG_PRESS_EXT_EN_SHIFT);
++	rdata |= (0x1 << PMIC_RG_STRUP_LONG_PRESS_EXT_EN_SHIFT);
++	pwrap_write_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_EN_ADDR, rdata);
++	pwrap_read_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_SEL_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_STRUP_LONG_PRESS_EXT_SEL_MASK<< PMIC_RG_STRUP_LONG_PRESS_EXT_SEL_SHIFT);
++	rdata |= (0x2 << PMIC_RG_STRUP_LONG_PRESS_EXT_SEL_SHIFT);
++	pwrap_write_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_SEL_ADDR, rdata);
++	pwrap_read_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_CHR_CTRL_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_STRUP_LONG_PRESS_EXT_CHR_CTRL_MASK << PMIC_RG_STRUP_LONG_PRESS_EXT_CHR_CTRL_SHIFT);
++	rdata |= (0x1 << PMIC_RG_STRUP_LONG_PRESS_EXT_CHR_CTRL_SHIFT);
++	pwrap_write_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_CHR_CTRL_ADDR, rdata);
++	pwrap_read_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_SPAR_CTRL_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_STRUP_LONG_PRESS_EXT_SPAR_CTRL_MASK << PMIC_RG_STRUP_LONG_PRESS_EXT_SPAR_CTRL_SHIFT);
++	rdata |= (0x1 << PMIC_RG_STRUP_LONG_PRESS_EXT_SPAR_CTRL_SHIFT);
++	pwrap_write_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_SPAR_CTRL_ADDR, rdata);
++	pwrap_read_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_PWRKEY_CTRL_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_STRUP_LONG_PRESS_EXT_PWRKEY_CTRL_MASK << PMIC_RG_STRUP_LONG_PRESS_EXT_PWRKEY_CTRL_SHIFT);
++	rdata |= (0x1 << PMIC_RG_STRUP_LONG_PRESS_EXT_PWRKEY_CTRL_SHIFT);
++	pwrap_write_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_PWRKEY_CTRL_ADDR, rdata);
++	pwrap_read_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_RTCA_CTRL_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_STRUP_LONG_PRESS_EXT_RTCA_CTRL_MASK << PMIC_RG_STRUP_LONG_PRESS_EXT_RTCA_CTRL_SHIFT);
++	rdata |= (0x1 << PMIC_RG_STRUP_LONG_PRESS_EXT_RTCA_CTRL_SHIFT);
++	pwrap_write_nochk(PMIC_RG_STRUP_LONG_PRESS_EXT_RTCA_CTRL_ADDR, rdata);
++	pwrap_read_nochk(PMIC_RG_CPS_W_KEY_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_CPS_W_KEY_MASK<< PMIC_RG_CPS_W_KEY_SHIFT);
++	rdata |= (0 << PMIC_RG_CPS_W_KEY_SHIFT);
++	pwrap_write_nochk(PMIC_RG_CPS_W_KEY_ADDR, rdata);
++
+ 	return 0;
+ }
+ 

@@ -23,6 +23,7 @@ FILESEXTRAPATHS:prepend:genio-1200-evk:= "${THISDIR}/genio-1200-evk:"
 FILESEXTRAPATHS:prepend:genio-1200-evk-p1v1:= "${THISDIR}/genio-1200-evk-p1v1:"
 FILESEXTRAPATHS:prepend:mt8370:= "${THISDIR}/mt8370:"
 FILESEXTRAPATHS:prepend:genio-510-evk:= "${THISDIR}/genio-510-evk:"
+FILESEXTRAPATHS:prepend:vab-5000:= "${THISDIR}/vab-5000:"
 
 do_compile[depends] += "virtual/kernel:do_shared_workdir"
 KERNEL_INCLUDE:append = " \
@@ -171,6 +172,18 @@ SRC_URI:append:genio-700-evk = " \
 	file://camera-ag190c-max9286-csi0-std.dts \
 	file://camera-ag190c-max9286-dual-std.dts \
 	file://audio-sof.dts \
+"
+
+SRC_URI:append:vab-5000 = " \
+	file://display-edp.dts \
+	file://display-hdmi.dts \
+	file://display-edp-hdmi.dts \
+	file://isp71.dtsi \
+	file://mtk-camera.dtsi \
+	file://camera-rn6752-csi0-std.dts \
+	file://rpi-sense.dts \
+	file://dram-4gb.dts \
+	file://dram-8gb.dts \
 "
 
 SRC_URI:append:mt8395 = " \
