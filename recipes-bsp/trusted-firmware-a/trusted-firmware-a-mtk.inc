@@ -8,7 +8,7 @@ do_deploy[nostamp] = "1"
 # Make sure that bl2 is built and installed before we deploy the fip
 do_deploy[depends] += "virtual/bl2:do_deploy"
 
-DEPENDS = "${@bb.utils.contains("DISTRO_FEATURES", "nda-mtk", "libdram", "libdram-prebuilt", d)}"
+DEPENDS = "libdram-prebuilt-via"
 DEPENDS:append = " libbase-prebuilt"
 COMPATIBLE_MACHINE = "mt*"
 
@@ -122,6 +122,10 @@ do_deploy:append:bl31() {
 		fi
 
 		if [ "${@oe.utils.conditional("MACHINE", "genio-1200-evk", "1", "", d)}" = "1" ]; then
+			FWUPDATE_FIP_ID="39961e72-5a8e-445a-90fe-ed68330744ec"
+		fi
+
+		if [ "${@oe.utils.conditional("MACHINE", "som-7000", "1", "", d)}" = "1" ]; then
 			FWUPDATE_FIP_ID="39961e72-5a8e-445a-90fe-ed68330744ec"
 		fi
 

@@ -60,6 +60,10 @@ do_deploy() {
 			FWUPDATE_TFA_ID="a4a60c91-ffa3-4cb8-9b2a-4ff813620d22"
 		fi
 
+		if [ "${@oe.utils.conditional("MACHINE", "som-7000", "1", "", d)}" = "1" ]; then
+			FWUPDATE_TFA_ID="a4a60c91-ffa3-4cb8-9b2a-4ff813620d22"
+		fi
+
 		if [ "${@oe.utils.conditional("MACHINE", "genio-1200-evk-ufs", "1", "", d)}" = "1" ]; then
 			FWUPDATE_TFA_ID="dcae4ff5-53f2-4664-b059-83eb33abf06d"
 		fi

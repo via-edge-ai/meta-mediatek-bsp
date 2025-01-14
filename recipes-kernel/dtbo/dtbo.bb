@@ -21,6 +21,7 @@ FILESEXTRAPATHS:prepend:genio-700-evk:= "${THISDIR}/genio-700-evk:"
 FILESEXTRAPATHS:prepend:mt8390:= "${THISDIR}/mt8390:"
 FILESEXTRAPATHS:prepend:genio-1200-evk:= "${THISDIR}/genio-1200-evk:"
 FILESEXTRAPATHS:prepend:genio-1200-evk-p1v1:= "${THISDIR}/genio-1200-evk-p1v1:"
+FILESEXTRAPATHS:prepend:som-7000:= "${THISDIR}/som-7000:"
 FILESEXTRAPATHS:prepend:mt8370:= "${THISDIR}/mt8370:"
 FILESEXTRAPATHS:prepend:genio-510-evk:= "${THISDIR}/genio-510-evk:"
 
@@ -329,6 +330,21 @@ SRC_URI:append:genio-510-evk = " \
 	file://camera-ag190c-max9286-csi0-std.dts \
 	file://camera-ag190c-max9286-dual-std.dts \
 	file://audio-sof.dts \
+"
+
+SRC_URI:append:som-7000 = " \
+	file://gpu-mali.dts \
+	file://video.dts \
+	file://apusys.dts \
+	file://display-dsi.dts \
+	file://display-hdmi.dts \
+	file://display-dsi-dp-hdmi.dts \
+	file://display-dp.dts \
+	file://display-dp-hdmi.dts \
+	file://display-dsi-dp.dts \
+	file://display-dsi-hdmi.dts \
+	file://camera-fm828-ds90ub960-std.dts \
+	file://camera-sca179m-tp2855-std.dts \
 "
 
 DT_FILES_PATH = "${WORKDIR}"

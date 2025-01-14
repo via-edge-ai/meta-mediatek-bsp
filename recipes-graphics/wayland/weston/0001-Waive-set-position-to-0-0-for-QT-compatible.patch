@@ -1,0 +1,43 @@
+From 2438ac4cfe6cb416f0c7333902b3871a40f4b974 Mon Sep 17 00:00:00 2001
+From: JasonLin <JasonLin@via.com.tw>
+Date: Tue, 3 Dec 2024 10:14:36 +0000
+Subject: [PATCH] Waive "set position to 0,0" for QT compatible
+
+---
+ desktop-shell/shell.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/desktop-shell/shell.c b/desktop-shell/shell.c
+index a4b21d6..ffdd90c 100644
+--- a/desktop-shell/shell.c
++++ b/desktop-shell/shell.c
+@@ -1972,7 +1972,8 @@ unset_fullscreen(struct shell_surface *shsurf)
+ 		if (weston_desktop_surface_has_geometry(shsurf->desktop_surface)) {
+ 			struct weston_geometry geometry =
+ 			    weston_desktop_surface_get_geometry(shsurf->desktop_surface);
+-			weston_view_set_position(shsurf->view, geometry.x, geometry.y);
++			if (geometry.x > 0 || geometry.y > 0)
++				weston_view_set_position(shsurf->view, geometry.x, geometry.y);
+ 		}
+     }
+ 	shsurf->saved_position_valid = false;
+@@ -2001,7 +2002,8 @@ unset_maximized(struct shell_surface *shsurf)
+         if (weston_desktop_surface_has_geometry(shsurf->desktop_surface)) {
+             struct weston_geometry geometry =
+                 weston_desktop_surface_get_geometry(shsurf->desktop_surface);
+-            weston_view_set_position(shsurf->view, geometry.x, geometry.y);
++			if (geometry.x > 0 || geometry.y > 0)
++				weston_view_set_position(shsurf->view, geometry.x, geometry.y);
+         }
+     }
+ 	shsurf->saved_position_valid = false;
+@@ -2477,7 +2479,8 @@ map(struct desktop_shell *shell, struct shell_surface *shsurf,
+         if (weston_desktop_surface_has_geometry(shsurf->desktop_surface)) {
+             struct weston_geometry geometry =
+                 weston_desktop_surface_get_geometry(shsurf->desktop_surface);
+-            weston_view_set_position(shsurf->view, geometry.x, geometry.y);
++			if (geometry.x > 0 || geometry.y > 0)
++				weston_view_set_position(shsurf->view, geometry.x, geometry.y);
+         }
+ 	}
+ 

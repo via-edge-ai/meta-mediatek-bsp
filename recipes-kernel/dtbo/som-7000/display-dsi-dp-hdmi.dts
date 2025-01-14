@@ -1,0 +1,72 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+
+/ {
+	fragment@0 {
+		target = <&dsi0>;
+		__overlay__ {
+			status = "okay";
+			mediatek,indicated-display-path = <0>;
+		};
+	};
+
+	fragment@1 {
+		target = <&mipi_tx0>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@2 {
+		target = <&disp_pwm0>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@3 {
+		target = <&dp_tx>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@4 {
+		target = <&dp_intf1>;
+		__overlay__ {
+			status = "okay";
+			mediatek,indicated-display-path = <2>;
+		};
+	};
+
+	fragment@5 {
+		target = <&disp_pwm1>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@6 {
+		target = <&pwmleds>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@7 {
+		target = <&disp_dpi1>;
+		__overlay__ {
+			status = "okay";
+			mediatek,indicated-display-path = <1>;
+		};
+	};
+
+	fragment@8 {
+		target = <&hdmi0>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+};
