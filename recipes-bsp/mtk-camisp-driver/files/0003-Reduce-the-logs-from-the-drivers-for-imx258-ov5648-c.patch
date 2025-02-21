@@ -1,0 +1,153 @@
+From 95c0264ed7256a88fc32a39d5985a90b15018e57 Mon Sep 17 00:00:00 2001
+From: DavidBHHsu <DavidBHHsu@via.com.tw>
+Date: Wed, 19 Feb 2025 16:21:44 +0800
+Subject: [PATCH] Reduce the logs from the drivers for imx258/ov5648 cameras.
+
+---
+ .../misc/mediatek/imgsensor/src-v4l2/Makefile |  4 ++--
+ .../imx258_mipi_raw/imx258mipiraw_Sensor.c    | 22 +++++++++++++------
+ .../ov5648_mipi_raw/ov5648mipiraw_Sensor.c    | 19 ++++++++++++----
+ 3 files changed, 32 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/misc/mediatek/imgsensor/src-v4l2/Makefile b/drivers/misc/mediatek/imgsensor/src-v4l2/Makefile
+index adb5f6b..5e1a46b 100644
+--- a/drivers/misc/mediatek/imgsensor/src-v4l2/Makefile
++++ b/drivers/misc/mediatek/imgsensor/src-v4l2/Makefile
+@@ -38,8 +38,8 @@ subdir-ccflags-y += \
+ 	-I$(MTK_ISP_DRIVER_PATH)/ \
+ 	-I$(MTK_CAMSYS_DRIVER_PATH)/ \
+ 
+-subdir-ccflags-y += -DDEBUG
+-ccflags-y += -DDEBUG
++#subdir-ccflags-y += -DDEBUG
++#ccflags-y += -DDEBUG
+ 
+ imgsensor-objs := \
+ 	adaptor-hw.o \
+diff --git a/drivers/misc/mediatek/imgsensor/src-v4l2/common/imx258_mipi_raw/imx258mipiraw_Sensor.c b/drivers/misc/mediatek/imgsensor/src-v4l2/common/imx258_mipi_raw/imx258mipiraw_Sensor.c
+index 5e0703a..854dc50 100644
+--- a/drivers/misc/mediatek/imgsensor/src-v4l2/common/imx258_mipi_raw/imx258mipiraw_Sensor.c
++++ b/drivers/misc/mediatek/imgsensor/src-v4l2/common/imx258_mipi_raw/imx258mipiraw_Sensor.c
+@@ -44,18 +44,26 @@
+ #include "adaptor-subdrv.h"
+ #include "adaptor-i2c.h"
+ 
++//#define DEBUG
++
+ #define read_cmos_sensor(...) subdrv_i2c_rd_u8(__VA_ARGS__)
+ #define write_cmos_sensor(...) subdrv_i2c_wr_u8(__VA_ARGS__)
+ 
+ //*********************Modify Following Strings for Debug*********************
+ #define PFX "IMX258_camera_sensor"
+-#define LOG_1 LOG_INF("IMX258,MIPI 4LANE\n")
+ //**********************   Modify end    *************************************
+ 
++#ifdef DEBUG
+ //#define LOG_INF(format, args...) \
+ //	printk(KERN_ALERT PFX "[%s] " format, __func__, ##args)
+ #define LOG_INF(format, args...) \
+-		dev_warn(&ctx->i2c_client->dev, PFX "[%s] " format, __func__, ##args); \
++		dev_warn(&ctx->i2c_client->dev, PFX "[%s] " format, __func__, ##args)
++#else
++#define LOG_INF(format, args...) do {} while(0)
++#endif
++
++#define LOG_1 LOG_INF("IMX258,MIPI 4LANE\n")
++#define LOG_WARN(fmt, args...) dev_warn(&ctx->i2c_client->dev, PFX "[%s] " fmt, __func__, ##args)
+ 
+ #define LOCAL_BASEGAIN 1024
+ #define MAX_GAIN (LOCAL_BASEGAIN * 16)
+@@ -638,7 +646,7 @@ static kal_uint32 return_sensor_id(struct subdrv_ctx *ctx)
+ 						imx258_type = IMX258_HDD_TYPE;
+ 				}
+ 
+-				LOG_INF(
++				LOG_WARN(
+ 				    "imx258 type = 0x%x(0x00=HDR,0x10=binning,0x40=HDD,0x80=RAW)",
+ 				    imx258_type);
+ /*
+@@ -2098,13 +2106,13 @@ static int get_imgsensor_id(struct subdrv_ctx *ctx, UINT32 *sensor_id)
+ 		do {
+ 			*sensor_id = return_sensor_id(ctx);
+ 			if (*sensor_id == imgsensor_info.sensor_id) {
+-				LOG_INF("i2c write id: 0x%x, sensor id: 0x%x\n",
++				LOG_WARN("i2c write id: 0x%x, sensor id: 0x%x\n",
+ 					ctx->i2c_write_id, *sensor_id);
+ 				load_imx258_SPC_Data(ctx);
+ 				return ERROR_NONE;
+ 			}
+ 
+-		      LOG_INF("Read sensor id fail, write id: 0x%x, id:0x%x\n",
++		      LOG_WARN("Read sensor id fail, write id: 0x%x, id:0x%x\n",
+ 				ctx->i2c_write_id, *sensor_id);
+ 
+ 			retry_cnt--;
+@@ -2156,12 +2164,12 @@ static int open(struct subdrv_ctx *ctx)
+ 		do {
+ 			sensor_id = return_sensor_id(ctx);
+ 			if (sensor_id == imgsensor_info.sensor_id) {
+-				LOG_INF("i2c write id: 0x%x, sensor id:0x%x\n",
++				LOG_WARN("i2c write id: 0x%x, sensor id:0x%x\n",
+ 					ctx->i2c_write_id, sensor_id);
+ 				break;
+ 			}
+ 
+-		      LOG_INF("Read sensor id fail, write id: 0x%x, id:0x%x\n",
++		      LOG_WARN("Read sensor id fail, write id: 0x%x, id:0x%x\n",
+ 				ctx->i2c_write_id, sensor_id);
+ 
+ 			retry--;
+diff --git a/drivers/misc/mediatek/imgsensor/src-v4l2/common/ov5648_mipi_raw/ov5648mipiraw_Sensor.c b/drivers/misc/mediatek/imgsensor/src-v4l2/common/ov5648_mipi_raw/ov5648mipiraw_Sensor.c
+index 2951a96..3eb3c06 100644
+--- a/drivers/misc/mediatek/imgsensor/src-v4l2/common/ov5648_mipi_raw/ov5648mipiraw_Sensor.c
++++ b/drivers/misc/mediatek/imgsensor/src-v4l2/common/ov5648_mipi_raw/ov5648mipiraw_Sensor.c
+@@ -20,19 +20,30 @@
+ #include "adaptor-subdrv.h"
+ #include "adaptor-i2c.h"
+ 
++//#define DEBUG
++
+ #define read_cmos_sensor_8(...) subdrv_i2c_rd_u8(__VA_ARGS__)
+ #define write_cmos_sensor_8(...) subdrv_i2c_wr_u8(__VA_ARGS__)
+ 
+ #define PFX "OV5648_camera_sensor"
++
++#ifdef DEBUG
+ #define LOG_ERR(format, args...)\
+ 	pr_err(PFX "[%s] " format, __func__, ##args)
+-#define LOG_WARN(format, args...)\
+-	pr_warn(PFX "[%s] " format, __func__, ##args)
+ #define LOG_INFO(format, args...)\
+ 	pr_info(PFX "[%s] " format, __func__, ##args)
+ #define LOG_DBG(format, args...)\
+ 	pr_debug(PFX "[%s] " format, __func__, ##args)
+ #define LOG_INF LOG_INFO
++#else
++#define LOG_ERR(format, args...) do {} while(0)
++#define LOG_INFO(format, args...) do {} while(0)
++#define LOG_DBG(format, args...) do {} while(0)
++#define LOG_INF LOG_INFO
++#endif
++
++#define LOG_WARN(format, args...)\
++	pr_warn(PFX "[%s] " format, __func__, ##args)
+ 
+ #define OV5648_SUPPORTED_SENSOR_MODE_NUMBER 5
+ 
+@@ -889,11 +900,11 @@ static int get_imgsensor_id(struct subdrv_ctx *ctx, UINT32 *sensor_id)
+ 		do {
+ 			*sensor_id = return_sensor_id(ctx);
+ 			if (*sensor_id == imgsensor_info.sensor_id) {
+-				LOG_INFO("OV5648 i2c write id: 0x%x, sensor id: 0x%x\n",
++				LOG_WARN("OV5648 i2c write id: 0x%x, sensor id: 0x%x\n",
+ 					ctx->i2c_write_id, *sensor_id);
+ 				return ERROR_NONE;
+ 			}
+-			LOG_DBG("OV5648 Read sensor id fail, write id:0x%x id: 0x%x\n",
++			LOG_WARN("OV5648 Read sensor id fail, write id:0x%x id: 0x%x\n",
+ 				ctx->i2c_write_id, *sensor_id);
+ 			retry--;
+ 		} while (retry > 0);
+-- 
+2.17.1
+

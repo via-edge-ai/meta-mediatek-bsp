@@ -1,0 +1,47 @@
+From 9b39118bfe54699b6419173c7074553bcf612270 Mon Sep 17 00:00:00 2001
+From: Damon Liu <damon.liu@mediatek.com>
+Date: Thu, 22 Oct 2020 08:28:14 +0800
+Subject: [PATCH] add makefile for libsync
+
+---
+ libsync/Makefile | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+ create mode 100644 libsync/Makefile
+
+diff --git a/libsync/Makefile b/libsync/Makefile
+new file mode 100644
+index 0000000000..82aaee9af7
+--- /dev/null
++++ b/libsync/Makefile
+@@ -0,0 +1,27 @@
++TARGET=libsync.so
++SRC=sync.c
++OBJS=${SRC:%.c=%.o}
++
++.PHONY: all clean install
++
++all : ${TARGET}
++
++${TARGET} :  $(OBJS)
++	${CC} -shared -fpic -o ${TARGET} $^
++
++%.o: %.c
++	${CC} -fPIC -I./include -I../include -c $< -o $@
++
++clean:
++	${RM} -r *.o
++
++install:
++	install -d ${DESTDIR}${LIBDIR}
++	install -d ${DESTDIR}${INCDIR}/
++	install -d ${DESTDIR}${INCDIR}/sync/
++	install -d ${DESTDIR}${INCDIR}/android/
++	install -d ${DESTDIR}${INCDIR}/ndk/
++	install -m 644 ${SRCDIR}/libsync/libsync.so ${DESTDIR}${LIBDIR}
++	install -m 444 ${SRCDIR}/libsync/include/sync/*.h ${DESTDIR}${INCDIR}/sync
++	install -m 444 ${SRCDIR}/libsync/include/android/*.h ${DESTDIR}${INCDIR}/android
++	install -m 444 ${SRCDIR}/libsync/include/ndk/*.h ${DESTDIR}${INCDIR}/ndk
+\ No newline at end of file
+-- 
+2.18.0
+
