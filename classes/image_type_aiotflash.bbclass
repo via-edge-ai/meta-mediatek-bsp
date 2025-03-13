@@ -9,11 +9,9 @@ do_image_aiotflash[dirs] = "${AIOTFLASH_SYSROOT}"
 do_image_aiotflash[cleandirs] = "${AIOTFLASH_SYSROOT}"
 TAR_IMAGE_ROOTFS:task-image-aiotflash = "${AIOTFLASH_SYSROOT}"
 IMAGE_TYPEDEP:aiotflash = "wic.img"
-do_image_aiotflash[depends] += "rity-tools:do_deploy \
+do_image_aiotflash[depends] += " \
                                 virtual/bootloader:do_deploy \
-                                trusted-firmware-a:do_deploy \
-                                virtual/lk:do_deploy \
-                                jq-native:do_populate_sysroot"
+                                trusted-firmware-a:do_deploy"
 DEPENDS += "dtc-native"
 
 check_bl31_size () {
@@ -44,9 +42,6 @@ IMAGE_CMD:aiotflash () {
     cp -aL ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.manifest ${tmp_pack_dir}
     cp -aL ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.testdata.json ${tmp_pack_dir}
     cp -aL ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.wic.img ${tmp_pack_dir}
-    cp -a ${DEPLOY_DIR_IMAGE}/rity.json ${tmp_pack_dir}
-    cp -a ${DEPLOY_DIR_IMAGE}/partitions.json ${tmp_pack_dir}
-    cp -a ${DEPLOY_DIR_IMAGE}/lk.bin ${tmp_pack_dir}
 
     if [ "${@oe.utils.conditional('BL2_SIGN_ENABLE', '1', '1', '', d)}" = "1" ]; then
         cp -a ${DEPLOY_DIR_IMAGE}/efuse.cfg ${tmp_pack_dir}
