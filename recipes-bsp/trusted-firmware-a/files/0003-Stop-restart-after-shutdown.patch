@@ -1,0 +1,34 @@
+From 8a173b405be4a8db572a5a62f7a6b5c701ce871b Mon Sep 17 00:00:00 2001
+From: Bass Huang <BassHuang@via.com.tw>
+Date: Thu, 20 Mar 2025 17:28:00 +0800
+Subject: [PATCH] Stop restart after shutdown
+
+---
+ plat/mediatek/mt8195/drivers/pmic/pmic_wrap_init.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/plat/mediatek/mt8195/drivers/pmic/pmic_wrap_init.c b/plat/mediatek/mt8195/drivers/pmic/pmic_wrap_init.c
+index 2678c2532..ef1a0ce37 100644
+--- a/plat/mediatek/mt8195/drivers/pmic/pmic_wrap_init.c
++++ b/plat/mediatek/mt8195/drivers/pmic/pmic_wrap_init.c
+@@ -1594,6 +1594,20 @@ signed int pwrap_init(void)
+ 	rdata |= (0 << PMIC_RG_CPS_W_KEY_SHIFT);
+ 	pwrap_write_nochk(PMIC_RG_CPS_W_KEY_ADDR, rdata);
+ 
++	/* Stop restart after shutdown - disable auto power on.
++	* Write pmic register RG_ENVTEM_D and RG_ENVTEM_EN
++	* to stop restart after shutdown by blockig chr_det signal
++	*/
++	pwrap_read_nochk(PMIC_RG_ENVTEM_D_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_ENVTEM_D_MASK << PMIC_RG_ENVTEM_D_SHIFT);
++	rdata |= (1 << PMIC_RG_ENVTEM_D_SHIFT);
++	pwrap_write_nochk(PMIC_RG_ENVTEM_D_ADDR, rdata);
++
++	pwrap_read_nochk(PMIC_RG_ENVTEM_EN_ADDR, &rdata);
++	rdata &= ~(PMIC_RG_ENVTEM_EN_MASK << PMIC_RG_ENVTEM_EN_SHIFT);
++	rdata |= (1 << PMIC_RG_ENVTEM_EN_SHIFT);
++	pwrap_write_nochk(PMIC_RG_ENVTEM_EN_ADDR, rdata);
++
+ 	return 0;
+ }
+ 

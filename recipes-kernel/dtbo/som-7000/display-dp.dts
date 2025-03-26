@@ -1,0 +1,56 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	fragment@0 {
+		target = <&dp_tx>;
+		__overlay__ {
+			status = "okay";
+			skip_cnt = <1>;
+		};
+	};
+
+	fragment@1 {
+		target = <&dp_intf1>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@2 {
+		target = <&disp_pwm1>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@3 {
+		target = <&pwmleds>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@4 {
+		target = <&disp_dpi1>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@5 {
+		target = <&hdmi0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@6 {
+		target = <&sound>;
+		__overlay__ {
+			dai-link-3 {
+				status = "disabled";
+			};
+		};
+	};
+};

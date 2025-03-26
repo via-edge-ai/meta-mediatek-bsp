@@ -1,0 +1,55 @@
+From 432ee34c0073a7cf2caedbe43d7716a25ffd110c Mon Sep 17 00:00:00 2001
+From: "Andy.Hsieh" <andy.hsieh@mediatek.com>
+Date: Wed, 23 Oct 2024 17:24:56 +0800
+Subject: [PATCH] camsys: camsv: Fix the link dependency between camsv and larb
+
+Fix the link dependency between camsv and larb according to the following
+list to ensure the camsv instances run with the corresponding larb enabled.
+
+Larb13
+- gcamsv_a_imgo_0 => camsv1 (index=0)
+- gcamsv_b_imgo_0 => camsv3 (index=2)
+- gcamsv_b_imgo_1 => camsv4 (index=3)
+
+Larb14
+- gcamsv_a_imgo_1 => camsv2 (index=1)
+- gcamsv_c_imgo_0 => camsv5 (index=4)
+- gcamsv_c_imgo_1 => camsv6 (index=5)
+
+In addition, remove the duplicated calling to device_link_add.
+
+Change-Id: I4c8602fbfc618c8f25eb29f82d4d687bd0596a3d
+Signed-off-by: Andy.Hsieh <andy.hsieh@mediatek.com>
+---
+ .../platform/mtk-isp/isp_7x/camsys/src/mtk_cam-sv.c | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-isp/isp_7x/camsys/src/mtk_cam-sv.c b/drivers/media/platform/mtk-isp/isp_7x/camsys/src/mtk_cam-sv.c
+index 9124775..76131a1 100644
+--- a/drivers/media/platform/mtk-isp/isp_7x/camsys/src/mtk_cam-sv.c
++++ b/drivers/media/platform/mtk-isp/isp_7x/camsys/src/mtk_cam-sv.c
+@@ -2262,20 +2262,9 @@ int mtk_camsv_setup_dependencies(struct mtk_camsv *sv, struct mtk_larb *larb)
+ 		case 12:
+ 		case 13:
+ #else //MT8195
+-		case 3: /* special case: 13 + 14 */
+-			supplier = find_larb(larb, 14);
+-			link = device_link_add(consumer, supplier,
+-					       DL_FLAG_AUTOREMOVE_CONSUMER |
+-					       DL_FLAG_PM_RUNTIME);
+-			if (!link) {
+-				dev_info(dev, "Unable to create link between %s and %s\n",
+-					dev_name(consumer), dev_name(supplier));
+-				return -ENODEV;
+-			}
+-			break;
+ 		case 0:
+ 		case 2:
+-		case 4:
++		case 3:
+ #endif
+ 			supplier = find_larb(larb, 13);
+ 			break;
+-- 
+2.45.2
+

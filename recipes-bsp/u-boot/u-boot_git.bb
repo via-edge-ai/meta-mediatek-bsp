@@ -14,7 +14,6 @@ def get_git_revision(p):
 UBOOT_LOCALVERSION = "-g${@get_git_revision('${S}')}"
 
 SRC_URI += " \
-    file://0001-Revert-cmd-pxe_utils-Check-fdtcontroladdr-in-label_b.patch \
     file://fw_env-mmc-boot.config \
     file://fw_env-ufs-boot.config \
 "

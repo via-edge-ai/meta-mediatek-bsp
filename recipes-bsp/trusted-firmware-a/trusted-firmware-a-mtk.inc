@@ -125,6 +125,10 @@ do_deploy:append:bl31() {
 			FWUPDATE_FIP_ID="39961e72-5a8e-445a-90fe-ed68330744ec"
 		fi
 
+		if [ "${@oe.utils.conditional("MACHINE", "som-7000", "1", "", d)}" = "1" ]; then
+			FWUPDATE_FIP_ID="39961e72-5a8e-445a-90fe-ed68330744ec"
+		fi
+
 		if [ "${@oe.utils.conditional("MACHINE", "genio-1200-evk-ufs", "1", "", d)}" = "1" ]; then
 			FWUPDATE_FIP_ID="0c1603a7-7f3d-427c-9ecc-f9b02d2fc729"
 		fi
