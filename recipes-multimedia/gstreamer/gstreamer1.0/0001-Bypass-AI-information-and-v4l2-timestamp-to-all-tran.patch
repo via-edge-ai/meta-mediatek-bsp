@@ -1,0 +1,57 @@
+From eb60d9e98cec2c27dda3515098bf67dfdc18bb55 Mon Sep 17 00:00:00 2001
+From: JasonLin <JasonLin@via.com.tw>
+Date: Thu, 6 Jun 2024 19:19:09 +0800
+Subject: [PATCH] Bypass AI information and v4l2 timestamp to all transform
+ elements
+
+---
+ libs/gst/base/gstbasetransform.c | 35 ++++++++++++++++++++++++++++++--
+ 1 file changed, 33 insertions(+), 2 deletions(-)
+
+diff --git a/libs/gst/base/gstbasetransform.c b/libs/gst/base/gstbasetransform.c
+index ca18db8..92fab9a 100644
+--- a/libs/gst/base/gstbasetransform.c
++++ b/libs/gst/base/gstbasetransform.c
+@@ -2190,9 +2190,40 @@ default_generate_output (GstBaseTransform * trans, GstBuffer ** outbuf)
+     } else {
+       GST_DEBUG_OBJECT (trans, "doing non-inplace transform");
+ 
+-      if (bclass->transform)
++      if (bclass->transform) {
+         ret = bclass->transform (trans, inbuf, *outbuf);
+-      else
++        if (ret == GST_FLOW_OK && *outbuf != NULL) {
++          GstClockTime *dts = NULL, *sts =
++              gst_mini_object_get_qdata (GST_MINI_OBJECT (inbuf),
++                  g_quark_from_static_string ("v4l2_timestamp"));
++          gboolean *desti = NULL, *srci = (gboolean *)
++              gst_mini_object_get_qdata (GST_MINI_OBJECT (inbuf),
++                  g_quark_from_static_string ("AiInference"));
++          if (sts != NULL) {
++            dts = gst_mini_object_get_qdata (GST_MINI_OBJECT (*outbuf),
++                g_quark_from_static_string ("v4l2_timestamp"));
++            if (dts == NULL) {
++              dts = g_new(GstClockTime, 1);
++              gst_mini_object_set_qdata (GST_MINI_OBJECT (*outbuf),
++                  g_quark_from_static_string ("v4l2_timestamp"), dts, g_free);
++            }
++            *dts = *sts;
++          }
++          if (srci != NULL) {
++            desti = (gboolean *) gst_mini_object_get_qdata (
++                GST_MINI_OBJECT (*outbuf), g_quark_from_static_string ("AiInference"));
++            if (desti == NULL) {
++              desti = g_new(gboolean, 1);
++              gst_mini_object_set_qdata(GST_MINI_OBJECT(*outbuf),
++                  g_quark_from_static_string("AiInference"), desti, g_free);
++            }
++            *desti = *srci;
++          }
++          GST_LOG_OBJECT (trans,
++              "copy gstbuffer quirk from %p (ts %p inf %p) to %p (ts %p inf %p)",
++              inbuf, sts, srci, *outbuf, dts, desti);
++        }
++      } else
+         ret = GST_FLOW_NOT_SUPPORTED;
+     }
+   }

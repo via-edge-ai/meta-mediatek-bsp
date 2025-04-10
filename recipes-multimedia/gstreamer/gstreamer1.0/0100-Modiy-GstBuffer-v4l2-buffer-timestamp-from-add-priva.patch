@@ -1,0 +1,40 @@
+From cb370e41a5cdd7856cec129b3e833703c5679df1 Mon Sep 17 00:00:00 2001
+From: JasonLin <JasonLin@via.com.tw>
+Date: Fri, 3 May 2024 18:29:57 +0800
+Subject: [PATCH] Modiy GstBuffer v4l2 buffer timestamp from add private
+ structure to add quark in gst mini object
+
+---
+ gst/gstbuffer.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/gst/gstbuffer.c b/gst/gstbuffer.c
+index 3777745..6ad0c65 100644
+--- a/gst/gstbuffer.c
++++ b/gst/gstbuffer.c
+@@ -554,6 +554,22 @@ gst_buffer_copy_into (GstBuffer * dest, GstBuffer * src,
+   if (G_UNLIKELY (dest == src))
+     return TRUE;
+ 
++  {
++    GstClockTime *sts = gst_mini_object_get_qdata (GST_MINI_OBJECT (src),
++        g_quark_from_static_string ("v4l2_timestamp"));
++    if (sts != NULL) {
++      GstClockTime *dts = gst_mini_object_get_qdata (GST_MINI_OBJECT (dest),
++          g_quark_from_static_string ("v4l2_timestamp"));
++      if (dts == NULL) {
++        dts = g_new(GstClockTime, 1);
++        *dts = *sts;
++        gst_mini_object_set_qdata (GST_MINI_OBJECT (dest),
++            g_quark_from_static_string ("v4l2_timestamp"), dts, g_free);
++      } else
++        *dts = *sts;
++    }
++  }
++
+   g_return_val_if_fail (gst_buffer_is_writable (dest), FALSE);
+ 
+   bufsize = gst_buffer_get_size (src);
+-- 
+2.34.1
+

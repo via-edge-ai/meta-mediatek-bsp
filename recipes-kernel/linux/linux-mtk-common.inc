@@ -66,8 +66,7 @@ SRC_URI:append:mt7663 = " \
 SRC_URI:append:mt7668 = " file://mt76xx-tk-wifi.cfg file://btmtksdio.cfg "
 SRC_URI:append:mt7921 = " file://mt7921.cfg "
 
-SRC_URI:append:som-7000 = " file://ppp.cfg "
-SRC_URI:append:som-5000 = " file://ppp.cfg "
+SRC_URI:append:vab-5000 = " file://ppp.cfg "
 
 KERNEL_EXTRA_ARGS = "Image.gz dtbs"
 KCONFIG_MODE = "--alldefconfig"

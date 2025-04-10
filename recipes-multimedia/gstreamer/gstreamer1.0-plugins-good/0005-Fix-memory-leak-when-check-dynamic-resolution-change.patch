@@ -1,0 +1,28 @@
+From 62daaea567a71560f07991b6a5e981f98fd16da2 Mon Sep 17 00:00:00 2001
+From: JasonLin <JasonLin@via.com.tw>
+Date: Thu, 6 Jun 2024 19:08:12 +0800
+Subject: [PATCH] fix memory leak when check dynamic resolution change
+
+---
+ sys/v4l2/gstv4l2videodec.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/sys/v4l2/gstv4l2videodec.c b/sys/v4l2/gstv4l2videodec.c
+index 09af7e7..6f8ca32 100644
+--- a/sys/v4l2/gstv4l2videodec.c
++++ b/sys/v4l2/gstv4l2videodec.c
+@@ -759,11 +759,14 @@ gst_v4l2_video_dec_loop (GstVideoDecoder * decoder)
+       if ((GST_FLOW_OK == gst_v4l2_buffer_pool_poll_event (cpool, TRUE))) {
+         if (gst_poll_fd_has_pri (cpool->poll, &cpool->pollfd)) {
+           GST_DEBUG_OBJECT (decoder, "has pri event");
++          g_object_unref (cpool);
+           continue;
+         }
+       } else {
+         GST_DEBUG_OBJECT (decoder, "has error");
+       }
++      if (cpool)
++        g_object_unref (cpool);
+     }
+     GST_DEBUG_OBJECT (decoder, "pool event, ret: %d", ret);
+ 
