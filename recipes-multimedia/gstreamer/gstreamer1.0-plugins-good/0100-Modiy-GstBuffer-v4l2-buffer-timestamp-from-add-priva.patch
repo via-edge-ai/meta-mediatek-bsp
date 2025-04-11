@@ -1,0 +1,36 @@
+From dfccf7d1ea0bad047370c33c42186a994db6d94e Mon Sep 17 00:00:00 2001
+From: JasonLin <JasonLin@via.com.tw>
+Date: Fri, 3 May 2024 20:13:31 +0800
+Subject: [PATCH] Modiy GstBuffer v4l2 buffer timestamp from add private
+ structure to add quark in gst mini object
+
+---
+ sys/v4l2/gstv4l2bufferpool.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/sys/v4l2/gstv4l2bufferpool.c b/sys/v4l2/gstv4l2bufferpool.c
+index e4af67c..8e6c446 100644
+--- a/sys/v4l2/gstv4l2bufferpool.c
++++ b/sys/v4l2/gstv4l2bufferpool.c
+@@ -1382,6 +1382,18 @@ gst_v4l2_buffer_pool_dqbuf (GstV4l2BufferPool * pool, GstBuffer ** buffer,
+   }
+ 
+   timestamp = GST_TIMEVAL_TO_TIME (group->buffer.timestamp);
++  {
++    GstClockTime *ts = gst_mini_object_get_qdata (GST_MINI_OBJECT (outbuf),
++        g_quark_from_static_string ("v4l2_timestamp"));
++
++    if (ts == NULL) {
++      ts = g_new(GstClockTime, 1);
++      *ts = timestamp;
++      gst_mini_object_set_qdata (GST_MINI_OBJECT (outbuf),
++          g_quark_from_static_string ("v4l2_timestamp"), ts, g_free);
++    } else
++      *ts = timestamp;
++  }
+ 
+   size = 0;
+   vmeta = gst_buffer_get_video_meta (outbuf);
+-- 
+2.34.1
+

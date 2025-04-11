@@ -10,4 +10,6 @@ SRC_URI += " \
 	file://0004-v4l2object-Adjust-ENCODED_BUFFER_SIZE-for-4K-video.patch \
 	file://0005-Support-dynamic-resolution-change.patch \
 	file://0006-v4l2object-add-colorimetry-extensions-for-better-com.patch \
+        file://0100-Modiy-GstBuffer-v4l2-buffer-timestamp-from-add-priva.patch \
+        file://0005-Fix-memory-leak-when-check-dynamic-resolution-change.patch \
 "

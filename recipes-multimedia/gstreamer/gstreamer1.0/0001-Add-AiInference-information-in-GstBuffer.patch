@@ -1,0 +1,34 @@
+From 4b81665fb3d7f62b08946807e41632bc3f67dde9 Mon Sep 17 00:00:00 2001
+From: JasonLin <JasonLin@via.com.tw>
+Date: Tue, 14 May 2024 11:08:39 +0800
+Subject: [PATCH] Add AiInference information in GstBuffer
+
+---
+ gst/gstbuffer.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/gst/gstbuffer.c b/gst/gstbuffer.c
+index 6ad0c65..571e824 100644
+--- a/gst/gstbuffer.c
++++ b/gst/gstbuffer.c
+@@ -569,6 +569,20 @@ gst_buffer_copy_into (GstBuffer * dest, GstBuffer * src,
+         *dts = *sts;
+     }
+   }
++  {
++    gboolean *srci = (gboolean *) gst_mini_object_get_qdata (
++        GST_MINI_OBJECT (src), g_quark_from_static_string ("AiInference"));
++    if (srci != NULL) {
++      gboolean *desti = (gboolean *) gst_mini_object_get_qdata (
++          GST_MINI_OBJECT (dest), g_quark_from_static_string ("AiInference"));
++      if (desti == NULL) {
++        desti = g_new(gboolean, 1);
++        gst_mini_object_set_qdata(GST_MINI_OBJECT(dest),
++            g_quark_from_static_string("AiInference"), desti, g_free);
++      }
++      *desti = *srci;
++    }
++  }
+ 
+   g_return_val_if_fail (gst_buffer_is_writable (dest), FALSE);
+ 
