@@ -16,5 +16,5 @@ LINUX_VERSION ?= "6.2.0"
 SRCBRANCH ?= "master"
 
 # 6.2-rc2
-SRCREV ?= "63f3ae7f5bc8a502f8aff6634ca6678fb10f8df0"
+SRCREV ?= "e4ef62bcce9737cf3a2bb1b797b64dc25cbbfbb4"
 KERNEL_VERSION_SANITY_SKIP="1"

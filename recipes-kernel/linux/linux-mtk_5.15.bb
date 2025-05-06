@@ -7,5 +7,5 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 LINUX_VERSION ?= "5.15.47"
 SRCBRANCH ?= "vab5000_debian"
-SRCREV = "38bc9370feb01a3ec7a22595ad2b66bb2e2f2d3b"
+SRCREV = "a5e5a0434cfbaafa762b6744e3ec900975cc90ab"
 
